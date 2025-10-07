@@ -197,7 +197,7 @@
               </ul>
             </li>
             <li>
-              <a href="/login" class="btn btn-primary"
+              <a href="<?= site_url('login')?>" class="btn btn-primary"
                 ><span class="tf-icons icon-base ti tabler-login scaleX-n1-rtl me-md-1"></span
                 ><span class="d-none d-md-block">Login/Register</span></a
               >
