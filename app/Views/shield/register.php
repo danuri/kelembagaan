@@ -106,12 +106,12 @@
               <form id="formAuthentication" class="mb-6" action="<?= url_to('register') ?>" method="POST">
                 <?= csrf_field() ?>
                 <div class="mb-6 form-control-validation">
-                  <label for="nama" class="form-label">Nama</label>
+                  <label for="full_name" class="form-label">Nama</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="nama"
-                    name="nama"
+                    id="full_name"
+                    name="full_name"
                     placeholder="Nama Lengkap"
                     autofocus />
                 </div>
