@@ -6,7 +6,7 @@
   class="layout-navbar-fixed layout-menu-fixed layout-compact"
   dir="ltr"
   data-skin="default"
-  data-assets-path="../../assets/"
+  data-assets-path="<?= base_url()?>assets/"
   data-template="vertical-menu-template-no-customizer-starter"
   data-bs-theme="light">
   <head>
@@ -20,7 +20,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="<?= base_url()?>assets/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -29,31 +29,31 @@
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
       rel="stylesheet" />
 
-    <link rel="stylesheet" href="../../assets/vendor/fonts/iconify-icons.css" />
+    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/fonts/iconify-icons.css" />
 
     <!-- Core CSS -->
     <!-- build:css assets/vendor/css/theme.css  -->
 
-    <link rel="stylesheet" href="../../assets/vendor/libs/node-waves/node-waves.css" />
+    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/node-waves/node-waves.css" />
 
-    <link rel="stylesheet" href="../../assets/vendor/css/core.css" />
-    <link rel="stylesheet" href="../../assets/css/demo.css" />
+    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/css/core.css" />
+    <link rel="stylesheet" href="<?= base_url()?>assets/css/demo.css" />
 
     <!-- Vendors CSS -->
 
-    <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
     <!-- endbuild -->
 
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="../../assets/vendor/js/helpers.js"></script>
+    <script src="<?= base_url()?>assets/vendor/js/helpers.js"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
 
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
 
-    <script src="../../assets/js/config.js"></script>
+    <script src="<?= base_url()?>assets/js/config.js"></script>
   </head>
 
   <body>
@@ -127,7 +127,7 @@
                     href="javascript:void(0);"
                     data-bs-toggle="dropdown">
                     <div class="avatar avatar-online">
-                      <img src="../../assets/img/avatars/1.png" alt class="rounded-circle" />
+                      <img src="<?= base_url()?>assets/img/avatars/1.png" alt class="rounded-circle" />
                     </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
@@ -136,7 +136,7 @@
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="<?= base_url()?>assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
@@ -236,19 +236,19 @@
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/theme.js -->
 
-    <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="<?= base_url()?>assets/vendor/libs/jquery/jquery.js"></script>
 
-    <script src="../../assets/vendor/libs/popper/popper.js"></script>
-    <script src="../../assets/vendor/js/bootstrap.js"></script>
-    <script src="../../assets/vendor/libs/node-waves/node-waves.js"></script>
+    <script src="<?= base_url()?>assets/vendor/libs/popper/popper.js"></script>
+    <script src="<?= base_url()?>assets/vendor/js/bootstrap.js"></script>
+    <script src="<?= base_url()?>assets/vendor/libs/node-waves/node-waves.js"></script>
 
-    <script src="../../assets/vendor/libs/@algolia/autocomplete-js.js"></script>
+    <script src="<?= base_url()?>assets/vendor/libs/@algolia/autocomplete-js.js"></script>
 
-    <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="<?= base_url()?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
+    <script src="<?= base_url()?>assets/vendor/libs/hammer/hammer.js"></script>
 
-    <script src="../../assets/vendor/js/menu.js"></script>
+    <script src="<?= base_url()?>assets/vendor/js/menu.js"></script>
 
     <!-- endbuild -->
 
@@ -256,7 +256,7 @@
 
     <!-- Main JS -->
 
-    <script src="../../assets/js/main.js"></script>
+    <script src="<?= base_url()?>assets/js/main.js"></script>
 
     <!-- Page JS -->
   </body>
