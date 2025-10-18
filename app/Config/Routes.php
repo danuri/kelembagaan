@@ -88,6 +88,15 @@ $routes->group('layanan', ['filter' => 'group:user'], static function ($routes) 
         $routes->post('updateform2', 'User\Alihbentukptkis::updateform2');
         $routes->post('submitusul', 'User\Alihbentukptkis::submitusul');
     });
+
+    $routes->group('alihkelolaptkis', static function ($routes) {
+        $routes->get('/', 'User\Alihkelolaptkis::index');
+        $routes->post('create', 'User\Alihkelolaptkis::create');
+        $routes->get('detail/(:any)', 'User\Alihkelolaptkis::detail/$1');
+        $routes->post('updateform1', 'User\Alihkelolaptkis::updateform1');
+        $routes->post('updateform2', 'User\Alihkelolaptkis::updateform2');
+        $routes->post('submitusul', 'User\Alihkelolaptkis::submitusul');
+    });
     
     $routes->get('alihbentukptkis', 'Layanan\AlihBentukPTKIS::index');
     $routes->get('bantuanptkis', 'Layanan\BantuanPTKIS::index');

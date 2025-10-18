@@ -320,7 +320,7 @@
               <h5 class="mb-2">Penggabungan PTKIS</h5>
               <p class="features-icon-description">An easy-to-follow doc with lots of references and code examples.</p>
             </div>
-            <div class="col-lg-4 col-sm-6 text-center features-icon-box">
+            <!-- <div class="col-lg-4 col-sm-6 text-center features-icon-box">
               <div class="text-center mb-4 text-primary">
                 <svg width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -336,7 +336,7 @@
               </div>
               <h5 class="mb-2">Well Documented</h5>
               <p class="features-icon-description">An easy-to-follow doc with lots of references and code examples.</p>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
@@ -411,7 +411,7 @@
           <h4 class="text-center mb-1">
             Frequently asked
             <span class="position-relative fw-extrabold z-1">questions
-              <img src="../../assets/img/front-pages/icons/section-title-icon.png" alt="laptop charging" class="section-title-img position-absolute object-fit-contain bottom-0 z-n1">
+              <img src="<?= base_url()?>assets/img/front-pages/icons/section-title-icon.png" alt="" class="section-title-img position-absolute object-fit-contain bottom-0 z-n1">
             </span>
           </h4>
           <p class="text-center mb-12 pb-md-4">
@@ -420,7 +420,7 @@
           <div class="row gy-12 align-items-center">
             <div class="col-lg-5">
               <div class="text-center">
-                <img src="../../assets/img/front-pages/landing-page/faq-boy-with-logos.png" alt="faq boy with logos" class="faq-image">
+                <img src="<?= base_url()?>assets/img/front-pages/landing-page/faq-boy-with-logos.png" alt="faq boy with logos" class="faq-image">
               </div>
             </div>
             <div class="col-lg-7">
@@ -483,20 +483,6 @@
                     </div>
                   </div>
                 </div>
-                <div class="card accordion-item">
-                  <h2 class="accordion-header" id="headingFive">
-                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionFive" aria-expanded="false" aria-controls="accordionFive">
-                      Which license is applicable for SASS application?
-                    </button>
-                  </h2>
-                  <div id="accordionFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi molestias exercitationem ab cum
-                      nemo facere voluptates veritatis quia, eveniet veniam at et repudiandae mollitia ipsam quasi
-                      labore enim architecto non!
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -508,7 +494,7 @@
             <span class="position-relative fw-extrabold z-1"
               >Statistik PTKI
               <img
-                src="../../assets/img/front-pages/icons/section-title-icon.png"
+                src="<?= base_url()?>assets/img/front-pages/icons/section-title-icon.png"
                 alt="laptop charging"
                 class="section-title-img position-absolute object-fit-contain bottom-0 z-n1" />
             </span>
@@ -532,7 +518,7 @@
                 <div class="card border shadow-none">
                   <div class="card-body text-center">
                     <span class="avatar-initial rounded bg-label-primary"><i class="ti tabler-building-bank icon-26px"></i></span>
-                    <h5 class="my-3">57</h5>
+                    <h5 class="my-3">59</h5>
                     <p class="mb-3">PTKIN</p>
                   </div>
                 </div>
