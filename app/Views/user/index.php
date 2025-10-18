@@ -14,7 +14,6 @@
             Kelembagaan dan Kerjasama
           </h4>
           <p class="text-center mb-12">
-            Not just a set of tools, the package includes ready-to-deploy conceptual application.
+            Silahkan pilih layanan yang tersedia di atas untuk mengajukan permohonan.
           </p>
-          xxxx
 <?= $this->endSection() ?>

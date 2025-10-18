@@ -4,7 +4,7 @@
   Pendirian PTKIS
 </h4>
 <p class="text-center mb-12">
-  Not just a set of tools, the package includes ready-to-deploy conceptual application.
+  Pengajuan usulan Pendirian PTKIS. Silahkan klik tombol "Buat Usulan" untuk memulai.
 </p>
 <div class="card">
   <div class="card-header d-flex justify-content-between align-items-center">
