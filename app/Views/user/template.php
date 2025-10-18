@@ -124,7 +124,7 @@
           <!-- Toolbar: Start -->
           <ul class="navbar-nav flex-row align-items-center ms-auto">
             <li>
-              <a href="/logout" class="btn btn-primary"><span class="tf-icons icon-base ti tabler-logout scaleX-n1-rtl me-md-1"></span
+              <a href="<?= site_url('logout')?>" class="btn btn-primary"><span class="tf-icons icon-base ti tabler-logout scaleX-n1-rtl me-md-1"></span
                 ><span class="d-none d-md-block">Logout</span></a
               >
             </li>
