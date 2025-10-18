@@ -62,6 +62,7 @@ class Pendirianptkis extends BaseController
         // save to database
         $usulanModel = new UsulanModel();
         $usulanModel->save([
+            'layanan_id' => 1,
             'nomor_surat' => $this->request->getPost('nomor_surat'),
             'perihal' => $this->request->getPost('perihal'),
             'nama_lembaga' => $this->request->getPost('nama_lembaga'),

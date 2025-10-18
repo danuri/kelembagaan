@@ -42,6 +42,7 @@ class Alihbentukptkis extends BaseController
         // validation input
         $validation = \Config\Services::validation();
         $validation->setRules([
+            'layanan_id' => 2,
             'nspt' => 'required',
             'nama_lembaga' => 'required',
             'alamat_lembaga' => 'required',
