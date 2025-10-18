@@ -20,7 +20,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="<?= base_url()?>assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="https://kemenag.go.id/assets/imgs/theme/favicon.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -150,29 +150,7 @@
                       <div class="dropdown-divider my-1 mx-n2"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="icon-base ti tabler-user icon-md me-3"></i><span>My Profile</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <i class="icon-base ti tabler-settings icon-md me-3"></i><span>Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <span class="d-flex align-items-center align-middle">
-                          <i class="flex-shrink-0 icon-base ti tabler-credit-card icon-md me-3"></i
-                          ><span class="flex-grow-1 align-middle">Billing Plan</span>
-                          <span class="flex-shrink-0 badge rounded-pill bg-danger">4</span>
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider my-1 mx-n2"></div>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="javascript:void(0);">
+                      <a class="dropdown-item" href="<?= site_url('logout')?>">
                         <i class="icon-base ti tabler-power icon-md me-3"></i><span>Log Out</span>
                       </a>
                     </li>
@@ -199,15 +177,11 @@
                 <div
                   class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
                   <div class="text-body">
-                    ©
-                    <script>
-                      document.write(new Date().getFullYear());
-                    </script>
-                    , made with ❤️ by <a href="https://pixinvent.com" target="_blank" class="footer-link">Pixinvent</a>
+                    ©2025, Subdit Kelembagaan
                   </div>
                   <div class="d-none d-lg-inline-block">
                     <a
-                      href="https://demos.pixinvent.com/vuexy-html-admin-template/documentation/"
+                      href="#"
                       target="_blank"
                       class="footer-link me-4"
                       >Documentation</a

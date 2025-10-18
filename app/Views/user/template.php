@@ -20,7 +20,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="<?= base_url()?>assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="https://kemenag.go.id/assets/imgs/theme/favicon.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -115,23 +115,7 @@
             </button>
             <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link fw-medium" aria-current="page" href="landing-page.html#landingHero">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fw-medium" href="landing-page.html#landingFeatures">Features</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fw-medium" href="landing-page.html#landingTeam">Team</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fw-medium" href="landing-page.html#landingFAQ">FAQ</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fw-medium" href="landing-page.html#landingContact">Contact us</a>
-              </li>
-              
-              <li class="nav-item">
-                <a class="nav-link fw-medium" href="../vertical-menu-template/index.html" target="_blank">Admin</a>
+                <a class="nav-link fw-medium" aria-current="page" href="#">Home</a>
               </li>
             </ul>
           </div>
