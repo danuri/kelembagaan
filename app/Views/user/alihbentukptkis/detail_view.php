@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 
 <h4 class="mb-1">
-  Detail Usulan Pendirian PTKIS
+  Detail Usulan Alih Bentuk PTKIS
 </h4>
 <div class="card shadow-none bg-label-success mb-3">
     <div class="card-body">
@@ -10,31 +10,31 @@
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div style="display: table-row;">
                     <div style="display: table-cell; padding-right: 0.5rem;">
-                        <h6>Nama Yayasan</h6>
+                        <h6>Nomor Surat</h6>
                     </div>
                     <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $detail->yayasan_nama?></div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->nomor_surat?></div>
                 </div>
                 <div style="display: table-row;">
                     <div style="display: table-cell; padding-right: 0.5rem;">
-                        <h6>Alamat Yayasan</h6>
+                        <h6>Perihal</h6>
                     </div>
                     <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $detail->yayasan_alamat?></div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->perihal?></div>
                 </div>
                 <div style="display: table-row;">
                     <div style="display: table-cell; padding-right: 0.5rem;">
-                        <h6>No. SK</h6>
+                        <h6>Nama Lembaga</h6>
                     </div>
                     <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $detail->yayasan_nosk?></div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->nama_lembaga?></div>
                 </div>
                 <div style="display: table-row;">
                     <div style="display: table-cell; padding-right: 0.5rem;">
-                        <h6>Tanggal SK</h6>
+                        <h6>Tanggal Usul</h6>
                     </div>
                     <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $detail->yayasan_tglsk?></div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->submit_at?></div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12">
@@ -123,72 +123,7 @@
                                     <option value="S3" <?= $detail->jenjang === 'S3' ? 'selected' : '' ?>>S3</option>
                                 </select>
                                 </div>
-                                <div class="mb-3 form-control-validation">
-                                <label class="form-label" for="kopertais">Kopertais</label>
-                                <select class="form-select select2" id="kopertais" name="kopertais" disabled>
-                                    <?php for($i=1; $i<=15; $i++): ?>
-                                    <option value="KOPERTAIS <?= $i ?>" <?= $detail->kopertais === "KOPERTAIS $i" ? 'selected' : '' ?>>KOPERTAIS <?= $i ?></option>
-                                    <?php endfor; ?>
-                                </select>
-                                </div>
-                                <div class="mb-3 form-control-validation">
-                                <label class="form-label" for="telepon">No. Telepon</label>
-                                <input type="text" id="telepon" name="telepon" class="form-control" value="<?= $detail->telepon?>" disabled />
-                                </div>
-                                <div class="mb-3 form-control-validation">
-                                <label class="form-label" for="no_hp">No. HP</label>
-                                <input type="text" id="no_hp" name="no_hp" class="form-control" value="<?= $detail->no_hp?>" disabled />
-                                </div>
-
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="mb-3 form-control-validation">
-                                <label class="form-label" for="provinsi">Provinsi</label>
-                                <select class="form-select select2" id="provinsi" name="provinsi" disabled>
-                                    <option label=" "></option>
-                                    <?php foreach($provinces as $province): ?>
-                                    <option value="<?= $province->id ?>" <?= $detail->provinsi === $province->id ? 'selected' : '' ?>><?= $province->name ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                                </div>        
-                                <div class="mb-3 form-control-validation">
-                                <label class="form-label" for="kabupaten">Kabupaten</label>
-                                <select class="form-select select2" id="kabupaten" name="kabupaten" disabled>
-                                    <?php if ($detail->kab_kota): ?>
-                                    <option value="<?= $detail->kab_kota ?>" selected><?= $detail->kab_kota ?></option>
-                                    <?php else: ?>
-                                    <option label=" "></option>
-                                    <?php endif; ?>
-                                </select>
-                                </div>
-                                <div class="mb-3 form-control-validation">
-                                <label class="form-label" for="kecamatan">Kecamatan</label>
-                                <select class="form-select select2" id="kecamatan" name="kecamatan" disabled>
-                                    <?php if ($detail->kecamatan): ?>
-                                    <option value="<?= $detail->kecamatan ?>" selected><?= $detail->kecamatan ?></option>
-                                    <?php else: ?>
-                                        <option label=" "></option>
-                                    <?php endif; ?>
-                                </select>
-                                </div>
-                                <div class="mb-3 form-control-validation">
-                                <label class="form-label" for="kelurahan">Kelurahan</label>
-                                <select class="form-select select2" id="kelurahan" name="kelurahan" disabled>
-                                    <?php if ($detail->kelurahan): ?>
-                                    <option value="<?= $detail->kelurahan ?>" selected><?= $detail->kelurahan ?></option>
-                                    <?php else: ?>
-                                    <option label=" "></option>
-                                    <?php endif; ?>
-                                </select>
-                                </div>
-                                <div class="mb-3 form-control-validation">
-                                <label class="form-label" for="kode_pos">Kode POS</label>
-                                <input type="text" id="kode_pos" name="kode_pos" class="form-control" value="<?= $detail->kode_pos?>" disabled />
-                                </div>
-                                <div class="mb-3 form-control-validation">
-                                <label class="form-label" for="jalan">Jalan, No.</label>
-                                <input type="text" id="jalan" name="jalan" class="form-control" value="<?= $detail->alamat?>" disabled />
-                                </div>
+                                
                             </div>
                           </div>
                       </div>

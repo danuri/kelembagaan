@@ -18,12 +18,17 @@
                     <label for="statuslayanan" class="form-label">Status</label>
                     <select id="statuslayanan" name="statuslayanan" class="form-select">
                         <option value="">Semua</option>
-                          <option value="11">Dikirim ke Ditjen Pendis</option>
-                          <option value="12">Diterima Ditjen Pendis</option>
-                          <option value="13">Disetujui & Proses Surat Rekomendasi</option>
-                          <option value="14">Proses TTE Surat Rekomendasi</option>
+                          <option value="1">Dikirim</option>
+                          <option value="2">Disposisi ke Verifikator</option>
+                          <option value="3">Proses Verifikasi</option>
+                          <option value="4">Proses Penilaian</option>
+                          <option value="5">Proses Penilaian Asesor</option>
+                          <option value="6">Penilaian Selesai</option>
+                          <option value="7">Proses RKMA</option>
+                          <option value="8">KMA Telah Terbit</option>
+                          <option value="9">Selesai</option>
                           <option value="20">Selesai</option>
-                          <option value="21">Dikembalikan</option>
+                          <option value="21">Dikembalikan Ke Pengusul</option>
                     </select>
                 </div>
             </form>

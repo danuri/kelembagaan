@@ -152,6 +152,28 @@ class Usulan extends BaseController
         return view('supervisor/usulan/detail_rkma', $data);
     }
 
+    function rkmadetail() {
+        $id = $this->request->getPost('detailid');
+        
+        $detail = new PendirianptkisModel();
+        $data = [
+            'kategori' => $this->request->getPost('kategori'),
+            'nama_lembaga' => $this->request->getPost('nama_lembaga'),
+            'alamat' => $this->request->getPost('alamat'),
+            'yayasan_nama' => $this->request->getPost('yayasan_nama'),
+            'yayasan_nosk' => $this->request->getPost('yayasan_nosk'),
+            'yayasan_tglsk' => $this->request->getPost('yayasan_tglsk'),
+            'yayasan_notaris' => $this->request->getPost('yayasan_notaris'),
+            'yayasan_kedudukan' => $this->request->getPost('yayasan_kedudukan'),
+            'yayasan_kumham_nomor' => $this->request->getPost('yayasan_kumham_nomor'),
+            'yayasan_kumham_tahun' => $this->request->getPost('yayasan_kumham_tahun'),
+            'yayasan_kumham_tanggal' => $this->request->getPost('yayasan_kumham_tanggal'),
+        ];
+        $detail->update($id,$data);
+
+        return redirect()->back()->withInput()->with('message', 'Data telah direkam');
+    }
+
     function kma($id) {
         $id = decrypt($id);
         $model = new UsulanModel();
@@ -190,5 +212,13 @@ class Usulan extends BaseController
         $insert = $model->insert($data);
 
         return redirect()->back()->withInput()->with('message', 'Asesor telah direkam');
+    }
+    
+    function penilaianreview($id) {
+        $model = new AsesorModel;
+        
+        $id = decrypt($id);
+        $update = $model->update($id,['status'=>1]);
+        return redirect()->back()->withInput()->with('message', 'Penilaian telah dikembalikan');
     }
 }

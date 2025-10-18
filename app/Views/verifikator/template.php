@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/sweetalert2/sweetalert2.css" />
     <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/pickr/pickr-themes.css" />
     <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <script src="<?= base_url()?>assets/vendor/js/helpers.js"></script>
 
     <script src="<?= base_url()?>assets/vendor/js/template-customizer.js"></script>
@@ -312,15 +313,30 @@
 
     $(document).ready(function() {
         $('.datatable').DataTable();
-      });
 
-    <?php
-    if(session()->getFlashdata('message')){
-      ?>
-      alert("<?= session()->getFlashdata('message')?>");
-      <?php
-    }
-    ?>
+        $('[data-toggle="tooltip"]').tooltip();
+
+        var notyf = new Notyf();
+        <?php if(session()->getFlashdata('message')){?>
+        notyf.success("<?= session()->getFlashdata('message')?>");
+        <?php } ?>
+
+        <?php
+        $errors = session()->getFlashdata('error');
+        if($errors){
+          
+          if(is_array($errors)){
+            foreach ($errors as $key => $value) {
+              echo 'notyf.error("'.$key.': '.$value.'");';
+            }
+          }else{
+            echo 'notyf.error("'.$errors.'");';
+          }
+        ?>
+        
+        <?php } ?>
+    });
+
 
     function log(id) {
         $('#bodylog').load('<?= site_url('ajax/log')?>/'+id);

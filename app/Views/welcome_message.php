@@ -120,6 +120,9 @@
                 <a class="nav-link fw-medium" href="#landingDasarHukum">Dasar Hukum</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link fw-medium" href="#landingPanduan">Pertanyaan (FAQ)</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link fw-medium" href="#landingStatistik">Statistik PTKI</a>
               </li>
             </ul>
@@ -234,7 +237,7 @@
                     stroke-linejoin="round" />
                 </svg>
               </div>
-              <h5 class="mb-2">Pendirian PTKIS</h5>
+              <h5 class="mb-2"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#modalPendirian">Pendirian PTKIS</a></h5>
               <p class="features-icon-description">
                 Code structure that all developers will easily understand and fall in love with.
               </p>
@@ -255,7 +258,7 @@
                     fill="currentColor" />
                 </svg>
               </div>
-              <h5 class="mb-2">Alih Bentuk PTKIS</h5>
+              <h5 class="mb-2"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#modalAlih">Alih Bentuk PTKIS</a></h5>
               <p class="features-icon-description">
                 Free updates for the next 12 months, including new demos and features.
               </p>
@@ -274,7 +277,7 @@
                     fill="currentColor" />
                 </svg>
               </div>
-              <h5 class="mb-2">Bantuan PTKIS</h5>
+              <h5 class="mb-2">Alih Kelola PTKIS</h5>
               <p class="features-icon-description">
                 Start your project quickly without having to remove unnecessary features.
               </p>
@@ -294,7 +297,7 @@
                     stroke-linejoin="round" />
                 </svg>
               </div>
-              <h5 class="mb-2">API Ready</h5>
+              <h5 class="mb-2">Pembentukan Fakultas Agama Islam</h5>
               <p class="features-icon-description">
                 Just change the endpoint and see your own data loaded within seconds.
               </p>
@@ -314,7 +317,7 @@
                     stroke-linejoin="round" />
                 </svg>
               </div>
-              <h5 class="mb-2">Excellent Support</h5>
+              <h5 class="mb-2">Penggabungan PTKIS</h5>
               <p class="features-icon-description">An easy-to-follow doc with lots of references and code examples.</p>
             </div>
             <div class="col-lg-4 col-sm-6 text-center features-icon-box">
@@ -364,9 +367,13 @@
                 <thead>
                   <tr>
                     <th>Judul</th>
-                    <th>Tahun</th>
                   </tr>
                 </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="https://peraturan.go.id/files/permenag-no-15-tahun-2023.pdf" target="_blank">Peraturan Menteri Agama No. 15 Tahun 2023</a></td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
@@ -379,44 +386,16 @@
             <div class="swiper" id="swiper-clients-logos">
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <img
-                    src="<?= base_url()?>assets/img/front-pages/branding/logo_1-light.png"
-                    alt="client logo"
-                    class="client-logo"
-                    data-app-light-img="front-pages/branding/logo_1-light.png"
-                    data-app-dark-img="front-pages/branding/logo_1-dark.png" />
+                  <img src="https://kemenag.go.id/assets/imgs/theme/logo.png" alt="Kementerian Agama" class="client-logo" />
                 </div>
                 <div class="swiper-slide">
-                  <img
-                    src="<?= base_url()?>assets/img/front-pages/branding/logo_2-light.png"
-                    alt="client logo"
-                    class="client-logo"
-                    data-app-light-img="front-pages/branding/logo_2-light.png"
-                    data-app-dark-img="front-pages/branding/logo_2-dark.png" />
+                  <img src="https://pendis.kemenag.go.id/assets/logo.png" alt="Direktorat Jenderal Pendidikan Islam" class="client-logo" />
                 </div>
                 <div class="swiper-slide">
-                  <img
-                    src="<?= base_url()?>assets/img/front-pages/branding/logo_3-light.png"
-                    alt="client logo"
-                    class="client-logo"
-                    data-app-light-img="front-pages/branding/logo_3-light.png"
-                    data-app-dark-img="front-pages/branding/logo_3-dark.png" />
+                  <img src="https://emis.kemenag.go.id/static/media/logo-emis-landing.05d4ca0e.png" alt="EMIS" class="client-logo" />
                 </div>
                 <div class="swiper-slide">
-                  <img
-                    src="<?= base_url()?>assets/img/front-pages/branding/logo_4-light.png"
-                    alt="client logo"
-                    class="client-logo"
-                    data-app-light-img="front-pages/branding/logo_4-light.png"
-                    data-app-dark-img="front-pages/branding/logo_4-dark.png" />
-                </div>
-                <div class="swiper-slide">
-                  <img
-                    src="<?= base_url()?>assets/img/front-pages/branding/logo_5-light.png"
-                    alt="client logo"
-                    class="client-logo"
-                    data-app-light-img="front-pages/branding/logo_5-light.png"
-                    data-app-dark-img="front-pages/branding/logo_5-dark.png" />
+                  <img src="https://pusaka.kemenag.go.id/logo_pusaka_vertikal.webp" alt="Pusaka Kemenag" class="client-logo" />
                 </div>
               </div>
             </div>
@@ -424,7 +403,106 @@
         </div>
         <!-- Logo slider: End -->
       </section>
-      <section id="landingStatistik" class="p-3 landing-team">
+      <section id="landingPanduan" class="section-py bg-lighter landing-faq">
+        <div class="container">
+          <div class="text-center mb-4">
+            <span class="badge bg-label-primary">FAQ</span>
+          </div>
+          <h4 class="text-center mb-1">
+            Frequently asked
+            <span class="position-relative fw-extrabold z-1">questions
+              <img src="../../assets/img/front-pages/icons/section-title-icon.png" alt="laptop charging" class="section-title-img position-absolute object-fit-contain bottom-0 z-n1">
+            </span>
+          </h4>
+          <p class="text-center mb-12 pb-md-4">
+            Pertanyaan yang sering diajukan seputar pengusulan pendirian / alih bentuk PTKIS
+          </p>
+          <div class="row gy-12 align-items-center">
+            <div class="col-lg-5">
+              <div class="text-center">
+                <img src="../../assets/img/front-pages/landing-page/faq-boy-with-logos.png" alt="faq boy with logos" class="faq-image">
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="accordion" id="accordionExample">
+                <div class="card accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
+                      Bagaimana cara pengusulan melalui aplikasi?
+                    </button>
+                  </h2>
+
+                  <div id="accordionOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Berikut langkah-langkah pengusulan pendirian / alih bentuk PTKIS melalui aplikasi SIPTIKA:
+                      <ol>
+                        <li>Membuat akun pada aplikasi SIPTIKA</li>
+                        <li>Melengkapi profil lembaga</li>
+                        <li>Melengkapi dokumen persyaratan</li>
+                        <li>Melakukan pengisian formulir pengusulan</li>
+                        <li>Melakukan submit pengusulan</li>
+                        <li>Menunggu proses verifikasi dan validasi dari Kementerian Agama RI</li>
+                        <li>Melakukan tindak lanjut sesuai arahan dari Kementerian Agama RI</li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+                <div class="card accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionTwo" aria-expanded="false" aria-controls="accordionTwo">
+                      Apakah pengusulan dapat dilakukan secara offline?
+                    </button>
+                  </h2>
+                  <div id="accordionTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Saat ini proses pengusulan hanya dapat dilakukan secara online melalui aplikasi SIPTIKA.
+                    </div>
+                  </div>
+                </div>
+                <div class="card accordion-item active">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionThree" aria-expanded="false" aria-controls="accordionThree">
+                      Apakah pengusulan Pendidiran PTKIS dipungut biaya? 
+                    </button>
+                  </h2>
+                  <div id="accordionThree" class="accordion-collapse collapse show" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Proses pengusulan pendirian PTKIS tidak dipungut biaya alias gratis. Kementerian Agama RI tidak menerima biaya apapun atau gratifikasi dalam proses pengusulan pendirian PTKIS.
+                    </div>
+                  </div>
+                </div>
+                <div class="card accordion-item">
+                  <h2 class="accordion-header" id="headingFour">
+                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionFour" aria-expanded="false" aria-controls="accordionFour">
+                      Dokumen apa saja yang harus disiapkan untuk pengusulan?
+                    </button>
+                  </h2>
+                  <div id="accordionFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Template dokumen persyaratan pengusulan pendirian / alih bentuk PTKIS dapat diunduh pada halaman <a href="<?= base_url('panduan')?>">Panduan</a> atau pada saat proses pengisian formulir pengusulan di aplikasi SIPTIKA.
+                    </div>
+                  </div>
+                </div>
+                <div class="card accordion-item">
+                  <h2 class="accordion-header" id="headingFive">
+                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordionFive" aria-expanded="false" aria-controls="accordionFive">
+                      Which license is applicable for SASS application?
+                    </button>
+                  </h2>
+                  <div id="accordionFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi molestias exercitationem ab cum
+                      nemo facere voluptates veritatis quia, eveniet veniam at et repudiandae mollitia ipsam quasi
+                      labore enim architecto non!
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="landingStatistik" class="p-3">
         <div class="container">
           <h4 class="text-center mb-1">
             <span class="position-relative fw-extrabold z-1"
@@ -438,14 +516,30 @@
           <p class="text-center">Data Statistik Perguruan Tinggi Keagamaan Islam</p>
           <div class="row gy-12 mt-2">
             <div class="col-8 mx-auto">
-              <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Judul</th>
-                    <th>Tahun</th>
-                  </tr>
-                </thead>
-              </table>
+              <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <div class="row g-6">
+              <div class="col-xl-4 col-md-6">
+                <div class="card border shadow-none">
+                  <div class="card-body text-center">
+                    <span class="avatar-initial rounded bg-label-primary"><i class="ti tabler-building-bank icon-26px"></i></span>
+                    <h5 class="my-3">815</h5>
+                    <p class="mb-3">PTKIS</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-md-6">
+                <div class="card border shadow-none">
+                  <div class="card-body text-center">
+                    <span class="avatar-initial rounded bg-label-primary"><i class="ti tabler-building-bank icon-26px"></i></span>
+                    <h5 class="my-3">57</h5>
+                    <p class="mb-3">PTKIN</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
             </div>
           </div>
         </div>
@@ -457,101 +551,7 @@
     <!-- / Sections:End -->
 
     <!-- Footer: Start -->
-    <footer class="landing-footer bg-body footer-text">
-      <div class="footer-top position-relative overflow-hidden z-1">
-        <img
-          src="<?= base_url()?>assets/img/front-pages/backgrounds/footer-bg.png"
-          alt="footer bg"
-          class="footer-bg banner-bg-img z-n1" />
-        <div class="container">
-          <div class="row gx-0 gy-6 g-lg-10">
-            <div class="col-lg-5">
-              <a href="landing-page.html" class="app-brand-link mb-6">
-                <span class="app-brand-logo demo">
-                  <span class="text-primary">
-                    <img src="<?= base_url()?>assets/img/siptika.png" width="150px" alt="">
-                  </span>
-                </span>
-                <img src="https://cms2023.kemenag.go.id/storage/files/shares/Logo/Kementerian_Agama_new_logo%20(2).png" width="50px" alt="">
-                <!-- <span class="app-brand-text demo footer-link fw-bold ms-2 ps-1">Vuexy</span> -->
-              </a>
-              <p class="footer-text footer-logo-description mb-6">
-                Most developer friendly & highly customisable Admin Dashboard Template.
-              </p>
-              <form class="footer-form">
-                <label for="footer-email" class="small">Subscribe to newsletter</label>
-                <div class="d-flex mt-1">
-                  <input
-                    type="email"
-                    class="form-control rounded-0 rounded-start-bottom rounded-start-top"
-                    id="footer-email"
-                    placeholder="Your email" />
-                  <button
-                    type="submit"
-                    class="btn btn-primary shadow-none rounded-0 rounded-end-bottom rounded-end-top">
-                    Subscribe
-                  </button>
-                </div>
-              </form>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-              <h6 class="footer-title mb-6">Demos</h6>
-              <ul class="list-unstyled">
-                <li class="mb-4">
-                  <a href="../vertical-menu-template/" target="_blank" class="footer-link">Vertical Layout</a>
-                </li>
-                <li class="mb-4">
-                  <a href="../horizontal-menu-template/" target="_blank" class="footer-link">Horizontal Layout</a>
-                </li>
-                <li class="mb-4">
-                  <a href="../vertical-menu-template-bordered/" target="_blank" class="footer-link">Bordered Layout</a>
-                </li>
-                <li class="mb-4">
-                  <a href="../vertical-menu-template-semi-dark/" target="_blank" class="footer-link"
-                    >Semi Dark Layout</a
-                  >
-                </li>
-                <li class="mb-4">
-                  <a href="../vertical-menu-template-dark/" target="_blank" class="footer-link">Dark Layout</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-              <h6 class="footer-title mb-6">Pages</h6>
-              <ul class="list-unstyled">
-                <li class="mb-4">
-                  <a href="pricing-page.html" class="footer-link">Pricing</a>
-                </li>
-                <li class="mb-4">
-                  <a href="payment-page.html" class="footer-link"
-                    >Payment<span class="badge bg-primary ms-2">New</span></a
-                  >
-                </li>
-                <li class="mb-4">
-                  <a href="checkout-page.html" class="footer-link">Checkout</a>
-                </li>
-                <li class="mb-4">
-                  <a href="help-center-landing.html" class="footer-link">Help Center</a>
-                </li>
-                <li class="mb-4">
-                  <a href="../vertical-menu-template/auth-login-cover.html" target="_blank" class="footer-link"
-                    >Login/Register</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="col-lg-3 col-md-4">
-              <h6 class="footer-title mb-6">Download our app</h6>
-              <a href="javascript:void(0);" class="d-block mb-4"
-                ><img src="<?= base_url()?>assets/img/front-pages/landing-page/apple-icon.png" alt="apple icon"
-              /></a>
-              <a href="javascript:void(0);" class="d-block"
-                ><img src="<?= base_url()?>assets/img/front-pages/landing-page/google-play-icon.png" alt="google play icon"
-              /></a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <footer class="landing-footer bg-lighter footer-text">
       <div class="footer-bottom py-3 py-md-5">
         <div
           class="container d-flex flex-wrap justify-content-between flex-md-row flex-column text-center text-md-start">
@@ -607,6 +607,68 @@
       </div>
     </footer>
     <!-- Footer: End -->
+
+    <div class="modal fade" id="modalPendirian" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLongTitle">Pendirian PTKIS</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
+                facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
+                vestibulum at eros.
+              </p>
+              <p>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
+                lacus vel augue laoreet rutrum faucibus dolor auctor.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="modal fade" id="modalAlih" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalLongTitle">Alih Bentuk PTKIS</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>
+                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
+                facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
+                vestibulum at eros.
+              </p>
+              <p>
+                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
+                lacus vel augue laoreet rutrum faucibus dolor auctor.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/theme.js -->

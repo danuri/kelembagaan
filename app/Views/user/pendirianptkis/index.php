@@ -91,13 +91,13 @@
                                           <input type="text" class="form-control" id="nama_lembaga" name="nama_lembaga">
                                         </div>
                                       </div>
-                                      <div class="row mb-6">
+                                      <!-- <div class="row mb-6">
                                         <label class="col-sm-4 col-form-label" for="surat_pengantar">Surat Pengantar</label>
                                         <div class="col-sm-8">
                                           <input type="file" class="form-control" id="surat_pengantar" name="surat_pengantar">
                                           <p>Lampiran surat pengantar dalam bentuk pdf</p>
                                         </div>
-                                      </div>
+                                      </div> -->
                                     </form>
                                   </div>
                                 </div>

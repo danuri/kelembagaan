@@ -204,7 +204,9 @@
                     fill="currentColor" />
                 </svg>
               </div>
+              <a href="<?= site_url('layanan/alihbentukptkis')?>">
               <h5 class="mb-2">Alih Bentuk PTKIS</h5>
+              </a>
             </div>
             <div class="col-lg-4 col-sm-6 text-center features-icon-box">
               <div class="text-center mb-4 text-primary">
@@ -356,13 +358,27 @@
       });
     }
 
-    <?php
-    if(session()->getFlashdata('message')){
-      ?>
-      alert("<?= session()->getFlashdata('message')?>");
-      <?php
-    }
-    ?>
+    $(document).ready(function() {
+        var notyf = new Notyf();
+        <?php if(session()->getFlashdata('message')){?>
+        notyf.success("<?= session()->getFlashdata('message')?>");
+        <?php } ?>
+
+        <?php
+        $errors = session()->getFlashdata('error');
+        if($errors){
+          
+          if(is_array($errors)){
+            foreach ($errors as $key => $value) {
+              echo 'notyf.error("'.$key.': '.$value.'");';
+            }
+          }else{
+            echo 'notyf.error("'.$errors.'");';
+          }
+        ?>
+        
+        <?php } ?>
+    });
 
     function log(id) {
         $('#bodylog').load('<?= site_url('ajax/log')?>/'+id);

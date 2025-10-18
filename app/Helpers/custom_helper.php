@@ -402,15 +402,15 @@ function hp($nohp) {
      $result = '<span class="badge bg-success">Proses Verifikasi</span>';
    }else if($status == 4){
      $result = '<span class="badge bg-primary">Proses Penilaian</span>';
-   }else if($status == 41){
-     $result = '<span class="badge bg-primary">Proses Penilaian Asesor</span>';
    }else if($status == 5){
-     $result = '<span class="badge bg-primary">Penilaian Selesai</span>';
+     $result = '<span class="badge bg-primary">Proses Penilaian Asesor</span>';
    }else if($status == 6){
-     $result = '<span class="badge bg-primary">xxx</span>';
+     $result = '<span class="badge bg-primary">Penilaian Selesai</span>';
    }else if($status == 7){
-     $result = '<span class="badge bg-primary">Proses RKMA</span>';
+     $result = '<span class="badge bg-primary">xxx</span>';
    }else if($status == 8){
+     $result = '<span class="badge bg-primary">Proses RKMA</span>';
+   }else if($status == 9){
      $result = '<span class="badge bg-primary">KMA Telah Terbit</span>';
    }else if($status == 20){
      $result = '<span class="badge bg-success">Selesai</span>';
@@ -418,6 +418,18 @@ function hp($nohp) {
      $result = '<span class="badge bg-dark">Dikembalikan</span>';
    }else{
      $result = '';
+   }
+
+   return $result;
+ }
+
+ function jenisasesmen($jenis) {
+  if($jenis == 1){
+     $result = 'Asesmen Kecukupan';
+   }else if($jenis == 2){
+     $result = 'Asesmen Lapangan';
+   }else{
+     $result = '-';
    }
 
    return $result;

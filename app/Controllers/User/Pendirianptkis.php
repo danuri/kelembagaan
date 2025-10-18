@@ -14,7 +14,7 @@ class Pendirianptkis extends BaseController
     public function index()
     {
         $model = new UsulanModel();
-        $data['usulans'] = $model->where('user_id', user_id())->findAll();
+        $data['usulans'] = $model->where(['layanan_id'=>1,'user_id'=>user_id()])->findAll();
         return view('user/pendirianptkis/index', $data);
     }
 
@@ -46,26 +46,26 @@ class Pendirianptkis extends BaseController
             'nomor_surat' => 'required',
             'perihal' => 'required',
             'nama_lembaga' => 'required',
-            'surat_pengantar' => 'uploaded[surat_pengantar]|max_size[surat_pengantar,2048]|ext_in[surat_pengantar,pdf]'
+            // 'surat_pengantar' => 'uploaded[surat_pengantar]|max_size[surat_pengantar,2048]|ext_in[surat_pengantar,pdf]'
         ]);
         if (!$validation->withRequest($this->request)->run()) {
             return redirect()->back()->withInput()->with('errors', $validation->getErrors());
         }
         // handle file upload
-        $file = $this->request->getFile('surat_pengantar');
-        if ($file->isValid() && !$file->hasMoved()) {
-            $newName = $file->getRandomName();
-            $file->move(WRITEPATH . 'uploads', $newName);
-        } else {
-            return redirect()->back()->withInput()->with('error', 'File upload failed');
-        }
+        // $file = $this->request->getFile('surat_pengantar');
+        // if ($file->isValid() && !$file->hasMoved()) {
+        //     $newName = $file->getRandomName();
+        //     $file->move(WRITEPATH . 'uploads', $newName);
+        // } else {
+        //     return redirect()->back()->withInput()->with('error', 'File upload failed');
+        // }
         // save to database
         $usulanModel = new UsulanModel();
         $usulanModel->save([
             'nomor_surat' => $this->request->getPost('nomor_surat'),
             'perihal' => $this->request->getPost('perihal'),
             'nama_lembaga' => $this->request->getPost('nama_lembaga'),
-            'surat_pengantar' => $newName,
+            // 'surat_pengantar' => $newName,
             'user_id' => user_id(),
             'status' => 0
         ]);

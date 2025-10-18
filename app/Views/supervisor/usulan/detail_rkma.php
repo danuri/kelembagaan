@@ -111,12 +111,12 @@
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kecukupan">Generate</button>
             </div>
             <div class="card-body">
-            <form class="card-body">
+            <form class="" action="<?= site_url('supervisor/usulan/rkmadetail')?>" method="POST">
                       <h6>1. Perguruan Tinggi</h6>
                       <div class="row mb-6">
-                        <label class="col-sm-3 col-form-label" for="multicol-username">Jenis PT</label>
+                        <label class="col-sm-3 col-form-label" for="kategori">Jenis PT</label>
                         <div class="col-sm-9">
-                          <select name="jenis" id="jenis" class="form-select">
+                          <select name="kategori" id="kategori" class="form-select">
                             <option value="Sekolah Tinggi">Sekolah Tinggi</option>
                             <option value="Institut">Institut</option>
                             <option value="Universitas">Universitas</option>
@@ -124,15 +124,15 @@
                         </div>
                       </div>
                       <div class="row mb-6">
-                        <label class="col-sm-3 col-form-label" for="multicol-email">Nama PT</label>
+                        <label class="col-sm-3 col-form-label" for="nama_lembaga">Nama PT</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="namapt" value="<?= $usulan->nama_lembaga?>">
+                            <input type="text" class="form-control" name="nama_lembaga" id="nama_lembaga" value="<?= $detail->nama_lembaga?>">
                         </div>
                       </div>
                       <div class="row mb-6">
-                        <label class="col-sm-3 col-form-label" for="multicol-email">Alamat PT</label>
+                        <label class="col-sm-3 col-form-label" for="alamat">Alamat PT</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" name="alamatpt" value="">
+                            <input type="text" class="form-control" name="alamat" id="alamat" value="<?= $detail->alamat?>">
                             <p>Contoh: </p>
                         </div>
                       </div>
@@ -140,57 +140,58 @@
                       <hr class="my-6 mx-n6" />
                       <h6>2. Info Yayasan</h6>
                       <div class="row mb-6">
-                        <label class="col-sm-3 col-form-label" for="multicol-full-name">Nama Yayasan</label>
+                        <label class="col-sm-3 col-form-label" for="yayasan_nama">Nama Yayasan</label>
                         <div class="col-sm-9">
-                          <input type="text" id="multicol-full-name" class="form-control" value="<?= $detail->yayasan_nama?>" />
+                          <input type="text" id="yayasan_nama" name="yayasan_nama" class="form-control" value="<?= $detail->yayasan_nama?>" />
                         </div>
                       </div>
                       <div class="row mb-6">
-                        <label class="col-sm-3 col-form-label" for="multicol-full-name">Nomor Akta</label>
+                        <label class="col-sm-3 col-form-label" for="yayasan_nosk">Nomor Akta</label>
                         <div class="col-sm-9">
-                          <input type="text" id="" class="form-control" value="<?= $detail->yayasan_nosk?>" />
+                          <input type="text" id="yayasan_nosk" name="yayasan_nosk" class="form-control" value="<?= $detail->yayasan_nosk?>" />
                         </div>
                       </div>
                       <div class="row mb-6">
-                        <label class="col-sm-3 col-form-label" for="multicol-full-name">Tanggal Akta</label>
+                        <label class="col-sm-3 col-form-label" for="yayasan_tglsk">Tanggal Akta</label>
                         <div class="col-sm-9">
-                          <input type="text" id="" class="form-control" value="<?= $detail->yayasan_tglsk?>" />
+                          <input type="text" id="yayasan_tglsk" name="yayasan_tglsk" class="form-control" value="<?= $detail->yayasan_tglsk?>" />
                         </div>
                       </div>
                       <div class="row mb-6">
-                        <label class="col-sm-3 col-form-label" for="multicol-full-name">Nama Notaris</label>
+                        <label class="col-sm-3 col-form-label" for="yayasan_notaris">Nama Notaris</label>
                         <div class="col-sm-9">
-                          <input type="text" id="" class="form-control" placeholder="John Doe" />
+                          <input type="text" id="yayasan_notaris" name="yayasan_notaris" class="form-control" value="<?= $detail->yayasan_notaris?>" />
                         </div>
                       </div>
                       <div class="row mb-6">
-                        <label class="col-sm-3 col-form-label" for="multicol-full-name">Kedudukan Akta</label>
+                        <label class="col-sm-3 col-form-label" for="yayasan_kedudukan">Kedudukan Akta</label>
                         <div class="col-sm-9">
-                          <input type="text" id="" class="form-control" placeholder="John Doe" />
+                          <input type="text" id="yayasan_kedudukan" name="yayasan_kedudukan" class="form-control" value="<?= $detail->yayasan_kedudukan?>" />
                           <p>Contoh: Kabupaten Magelang</p>
                         </div>
                       </div>
                       <div class="row mb-6">
-                        <label class="col-sm-3 col-form-label" for="multicol-full-name">Nomor Pengesahan</label>
+                        <label class="col-sm-3 col-form-label" for="yayasan_kumham_nomor">Nomor Pengesahan</label>
                         <div class="col-sm-9">
-                          <input type="text" id="" class="form-control" placeholder="John Doe" />
+                          <input type="text" id="yayasan_kumham_nomor" name="yayasan_kumham_nomor" class="form-control" value="<?= $detail->yayasan_kumham_nomor?>" />
                         </div>
                       </div>
                       <div class="row mb-6">
-                        <label class="col-sm-3 col-form-label" for="multicol-full-name">Tahun Pengesahan</label>
+                        <label class="col-sm-3 col-form-label" for="yayasan_kumham_tahun">Tahun Pengesahan</label>
                         <div class="col-sm-9">
-                          <input type="text" id="" class="form-control" placeholder="John Doe" />
+                          <input type="text" id="yayasan_kumham_tahun" name="yayasan_kumham_tahun" class="form-control" value="<?= $detail->yayasan_kumham_tahun?>" />
                         </div>
                       </div>
                       <div class="row mb-6">
-                        <label class="col-sm-3 col-form-label" for="multicol-full-name">Tanggal Pengesahan</label>
+                        <label class="col-sm-3 col-form-label" for="yayasan_kumham_tanggal">Tanggal Pengesahan</label>
                         <div class="col-sm-9">
-                          <input type="date" id="" class="form-control" placeholder="John Doe" />
+                          <input type="date" id="yayasan_kumham_tanggal" name="yayasan_kumham_tanggal" class="form-control" value="<?= $detail->yayasan_kumham_tanggal?>" />
                         </div>
                       </div>
                       <div class="pt-6">
                         <div class="row justify-content-end">
                           <div class="col-sm-9">
+                            <input type="hidden" name="detailid" id="detailid" value="<?= $detail->id?>">
                             <button type="submit" class="btn btn-primary me-4">Simpan</button>
                           </div>
                         </div>

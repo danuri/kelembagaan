@@ -24,6 +24,18 @@ $routes->group('verifikator', ['filter' => 'group:verifikator'], static function
         $routes->get('accept/(:any)', 'Verifikator\Usulan::accept/$1');
         $routes->get('proses/(:any)', 'Verifikator\Usulan::proses/$1');
     });
+    
+    $routes->group('penilaian', static function ($routes) {
+        $routes->get('/', 'Verifikator\Penilaian::index');
+        $routes->get('getdata', 'Verifikator\Penilaian::getdata');
+        $routes->get('accept/(:any)', 'Verifikator\Penilaian::accept/$1');
+        $routes->get('detail/(:any)', 'Verifikator\Penilaian::detail/$1');
+        $routes->get('validasidokumen/(:any)/(:any)/(:any)', 'Verifikator\Penilaian::validasidokumen/$1/$2/$3');
+        $routes->post('decline/(:any)', 'Verifikator\Penilaian::decline/$1');
+        $routes->post('save/(:any)', 'Verifikator\Penilaian::savenilai/$1');
+        $routes->get('done/(:any)', 'Verifikator\Penilaian::done/$1');
+        $routes->get('proses/(:any)', 'Verifikator\Penilaian::proses/$1');
+    });
 });
 
 $routes->group('supervisor', ['filter' => 'group:supervisor'], static function ($routes) {
@@ -34,6 +46,7 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
         $routes->get('getdata', 'Supervisor\Usulan::getdata');
         $routes->post('disposisi/(:any)', 'Supervisor\Usulan::disposisi/$1');
         $routes->get('detail/verifikasi/(:any)', 'Supervisor\Usulan::verifikasi/$1');
+        $routes->get('detail/penilaian/review/(:any)', 'Supervisor\Usulan::penilaianreview/$1');
         $routes->get('detail/penilaian/(:any)', 'Supervisor\Usulan::penilaian/$1');
         $routes->get('detail/visitasi/(:any)', 'Supervisor\Usulan::visitasi/$1');
         $routes->get('detail/rkma/(:any)', 'Supervisor\Usulan::rkma/$1');
@@ -41,6 +54,7 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
         $routes->get('detail/(:any)', 'Supervisor\Usulan::detail/$1');
         $routes->get('penilaianasesor/(:any)', 'Supervisor\Usulan::penilaianasesor/$1');
         $routes->post('asesor/add', 'Supervisor\Usulan::addasesor');
+        $routes->post('rkmadetail', 'Supervisor\Usulan::rkmadetail');
     });
 
     $routes->group('users', static function ($routes) {
@@ -64,6 +78,15 @@ $routes->group('layanan', ['filter' => 'group:user'], static function ($routes) 
         $routes->post('updateform1', 'User\Pendirianptkis::updateform1');
         $routes->post('updateform2', 'User\Pendirianptkis::updateform2');
         $routes->post('submitusul', 'User\Pendirianptkis::submitusul');
+    });
+
+    $routes->group('alihbentukptkis', static function ($routes) {
+        $routes->get('/', 'User\Alihbentukptkis::index');
+        $routes->post('create', 'User\Alihbentukptkis::create');
+        $routes->get('detail/(:any)', 'User\Alihbentukptkis::detail/$1');
+        $routes->post('updateform1', 'User\Alihbentukptkis::updateform1');
+        $routes->post('updateform2', 'User\Alihbentukptkis::updateform2');
+        $routes->post('submitusul', 'User\Alihbentukptkis::submitusul');
     });
     
     $routes->get('alihbentukptkis', 'Layanan\AlihBentukPTKIS::index');
