@@ -348,6 +348,7 @@
     <script src="<?= base_url()?>assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
 
     <script type="text/javascript">
+      var siteurl = '<?= site_url()?>';
     function alert($text) {
       var notyf = new Notyf();
       notyf.success({

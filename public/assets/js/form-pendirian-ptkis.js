@@ -79,7 +79,7 @@
     }).on('core.form.valid', function () {
       // Jump to the next step when all fields in the current step are valid
       // Post data with axios;
-      axios.post('/layanan/pendirianptkis/updateform1', {
+      axios.post(siteurl + '/layanan/pendirianptkis/updateform1', {
           usul_id: $('#usul_id').val(),
           yayasan_nama: $('#yayasan_nama').val(),
           yayasan_alamat: $('#yayasan_alamat').val(),
@@ -197,7 +197,7 @@
     }).on('core.form.valid', function () {
       // Jump to the next step when all fields in the current step are valid
       // validationStepper.next();
-      axios.post('/layanan/pendirianptkis/updateform2', {
+      axios.post(siteurl + '/layanan/pendirianptkis/updateform2', {
           nama_lembaga: $('#nama_lembaga').val(),
           kategori: $('#kategori').val(),
           jenjang: $('#jenjang').val(),
@@ -357,7 +357,7 @@
 function getKabupaten(provinsiId) {
   // AJAX request
   $.ajax({
-    url: '/ajax/regencies/' + provinsiId,
+    url: siteurl + '/ajax/regencies/' + provinsiId,
     type: 'GET',
     dataType: 'json',
     success: function (response) {
@@ -383,7 +383,7 @@ function getKabupaten(provinsiId) {
 function getKecamatan(kabupatenId) {
   // AJAX request
   $.ajax({
-    url: '/ajax/districts/' + kabupatenId,
+    url: siteurl + '/ajax/districts/' + kabupatenId,
     type: 'GET',
     dataType: 'json',
     success: function (response) {
@@ -407,7 +407,7 @@ function getKecamatan(kabupatenId) {
 function getKelurahan(kecamatanId) {
   // AJAX request
   $.ajax({
-    url: '/ajax/villages/' + kecamatanId,
+    url: siteurl + '/ajax/villages/' + kecamatanId,
     type: 'GET',
     dataType: 'json',
     success: function (response) {
@@ -474,7 +474,7 @@ function confirmSubmit() {
         if (result.value) {
           // Submit the form
           // document.getElementById("wizard-validation-form").submit();
-          axios.post('/layanan/pendirianptkis/submitusul', {
+          axios.post(siteurl+'/layanan/pendirianptkis/submitusul', {
               usul_id: $('#usul_id').val()
             })
             .then(response => {
@@ -489,7 +489,7 @@ function confirmSubmit() {
                   confirmButton: 'btn btn-success waves-effect waves-light'
                 }
               })
-              .then(() => { window.location.href = '/layanan/pendirianptkis'; });
+              .then(() => { window.location.href = siteurl+'/layanan/pendirianptkis'; });
             })
             .catch(error => {
               console.error(error);
