@@ -76,5 +76,13 @@
             {data: 'action', orderable: false}
         ]
     });
+
+    $('#layanan').change(function(event) {
+        table.ajax.reload();
+    });
+
+    $('#statuslayanan').change(function(event) {
+        table.ajax.reload();
+    });
 </script>
 <?= $this->endSection() ?>
