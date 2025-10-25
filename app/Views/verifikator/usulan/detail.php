@@ -164,11 +164,11 @@
 
 
 
-<div class="card mb-3">
+<!-- <div class="card mb-3">
     <div class="card-body">
         asdasd
     </div>
-</div>
+</div> -->
 
 <div id="preview" class="modal fade" data-bs-backdrop="static" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">
     <div class="modal-dialog modal-xl">

@@ -206,8 +206,7 @@
                 Sistem Informasi Izin Pendirian Perguruan Tinggi Keagamaan Islam
               </h1>
               <h2 class="hero-sub-title h6 mb-6">
-                Production-ready & easy to use Admin Template<br class="d-none d-lg-block" />
-                for Reliability and Customizability.
+                Layanan Digital Terpadu untuk Pengajuan dan Pemantauan Izin Pendirian Perguruan Tinggi Keagamaan Islam
               </h2>
             </div>
           </div>
@@ -242,6 +241,36 @@
                 Code structure that all developers will easily understand and fall in love with.
               </p>
             </div>
+
+            <div class="modal fade" id="modalPendirian" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLongTitle">Pendirian PTKIS</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    Layanan ini disediakan oleh Direktorat Pendidikan Tinggi Keagamaan Islam sebagai sarana pengajuan izin pendirian PTKIS secara daring, transparan, dan terintegrasi. Pastikan seluruh dokumen dan persyaratan telah dipenuhi sesuai dengan ketentuan peraturan yang berlaku sebelum melakukan pengajuan.
+                  </p>
+                  <p>
+                    Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
+                    lacus vel augue laoreet rutrum faucibus dolor auctor.
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                    Tutup
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
             <div class="col-lg-4 col-sm-6 text-center features-icon-box">
               <div class="mb-4 text-primary text-center">
                 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -263,6 +292,33 @@
                 Free updates for the next 12 months, including new demos and features.
               </p>
             </div>
+
+            <div class="modal fade" id="modalAlih" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLongTitle">Alih Bentuk PTKIS</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    Layanan ini memfasilitasi proses alih bentuk Perguruan Tinggi Keagamaan Islam Swasta (PTKIS), seperti perubahan dari sekolah tinggi menjadi institut atau universitas.
+Diselenggarakan oleh Direktorat Pendidikan Tinggi Keagamaan Islam, layanan ini mendukung proses pengajuan secara online, transparan, dan sesuai regulasi terkini.
+Pastikan seluruh dokumen pendukung dan persyaratan administratif telah lengkap sebelum mengajukan permohonan.
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                    Tutup
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
             <div class="col-lg-4 col-sm-6 text-center features-icon-box">
               <div class="text-center mb-4 text-primary">
                 <svg width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -277,11 +333,38 @@
                     fill="currentColor" />
                 </svg>
               </div>
-              <h5 class="mb-2">Alih Kelola PTKIS</h5>
+              <h5 class="mb-2"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#modalKelola">Alih Kelola PTKIS</a></h5>
               <p class="features-icon-description">
                 Start your project quickly without having to remove unnecessary features.
               </p>
             </div>
+            <div class="modal fade" id="modalKelola" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLongTitle">Alih Kelola PTKIS</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    Layanan ini disediakan untuk memfasilitasi perubahan pengelolaan Perguruan Tinggi Keagamaan Islam Swasta (PTKIS) dari satu badan penyelenggara ke badan lain.
+                  </p>
+                  <p>Proses pengajuan dilakukan secara online melalui sistem Direktorat Pendidikan Tinggi Keagamaan Islam, dengan prinsip transparansi, akuntabilitas, dan kepatuhan terhadap regulasi yang berlaku.</p>
+                  <p>Pastikan seluruh dokumen hukum dan administrasi telah sesuai sebelum melakukan pengajuan.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                    Tutup
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+            
             <div class="col-lg-4 col-sm-6 text-center features-icon-box">
               <div class="text-center mb-4 text-primary">
                 <svg width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -297,11 +380,36 @@
                     stroke-linejoin="round" />
                 </svg>
               </div>
-              <h5 class="mb-2">Pembentukan Fakultas Agama Islam</h5>
+              <h5 class="mb-2"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#modalFai">Pembentukan Fakultas Agama Islam</a></h5>
               <p class="features-icon-description">
                 Just change the endpoint and see your own data loaded within seconds.
               </p>
             </div>
+            <div class="modal fade" id="modalFai" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLongTitle">Pembentukan Fakultas Agama Islam</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Layanan ini disediakan untuk memfasilitasi pengajuan izin pendirian Fakultas Agama Islam (FAI) pada Perguruan Tinggi Keagamaan Islam Swasta (PTKIS).</p>
+                  <p>Melalui sistem Direktorat Pendidikan Tinggi Keagamaan Islam, proses pengajuan dilakukan secara online, transparan, dan sesuai ketentuan peraturan yang berlaku.</p>
+                  <p>Pendirian Fakultas Agama Islam diharapkan memperkuat peran PTKIS dalam pengembangan ilmu keislaman, pendidikan, dan pengabdian kepada masyarakat.</p>
+                  <p>Pastikan dokumen akademik, sumber daya dosen, serta sarana prasarana telah memenuhi standar pendirian fakultas sebelum mengajukan permohonan.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                    Tutup
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
             <div class="col-lg-4 col-sm-6 text-center features-icon-box">
               <div class="text-center mb-4 text-primary">
                 <svg width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -317,9 +425,33 @@
                     stroke-linejoin="round" />
                 </svg>
               </div>
-              <h5 class="mb-2">Penggabungan PTKIS</h5>
+              <h5 class="mb-2"><a href="javascript:;" data-bs-toggle="modal" data-bs-target="#modalPenggabungan">Penggabungan PTKIS</a></h5>
               <p class="features-icon-description">An easy-to-follow doc with lots of references and code examples.</p>
             </div>
+            <div class="modal fade" id="modalPenggabungan" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="modalLongTitle">Penggabungan PTKIS</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Layanan ini disediakan untuk memfasilitasi proses penggabungan dua atau lebih Perguruan Tinggi Keagamaan Islam Swasta (PTKIS) menjadi satu entitas baru.
+Dikelola oleh Direktorat Pendidikan Tinggi Keagamaan Islam, layanan ini mendukung pengajuan secara online, transparan, dan sesuai regulasi kelembagaan pendidikan tinggi keagamaan.</p>
+<p>Pastikan seluruh aspek hukum, akademik, serta tata kelola kelembagaan telah terpenuhi sebelum mengajukan permohonan penggabungan.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+                    Tutup
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
             <!-- <div class="col-lg-4 col-sm-6 text-center features-icon-box">
               <div class="text-center mb-4 text-primary">
                 <svg width="64" height="65" viewBox="0 0 64 65" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -420,11 +552,11 @@
           <div class="row gy-12 align-items-center">
             <div class="col-lg-5">
               <div class="text-center">
-                <img src="<?= base_url()?>assets/img/front-pages/landing-page/faq-boy-with-logos.png" alt="faq boy with logos" class="faq-image">
+                <img src="<?= base_url()?>assets/img/faq.png" alt="faq boy with logos" class="faq-image">
               </div>
             </div>
             <div class="col-lg-7">
-              <div class="accordion" id="accordionExample">
+              <div class="accordion mb-3" id="accordionExample">
                 <div class="card accordion-item">
                   <h2 class="accordion-header" id="headingOne">
                     <button type="button" class="accordion-button" data-bs-toggle="collapse" data-bs-target="#accordionOne" aria-expanded="true" aria-controls="accordionOne">
@@ -479,11 +611,13 @@
                   </h2>
                   <div id="accordionFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                      Template dokumen persyaratan pengusulan pendirian / alih bentuk PTKIS dapat diunduh pada halaman <a href="<?= base_url('panduan')?>">Panduan</a> atau pada saat proses pengisian formulir pengusulan di aplikasi SIPTIKA.
+                      Template dokumen persyaratan pengusulan pendirian / alih bentuk PTKIS dapat diunduh pada link di bawah ini atau pada saat proses pengisian formulir pengusulan di aplikasi SIPTIKA.
                     </div>
                   </div>
                 </div>
               </div>
+
+              <a href="https://drive.google.com/drive/folders/1ueNjpPqEXHkvl9pfuDOVpqCoBaB5TF10?usp=sharing" target="_blank" class="btn btn-primary">Template Dokumen</a>
             </div>
           </div>
         </div>
@@ -594,67 +728,7 @@
     </footer>
     <!-- Footer: End -->
 
-    <div class="modal fade" id="modalPendirian" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalLongTitle">Pendirian PTKIS</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>
-                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
-                facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
-                vestibulum at eros.
-              </p>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                lacus vel augue laoreet rutrum faucibus dolor auctor.
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
-                Tutup
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    <div class="modal fade" id="modalAlih" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalLongTitle">Alih Bentuk PTKIS</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>
-                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac
-                facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac,
-                vestibulum at eros.
-              </p>
-              <p>
-                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                lacus vel augue laoreet rutrum faucibus dolor auctor.
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
-                Tutup
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+    
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/theme.js -->
