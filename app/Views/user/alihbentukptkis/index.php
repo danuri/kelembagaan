@@ -68,10 +68,6 @@
       <div class="modal-body p-0">
         <div class="onboarding-content mb-0">
           <h4 class="onboarding-title text-body">Buat Usulan</h4>
-          <div class="onboarding-info">
-            In this example you can see a form where you can request some additional
-            information from the customer when they land on the app page.
-          </div>
           <form action="<?= site_url('layanan/alihbentukptkis/create') ?>" method="post" enctype="multipart/form-data" id="usulform">
             <div class="row mb-6">
               <label class="col-sm-4 col-form-label" for="nspt">NSPT Lembaga</label>

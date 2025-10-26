@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\UsulanModel;
 use App\Models\PendirianptkisModel;
+use App\Models\ProdiModel;
 use App\Models\CrudModel;
 use App\Models\LogModel;
 
@@ -120,6 +121,37 @@ class Pendirianptkis extends BaseController
             'alamat' => $request_data['jalan'],    
         ])->update();
         return $this->response->setJSON(['status' => 'success', 'message' => 'Data berhasil disimpan']);
+    }
+
+    function prodi($id) {
+        $id = decrypt($id);
+
+        $model = new UsulanModel();
+        $detail = new PendirianptkisModel();
+        $data['usulan'] = $model->where('id', $id)->where('user_id', user_id())->first();
+        $data['detail'] = $detail->where('usulan_id', $id)->first();
+
+        $pmodel = new ProdiModel;
+        $data['prodi'] = $pmodel->where(['usul_id'=>$id])->findAll();
+        
+        return view('user/pendirianptkis/prodi', $data);
+    }
+
+    function saveprodi() {
+        $pmodel = new ProdiModel();
+        $usulid = $this->request->getPost('usul_id');
+        $nama_prodi = $this->request->getPost('nama_prodi');
+        $jenjang = $this->request->getPost('jenjang');
+        $status_aktif = $this->request->getPost('status_prodi');
+
+        $pmodel->insert([
+                'usul_id' => $usulid,
+                'nama_prodi' => $nama_prodi,
+                'jenjang' => $jenjang,
+                'status_aktif' => $status_aktif
+            ]);
+
+        return redirect()->to(site_url('layanan/pendirianptkis/prodi/'.encrypt($usulid)))->with('message', 'Program Studi berhasil ditambahkan');
     }
 
     function submitusul() {
