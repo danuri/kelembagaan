@@ -122,6 +122,12 @@
               </a>
             </li>
             <li class="menu-item">
+              <a href="<?= site_url('supervisor/lembaga')?>" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-file"></i>
+                <div data-i18n="Pengguna">Lembaga</div>
+              </a>
+            </li>
+            <li class="menu-item">
               <a href="<?= site_url('supervisor/users')?>" class="menu-link">
                 <i class="menu-icon icon-base ti tabler-users"></i>
                 <div data-i18n="Pengguna">Pengguna</div>

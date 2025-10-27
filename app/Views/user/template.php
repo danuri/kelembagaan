@@ -238,7 +238,7 @@
       <!-- Hero: End -->
 
       <!-- Useful features: Start -->
-      <section id="landingFeatures" class="section-py landing-features">
+      <section id="landingFeatures" class="landing-features">
         <div class="container p-10">
             <?= $this->renderSection('content') ?>
         </div>

@@ -56,4 +56,19 @@ class Ajax extends BaseController
         $kelurahan = $crudModel->getArray('reg_villages', ['district_id' => $kecid]);
         return $this->response->setJSON($kelurahan);
     }
+
+    function getlembaga() {
+      // get nsm from post json
+      $nsm = $this->request->getPost('nsm');
+      if(!$nsm) {
+        return $this->response->setJSON(['status' => 'error', 'message' => 'NSM tidak boleh kosong']);
+      }
+      $kelembagaanModel = new CrudModel();
+      $lembaga = $kelembagaanModel->getRow('lembaga',['nss_baru' => $nsm]);
+      if($lembaga) {
+        return $this->response->setJSON(['status' => 'success', 'data' => $lembaga]);
+      }else{
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Data tidak ditemukan']);
+      }
+    }
 }

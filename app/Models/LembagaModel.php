@@ -4,9 +4,9 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class ProdiModel extends Model
+class LembagaModel extends Model
 {
-    protected $table            = 'tr_pendirianptkis_prodi';
+    protected $table            = 'lembaga';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'object';

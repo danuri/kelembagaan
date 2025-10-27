@@ -7,13 +7,13 @@
   Pengajuan usulan Pendirian PTKIS. Silahkan klik tombol "Buat Usulan" untuk memulai.
 </p>
 <div class="card">
-  <div class="card-header d-flex justify-content-between align-items-center">
+  <div class="card-header border-bottom d-flex justify-content-between align-items-center">
   <h5 class="card-title m-0 me-2">Data Usulan</h5>
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat Usulan</button>
 </div>
-  <div class="card-body">
+  <div class="justify-content-between dt-layout-table">
     <table class="table table-bordered">
-      <thead>
+      <thead class="table-dark">
         <tr>
           <th>No Surat</th>
           <th>Tanggal Usul</th>

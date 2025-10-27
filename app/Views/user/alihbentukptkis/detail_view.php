@@ -74,7 +74,19 @@
                           data-bs-target="#navs-top-data"
                           aria-controls="navs-top-data"
                           aria-selected="true">
-                          Data Usulan
+                          Data Pengusul
+                        </button>
+                      </li>
+                      <li class="nav-item">
+                        <button
+                          type="button"
+                          class="nav-link"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#navs-top-lembaga"
+                          aria-controls="navs-top-data"
+                          aria-selected="true">
+                          Data Lembaga
                         </button>
                       </li>
                       <li class="nav-item">
@@ -126,6 +138,92 @@
                                 
                             </div>
                           </div>
+                      </div>
+                      <div class="tab-pane fade" id="navs-top-lembaga" role="tabpanel">
+                        
+                        <div class="row g-6">
+                            <div class="col-sm-6">
+                              <h5>Data Dosen</h5>
+                                <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="magister">Jumlah Magister</label>
+                                  <input type="number" id="magister" name="magister" class="form-control" value="<?= $detail->magister?>" disabled />
+                                </div>
+                                <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="doktor">Jumlah Doktor</label>
+                                  <input type="number" id="doktor" name="doktor" class="form-control" value="<?= $detail->doktor?>" disabled />
+                                </div>
+                                <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="asisten_ahli">Jumlah Asisten Ahli</label>
+                                  <input type="number" id="asisten_ahli" name="asisten_ahli" class="form-control" value="<?= $detail->asisten_ahli?>" disabled />
+                                </div>
+                                <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="lektor">Jumlah Lektor</label>
+                                  <input type="number" id="lektor" name="lektor" class="form-control" value="<?= $detail->lektor?>" disabled />
+                                </div>
+                                <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="lektor_kepala">Jumlah Lektor Kepala</label>
+                                  <input type="number" id="lektor_kepala" name="lektor_kepala" class="form-control" value="<?= $detail->lektor_kepala?>" disabled />
+                                </div>
+                                <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="guru_besar">Jumlah Guru Besar</label>
+                                  <input type="number" id="guru_besar" name="guru_besar" class="form-control" value="<?= $detail->guru_besar?>" disabled />
+                                </div>
+
+                            </div>
+                            <div class="col-sm-6">
+                              <h5>Akreditasi</h5>
+                              <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="akreditasi_no">Tidak Terakreditasi</label>
+                                  <input type="number" id="akreditasi_no" name="akreditasi_no" class="form-control" value="<?= $detail->akreditasi_no?>" disabled />
+                              </div>
+                              <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="akreditasi_unggul">Jumlah Prodi Terakreditasi Unggul/A</label>
+                                  <input type="number" id="akreditasi_unggul" name="akreditasi_unggul" class="form-control" value="<?= $detail->akreditasi_unggul?>" disabled />
+                              </div>
+                              <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="akreditasi_baiksekali">Jumlah Prodi Terakreditasi Baik Sekali/B</label>
+                                  <input type="number" id="akreditasi_baiksekali" name="akreditasi_baiksekali" class="form-control" value="<?= $detail->akreditasi_baiksekali?>" disabled />
+                              </div>
+                              <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="akreditasi_baik">Jumlah Prodi Terakreditasi Baik</label>
+                                  <input type="number" id="akreditasi_baik" name="akreditasi_baik" class="form-control" value="<?= $detail->akreditasi_baik?>" disabled />
+                              </div>
+                              <h5>Data Lainnya</h5>
+                              <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="mahasiswa">Jumlah Mahasiswa</label>
+                                  <input type="number" id="mahasiswa" name="mahasiswa" class="form-control" value="<?= $detail->mahasiswa?>" disabled />
+                              </div>
+                              <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="rasio_dm">Jumlah Rasio Dosen:Mahasiswa (Contoh: 1:24)</label>
+                                  <input type="text" id="rasio_dm" name="rasio_dm" class="form-control" value="<?= $detail->rasio_dm?>" disabled />
+                              </div>
+                              <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="fakultas">Jumlah Fakultas</label>
+                                  <input type="number" id="fakultas" name="fakultas" class="form-control" value="<?= $detail->fakultas?>" disabled />
+                              </div>
+                              <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="prodi">Jumlah Prodi</label>
+                                  <input type="number" id="prodi" name="prodi" class="form-control" value="<?= $detail->prodi?>" disabled />
+                              </div>
+                              <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="pelaporan">Pelaporan PD Dikti (Contoh: 1-100)</label>
+                                  <input type="number" id="pelaporan" name="pelaporan" class="form-control" value="<?= $detail->pelaporan?>" disabled />
+                              </div>
+                              <div class="mb-3 form-control-validation">
+                                <label class="form-label" for="tanah">Luas Tanah</label>
+                                <div class="input-group">
+                                  <input type="text" class="form-control" aria-describedby="basic-addon13" value="<?= $detail->tanah?>" name="tanah" id="tanah" disabled />
+                                  <span class="input-group-text" id="tanah">M²</span>
+                                </div>
+                              </div>
+                              <div class="mb-3 form-control-validation">
+                                  <label class="form-label" for="kepemilikan_tanah">Kepemilikan Tanah</label>
+                                  <select name="kepemilikan_tanah" id="kepemilikan_tanah" class="form-select" disabled>
+                                    <option value="<?= $detail->kepemilikan_tanah?>" selected><?= $detail->kepemilikan_tanah?></option>
+                                  </select>
+                              </div>
+                            </div>
+                            </div>
                       </div>
                       <div class="tab-pane fade" id="navs-top-dokumen" role="tabpanel">
                         <div class="row g-6">

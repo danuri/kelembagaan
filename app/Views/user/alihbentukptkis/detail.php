@@ -96,16 +96,6 @@
                                         <option value="FAKULTAS AGAMA ISLAM" <?= $detail->kategori === 'FAKULTAS AGAMA ISLAM' ? 'selected' : '' ?>>FAKULTAS AGAMA ISLAM</option>
                                     </select>
                                 </div>
-
-                                <div class="mb-3 form-control-validation">
-                                <label class="form-label" for="jenjang">Jenjang Lembaga Baru</label>
-                                <select class="form-select select2" id="jenjang" name="jenjang">
-                                    <option label=" "></option>
-                                    <option value="S1" <?= $detail->jenjang === 'S1' ? 'selected' : '' ?>>S1</option>
-                                    <option value="S2" <?= $detail->jenjang === 'S2' ? 'selected' : '' ?>>S2</option>
-                                    <option value="S3" <?= $detail->jenjang === 'S3' ? 'selected' : '' ?>>S3</option>
-                                </select>
-                                </div>
                             </div>
                             
                             <div class="col-12 d-flex justify-content-between">

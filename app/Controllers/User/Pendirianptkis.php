@@ -33,6 +33,9 @@ class Pendirianptkis extends BaseController
         $data['provinces'] = $crudModel->getArray('reg_provinces');
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
 
+        $pmodel = new ProdiModel;
+        $data['prodi'] = $pmodel->where(['usul_id'=>$id])->findAll();
+
         if($data['usulan']->status == 0 || $data['usulan']->status == 21){
             return view('user/pendirianptkis/detail', $data);
         }else{
@@ -147,8 +150,7 @@ class Pendirianptkis extends BaseController
         $pmodel->insert([
                 'usul_id' => $usulid,
                 'nama_prodi' => $nama_prodi,
-                'jenjang' => $jenjang,
-                'status_aktif' => $status_aktif
+                'jenjang' => $jenjang
             ]);
 
         return redirect()->to(site_url('layanan/pendirianptkis/prodi/'.encrypt($usulid)))->with('message', 'Program Studi berhasil ditambahkan');

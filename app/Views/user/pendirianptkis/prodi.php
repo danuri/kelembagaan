@@ -76,8 +76,6 @@
             <tr>
                 <th>Nama Program Studi</th>
                 <th>Jenjang</th>
-                <th>Kode Program Studi</th>
-                <th>Status</th>
                 <th>Aksi</th>
             </tr>
             </thead>
@@ -91,8 +89,6 @@
                 <tr>
                     <td><?= $p->nama_prodi ?></td>
                     <td><?= $p->jenjang ?></td>
-                    <td><?= $p->kode_prodi ?></td>
-                    <td><?= $p->status_prodi ?></td>
                     <td>
                     <button class="btn btn-sm btn-danger" onclick="deleteProdi('<?= encrypt($p->id) ?>')">Hapus</button>
                     </td>

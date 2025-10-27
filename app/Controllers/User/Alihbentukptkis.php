@@ -42,7 +42,6 @@ class Alihbentukptkis extends BaseController
         // validation input
         $validation = \Config\Services::validation();
         $validation->setRules([
-            'layanan_id' => 2,
             'nspt' => 'required',
             'nama_lembaga' => 'required',
             'alamat_lembaga' => 'required',
@@ -57,6 +56,7 @@ class Alihbentukptkis extends BaseController
         $usulanModel = new UsulanModel();
         $usulanModel->save([
             'layanan_id' => 2,
+            'layanan_nama' => 'Alih Bentuk PTKIS',
             'nama_lembaga' => $this->request->getPost('nama_lembaga'),
             'user_id' => user_id(),
             'status' => 0
@@ -68,8 +68,7 @@ class Alihbentukptkis extends BaseController
             'nama_lembaga' => $this->request->getPost('nama_lembaga'),
             'alamat_lembaga' => $this->request->getPost('alamat_lembaga'),
             'nama_lembaga_baru' => $this->request->getPost('nama_lembaga_baru'),
-            'kategori' => $this->request->getPost('kategori'),
-            'jenjang' => $this->request->getPost('jenjang'),
+            'kategori' => $this->request->getPost('kategori')
         ]);
 
         $logm = new LogModel();
@@ -96,8 +95,7 @@ class Alihbentukptkis extends BaseController
             'nama_lembaga' => $request_data['nama_lembaga'],
             'alamat_lembaga' => $request_data['alamat_lembaga'],
             'nama_lembaga_baru' => $request_data['nama_lembaga_baru'],
-            'kategori' => $request_data['kategori'],
-            'jenjang' => $request_data['jenjang'],
+            'kategori' => $request_data['kategori']
         ])->update();
         return $this->response->setJSON(['status' => 'success', 'message' => 'Data berhasil disimpan']);
     }

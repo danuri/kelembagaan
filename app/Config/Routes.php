@@ -67,6 +67,10 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
         $routes->get('activate/(:num)', 'Supervisor\Users::activate/$1');
         $routes->get('deactivate/(:num)', 'Supervisor\Users::deactivate/$1');
     });
+
+    $routes->group('lembaga', static function ($routes) {
+        $routes->get('/', 'Supervisor\Lembaga::index');
+    });
 });
 
 $routes->group('layanan', ['filter' => 'group:user'], static function ($routes) {
@@ -75,6 +79,8 @@ $routes->group('layanan', ['filter' => 'group:user'], static function ($routes) 
         $routes->get('/', 'User\Pendirianptkis::index');
         $routes->post('create', 'User\Pendirianptkis::create');
         $routes->get('detail/(:any)', 'User\Pendirianptkis::detail/$1');
+        $routes->get('prodi/(:any)', 'User\Pendirianptkis::prodi/$1');
+        $routes->post('saveprodi', 'User\Pendirianptkis::saveprodi');
         $routes->post('updateform1', 'User\Pendirianptkis::updateform1');
         $routes->post('updateform2', 'User\Pendirianptkis::updateform2');
         $routes->post('submitusul', 'User\Pendirianptkis::submitusul');
@@ -111,6 +117,7 @@ $routes->group('ajax', ['filter' => 'group:admin,user,superadmin,verifikator,sup
     $routes->get('districts/(:num)', 'Ajax::getKec/$1');
     $routes->get('villages/(:num)', 'Ajax::getKel/$1');
     $routes->get('log/(:any)', 'Ajax::getLog/$1');
+    $routes->post('getlembaga', 'Ajax::getlembaga');
 });
 
 $routes->group('admin', ['filter' => 'group:admin,superadmin'], static function ($routes) {

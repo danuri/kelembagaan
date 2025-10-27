@@ -4,14 +4,14 @@
   Alih Bentuk PTKIS
 </h4>
 <p class="text-center mb-12">
-  Not just a set of tools, the package includes ready-to-deploy conceptual application.
+  Pengajuan usulan Alih Bentuk PTKIS. Silahkan klik tombol "Buat Usulan" untuk memulai.
 </p>
 <div class="card">
-  <div class="card-header d-flex justify-content-between align-items-center">
+  <div class="card-header border-bottom d-flex justify-content-between align-items-center">
   <h5 class="card-title m-0 me-2">Data Usulan</h5>
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat Usulan</button>
 </div>
-  <div class="card-body">
+  <div class="justify-content-between dt-layout-table">
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -107,16 +107,6 @@
                 </select>
               </div>
             </div>
-            <div class="row mb-6">
-              <label class="col-sm-4 col-form-label" for="jenjang">Jenjang Lembaga Baru</label>
-              <div class="col-sm-8">
-                <select name="jenjang" id="jenjang" class="form-select">
-                  <option value="S1">S1</option>
-                  <option value="S2">S2</option>
-                  <option value="S3">S3</option>
-                </select>
-              </div>
-            </div>
           </form>
         </div>
       </div>
@@ -143,14 +133,14 @@
       return;
     }
     $.ajax({
-      url: 'https://diktis.kemenag.go.id/kelembagaan/kemenag/master/getLembaga',
+      url: '<?= site_url('ajax/getlembaga') ?>',
       method: 'POST',
       data: { nsm: nspt },
       dataType: 'json',
       success: function(response) {
         if (response.status == 'success') {
-          $('#nama_lembaga').val(response.data.nama_lembaga);
-          $('#alamat_lembaga').val(response.data.alamat_lembaga);
+          $('#nama_lembaga').val(response.data.nama_ptai);
+          $('#alamat_lembaga').val(response.data.alamat);
         } else {
           alert('Data tidak ditemukan');
         }

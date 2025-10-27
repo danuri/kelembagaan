@@ -83,6 +83,18 @@
                           class="nav-link"
                           role="tab"
                           data-bs-toggle="tab"
+                          data-bs-target="#navs-top-prodi"
+                          aria-controls="navs-top-prodi"
+                          aria-selected="false">
+                          Program Studi
+                        </button>
+                      </li>
+                      <li class="nav-item">
+                        <button
+                          type="button"
+                          class="nav-link"
+                          role="tab"
+                          data-bs-toggle="tab"
                           data-bs-target="#navs-top-dokumen"
                           aria-controls="navs-top-dokumen"
                           aria-selected="false">
@@ -191,6 +203,33 @@
                                 </div>
                             </div>
                           </div>
+                      </div>
+                      <div class="tab-pane fade show active" id="navs-top-prodi" role="tabpanel">
+                        <div class="row">
+                            <!-- table prodi -->
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Nama Program Studi</th>
+                                    <th>Jenjang</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <?php if (empty($prodi)): ?>
+                                    <tr>
+                                    <td colspan="2" class="text-center">Tidak ada data program studi</td>
+                                    </tr>
+                                <?php else: ?>
+                                    <?php foreach ($prodi as $p): ?>
+                                    <tr>
+                                        <td><?= $p->nama_prodi ?></td>
+                                        <td><?= $p->jenjang ?></td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
                       </div>
                       <div class="tab-pane fade" id="navs-top-dokumen" role="tabpanel">
                         <div class="row g-6">

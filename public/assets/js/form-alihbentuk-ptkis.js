@@ -80,7 +80,6 @@
           alamat_lembaga: $('#alamat_lembaga').val(),
           nama_lembaga_baru: $('#nama_lembaga_baru').val(),
           kategori: $('#kategori').val(),
-          jenjang: $('#jenjang').val(),
         })
         .then(response => {
           console.log(response.data);
