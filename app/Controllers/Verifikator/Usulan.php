@@ -9,6 +9,7 @@ use App\Models\LayananModel;
 use App\Models\UsulanModel;
 use App\Models\PendirianptkisModel;
 use App\Models\UsulDokumenModel;
+use App\Models\ProdiModel;
 use App\Models\CrudModel;
 use App\Models\LogModel;
 
@@ -56,6 +57,9 @@ class Usulan extends BaseController
 
         $crudModel = new CrudModel();
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
+
+        $pmodel = new ProdiModel;
+        $data['prodi'] = $pmodel->where(['usul_id'=>$id])->findAll();
 
         if ($data['usulan']->status == 3) {
             return view('verifikator/usulan/detail', $data);

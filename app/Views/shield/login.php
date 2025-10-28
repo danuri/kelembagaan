@@ -74,7 +74,8 @@
       <a href="<?= site_url()?>" class="app-brand auth-cover-brand">
         <span class="app-brand-logo demo">
           <span class="text-primary">
-            <img src="<?= base_url()?>assets/img/siptika.png" width="120px" alt="">
+            <img src="<?= base_url()?>assets/img/logo-kemenag.png" height="60px" alt="">
+            <img src="<?= base_url()?>assets/img/siptika.png" height="60px" alt="">
           </span>
         </span>
         <!-- <span class="app-brand-text demo text-heading fw-bold"><?= setting('App.siteName')?></span> -->
@@ -83,19 +84,8 @@
       <div class="authentication-inner row m-0">
         <!-- /Left Text -->
         <div class="d-none d-xl-flex col-xl-8 p-0">
-          <div class="auth-cover-bg d-flex justify-content-center align-items-center">
-            <img
-              src="<?= base_url()?>assets/img/illustrations/auth-login-illustration-light.png"
-              alt="auth-login-cover"
-              class="my-5 auth-illustration"
-              data-app-light-img="illustrations/auth-login-illustration-light.png"
-              data-app-dark-img="illustrations/auth-login-illustration-dark.png" />
-            <img
-              src="<?= base_url()?>assets/img/illustrations/bg-shape-image-light.png"
-              alt="auth-login-cover"
-              class="platform-bg"
-              data-app-light-img="illustrations/bg-shape-image-light.png"
-              data-app-dark-img="illustrations/bg-shape-image-dark.png" />
+          <div class="auth-cover-bg d-flex justify-content-center align-items-center" style="background: url(assets/img/bg-login2.png);background-size: cover;">
+            
           </div>
         </div>
         <!-- /Left Text -->

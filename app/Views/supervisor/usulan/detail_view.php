@@ -3,7 +3,6 @@
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 row-gap-4">
     <div class="d-flex flex-column justify-content-center">
     <h4 class="mb-1">Detail Usulan</h4>
-    <p class="mb-0">Orders placed across your store</p>
     </div>
     <div class="d-flex align-content-center flex-wrap gap-4">
     <div class="d-flex gap-4">
@@ -183,6 +182,30 @@
         </table>
         </div>
     </div>
+        <div class="card mb-3">
+    <div class="card-body">
+        
+        <h5 class="mb-4">Program Studi</h5>
+        <table class="table table-bordered table-striped mb-3">
+            <thead>
+                <tr>
+                    <th>Nama Program Studi</th>
+                    <th>Jenjang</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($prodi as $row): ?>
+                <tr>
+                    <td><?= $row->nama_prodi ?></td>
+                    <td><?= $row->jenjang ?></td>
+                </tr>
+                <?php endforeach;?>
+            </tbody>
+
+        </table>
+        </div>
+    </div>
+</div>
 </div>
 </div>
 <div id="preview" class="modal fade" data-bs-backdrop="static" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">

@@ -108,8 +108,11 @@ $routes->group('layanan', ['filter' => 'group:user'], static function ($routes) 
     $routes->get('bantuanptkis', 'Layanan\BantuanPTKIS::index');
 });
 
-$routes->group('dokumen', ['filter' => 'group:user'], static function ($routes) {
+$routes->group('dokumen', ['filter' => 'group:user,verifikator,supervisor'], static function ($routes) {
     $routes->post('upload', 'User\Dokumen::upload');
+    $routes->post('uploadprodi', 'User\Dokumen::uploadprodi');
+    $routes->get('embed/(:num)/(:any)', 'User\Dokumen::embed/$1/$2');
+    $routes->get('verifikasi/(:num)/(:any)', 'User\Dokumen::verifikasi/$1/$2');
 });
 
 $routes->group('ajax', ['filter' => 'group:admin,user,superadmin,verifikator,supervisor'], static function ($routes) {

@@ -12,6 +12,7 @@ use App\Models\UsulDokumenModel;
 use App\Models\CrudModel;
 use App\Models\LogModel;
 use App\Models\AsesorModel;
+use App\Models\ProdiModel;
 
 class Usulan extends BaseController
 {
@@ -57,6 +58,9 @@ class Usulan extends BaseController
 
         $crudModel = new CrudModel();
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
+
+        $pmodel = new ProdiModel;
+        $data['prodi'] = $pmodel->where(['usul_id'=>$id])->findAll();
 
         if ($data['usulan']->status == 1) {
 
