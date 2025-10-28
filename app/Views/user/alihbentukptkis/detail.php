@@ -1,10 +1,10 @@
 <?= $this->extend('user/template') ?>
 <?= $this->section('content') ?>
 <h4 class="text-center mb-1">
-  Pendirian PTKIS
+  Alih Bentuk PTKIS
 </h4>
 <p class="text-center mb-12">
-  Not just a set of tools, the package includes ready-to-deploy conceptual application.
+  Lengkapi data usulan Alih Bentuk PTKIS berikut ini.
 </p>
 <?php if($usulan->status == 21): ?>
                 <div class="alert alert-danger" role="alert">

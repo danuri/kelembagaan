@@ -46,18 +46,19 @@
     <!-- Vendors CSS -->
 
     <!-- endbuild -->
+    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/nouislider/nouislider.css" />
+    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/swiper/swiper.css" />
+    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/bs-stepper/bs-stepper.css" />
+    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/@form-validation/form-validation.css" />
+    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/sweetalert2/sweetalert2.css" />
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?= base_url()?>assets/vendor/css/pages/front-page-help-center.css" />
 
     <!-- Helpers -->
     <script src="<?= base_url()?>assets/vendor/js/helpers.js"></script>
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-
-    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
     <script src="<?= base_url()?>assets/vendor/js/template-customizer.js"></script>
 
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="<?= base_url()?>assets/js/front-config.js"></script>
     <script src="<?= base_url()?>assets/js/config.js"></script>
   </head>
