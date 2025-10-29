@@ -55,6 +55,38 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
         $routes->get('penilaianasesor/(:any)', 'Supervisor\Usulan::penilaianasesor/$1');
         $routes->post('asesor/add', 'Supervisor\Usulan::addasesor');
         $routes->post('rkmadetail', 'Supervisor\Usulan::rkmadetail');
+
+        $routes->group('pendirianptkis', static function ($routes) {
+            $routes->get('/', 'Supervisor\Usulan\Pendirianptkis::index');
+            $routes->get('getdata', 'Supervisor\Usulan\Pendirianptkis::getdata');
+            $routes->post('disposisi/(:any)', 'Supervisor\Usulan\Pendirianptkis::disposisi/$1');
+            $routes->get('detail/verifikasi/(:any)', 'Supervisor\Usulan\Pendirianptkis::verifikasi/$1');
+            $routes->get('detail/penilaian/review/(:any)', 'Supervisor\Usulan\Pendirianptkis::penilaianreview/$1');
+            $routes->get('detail/penilaian/(:any)', 'Supervisor\Usulan\Pendirianptkis::penilaian/$1');
+            $routes->get('detail/visitasi/(:any)', 'Supervisor\Usulan\Pendirianptkis::visitasi/$1');
+            $routes->get('detail/rkma/(:any)', 'Supervisor\Usulan\Pendirianptkis::rkma/$1');
+            $routes->get('detail/kma/(:any)', 'Supervisor\Usulan\Pendirianptkis::kma/$1');
+            $routes->get('detail/(:any)', 'Supervisor\Usulan\Pendirianptkis::detail/$1');
+            $routes->get('penilaianasesor/(:any)', 'Supervisor\Usulan\Pendirianptkis::penilaianasesor/$1');
+            $routes->post('asesor/add', 'Supervisor\Usulan\Pendirianptkis::addasesor');
+            $routes->post('rkmadetail', 'Supervisor\Usulan\Pendirianptkis::rkmadetail');
+        });
+
+        $routes->group('alihbentukptkis', static function ($routes) {
+            $routes->get('/', 'Supervisor\Usulan\AlihBentukPtkis::index');
+            $routes->get('getdata', 'Supervisor\Usulan\AlihBentukPtkis::getdata');
+            $routes->post('disposisi/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::disposisi/$1');
+            $routes->get('detail/verifikasi/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::verifikasi/$1');
+            $routes->get('detail/penilaian/review/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::penilaianreview/$1');
+            $routes->get('detail/penilaian/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::penilaian/$1');
+            $routes->get('detail/visitasi/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::visitasi/$1');
+            $routes->get('detail/rkma/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::rkma/$1');
+            $routes->get('detail/kma/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::kma/$1');
+            $routes->get('detail/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::detail/$1');
+            $routes->get('penilaianasesor/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::penilaianasesor/$1');
+            $routes->post('asesor/add', 'Supervisor\Usulan\AlihBentukPtkis::addasesor');
+            $routes->post('rkmadetail', 'Supervisor\Usulan\AlihBentukPtkis::rkmadetail');
+        });
     });
 
     $routes->group('users', static function ($routes) {

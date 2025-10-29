@@ -435,6 +435,18 @@ function hp($nohp) {
    return $result;
  }
 
+ function layananurl($jenis) {
+  if($jenis == 1){
+     $result = 'pendirianptkis';
+   }else if($jenis == 2){
+     $result = 'alihbentukptkis';
+   }else{
+     $result = '-';
+   }
+
+   return $result;
+ }
+
  function nomorsurat($urut) {
   // 000001
   if(strlen($urut) == 1){

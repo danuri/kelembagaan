@@ -10,10 +10,10 @@
         <a href="<?= site_url('supervisor/usulan') ?>" class="btn btn-label-secondary waves-effect">Kembali</a>
     </div>
     <?php if($usulan->status == 4): ?>
-    <a href="<?= site_url('supervisor/usulan/penilaianasesor/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light" onclick="return confirm('Apakah Anda yakin ingin mengirim ke Penilai?')">Kirim ke Penilai</a>
+    <a href="<?= site_url('supervisor/usulan/pendirianptkis/penilaianasesor/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light" onclick="return confirm('Apakah Anda yakin ingin mengirim ke Penilai?')">Kirim ke Penilai</a>
     <?php endif; ?>
     <?php if($usulan->status == 41): ?>
-    <a href="<?= site_url('supervisor/usulan/prosesrkma/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light" onclick="return confirm('Apakah proses penilaian selesai?')">Proses RKMA</a>
+    <a href="<?= site_url('supervisor/usulan/pendirianptkis/prosesrkma/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light" onclick="return confirm('Apakah proses penilaian selesai?')">Proses RKMA</a>
     <?php endif; ?>
     </div>
 </div>
@@ -87,19 +87,19 @@
 <div class="nav-align-top">
     <ul class="nav nav-pills flex-column flex-md-row mb-6 row-gap-2">
         <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" href="<?= site_url('supervisor/usulan/detail/'.encrypt($usulan->id))?>"><i class="icon-base ti tabler-user-check me-1_5 icon-sm"></i>Info Usulan</a>
+        <a class="nav-link waves-effect waves-light" href="<?= site_url('supervisor/usulan/pendirianptkis/detail/'.encrypt($usulan->id))?>"><i class="icon-base ti tabler-user-check me-1_5 icon-sm"></i>Info Usulan</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" href="<?= site_url('supervisor/usulan/detail/verifikasi/'.encrypt($usulan->id))?>"><i class="icon-base ti tabler-user-check me-1_5 icon-sm"></i>Verifikasi Dokumen</a>
+        <a class="nav-link waves-effect waves-light" href="<?= site_url('supervisor/usulan/pendirianptkis/detail/verifikasi/'.encrypt($usulan->id))?>"><i class="icon-base ti tabler-user-check me-1_5 icon-sm"></i>Verifikasi Dokumen</a>
         </li>
         <li class="nav-item">
         <a class="nav-link active waves-effect waves-light" href="#"><i class="icon-base ti tabler-lock me-1_5 icon-sm"></i>Penilaian</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" href="<?= site_url('supervisor/usulan/detail/rkma/'.encrypt($usulan->id))?>"><i class="icon-base ti tabler-bell me-1_5 icon-sm"></i>RKMA</a>
+        <a class="nav-link waves-effect waves-light" href="<?= site_url('supervisor/usulan/pendirianptkis/detail/rkma/'.encrypt($usulan->id))?>"><i class="icon-base ti tabler-bell me-1_5 icon-sm"></i>RKMA</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" href="<?= site_url('supervisor/usulan/detail/kma/'.encrypt($usulan->id))?>"><i class="icon-base ti tabler-link me-1_5 icon-sm"></i>KMA</a>
+        <a class="nav-link waves-effect waves-light" href="<?= site_url('supervisor/usulan/pendirianptkis/detail/kma/'.encrypt($usulan->id))?>"><i class="icon-base ti tabler-link me-1_5 icon-sm"></i>KMA</a>
         </li>
     </ul>
 </div>
@@ -177,7 +177,7 @@
         <div class="modal-body p-0">
             <div class="onboarding-content mb-0">
             <h4 class="onboarding-title text-body">Penugasan Asesmen Kecukupan</h4>
-            <form action="<?= site_url('supervisor/usulan/asesor/add') ?>" method="post" id="usulform">
+            <form action="<?= site_url('supervisor/usulan/pendirianptkis/pendirianptkis/asesor/add') ?>" method="post" id="usulform">
                 <div class="row mb-6">
                 <label class="col-sm-4 col-form-label" for="nomor_surat">Asesor</label>
                 <div class="col-sm-8">
@@ -231,7 +231,7 @@
         <div class="modal-body p-0">
             <div class="onboarding-content mb-0">
             <h4 class="onboarding-title text-body">Penugasan Asesmen Lapangan</h4>
-            <form action="<?= site_url('supervisor/usulan/asesor/add') ?>" method="post" id="usulform2">
+            <form action="<?= site_url('supervisor/usulan/pendirianptkis/asesor/add') ?>" method="post" id="usulform2">
                 <div class="row mb-6">
                 <label class="col-sm-4 col-form-label" for="nomor_surat">Asesor</label>
                 <div class="col-sm-8">
