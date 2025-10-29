@@ -44,7 +44,7 @@ class Pendirianptkis extends BaseController
             ->withIdentities()
             ->findAll();
 
-            return view('supervisor/usulan/pendirianptkis/pendirianptkis/detail', $data);
+            return view('supervisor/usulan/pendirianptkis/detail', $data);
         }else{
             $model = new LogModel;
             $data['logs'] = $model->where('id_usul',$id)->findAll();
