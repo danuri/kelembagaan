@@ -72,7 +72,7 @@
     }).on('core.form.valid', function () {
       // Jump to the next step when all fields in the current step are valid
       // Post data with axios;
-      axios.post('/layanan/alihbentukptkis/updateform1', {
+      axios.post(siteurl + '/layanan/alihbentukptkis/updateform1', {
           usul_id: $('#usul_id').val(),
           nomor_surat: $('#nomor_surat').val(),
           perihal: $('#perihal').val(),
@@ -122,7 +122,7 @@
     }).on('core.form.valid', function () {
       // Jump to the next step when all fields in the current step are valid
       // validationStepper.next();
-      axios.post('/layanan/alihbentukptkis/updateform2', {
+      axios.post(siteurl + '/layanan/alihbentukptkis/updateform2', {
           usul_id: $('#usul_id').val(),
           magister: $('#magister').val(),
           doktor: $('#doktor').val(),
@@ -405,7 +405,7 @@ function confirmSubmit() {
         if (result.value) {
           // Submit the form
           // document.getElementById("wizard-validation-form").submit();
-          axios.post('/layanan/alihbentukptkis/submitusul', {
+          axios.post(siteurl + '/layanan/alihbentukptkis/submitusul', {
               usul_id: $('#usul_id').val()
             })
             .then(response => {
@@ -420,7 +420,7 @@ function confirmSubmit() {
                   confirmButton: 'btn btn-success waves-effect waves-light'
                 }
               })
-              .then(() => { window.location.href = '/layanan/alihbentukptkis'; });
+              .then(() => { window.location.href = siteurl + '/layanan/alihbentukptkis'; });
             })
             .catch(error => {
               console.error(error);
