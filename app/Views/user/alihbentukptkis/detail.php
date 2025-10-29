@@ -274,7 +274,7 @@
 <script src="<?= base_url()?>assets/vendor/libs/@form-validation/popular.js"></script>
 <script src="<?= base_url()?>assets/vendor/libs/@form-validation/bootstrap5.js"></script>
 <script src="<?= base_url()?>assets/vendor/libs/@form-validation/auto-focus.js"></script>
-<script src="<?= base_url()?>assets/js/form-alihbentuk-ptkis.js"></script>
+<script src="<?= base_url()?>assets/js/form-alihbentuk-ptkis.js?v=1.1"></script>
 <script src="https://malsup.github.io/jquery.form.js" charset="utf-8"></script>
 <script>
 function uploadfile(id) {
