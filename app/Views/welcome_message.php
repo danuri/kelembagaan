@@ -447,7 +447,7 @@
                 </div>
               </div>
 
-              <a href="https://drive.google.com/drive/folders/1ueNjpPqEXHkvl9pfuDOVpqCoBaB5TF10?usp=sharing" target="_blank" class="btn btn-primary">Template Dokumen</a>
+              <a href="https://drive.google.com/drive/folders/1l4MoXafs9MvxociOK6Ba93a16DQLIBYz?usp=sharing" target="_blank" class="btn btn-primary">Template Dokumen</a>
             </div>
           </div>
         </div>

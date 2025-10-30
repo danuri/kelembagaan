@@ -21,31 +21,53 @@
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div style="display: table-row;">
                     <div style="display: table-cell; padding-right: 0.5rem;">
-                        <h6>Nama Lembaga</h6>
+                        <h6>Nomor Surat Pengantar</h6>
                     </div>
                     <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $detail->nama_lembaga?></div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->nomor_surat?></div>
                 </div>
                 <div style="display: table-row;">
                     <div style="display: table-cell; padding-right: 0.5rem;">
-                        <h6>Kategori</h6>
+                        <h6>Perihal</h6>
                     </div>
                     <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $detail->kategori?></div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->perihal?></div>
                 </div>
-                <div style="display: table-row;">
-                    <div style="display: table-cell; padding-right: 0.5rem;">
-                        <h6>Jenjang</h6>
-                    </div>
-                    <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $detail->jenjang?></div>
-                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
             </div>
                           </div>
                       </div>
     </div>
     </div>
 </div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        
+        <h5 class="mb-4">Data Usulan</h5>
+        <table class="table table-bordered table-striped mb-3">
+            <tbody>
+                <tr>
+                    <td>Nama Lembaga Lama</td>
+                    <td>: <?= $detail->nama_lembaga ?></td>
+                </tr>
+                <tr>
+                    <td>Alamat Lembaga Lama</td>
+                    <td>: <?= $detail->alamat_lembaga ?></td>
+                </tr>
+                <tr>
+                    <td>Nama Lembaga Baru</td>
+                    <td>: <?= $detail->nama_lembaga_baru ?></td>
+                </tr>
+                <tr>
+                    <td>Kategori Lembaga Baru</td>
+                    <td>: <?= $detail->kategori ?></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
 
 <div class="card mb-3">
     <div class="card-body">
