@@ -204,16 +204,9 @@
                 <div
                   class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
                   <div class="text-body">
-                    ©2025, made by Kelembagaan
+                    ©2025 SIPTIKA
                   </div>
-                  <div class="d-none d-lg-inline-block">
-                    <a
-                      href="#"
-                      target="_blank"
-                      class="footer-link me-4"
-                      >Documentation</a
-                    >
-                  </div>
+                  <div class="d-none d-lg-inline-block"><?= setting('App.siteFooter')?></div>
                 </div>
               </div>
             </footer>

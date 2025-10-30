@@ -238,7 +238,7 @@
             </span>
           </div>
           <div class="text-white">
-            Direktorat Perguruan Tinggi Islam<br />
+            <?= setting('App.siteFooter')?><br />
           </div>
         </div>
       </div>

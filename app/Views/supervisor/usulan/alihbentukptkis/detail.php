@@ -207,7 +207,7 @@
         </div>
     </div>
 </div>
-                      </div>
+</div>
 
 
 
@@ -232,7 +232,7 @@
                 <h5 class="modal-title" id="myModalLabel">Disposisi Usulan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="POST" action="<?= site_url('supervisor/usulan/disposisi/'.encrypt($usulan->id)) ?>">
+            <form method="POST" action="<?= site_url('supervisor/usulan/alihbentukptkis/disposisi/'.encrypt($usulan->id)) ?>">
             <div class="modal-body">
                         <div class="mb-6">
                           <label class="form-label" for="basic-default-fullname">Verifikator</label>

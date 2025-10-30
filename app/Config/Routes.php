@@ -18,11 +18,22 @@ $routes->group('verifikator', ['filter' => 'group:verifikator'], static function
     $routes->group('usulan', static function ($routes) {
         $routes->get('/', 'Verifikator\Usulan::index');
         $routes->get('getdata', 'Verifikator\Usulan::getdata');
-        $routes->get('detail/(:any)', 'Verifikator\Usulan::detail/$1');
-        $routes->get('validasidokumen/(:any)/(:any)/(:any)', 'Verifikator\Usulan::validasidokumen/$1/$2/$3');
-        $routes->post('decline/(:any)', 'Verifikator\Usulan::decline/$1');
-        $routes->get('accept/(:any)', 'Verifikator\Usulan::accept/$1');
-        $routes->get('proses/(:any)', 'Verifikator\Usulan::proses/$1');
+
+        $routes->group('pendirianptkis', static function ($routes) {
+            $routes->get('detail/(:any)', 'Verifikator\Usulan\Pendirianptkis::detail/$1');
+            $routes->get('validasidokumen/(:any)/(:any)/(:any)', 'Verifikator\Usulan\Pendirianptkis::validasidokumen/$1/$2/$3');
+            $routes->post('decline/(:any)', 'Verifikator\Usulan\Pendirianptkis::decline/$1');
+            $routes->get('accept/(:any)', 'Verifikator\Usulan\Pendirianptkis::accept/$1');
+            $routes->get('proses/(:any)', 'Verifikator\Usulan\Pendirianptkis::proses/$1');
+        });
+
+        $routes->group('alihbentukptkis', static function ($routes) {
+            $routes->get('detail/(:any)', 'Verifikator\Usulan\Alihbentukptkis::detail/$1');
+            $routes->get('validasidokumen/(:any)/(:any)/(:any)', 'Verifikator\Usulan\Alihbentukptkis::validasidokumen/$1/$2/$3');
+            $routes->post('decline/(:any)', 'Verifikator\Usulan\Alihbentukptkis::decline/$1');
+            $routes->get('accept/(:any)', 'Verifikator\Usulan\Alihbentukptkis::accept/$1');
+            $routes->get('proses/(:any)', 'Verifikator\Usulan\Alihbentukptkis::proses/$1');
+        });
     });
     
     $routes->group('penilaian', static function ($routes) {

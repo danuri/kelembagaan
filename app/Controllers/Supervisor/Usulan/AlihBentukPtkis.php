@@ -67,7 +67,7 @@ class AlihBentukPtkis extends BaseController
     function verifikasi($id) {
         $id = decrypt($id);
         $model = new UsulanModel();
-        $detail = new PendirianptkisModel();
+        $detail = new AlihbentukptkisModel();
         $data['usulan'] = $model->where('id', $id)->first();
         $data['detail'] = $detail->where('usulan_id', $id)->first();
 
@@ -80,119 +80,4 @@ class AlihBentukPtkis extends BaseController
         return view('supervisor/usulan/alihbentukptkis/detail_dokumen', $data);
     }
 
-    function penilaian($id) {
-        $id = decrypt($id);
-        $model = new UsulanModel();
-        $detail = new PendirianptkisModel();
-        $data['usulan'] = $model->where('id', $id)->first();
-        $data['detail'] = $detail->where('usulan_id', $id)->first();
-
-        $users = auth()->getProvider();
-        $data['verifikator'] = $users->findById($data['usulan']->verifikator);
-
-        $data['users'] = $users
-            ->join('auth_groups_users agu', 'agu.user_id = users.id')
-            ->where('agu.group','verifikator')
-            ->withIdentities()
-            ->findAll();
-
-        $am = new AsesorModel;
-        $data['asesorkecukupan'] = $am->where(['jenis'=>1,'usul_id'=>$id])->findAll();
-        $data['asesorlapangan'] = $am->where(['jenis'=>2,'usul_id'=>$id])->findAll();
-
-        return view('supervisor/usulan/alihbentukptkis/detail_penilaian', $data);
-    }
-
-    function visitasi($id) {
-        $id = decrypt($id);
-        $model = new UsulanModel();
-        $detail = new PendirianptkisModel();
-        $data['usulan'] = $model->where('id', $id)->first();
-        $data['detail'] = $detail->where('usulan_id', $id)->first();
-
-        return view('supervisor/usulan/alihbentukptkis/detail_penilaian', $data);
-    }
-
-    function rkma($id) {
-        $id = decrypt($id);
-        $model = new UsulanModel();
-        $detail = new PendirianptkisModel();
-        $data['usulan'] = $model->where('id', $id)->first();
-        $data['detail'] = $detail->where('usulan_id', $id)->first();
-
-        $users = auth()->getProvider();
-        $data['verifikator'] = $users->findById($data['usulan']->verifikator);
-
-        return view('supervisor/usulan/alihbentukptkis/detail_rkma', $data);
-    }
-
-    function rkmadetail() {
-        $id = $this->request->getPost('detailid');
-        
-        $detail = new PendirianptkisModel();
-        $data = [
-            'kategori' => $this->request->getPost('kategori'),
-            'nama_lembaga' => $this->request->getPost('nama_lembaga'),
-            'alamat' => $this->request->getPost('alamat'),
-            'yayasan_nama' => $this->request->getPost('yayasan_nama'),
-            'yayasan_nosk' => $this->request->getPost('yayasan_nosk'),
-            'yayasan_tglsk' => $this->request->getPost('yayasan_tglsk'),
-            'yayasan_notaris' => $this->request->getPost('yayasan_notaris'),
-            'yayasan_kedudukan' => $this->request->getPost('yayasan_kedudukan'),
-            'yayasan_kumham_nomor' => $this->request->getPost('yayasan_kumham_nomor'),
-            'yayasan_kumham_tahun' => $this->request->getPost('yayasan_kumham_tahun'),
-            'yayasan_kumham_tanggal' => $this->request->getPost('yayasan_kumham_tanggal'),
-        ];
-        $detail->update($id,$data);
-
-        return redirect()->back()->withInput()->with('message', 'Data telah direkam');
-    }
-
-    function kma($id) {
-        $id = decrypt($id);
-        $model = new UsulanModel();
-        $detail = new PendirianptkisModel();
-        $data['usulan'] = $model->where('id', $id)->first();
-        $data['detail'] = $detail->where('usulan_id', $id)->first();
-
-        $users = auth()->getProvider();
-        $data['verifikator'] = $users->findById($data['usulan']->verifikator);
-
-        return view('supervisor/usulan/alihbentukptkis/detail_pma', $data);
-    }
-
-    function penilaianasesor($id) {
-        $model = new UsulanModel();
-
-        $id = decrypt($id);
-        $model->update($id, ['status' => 41]);
-
-        $logm = new LogModel();
-        $logm->insert(['id_usul' => $id, 'status_usulan' => 41, 'keterangan' => 'Proses penilaian oleh Asesor', 'created_by' => user_id()]);
-
-        return redirect()->back()->with('message', 'Data sudah dikirim ke Asesor untuk dinilai.');
-    }
-
-    function addasesor() {
-        $model = new AsesorModel;
-        $data = [
-            'usul_id' => $this->request->getPost('usul_id'),
-            'user_id' => $this->request->getPost('asesor'),
-            'jenis' => $this->request->getPost('jenis'),
-            'mulai_tanggal' => $this->request->getPost('mulai_tanggal'),
-            'sampai_tanggal' => $this->request->getPost('sampai_tanggal'),
-            'keterangan' => $this->request->getPost('keterangan'),
-        ];
-        $insert = $model->insert($data);
-
-        return redirect()->back()->withInput()->with('message', 'Asesor telah direkam');
-    }
-    
-    function penilaianreview($id) {
-        $model = new AsesorModel;
-        
-        $id = decrypt($id);
-        $update = $model->update($id,['status'=>1]);
-        return redirect()->back()->withInput()->with('message', 'Penilaian telah dikembalikan');
-    }
 }

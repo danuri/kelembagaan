@@ -184,24 +184,31 @@
     </div>
         <div class="card mb-3">
     <div class="card-body">
-        
         <h5 class="mb-4">Program Studi</h5>
-        <table class="table table-bordered table-striped mb-3">
+        <table class="table table-bordered">
             <thead>
-                <tr>
-                    <th>Nama Program Studi</th>
-                    <th>Jenjang</th>
-                </tr>
+            <tr>
+                <th>Nama Program Studi</th>
+                <th>Jenjang</th>
+                <th>Dokumen</th>
+            </tr>
             </thead>
             <tbody>
-                <?php foreach($prodi as $row): ?>
+            <?php if (empty($prodi)): ?>
                 <tr>
-                    <td><?= $row->nama_prodi ?></td>
-                    <td><?= $row->jenjang ?></td>
+                <td colspan="2" class="text-center">Tidak ada data program studi</td>
                 </tr>
-                <?php endforeach;?>
+            <?php else: ?>
+                <?php foreach ($prodi as $p): ?>
+                <tr>
+                    <td><?= $p->nama_prodi ?></td>
+                    <td><?= $p->jenjang ?></td>
+                    <td><a class="btn btn-sm btn-primary" href="javascript:void(0);" onclick="showdoc(6,'<?= encrypt($p->id) ?>')"><i class="icon-base ti tabler-checklist me-1"></i> Dokumen</a></td>
+                </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
             </tbody>
-
+            
         </table>
         </div>
     </div>

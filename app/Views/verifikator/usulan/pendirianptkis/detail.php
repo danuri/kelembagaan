@@ -3,7 +3,6 @@
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 row-gap-4">
     <div class="d-flex flex-column justify-content-center">
     <h4 class="mb-1">Detail Usulan</h4>
-    <p class="mb-0">Orders placed across your store</p>
     </div>
     <div class="d-flex align-content-center flex-wrap gap-4">
     <div class="d-flex gap-4">
@@ -231,18 +230,18 @@
 $(document).ready(function() {
     $('.formcheck').change(function(event) {
         if(this.checked) {
-            $.get('<?= site_url('verifikator/usulan/validasidokumen');?>/'+this.id+'/1/0', function() {
+            $.get('<?= site_url('verifikator/usulan/pendirianptkis/validasidokumen');?>/'+this.id+'/1/0', function() {
             alert('Berkas divalidasi');
             });
         }else{
-            $.get('<?= site_url('verifikator/usulan/validasidokumen');?>/'+this.id+'/0/'+$('#keterangan_dokumen'+this.id).val(), function() {
+            $.get('<?= site_url('verifikator/usulan/pendirianptkis/validasidokumen');?>/'+this.id+'/0/'+$('#keterangan_dokumen'+this.id).val(), function() {
             alert('Berkas belum divalidasi');
             });
         }
     });
     $('.keterangancheck').change(function(event) {
         if(this.value) {
-            $.get('<?= site_url('verifikator/usulan/validasidokumen');?>/'+this.dataset.dok+'/0/'+this.value, function() {
+            $.get('<?= site_url('verifikator/usulan/pendirianptkis/validasidokumen');?>/'+this.dataset.dok+'/0/'+this.value, function() {
                 alert('Update keterangan berhasil');
             });
             // uncheck checkbox
@@ -256,7 +255,7 @@ function preview(berkas) {
                       '<p>Browser tidak mendukung!</p>'+
                     '</object>');
     $('#previewfile').attr('href', berkas);
-  $('#preview').modal('show');
+    $('#preview').modal('show');
 }
 
 function declined() {
@@ -270,7 +269,7 @@ function declined() {
     confirmButtonText: 'Kembalikan Berkas',
     showLoaderOnConfirm: true,
     preConfirm: (data) => {
-      return fetch('<?= site_url('verifikator/usulan/decline/'.encrypt($usulan->id)) ?>', {
+      return fetch('<?= site_url('verifikator/usulan/pendirianptkis/decline/'.encrypt($usulan->id)) ?>', {
         method: "POST",
         body: JSON.stringify({ keterangan: data }),
         headers: {"Content-type": "application/json; charset=UTF-8"}})
@@ -306,8 +305,8 @@ function declined() {
       reverseButtons: true
     }).then((result) => {
       if (result.isConfirmed) {
-        // redirect to verifikator/usulan/accept/id
-        window.location.href = '<?= site_url('verifikator/usulan/accept/'.encrypt($usulan->id)) ?>';
+        // redirect to verifikator/usulan/pendirianptkis/accept/id
+        window.location.href = '<?= site_url('verifikator/usulan/pendirianptkis/accept/'.encrypt($usulan->id)) ?>';
       }
     });
   }

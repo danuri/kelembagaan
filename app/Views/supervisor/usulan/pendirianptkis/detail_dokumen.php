@@ -162,7 +162,7 @@ function preview(berkas) {
   $('#object').html('<object data="'+berkas+'" type="application/pdf" width="100%" style="height: 80vh;" id="object">'+
                       '<p>Browser tidak mendukung!</p>'+
                     '</object>');
-    $('#previewfile').attr('href', berkas);
+  $('#previewfile').attr('href', berkas);
   $('#preview').modal('show');
 }
 

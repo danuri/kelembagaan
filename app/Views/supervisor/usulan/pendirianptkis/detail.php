@@ -144,6 +144,36 @@
         </table>
         </div>
     </div>
+    <div class="card mb-3">
+    <div class="card-body">
+        <h5 class="mb-4">Program Studi</h5>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Nama Program Studi</th>
+                <th>Jenjang</th>
+                <th>Dokumen</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php if (empty($prodi)): ?>
+                <tr>
+                <td colspan="2" class="text-center">Tidak ada data program studi</td>
+                </tr>
+            <?php else: ?>
+                <?php foreach ($prodi as $p): ?>
+                <tr>
+                    <td><?= $p->nama_prodi ?></td>
+                    <td><?= $p->jenjang ?></td>
+                    <td><a class="btn btn-sm btn-primary" href="javascript:void(0);" onclick="showdoc(6,'<?= encrypt($p->id) ?>')"><i class="icon-base ti tabler-checklist me-1"></i> Dokumen</a></td>
+                </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </tbody>
+            
+        </table>
+        </div>
+    </div>
 </div>
     <div class="col-sm-7">
         <div class="card mb-3">
@@ -194,6 +224,7 @@
 
             </div>
             <div class="modal-footer">
+                <a href="" target="_blank" class="btn btn-primary" id="previewfile">Buka Tab Baru</a>
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
@@ -260,6 +291,7 @@ function preview(berkas) {
   $('#object').html('<object data="'+berkas+'" type="application/pdf" width="100%" style="height: 80vh;" id="object">'+
                       '<p>Browser tidak mendukung!</p>'+
                     '</object>');
+  $('#previewfile').attr('href', berkas);
   $('#preview').modal('show');
 }
 
