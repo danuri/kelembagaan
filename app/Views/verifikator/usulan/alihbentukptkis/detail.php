@@ -13,7 +13,7 @@
     </div>
 </div>
 
-<div class="card mb-3">
+<div class="card bg-label-warning mb-3">
     <div class="card-body">
         <div class="row g-6">
             <div class="col-lg-6 col-md-12 col-sm-12">
@@ -33,6 +33,20 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; padding-right: 0.5rem;">
+                        <h6>Status Usulan</h6>
+                    </div>
+                    <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= usul_status($usulan->status)?></div>
+                </div>
+                <div style="display: table-row;">
+                    <div style="display: table-cell; padding-right: 0.5rem;">
+                        <h6>Keterangan BTS/TMS</h6>
+                    </div>
+                    <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->keterangan?></div>
+                </div>
             </div>
         </div>
     </div>
