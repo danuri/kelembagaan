@@ -52,6 +52,11 @@ $routes->group('verifikator', ['filter' => 'group:verifikator'], static function
 $routes->group('supervisor', ['filter' => 'group:supervisor'], static function ($routes) {
     $routes->get('/', 'Supervisor\Dashboard::index');
 
+    $routes->group('settings', static function ($routes) {
+        $routes->get('/', 'Supervisor\Settings::index');
+        $routes->post('update', 'Supervisor\Settings::updateSettings');
+    });
+
     $routes->group('usulan', static function ($routes) {
         $routes->get('/', 'Supervisor\Usulan::index');
         $routes->get('getdata', 'Supervisor\Usulan::getdata');

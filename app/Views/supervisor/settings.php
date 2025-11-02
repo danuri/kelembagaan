@@ -1,4 +1,4 @@
-<?= $this->extend('admin/template') ?>
+<?= $this->extend('supervisor/template') ?>
 <?= $this->section('content') ?>
 <div class="card">
                     <div class="card-header d-flex align-items-center justify-content-between">
@@ -6,7 +6,7 @@
                       <small class="text-body-secondary float-end">-</small>
                     </div>
                     <div class="card-body">
-                      <form action="<?= site_url('admin/settings/update')?>" method="post">
+                      <form action="<?= site_url('supervisor/settings/update')?>" method="post">
                         <div class="row mb-6">
                           <label class="col-sm-2 col-form-label" for="app-name">Nama Aplikasi</label>
                           <div class="col-sm-10">

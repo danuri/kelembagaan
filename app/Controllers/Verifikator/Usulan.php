@@ -25,7 +25,7 @@ class Usulan extends BaseController
 
     function getdata() {
       $db = \Config\Database::connect('default', false);
-      $builder = $db->table('tr_usulan')->where(['verifikator'=>user_id()]);
+      $builder = $db->table('tr_usulan')->where(['verifikator'=>user_id(),'status >'=>1]);
 
       return DataTable::of($builder)
           ->add('action', function($row){
@@ -33,7 +33,7 @@ class Usulan extends BaseController
                 //     return '<a href="'.site_url('usulan/accept/'.encrypt($row->id)).'" type="button" class="btn btn-primary btn-sm" onClick="return confirm(\'Terima usulan?\')">Cek</a>';
                 // }else{
                 // }
-                return '<a href="'.site_url('verifikator/usulan/detail/'.encrypt($row->id)).'" target="_blank" type="button" class="btn btn-primary btn-sm">View</a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\''.encrypt($row->id).'\')">Log</a>';
+                return '<a href="'.site_url('verifikator/usulan/'.layananurl($row->layanan_id).'/b\detail/'.encrypt($row->id)).'" target="_blank" type="button" class="btn btn-primary btn-sm">View</a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\''.encrypt($row->id).'\')">Log</a>';
             })->format('status', function($value, $meta){
                 return usul_status($value);
             })->filter(function ($builder, $request) {

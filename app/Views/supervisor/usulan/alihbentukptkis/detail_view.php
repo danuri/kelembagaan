@@ -1,16 +1,15 @@
-<?= $this->extend('verifikator/template') ?>
+<?= $this->extend('supervisor/template') ?>
 <?= $this->section('content') ?>
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 row-gap-4">
     <div class="d-flex flex-column justify-content-center">
     <h4 class="mb-1">Detail Usulan</h4>
-    <p class="mb-0">Orders placed across your store</p>
     </div>
     <div class="d-flex align-content-center flex-wrap gap-4">
     <div class="d-flex gap-4">
         <a href="<?= site_url('verifikator/usulan') ?>" class="btn btn-label-secondary waves-effect">Kembali</a>
     </div>
-    <?php if($usulan->status == 2): ?>
-    <a href="<?= site_url('verifikator/usulan/alihbentukptkis/proses/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light">Mulai Verifikasi</a>
+    <?php if($usulan->status == 4): ?>
+    <a href="<?= site_url('supervisor/usulan/alihbentukptkis/done/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light">Usulan Selesai</a>
     <?php endif; ?>
     </div>
 </div>
@@ -48,6 +47,13 @@
                     </div>
                     <div style="display: table-cell; padding-right: 0.5rem;">:</div>
                     <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->keterangan?></div>
+                </div>
+                <div style="display: table-row;">
+                    <div style="display: table-cell; padding-right: 0.5rem;">
+                        <h6>Verifikator</h6>
+                    </div>
+                    <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><strong><?= $verifikator->full_name?></strong></div>
                 </div>
             </div>
         </div>
@@ -182,6 +188,8 @@
                                 <thead>
                                     <tr>
                                         <th width="60%">Dokumen</th>
+                                        <th>Sesuai</th>
+                                        <th>Keterangan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -194,12 +202,17 @@
                                                 <?= $dokumen->dokumen ?>
                                             <?php endif; ?>
                                         </td>
+                                        <td>
+                                            <?= ($dokumen->dok_status == 1)?'<span class="badge bg-label-success">Ya</span>':'<span class="badge bg-label-danger">Tidak</span>' ?>
+                                        </td>
+                                        <td><?= $dokumen->keterangan?></td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
         </div>
     </div>
+</div>
 </div>
 <div id="preview" class="modal fade" data-bs-backdrop="static" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">
     <div class="modal-dialog modal-xl">
