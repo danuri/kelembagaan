@@ -223,6 +223,19 @@
                                   </select>
                               </div>
                             </div>
+                            <div class="col-sm-12">
+                                  <div class="alert alert-secondary alert-dismissible d-flex" role="alert">
+                                    <span class="alert-icon rounded">
+                                        <i class="icon-base ti tabler-bookmark icon-md w-px-30"></i>
+                                    </span>
+                                    <div class="d-flex flex-column ps-1">
+                                        <h5 class="alert-heading mb-2">Catatan Verifikator</h5>
+                                        <p class="mb-0">
+                                            <?= ($detail->catatan)?$detail->catatan:'-' ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                       </div>
                       <div class="tab-pane fade" id="navs-top-dokumen" role="tabpanel">

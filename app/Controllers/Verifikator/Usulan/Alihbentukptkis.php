@@ -90,4 +90,15 @@ class Alihbentukptkis extends BaseController
 
         return redirect()->back()->with('message', 'Usulan telah diproses.');
     }
+
+    function updatecatatan($id) {
+        $id = decrypt($id);
+        $model = new AlihbentukptkisModel();
+
+        $catatan = $this->request->getPost('catatan');
+
+        $model->where('usulan_id', $id)->set(['catatan' => $catatan])->update();
+
+        return redirect()->back()->with('message', 'Catatan verifikator telah diperbarui.');
+    }
 }

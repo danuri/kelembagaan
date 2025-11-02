@@ -3,7 +3,6 @@
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 row-gap-4">
     <div class="d-flex flex-column justify-content-center">
     <h4 class="mb-1">Detail Usulan</h4>
-    <p class="mb-0">Orders placed across your store</p>
     </div>
     <div class="d-flex align-content-center flex-wrap gap-4">
     <div class="d-flex gap-4">
@@ -75,7 +74,7 @@
     </div>
 </div>
 <div class="row g-6">
-    <div class="col-sm-5">
+    <div class="col-sm-6">
         <div class="card mb-3">
     <div class="card-body">
         
@@ -108,6 +107,13 @@
                 </tr>
             </tbody>
         </table>
+        </div>
+    </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card mb-3">
+    <div class="card-body">
+        
         <h5 class="mb-4">Alamat Lembaga</h5>
         <table class="table table-bordered table-striped">
             <tbody>
@@ -139,8 +145,8 @@
         </table>
         </div>
     </div>
-</div>
-    <div class="col-sm-7">
+    </div>
+    <div class="col-sm-12">
         <div class="card mb-3">
     <div class="card-body">
         <h5 class="mb-4">Dokumen</h5>
@@ -175,6 +181,39 @@
         </div>
         </div>
     </div>
+</div>
+<div class="col-sm-12">
+        <div class="card mb-3">
+    <div class="card-body">
+        <h5 class="mb-4">Program Studi</h5>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Nama Program Studi</th>
+                <th>Jenjang</th>
+                <th>Dokumen</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php if (empty($prodi)): ?>
+                <tr>
+                <td colspan="2" class="text-center">Tidak ada data program studi</td>
+                </tr>
+            <?php else: ?>
+                <?php foreach ($prodi as $p): ?>
+                <tr>
+                    <td><?= $p->nama_prodi ?></td>
+                    <td><?= $p->jenjang ?></td>
+                    <td><a class="btn btn-sm btn-primary" href="javascript:void(0);" onclick="showdoc(6,'<?= encrypt($p->id) ?>')"><i class="icon-base ti tabler-checklist me-1"></i> Dokumen</a></td>
+                </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </tbody>
+            
+        </table>
+        </div>
+    </div>
+</div>
 </div>
 <div id="preview" class="modal fade" data-bs-backdrop="static" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">
     <div class="modal-dialog modal-xl">

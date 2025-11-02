@@ -3,11 +3,11 @@
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 row-gap-4">
     <div class="d-flex flex-column justify-content-center">
     <h4 class="mb-1">Detail Usulan</h4>
-    <p class="mb-0">Orders placed across your store</p>
     </div>
     <div class="d-flex align-content-center flex-wrap gap-4">
     <div class="d-flex gap-4">
         <a href="<?= site_url('verifikator/usulan') ?>" class="btn btn-label-secondary waves-effect">Kembali</a>
+        <a href="<?= site_url('export/reportalihbentukptkis/'.encrypt($usulan->id)) ?>" class="btn btn-label-primary waves-effect" target="_blank">Export</a>
     </div>
     <?php if($usulan->status == 2): ?>
     <a href="<?= site_url('verifikator/usulan/alihbentukptkis/proses/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light">Mulai Verifikasi</a>
@@ -121,18 +121,6 @@
                     <td>Jumlah Rasio Dosen:Mahasiswa</td>
                     <td>: <?= $detail->rasio_dm ?></td>
                 </tr>
-            </tbody>
-        </table>
-        </div>
-    </div>
-</div>
-    <div class="col-sm-6">
-        <div class="card mb-3">
-    <div class="card-body">
-        
-        <h5 class="mb-4">Data Statistik</h5>
-        <table class="table table-bordered table-striped mb-3">
-            <tbody>
                 <tr>
                     <td>Jumlah Fakultas</td>
                     <td>: <?= $detail->fakultas ?></td>
@@ -174,6 +162,23 @@
         </div>
     </div>
 </div>
+    <div class="col-sm-6">
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="alert alert-secondary alert-dismissible d-flex" role="alert">
+                    <span class="alert-icon rounded">
+                        <i class="icon-base ti tabler-bookmark icon-md w-px-30"></i>
+                    </span>
+                    <div class="d-flex flex-column ps-1">
+                        <h5 class="alert-heading mb-2">Catatan Verifikator</h5>
+                        <p class="mb-0">
+                            <?= ($detail->catatan)?$detail->catatan:'-' ?>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-sm-12">
         <div class="card mb-3">
     <div class="card-body">
@@ -182,6 +187,8 @@
                                 <thead>
                                     <tr>
                                         <th width="60%">Dokumen</th>
+                                        <th>Sesuai</th>
+                                        <th>Keterangan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -194,6 +201,10 @@
                                                 <?= $dokumen->dokumen ?>
                                             <?php endif; ?>
                                         </td>
+                                        <td>
+                                            <?= ($dokumen->dok_status == 1)?'<span class="badge bg-label-success">Ya</span>':'<span class="badge bg-label-danger">Tidak</span>' ?>
+                                        </td>
+                                        <td><?= $dokumen->keterangan?></td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>

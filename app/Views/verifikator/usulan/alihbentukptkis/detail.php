@@ -119,18 +119,6 @@
                     <td>Jumlah Rasio Dosen:Mahasiswa</td>
                     <td>: <?= $detail->rasio_dm ?></td>
                 </tr>
-            </tbody>
-        </table>
-        </div>
-    </div>
-</div>
-    <div class="col-sm-6">
-        <div class="card mb-3">
-    <div class="card-body">
-        
-        <h5 class="mb-4">Data Statistik</h5>
-        <table class="table table-bordered table-striped mb-3">
-            <tbody>
                 <tr>
                     <td>Jumlah Fakultas</td>
                     <td>: <?= $detail->fakultas ?></td>
@@ -169,6 +157,22 @@
                 </tr>
             </tbody>
         </table>
+        </div>
+    </div>
+</div>
+    <div class="col-sm-6">
+        <div class="card mb-3">
+    <div class="card-body">
+        
+        <h5 class="mb-4">Catatan Verifikator</h5>
+        <form action="<?= site_url('verifikator/usulan/alihbentukptkis/updatecatatan/'.encrypt($usulan->id))?>" method="POST">
+            <div class="mb-6">
+                <textarea name="catatan" id="catatan" class="form-control" rows="4"><?= $detail->catatan ?></textarea>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+        </form>
         </div>
     </div>
 </div>

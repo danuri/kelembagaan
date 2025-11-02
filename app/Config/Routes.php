@@ -12,6 +12,10 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
     $routes->get('/', 'Supervisor\Dashboard::index');
 });
 
+$routes->group('export', ['filter' => 'group:verifikator'], static function ($routes) {
+    $routes->get('reportalihbentukptkis/(:any)', 'Export::reportalihbentukptkis/$1');
+});
+
 $routes->group('verifikator', ['filter' => 'group:verifikator'], static function ($routes) {
     $routes->get('/', 'Verifikator\Dashboard::index');
     
@@ -31,6 +35,7 @@ $routes->group('verifikator', ['filter' => 'group:verifikator'], static function
             $routes->get('detail/(:any)', 'Verifikator\Usulan\Alihbentukptkis::detail/$1');
             $routes->get('validasidokumen/(:any)/(:any)/(:any)', 'Verifikator\Usulan\Alihbentukptkis::validasidokumen/$1/$2/$3');
             $routes->post('decline/(:any)', 'Verifikator\Usulan\Alihbentukptkis::decline/$1');
+            $routes->post('updatecatatan/(:any)', 'Verifikator\Usulan\Alihbentukptkis::updatecatatan/$1');
             $routes->get('accept/(:any)', 'Verifikator\Usulan\Alihbentukptkis::accept/$1');
             $routes->get('proses/(:any)', 'Verifikator\Usulan\Alihbentukptkis::proses/$1');
         });
