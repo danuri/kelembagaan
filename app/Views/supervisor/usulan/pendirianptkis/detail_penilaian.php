@@ -12,7 +12,7 @@
     <?php if($usulan->status == 4): ?>
     <a href="<?= site_url('supervisor/usulan/pendirianptkis/penilaianasesor/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light" onclick="return confirm('Apakah Anda yakin ingin mengirim ke Penilai?')">Kirim ke Penilai</a>
     <?php endif; ?>
-    <?php if($usulan->status == 41): ?>
+    <?php if($usulan->status == 5): ?>
     <a href="<?= site_url('supervisor/usulan/pendirianptkis/prosesrkma/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light" onclick="return confirm('Apakah proses penilaian selesai?')">Proses RKMA</a>
     <?php endif; ?>
     </div>

@@ -26,7 +26,7 @@ class Penilaian extends BaseController
       $db = \Config\Database::connect('default', false);
       $builder = $db->table('tr_usulan a')->select('a.id,a.nama_lembaga,a.nama_lembaga,a.status,b.id as ases_id, b.jenis,b.mulai_tanggal,b.sampai_tanggal,b.keterangan,b.file_hasil,b.skor,b.status as status_nilai')
                 ->join('tr_asesor b', 'b.usul_id = a.id')
-                ->where(['b.user_id'=>user_id()]);
+                ->where(['b.user_id'=>user_id(),'a.status'=>4]);
     
 
       return DataTable::of($builder)
@@ -41,24 +41,21 @@ class Penilaian extends BaseController
                 if ($request->layanan)
                     $builder->where('tr_usulan.layanan_id', $request->layanan);
 
-                if ($request->status)
-                    $builder->where('tr_usulan.status', $request->status);
-
             })
           ->toJson(true);
     }
 
-    function accept($id) {
-        $model = new AsesorModel();
+    // function accept($id) {
+    //     $model = new AsesorModel();
 
-        $id = decrypt($id);
-        $model->update($id, ['status' => 2]);
+    //     $id = decrypt($id);
+    //     $model->update($id, ['status' => 5]);
 
-        $logm = new LogModel();
-        $logm->insert(['id_usul' => $id, 'status_usulan' => 41, 'keterangan' => 'Penilaian diterima Asesor.', 'created_by' => user_id()]);
+    //     $logm = new LogModel();
+    //     $logm->insert(['id_usul' => $id, 'status_usulan' => 5, 'keterangan' => 'Penilaian diterima Asesor.', 'created_by' => user_id()]);
 
-        return redirect()->back()->with('message', 'Penilaian Usulan telah diterima.');
-    }
+    //     return redirect()->back()->with('message', 'Penilaian Usulan telah diterima.');
+    // }
 
     function detail($id) {
         $id = decrypt($id);
@@ -107,7 +104,7 @@ class Penilaian extends BaseController
         $model = new AsesorModel();
 
         $id = decrypt($id);
-        $model->update($id, ['status' => 2]);
+        $model->update($id, ['status' => 5]);
 
         $logm = new LogModel();
         $logm->insert(['id_usul' => $id, 'status_usulan' => 5, 'keterangan' => 'Penilaian oleh Asesor '.auth()->user()->full_name.' telah selesai.', 'created_by' => user_id()]);

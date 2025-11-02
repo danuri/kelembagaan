@@ -401,7 +401,7 @@ function hp($nohp) {
    }else if($status == 3){
      $result = '<span class="badge bg-success">Proses Verifikasi</span>';
    }else if($status == 4){
-     $result = '<span class="badge bg-primary">Proses Penilaian</span>';
+     $result = '<span class="badge bg-primary">Proses Verifikasi Selesai</span>';
    }else if($status == 5){
      $result = '<span class="badge bg-primary">Proses Penilaian Asesor</span>';
    }else if($status == 6){

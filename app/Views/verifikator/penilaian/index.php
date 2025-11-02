@@ -14,18 +14,6 @@
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <div class="col-md-4">
-                    <label for="statuslayanan" class="form-label">Status</label>
-                    <select id="statuslayanan" name="statuslayanan" class="form-select">
-                        <option value="">Semua</option>
-                          <option value="1">Dikirim</option>
-                          <option value="2">Verifikasi Selesai</option>
-                          <option value="3">Proses Penilaian</option>
-                          <option value="4">Proses RPMA</option>
-                          <option value="20">Selesai</option>
-                          <option value="21">Dikembalikan</option>
-                    </select>
-                </div>
             </form>
           </div>
         </div>
@@ -124,8 +112,7 @@
         ajax: {
           url: '<?= site_url('verifikator/penilaian/getdata')?>',
             data: function (d) {
-                d.layanan = $('#layanan').val(),
-                d.status = $('#statuslayanan').val();
+                d.layanan = $('#layanan').val()
             }
         },
         columns: [
@@ -140,10 +127,6 @@
     });
 
     $('#layanan').change(function(event) {
-        table.ajax.reload();
-    });
-
-    $('#statuslayanan').change(function(event) {
         table.ajax.reload();
     });
 

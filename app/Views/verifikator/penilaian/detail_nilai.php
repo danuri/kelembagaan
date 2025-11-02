@@ -85,7 +85,7 @@
                           data-bs-target="#accordionCustomOne"
                           aria-expanded="true"
                           aria-controls="accordionCustomOne">
-                          Data Lembata
+                          Data Lembaga
                         </button>
                       </h2>
 
