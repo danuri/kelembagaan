@@ -28,6 +28,8 @@ class Users extends BaseController
             'username' => $this->request->getPost('username'),
             'email'    => $this->request->getPost('email'),
             'password' => $this->request->getPost('password'),
+            'full_name' => $this->request->getPost('full_name'),
+            'phone' => $this->request->getPost('phone'),
         ]);
         $users->save($user);
 

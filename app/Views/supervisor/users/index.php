@@ -5,8 +5,22 @@
     <div class="card-title mb-0">
     <h5 class="m-0 me-2">Data Pengguna</h5>
     </div>
-    <button class="btn btn-primary">Tambah Pengguna</button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Tambah Pengguna</button>
 </div>
+<?php if (session('error') !== null) : ?>
+                    <div class="alert alert-danger" role="alert"><?= esc(session('error')) ?></div>
+                <?php elseif (session('errors') !== null) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?php if (is_array(session('errors'))) : ?>
+                            <?php foreach (session('errors') as $error) : ?>
+                                <?= esc($error) ?>
+                                <br>
+                            <?php endforeach ?>
+                        <?php else : ?>
+                            <?= esc(session('errors')) ?>
+                        <?php endif ?>
+                    </div>
+                <?php endif ?>
 <div class="">
     <table class="table">
     <thead>
@@ -61,5 +75,78 @@
     </tbody>
     </table>
 </div>
+</div>
+
+<div class="modal-onboarding modal fade animate__animated" id="onboardImageModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header border-0">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="onboarding-content mb-0">
+          <h4 class="onboarding-title text-body">Tambah Pengguna Baru</h4>
+          <form action="<?= site_url('supervisor/users/create') ?>" method="post" id="usulform">
+            <div class="row mb-6">
+              <label class="col-sm-4 col-form-label" for="email">Email</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="email" name="email" required>
+              </div>
+            </div>
+            <div class="row mb-6">
+              <label class="col-sm-4 col-form-label" for="username">Username</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="username" name="username" required>
+              </div>
+            </div>
+            <div class="row mb-6">
+              <label class="col-sm-4 col-form-label" for="full_name">Nama</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="full_name" name="full_name" required>
+              </div>
+            </div>
+            <div class="row mb-6">
+              <label class="col-sm-4 col-form-label" for="phone">Nomor HP</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="phone" name="phone" required>
+              </div>
+            </div>
+            <div class="row mb-6">
+              <label class="col-sm-4 col-form-label" for="password">Password</label>
+              <div class="col-sm-8">
+                <input type="password" class="form-control" id="password" name="password" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" required>
+              </div>
+            </div>
+            <div class="row mb-6">
+              <label class="col-sm-4 col-form-label" for="password_confirm">Ulangi Password</label>
+              <div class="col-sm-8">
+                <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" required>
+              </div>
+            </div>
+            <div class="row mb-6">
+              <label class="col-sm-4 col-form-label" for="group">Role</label>
+              <div class="col-sm-8">
+                <select name="group" id="group" class="form-select">
+                  <option value="supervisor">Supervisor</option>
+                  <option value="verifikator">Verifikator</option>
+                  <option value="user">Pengusul</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+          Tutup
+        </button>
+        <button type="button" class="btn btn-primary" onclick="document.getElementById('usulform').submit();">Simpan</button>
+      </div>
+    </div>
+  </div>
 </div>
 <?= $this->endSection() ?>
