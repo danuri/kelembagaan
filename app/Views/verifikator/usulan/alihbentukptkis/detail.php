@@ -175,6 +175,22 @@
         </form>
         </div>
     </div>
+        <div class="card mb-3">
+    <div class="card-body">
+        
+        <h5 class="mb-4">Instrumen Penilaian Verifikator</h5>
+        <p>Download template <a href="<?= base_url('template/template_instrumen_alihbentuk.xlsx') ?>" class="btn btn-sm btn-primary">di sini</a></p>
+        <form action="<?= site_url('verifikator/usulan/alihbentukptkis/upnilai/'.encrypt($detail->id))?>" method="POST" enctype="multipart/form-data">
+            <div class="mb-6">
+                <input type="file" name="lampiran" id="lampiran" class="form-control">
+                <?= ($detail->nilai)?'<a href="'.base_url('uploads/nilai/'.$detail->nilai).'" target="_blank">'.$detail->nilai.'</a>':'Belum unggah';?>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+        </form>
+        </div>
+    </div>
 </div>
     <div class="col-sm-12">
         <div class="card mb-3">

@@ -38,6 +38,16 @@ $routes->group('verifikator', ['filter' => 'group:verifikator'], static function
             $routes->post('updatecatatan/(:any)', 'Verifikator\Usulan\Alihbentukptkis::updatecatatan/$1');
             $routes->get('accept/(:any)', 'Verifikator\Usulan\Alihbentukptkis::accept/$1');
             $routes->get('proses/(:any)', 'Verifikator\Usulan\Alihbentukptkis::proses/$1');
+            $routes->post('upnilai/(:any)', 'Verifikator\Usulan\Alihbentukptkis::upnilai/$1');
+        });
+
+        $routes->group('pembentukanfai', static function ($routes) {
+            $routes->get('detail/(:any)', 'Verifikator\Usulan\Alihbentukptkis::detail/$1');
+            $routes->get('validasidokumen/(:any)/(:any)/(:any)', 'Verifikator\Usulan\Alihbentukptkis::validasidokumen/$1/$2/$3');
+            $routes->post('decline/(:any)', 'Verifikator\Usulan\Alihbentukptkis::decline/$1');
+            $routes->post('updatecatatan/(:any)', 'Verifikator\Usulan\Alihbentukptkis::updatecatatan/$1');
+            $routes->get('accept/(:any)', 'Verifikator\Usulan\Alihbentukptkis::accept/$1');
+            $routes->get('proses/(:any)', 'Verifikator\Usulan\Alihbentukptkis::proses/$1');
         });
     });
     
@@ -155,6 +165,15 @@ $routes->group('layanan', ['filter' => 'group:user'], static function ($routes) 
         $routes->post('updateform1', 'User\Alihkelolaptkis::updateform1');
         $routes->post('updateform2', 'User\Alihkelolaptkis::updateform2');
         $routes->post('submitusul', 'User\Alihkelolaptkis::submitusul');
+    });
+
+    $routes->group('pembentukanfai', static function ($routes) {
+        $routes->get('/', 'User\PembentukanFai::index');
+        $routes->post('create', 'User\PembentukanFai::create');
+        $routes->get('detail/(:any)', 'User\PembentukanFai::detail/$1');
+        $routes->post('updateform1', 'User\PembentukanFai::updateform1');
+        $routes->post('updateform2', 'User\PembentukanFai::updateform2');
+        $routes->post('submitusul', 'User\PembentukanFai::submitusul');
     });
     
     $routes->get('alihbentukptkis', 'Layanan\AlihBentukPTKIS::index');

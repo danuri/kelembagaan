@@ -4,28 +4,27 @@ namespace App\Controllers\Verifikator\Usulan;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
-use \Hermawan\DataTables\DataTable;
 use App\Models\LayananModel;
 use App\Models\UsulanModel;
-use App\Models\AlihbentukptkisModel;
+use App\Models\FaiModel;
 use App\Models\UsulDokumenModel;
 use App\Models\CrudModel;
 use App\Models\LogModel;
 
-class Alihbentukptkis extends BaseController
+class Pembentukanfai extends BaseController
 {
     public function index()
     {
         $layananModel = new LayananModel();
         $data['layanan'] = $layananModel->findAll();
 
-        return view('verifikator/usulan/alihbentukptkis/index', $data);
+        return view('verifikator/usulan/pembentukafai/index', $data);
     }
 
     function detail($id) {
         $id = decrypt($id);
         $model = new UsulanModel();
-        $detail = new AlihbentukptkisModel();
+        $detail = new FaiModel();
         $data['usulan'] = $model->where('id', $id)->first();
         $data['detail'] = $detail->where('usulan_id', $id)->first();
 
@@ -33,9 +32,9 @@ class Alihbentukptkis extends BaseController
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
 
         if ($data['usulan']->status == 3) {
-            return view('verifikator/usulan/alihbentukptkis/detail', $data);
+            return view('verifikator/usulan/pembentukafai/detail', $data);
         }else{
-            return view('verifikator/usulan/alihbentukptkis/detail_view', $data);
+            return view('verifikator/usulan/pembentukafai/detail_view', $data);
         }
     }
 
@@ -93,36 +92,12 @@ class Alihbentukptkis extends BaseController
 
     function updatecatatan($id) {
         $id = decrypt($id);
-        $model = new AlihbentukptkisModel();
+        $model = new FaiModel();
 
         $catatan = $this->request->getPost('catatan');
 
         $model->where('usulan_id', $id)->set(['catatan' => $catatan])->update();
 
         return redirect()->back()->with('message', 'Catatan verifikator telah diperbarui.');
-    }
-
-    function upnilai($id) {
-        $id = decrypt($id);
-        $validation = \Config\Services::validation();
-        $validation->setRules([
-            'skor' => 'required',
-            'lampiran' => 'uploaded[lampiran]|max_size[lampiran,2048]|ext_in[lampiran,pdf,xls,xlsx]'
-        ]);
-        if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('error', $validation->getErrors());
-        }
-        // handle file upload
-        $file = $this->request->getFile('lampiran');
-        if ($file->isValid() && !$file->hasMoved()) {
-            $newName = $file->getRandomName();
-            $file->move('uploads/nilai', $newName);
-        } else {
-            return redirect()->back()->withInput()->with('error', 'File upload failed');
-        }
-
-        $model = new AlihbentukptkisModel;
-        $update = $model->update($id,['nilai'=>$newName]);
-        return redirect()->back()->withInput()->with('message', 'Nilai telah diupdate');
     }
 }
