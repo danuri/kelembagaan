@@ -4,21 +4,21 @@
   Alih Kelola PTKIS
 </h4>
 <p class="text-center mb-12">
-  Data usulan Alih Kelola
+  Pengajuan usulan Alih Kelola PTKIS. Silahkan klik tombol "Buat Usulan" untuk memulai.
 </p>
 <div class="card">
-  <div class="card-header d-flex justify-content-between align-items-center">
+  <div class="card-header border-bottom d-flex justify-content-between align-items-center">
   <h5 class="card-title m-0 me-2">Data Usulan</h5>
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat Usulan</button>
 </div>
-  <div class="card-body">
+  <div class="justify-content-between dt-layout-table">
     <table class="table table-bordered">
       <thead>
         <tr>
           <th>No Surat</th>
           <th>Tanggal Usul</th>
           <th>Perihal</th>
-          <th>Nama PTKIS</th>
+          <th>Nama Perguruan Tinggi</th>
           <th>Status</th>
           <th>Aksi</th>
         </tr>
@@ -38,10 +38,10 @@
               <td><?= usul_status($usulan->status) ?></td>
               <td>
                 <?php if($usulan->status == 0): ?>
-                  <a href="<?= site_url('layanan/alihbentukptkis/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
+                  <a href="<?= site_url('layanan/pembentukanfai/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
                   <a href="javascript:void(0)" class="btn btn-sm btn-danger" onclick="deleteUsulan('<?= encrypt($usulan->id) ?>')">Delete</a>
                   <?php else:?>
-                    <a href="<?= site_url('layanan/alihbentukptkis/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
+                    <a href="<?= site_url('layanan/pembentukanfai/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
                     <a href="javascript:void(0)" class="btn btn-sm btn-warning" onclick="log('<?= encrypt($usulan->id) ?>')">Log</a>
                 <?php endif;?>
               </td>
@@ -68,39 +68,27 @@
       <div class="modal-body p-0">
         <div class="onboarding-content mb-0">
           <h4 class="onboarding-title text-body">Buat Usulan</h4>
-          <form action="<?= site_url('layanan/alihkelolaptkis/create') ?>" method="post" enctype="multipart/form-data" id="usulform">
+          <form action="<?= site_url('layanan/pembentukanfai/create') ?>" method="post" id="usulform">
             <div class="row mb-6">
-              <label class="col-sm-4 col-form-label" for="nspt">NSPT Lembaga</label>
-              <div class="col-sm-8">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Masukan NSPT" aria-describedby="btnCari" name="nspt" id="nspt" required />
-                  <button class="btn btn-outline-primary waves-effect" type="button" id="btnCari">Cari</button>
-                </div>
-              </div>
-            </div>
-            <div class="row mb-6">
-              <label class="col-sm-4 col-form-label" for="nama_lembaga">Nama Lembaga Lama</label>
+              <label class="col-sm-4 col-form-label" for="nama_lembaga">Nama Lembaga</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="nama_lembaga" name="nama_lembaga" required>
               </div>
             </div>
             <div class="row mb-6">
-              <label class="col-sm-4 col-form-label" for="alamat_lembaga">Alamat Lembaga Lama</label>
+              <label class="col-sm-4 col-form-label" for="alamat_lembaga">Alamat Lembaga</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="alamat_lembaga" name="alamat_lembaga" required>
               </div>
             </div>
-            <hr class="m-0 mb-3">
             <div class="row mb-6">
-              <label class="col-sm-4 col-form-label" for="nama_lembaga_baru">Nama Lembaga Baru</label>
+              <label class="col-sm-4 col-form-label" for="kategori">Kategori Lembaga</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="nama_lembaga_baru" name="nama_lembaga_baru" required>
-              </div>
-            </div>
-            <div class="row mb-6">
-              <label class="col-sm-4 col-form-label" for="kategori">Alamat Lembaga Baru</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" id="alamat_lembaga_baru" name="alamat_lembaga_baru" required>
+                <select name="kategori" id="kategori" class="form-select">
+                  <option value="SEKOLAH TINGGI">SEKOLAH TINGGI</option>
+                  <option value="INSTITUT">INSTITUT</option>
+                  <option value="UNIVERSITAS">UNIVERSITAS</option>
+                </select>
               </div>
             </div>
           </form>
@@ -118,34 +106,6 @@
 <?= $this->endSection() ?>
 <?= $this->section('scripts') ?>
 <script>
-  // ajax cari nspt
-  // url https://diktis.kemenag.go.id/kelembagaan/kemenag/master/getLembaga
-  // method post
-  // data { nsm: nspt }
-  $('#btnCari').click(function() {
-    var nspt = $('#nspt').val();
-    if (nspt == '') {
-      alert('NSPT tidak boleh kosong');
-      return;
-    }
-    $.ajax({
-      url: 'https://diktis.kemenag.go.id/kelembagaan/kemenag/master/getLembaga',
-      method: 'POST',
-      data: { nsm: nspt },
-      dataType: 'json',
-      success: function(response) {
-        if (response.status == 'success') {
-          $('#nama_lembaga').val(response.data.nama_lembaga);
-          $('#alamat_lembaga').val(response.data.alamat_lembaga);
-        } else {
-          alert('Data tidak ditemukan');
-        }
-      },
-      error: function() {
-        alert('Terjadi kesalahan saat menghubungi server');
-      }
-    });
-  });
 
 </script>
 <?= $this->endSection() ?>

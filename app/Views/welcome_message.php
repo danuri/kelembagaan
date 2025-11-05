@@ -159,11 +159,11 @@
             data-speed="1" />
           <div class="container">
             <div class="hero-text-box text-center position-relative">
-              <h1 class="text-primary hero-title display-6 fw-extrabold">
-                Sistem Informasi Izin Pendirian Perguruan Tinggi Keagamaan Islam
+              <h1 class="text-primary hero-title display-5 fw-extrabold">
+                Sistem Informasi Izin Penyelenggaraan Perguruan Tinggi Keagamaan Islam
               </h1>
               <h2 class="hero-sub-title h6 mb-6">
-                Layanan Digital Terpadu untuk Pengajuan dan Pemantauan Izin Pendirian Perguruan Tinggi Keagamaan Islam
+                Layanan Digital Terpadu untuk Pengajuan Penyelenggaraan Perguruan Tinggi Keagamaan Islam
               </h2>
             </div>
           </div>

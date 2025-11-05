@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 
 <h4 class="mb-1">
-  Detail Usulan Alih Bentuk PTKIS
+  Detail Usulan Alih Kelola PTKIS
 </h4>
 <div class="card shadow-none bg-label-success mb-3">
     <div class="card-body">
@@ -74,7 +74,7 @@
                           data-bs-target="#navs-top-data"
                           aria-controls="navs-top-data"
                           aria-selected="true">
-                          Data Usulan
+                          Data Pengusul
                         </button>
                       </li>
                       <li class="nav-item">
@@ -112,16 +112,6 @@
                                         <option value="UNIVERSITAS" <?= $detail->kategori === 'UNIVERSITAS' ? 'selected' : '' ?>>UNIVERSITAS</option>
                                         <option value="FAKULTAS AGAMA ISLAM" <?= $detail->kategori === 'FAKULTAS AGAMA ISLAM' ? 'selected' : '' ?>>FAKULTAS AGAMA ISLAM</option>
                                     </select>
-                                </div>
-
-                                <div class="mb-3 form-control-validation">
-                                <label class="form-label" for="jenjang">Jenjang</label>
-                                <select class="form-select select2" id="jenjang" name="jenjang" disabled>
-                                    <option label=" "></option>
-                                    <option value="S1" <?= $detail->jenjang === 'S1' ? 'selected' : '' ?>>S1</option>
-                                    <option value="S2" <?= $detail->jenjang === 'S2' ? 'selected' : '' ?>>S2</option>
-                                    <option value="S3" <?= $detail->jenjang === 'S3' ? 'selected' : '' ?>>S3</option>
-                                </select>
                                 </div>
                                 
                             </div>
