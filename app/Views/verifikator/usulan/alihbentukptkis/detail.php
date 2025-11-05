@@ -51,6 +51,7 @@
         </div>
     </div>
 </div>
+
 <div class="row g-6">
     <div class="col-sm-12">
         <div class="card mb-3">
@@ -80,119 +81,7 @@
         </div>
     </div>
 </div>
-    <div class="col-sm-6">
-        <div class="card mb-3">
-    <div class="card-body">
-        
-        <h5 class="mb-4">Data Statistik</h5>
-        <table class="table table-bordered table-striped mb-3">
-            <tbody>
-                <tr>
-                    <td>Jumlah Magister</td>
-                    <td>: <?= $detail->magister ?></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Doktor</td>
-                    <td>: <?= $detail->doktor ?></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Asisten Ahli</td>
-                    <td>: <?= $detail->asisten_ahli ?></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Lektor</td>
-                    <td>: <?= $detail->lektor ?></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Lektor Kepala</td>
-                    <td>: <?= $detail->lektor_kepala ?></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Guru Besar</td>
-                    <td>: <?= $detail->guru_besar ?></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Mahasiswa</td>
-                    <td>: <?= $detail->mahasiswa ?></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Rasio Dosen:Mahasiswa</td>
-                    <td>: <?= $detail->rasio_dm ?></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Fakultas</td>
-                    <td>: <?= $detail->fakultas ?></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Prodi</td>
-                    <td>: <?= $detail->prodi ?></td>
-                </tr>
-                <tr>
-                    <td>Tidak Terakreditasi</td>
-                    <td>: <?= $detail->akreditasi_no ?></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Prodi Terakreditasi Unggul/A</td>
-                    <td>: <?= $detail->akreditasi_unggul ?></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Prodi Terakreditasi Baik Sekali/B</td>
-                    <td>: <?= $detail->akreditasi_baiksekali ?></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Prodi Terakreditasi Baik</td>
-                    <td>: <?= $detail->akreditasi_baik ?></td>
-                </tr>
-                <tr>
-                    <td>Pelaporan PD Dikti</td>
-                    <td>: <?= $detail->pelaporan ?></td>
-                </tr>
-                <tr>
-                    <td>Luas Tanah</td>
-                    <td>: <?= $detail->tanah ?>M²</td>
-                </tr>
-                <tr>
-                    <td>Kepemilikan Tanah</td>
-                    <td>: <?= $detail->kepemilikan_tanah ?>M²</td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-    </div>
-</div>
-    <div class="col-sm-6">
-        <div class="card mb-3">
-    <div class="card-body">
-        
-        <h5 class="mb-4">Catatan Verifikator</h5>
-        <form action="<?= site_url('verifikator/usulan/alihbentukptkis/updatecatatan/'.encrypt($usulan->id))?>" method="POST">
-            <div class="mb-6">
-                <textarea name="catatan" id="catatan" class="form-control" rows="4"><?= $detail->catatan ?></textarea>
-            </div>
-            <div>
-                <button type="submit" class="btn btn-primary">Simpan</button>
-            </div>
-        </form>
-        </div>
-    </div>
-        <div class="card mb-3">
-    <div class="card-body">
-        
-        <h5 class="mb-4">Instrumen Penilaian Verifikator</h5>
-        <p>Download template <a href="<?= base_url('template/template_instrumen_alihbentuk.xlsx') ?>" class="btn btn-sm btn-primary">di sini</a></p>
-        <form action="<?= site_url('verifikator/usulan/alihbentukptkis/upnilai/'.encrypt($detail->id))?>" method="POST" enctype="multipart/form-data">
-            <div class="mb-6">
-                <input type="file" name="lampiran" id="lampiran" class="form-control">
-                <?= ($detail->nilai)?'<a href="'.base_url('uploads/nilai/'.$detail->nilai).'" target="_blank">'.$detail->nilai.'</a>':'Belum unggah';?>
-            </div>
-            <div>
-                <button type="submit" class="btn btn-primary">Simpan</button>
-            </div>
-        </form>
-        </div>
-    </div>
-</div>
-    <div class="col-sm-12">
+<div class="col-sm-12">
         <div class="card mb-3">
     <div class="card-body">
         <h5 class="mb-4">Dokumen</h5>
@@ -236,7 +125,149 @@
     </div>
 </div>
 
+<form method="POST" action="<?= site_url('verifikator/usulan/alihbentukptkis/updatecatatan/'.encrypt($usulan->id))?>">
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="magister">Jumlah Magister</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="magister" name="magister" value="<?= $detail->magister ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="doktor">Jumlah Doktor</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="doktor" name="doktor" value="<?= $detail->magister ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="asisten_ahli">Jumlah Asisten Ahli</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="asisten_ahli" name="asisten_ahli" value="<?= $detail->asisten_ahli ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="lektor">Jumlah Lektor</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="lektor" name="lektor" value="<?= $detail->lektor ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="lektor_kepala">Jumlah Lektor Kepala</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="lektor_kepala" name="lektor_kepala" value="<?= $detail->lektor_kepala ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="guru_besar">Jumlah Guru Besar</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="guru_besar" name="guru_besar" value="<?= $detail->guru_besar ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="mahasiswa">Jumlah Mahasiswa</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="<?= $detail->mahasiswa ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="rasio_dm">Jumlah Rasio Dosen:Mahasiswa</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="rasio_dm" name="rasio_dm" value="<?= $detail->rasio_dm ?>">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="akreditasi_no">Prodi Tidak Terakreditasi</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="akreditasi_no" name="akreditasi_no" value="<?= $detail->akreditasi_no ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="akreditasi_unggul">Jumlah Prodi Terakreditasi Unggul/A</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="akreditasi_unggul" name="akreditasi_unggul" value="<?= $detail->akreditasi_unggul ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="akreditasi_baiksekali">Jumlah Prodi Terakreditasi Baik Sekali/B</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="akreditasi_baiksekali" name="akreditasi_baiksekali" value="<?= $detail->akreditasi_baiksekali ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="akreditasi_baik">Jumlah Prodi Terakreditasi Baik</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="akreditasi_baik" name="akreditasi_baik" value="<?= $detail->akreditasi_baik ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="fakultas">Jumlah Fakultas</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="fakultas" name="fakultas" value="<?= $detail->lektor_kepala ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="prodi">Jumlah Prodi</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="prodi" name="prodi" value="<?= $detail->prodi ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="pelaporan">Pelaporan PD Dikti (Contoh: 1-100)</label>
+                    <div class="col-sm-4">
+                    <input type="text" class="form-control" id="pelaporan" name="pelaporan" value="<?= $detail->pelaporan ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="rasio_dm">Luas Tanah</label>
+                    <div class="col-sm-4">
+                        <div class="input-group input-group-merge">
+                            <input type="text" id="tanah" name="tanah" class="form-control" aria-describedby="basic-tanah" value="<?= $detail->tanah ?>" />
+                            <span class="input-group-text" id="basic-tanah">M²</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-6">
+                <textarea name="catatan" id="catatan" class="form-control" rows="4"><?= $detail->catatan ?></textarea>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
 
+
+<div class="row mt-3">
+<div class="col-sm-12">
+<div class="card mb-3">
+    <div class="card-body">
+        
+        <h5 class="mb-4">Instrumen Penilaian Verifikator</h5>
+        <p>Download template <a href="<?= base_url('template/template_instrumen_alihbentuk.xlsx') ?>" class="btn btn-sm btn-primary">di sini</a></p>
+        <form action="<?= site_url('verifikator/usulan/alihbentukptkis/upnilai/'.encrypt($detail->id))?>" method="POST" enctype="multipart/form-data">
+            <div class="mb-6">
+                <input type="file" name="lampiran" id="lampiran" class="form-control">
+                <?= ($detail->nilai)?'<a href="'.base_url('uploads/nilai/'.$detail->nilai).'" target="_blank">'.$detail->nilai.'</a>':'Belum unggah';?>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Simpan</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+</div>
 <div id="preview" class="modal fade" data-bs-backdrop="static" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">

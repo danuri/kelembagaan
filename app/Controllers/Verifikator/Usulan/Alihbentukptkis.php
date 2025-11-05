@@ -97,7 +97,26 @@ class Alihbentukptkis extends BaseController
 
         $catatan = $this->request->getPost('catatan');
 
-        $model->where('usulan_id', $id)->set(['catatan' => $catatan])->update();
+        $model->where('usulan_id', $id)->set([
+            'magister' => $this->request->getPost('magister'),
+            'doktor' => $this->request->getPost('doktor'),
+            'asisten_ahli' => $this->request->getPost('asisten_ahli'),
+            'lektor' => $this->request->getPost('lektor'),
+            'lektor_kepala' => $this->request->getPost('lektor_kepala'),
+            'guru_besar' => $this->request->getPost('guru_besar'),
+            'akreditasi_no' => $this->request->getPost('akreditasi_no'),
+            'akreditasi_unggul' => $this->request->getPost('akreditasi_unggul'),
+            'akreditasi_baiksekali' => $this->request->getPost('akreditasi_baiksekali'),
+            'akreditasi_baik' => $this->request->getPost('akreditasi_baik'),
+            'mahasiswa' => $this->request->getPost('mahasiswa'),
+            'rasio_dm' => $this->request->getPost('rasio_dm'),
+            'fakultas' => $this->request->getPost('fakultas'),
+            'prodi' => $this->request->getPost('prodi'),
+            'pelaporan' => $this->request->getPost('pelaporan'),
+            'tanah' => $this->request->getPost('tanah'),
+            'kepemilikan_tanah' => $this->request->getPost('kepemilikan_tanah'),
+            'catatan' => $catatan
+          ])->update();
 
         return redirect()->back()->with('message', 'Catatan verifikator telah diperbarui.');
     }

@@ -5,7 +5,7 @@ namespace App\Controllers\User;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\UsulanModel;
-use App\Models\FaiModel;
+use App\Models\AlihkelolaModel;
 use App\Models\CrudModel;
 use App\Models\LogModel;
 
@@ -21,7 +21,7 @@ class Alihkelolaptkis extends BaseController
     function detail($id) {
         $id = decrypt($id);
         $model = new UsulanModel();
-        $detail = new FaiModel();
+        $detail = new AlihkelolaModel();
         $data['usulan'] = $model->where('id', $id)->where('user_id', user_id())->first();
         $data['detail'] = $detail->where('usulan_id', $id)->first();
         if (!$data['usulan']) {
@@ -58,7 +58,7 @@ class Alihkelolaptkis extends BaseController
             'user_id' => user_id(),
             'status' => 0
         ]);
-        $ptkisModel = new FaiModel();
+        $ptkisModel = new AlihkelolaModel();
         $ptkisModel->save([
             'usulan_id' => $usulanModel->getInsertID(),
             'nama_lembaga' => $this->request->getPost('nama_lembaga'),
@@ -83,7 +83,7 @@ class Alihkelolaptkis extends BaseController
             'nama_lembaga' => $request_data['nama_lembaga'],
         ]);
 
-        $detailModel = new FaiModel();
+        $detailModel = new AlihkelolaModel();
         $detailModel
         ->where('usulan_id',$request_data['usul_id'])
         ->set([
