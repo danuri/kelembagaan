@@ -72,6 +72,40 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
         $routes->post('update', 'Supervisor\Settings::updateSettings');
     });
 
+    $routes->group("master", function ($routes) {
+        
+        $routes->group("users", function ($routes) {
+            $routes->get('', 'Supervisor\Users::index');
+            $routes->get('getdata', 'Supervisor\Users::getdata');
+            $routes->get('cari', 'Supervisor\Users::cari');
+            $routes->get('detail/(:any)', 'Supervisor\Users::detail/$1');
+            $routes->post('save', 'Supervisor\Users::save');
+        });
+        
+        $routes->group("layanan", function ($routes) {
+            $routes->get('', 'Supervisor\Layanan::index');
+            $routes->post('save', 'Supervisor\Layanan::save');
+            $routes->get('delete/(:num)', 'Supervisor\Layanan::delete/$1');
+            $routes->get('dokumen/(:num)', 'Supervisor\Layanan::dokumen/$1');
+            $routes->get('dokumen/delete/(:num)', 'Supervisor\Layanan::dokumendelete/$1');
+            $routes->post('dokumen/save', 'Supervisor\Layanan::dokumensave');
+        });
+
+        $routes->group("info", function ($routes) {
+            $routes->get('', 'Supervisor\Info::index');
+            $routes->post('save', 'Supervisor\Info::save');
+            $routes->get('delete/(:num)', 'Supervisor\Info::delete/$1');
+            $routes->get('detail/(:any)', 'Supervisor\Info::detail/$1');
+            $routes->get('preview/(:any)', 'Supervisor\Info::preview/$1');
+        });
+
+        $routes->group('settings', static function ($routes) {
+            $routes->get('/', 'Supervisor\Settings::index');
+            $routes->post('update', 'Supervisor\Settings::updateSettings');
+        });
+
+    });
+
     $routes->group('usulan', static function ($routes) {
         $routes->get('/', 'Supervisor\Usulan::index');
         $routes->get('getdata', 'Supervisor\Usulan::getdata');

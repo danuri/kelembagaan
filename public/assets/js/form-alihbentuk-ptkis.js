@@ -15,7 +15,7 @@
     const wizardValidationForm = wizardValidation.querySelector('#wizard-validation-form');
     // Wizard steps
     const wizardValidationFormStep1 = wizardValidationForm.querySelector('#account-details-validation');
-    const wizardValidationFormStep2 = wizardValidationForm.querySelector('#personal-info-validation');
+    // const wizardValidationFormStep2 = wizardValidationForm.querySelector('#personal-info-validation');
     const wizardValidationFormStep3 = wizardValidationForm.querySelector('#document-validation');
     // Wizard next prev button
     const wizardValidationNext = [].slice.call(wizardValidationForm.querySelectorAll('.btn-next'));
@@ -91,66 +91,66 @@
     });
 
     // Personal info
-    const FormValidation2 = FormValidation.formValidation(wizardValidationFormStep2, {
-      fields: {
-        magister: {
-          validators: {
-            notEmpty: {
-              message: 'Jumlah Magister harus diisi'
-            }
-          }
-        },
-        doktor: {
-          validators: {
-            notEmpty: {
-                message: 'Jumlah Doktor harus diisi'
-            }
-          }
-        },
-      },
-      plugins: {
-        trigger: new FormValidation.plugins.Trigger(),
-        bootstrap5: new FormValidation.plugins.Bootstrap5({
-          // Use this for enabling/changing valid/invalid class
-          // eleInvalidClass: '',
-          eleValidClass: '',
-          rowSelector: '.form-control-validation'
-        }),
-        autoFocus: new FormValidation.plugins.AutoFocus(),
-        submitButton: new FormValidation.plugins.SubmitButton()
-      }
-    }).on('core.form.valid', function () {
-      // Jump to the next step when all fields in the current step are valid
-      // validationStepper.next();
-      axios.post(siteurl + '/layanan/alihbentukptkis/updateform2', {
-          usul_id: $('#usul_id').val(),
-          magister: $('#magister').val(),
-          doktor: $('#doktor').val(),
-          asisten_ahli: $('#asisten_ahli').val(),
-          lektor: $('#lektor').val(),
-          lektor_kepala: $('#lektor_kepala').val(),
-          guru_besar: $('#guru_besar').val(),
-          akreditasi_no: $('#akreditasi_no').val(),
-          akreditasi_unggul: $('#akreditasi_unggul').val(),
-          akreditasi_baiksekali: $('#akreditasi_baiksekali').val(),
-          akreditasi_baik: $('#akreditasi_baik').val(),
-          mahasiswa: $('#mahasiswa').val(),
-          rasio_dm: $('#rasio_dm').val(),
-          fakultas: $('#fakultas').val(),
-          prodi: $('#prodi').val(),
-          pelaporan: $('#pelaporan').val(),
-          tanah: $('#tanah').val(),
-          kepemilikan_tanah: $('#kepemilikan_tanah').val(),
+    // const FormValidation2 = FormValidation.formValidation(wizardValidationFormStep2, {
+    //   fields: {
+    //     magister: {
+    //       validators: {
+    //         notEmpty: {
+    //           message: 'Jumlah Magister harus diisi'
+    //         }
+    //       }
+    //     },
+    //     doktor: {
+    //       validators: {
+    //         notEmpty: {
+    //             message: 'Jumlah Doktor harus diisi'
+    //         }
+    //       }
+    //     },
+    //   },
+    //   plugins: {
+    //     trigger: new FormValidation.plugins.Trigger(),
+    //     bootstrap5: new FormValidation.plugins.Bootstrap5({
+    //       // Use this for enabling/changing valid/invalid class
+    //       // eleInvalidClass: '',
+    //       eleValidClass: '',
+    //       rowSelector: '.form-control-validation'
+    //     }),
+    //     autoFocus: new FormValidation.plugins.AutoFocus(),
+    //     submitButton: new FormValidation.plugins.SubmitButton()
+    //   }
+    // }).on('core.form.valid', function () {
+    //   // Jump to the next step when all fields in the current step are valid
+    //   // validationStepper.next();
+    //   axios.post(siteurl + '/layanan/alihbentukptkis/updateform2', {
+    //       usul_id: $('#usul_id').val(),
+    //       magister: $('#magister').val(),
+    //       doktor: $('#doktor').val(),
+    //       asisten_ahli: $('#asisten_ahli').val(),
+    //       lektor: $('#lektor').val(),
+    //       lektor_kepala: $('#lektor_kepala').val(),
+    //       guru_besar: $('#guru_besar').val(),
+    //       akreditasi_no: $('#akreditasi_no').val(),
+    //       akreditasi_unggul: $('#akreditasi_unggul').val(),
+    //       akreditasi_baiksekali: $('#akreditasi_baiksekali').val(),
+    //       akreditasi_baik: $('#akreditasi_baik').val(),
+    //       mahasiswa: $('#mahasiswa').val(),
+    //       rasio_dm: $('#rasio_dm').val(),
+    //       fakultas: $('#fakultas').val(),
+    //       prodi: $('#prodi').val(),
+    //       pelaporan: $('#pelaporan').val(),
+    //       tanah: $('#tanah').val(),
+    //       kepemilikan_tanah: $('#kepemilikan_tanah').val(),
 
-        })
-        .then(response => {
-          console.log(response.data);
-          validationStepper.next();
-        })
-        .catch(error => {
-          console.error(error);
-        });
-    });
+    //     })
+    //     .then(response => {
+    //       console.log(response.data);
+    //       validationStepper.next();
+    //     })
+    //     .catch(error => {
+    //       console.error(error);
+    //     });
+    // });
 
     const FormValidation3 = FormValidation.formValidation(wizardValidationFormStep3, {
       fields: {

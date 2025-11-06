@@ -104,23 +104,23 @@
               </a>
               <ul class="menu-sub">
                 <li class="menu-item">
-                  <a href="charts-apex.html" class="menu-link">
+                  <a href="<?= site_url('supervisor/master/layanan')?>" class="menu-link">
                     <div data-i18n="Apex Charts">Layanan</div>
                   </a>
                 </li>
                 <li class="menu-item">
-                  <a href="charts-chartjs.html" class="menu-link">
+                  <a href="<?= site_url('supervisor/master/dokumen')?>" class="menu-link">
                     <div data-i18n="ChartJS">Dokumen</div>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="menu-item">
+            <!-- <li class="menu-item">
               <a href="<?= site_url('supervisor/template')?>" class="menu-link">
                 <i class="menu-icon icon-base ti tabler-file"></i>
                 <div data-i18n="Pengguna">Template SK</div>
               </a>
-            </li>
+            </li> -->
             <li class="menu-item">
               <a href="<?= site_url('supervisor/lembaga')?>" class="menu-link">
                 <i class="menu-icon icon-base ti tabler-file"></i>
