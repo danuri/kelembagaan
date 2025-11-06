@@ -37,7 +37,7 @@
               <td><?= $usulan->nama_lembaga ?></td>
               <td><?= usul_status($usulan->status) ?></td>
               <td>
-                <?php if($usulan->status == 0): ?>
+                <?php if($usulan->status == 0 || $usulan->status == 21): ?>
                   <a href="<?= site_url('layanan/pendirianptkis/prodi/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-warning">Prodi</a>
                   <a href="<?= site_url('layanan/pendirianptkis/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
                   <a href="javascript:void(0)" class="btn btn-sm btn-danger" onclick="deleteUsulan('<?= encrypt($usulan->id) ?>')">Delete</a>

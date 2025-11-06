@@ -251,12 +251,12 @@
             break;
 
           case 1:
-            FormValidation2.validate();
-            break;
-
-          case 2:
             FormValidation3.validate();
             break;
+
+          // case 2:
+          //   FormValidation3.validate();
+          //   break;
 
           default:
             break;
@@ -267,9 +267,9 @@
     wizardValidationPrev.forEach(item => {
       item.addEventListener('click', event => {
         switch (validationStepper._currentIndex) {
-          case 2:
-            validationStepper.previous();
-            break;
+          // case 2:
+          //   validationStepper.previous();
+          //   break;
 
           case 1:
             validationStepper.previous();
@@ -285,109 +285,6 @@
   }
 })();
 
-function getKabupaten(provinsiId) {
-  // AJAX request
-  $.ajax({
-    url: '/ajax/regencies/' + provinsiId,
-    type: 'GET',
-    dataType: 'json',
-    success: function (response) {
-      // Clear existing options
-      $('#kabupaten').empty();
-      $('#kecamatan').empty();
-      $('#kelurahan').empty();
-      $('#kabupaten').append('<option value="">Pilih Kabupaten</option>');
-      $('#kecamatan').append('<option value="">Pilih Kecamatan</option>');
-      $('#kelurahan').append('<option value="">Pilih Kelurahan</option>');
-
-      // Populate new options
-      $.each(response, function (index, kabupaten) {
-        $('#kabupaten').append('<option value="' + kabupaten.id + '">' + kabupaten.name + '</option>');
-      });
-    },
-    error: function (xhr, status, error) {
-      console.error('Error fetching kabupaten:', error);
-    }
-  });
-}
-
-function getKecamatan(kabupatenId) {
-  // AJAX request
-  $.ajax({
-    url: '/ajax/districts/' + kabupatenId,
-    type: 'GET',
-    dataType: 'json',
-    success: function (response) {
-      // Clear existing options
-      $('#kecamatan').empty();
-      $('#kelurahan').empty();
-      $('#kecamatan').append('<option value="">Pilih Kecamatan</option>');
-      $('#kelurahan').append('<option value="">Pilih Kelurahan</option>');
-
-      // Populate new options
-      $.each(response, function (index, kecamatan) {
-        $('#kecamatan').append('<option value="' + kecamatan.id + '">' + kecamatan.name + '</option>');
-      });
-    },
-    error: function (xhr, status, error) {
-      console.error('Error fetching kecamatan:', error);
-    }
-  });
-}
-
-function getKelurahan(kecamatanId) {
-  // AJAX request
-  $.ajax({
-    url: '/ajax/villages/' + kecamatanId,
-    type: 'GET',
-    dataType: 'json',
-    success: function (response) {
-      // Clear existing options
-      $('#kelurahan').empty();
-      $('#kelurahan').append('<option value="">Pilih Kelurahan</option>');
-
-      // Populate new options
-      $.each(response, function (index, kelurahan) {
-        $('#kelurahan').append('<option value="' + kelurahan.id + '">' + kelurahan.name + '</option>');
-      });
-    },
-    error: function (xhr, status, error) {
-      console.error('Error fetching kelurahan:', error);
-    }
-  });
-}
-// Event listener for provinsi change
-$('#provinsi').on('change', function () {
-  const provinsiId = $(this).val();
-  if (provinsiId) {
-    getKabupaten(provinsiId);
-  } else {
-    $('#kabupaten').empty().append('<option value="">Pilih Kabupaten</option>');
-    $('#kecamatan').empty().append('<option value="">Pilih Kecamatan</option>');
-    $('#kelurahan').empty().append('<option value="">Pilih Kelurahan</option>');
-  }
-});
-
-// Event listener for kabupaten change
-$('#kabupaten').on('change', function () {
-  const kabupatenId = $(this).val();
-  if (kabupatenId) {
-    getKecamatan(kabupatenId);
-  } else {
-    $('#kecamatan').empty().append('<option value="">Pilih Kecamatan</option>');
-    $('#kelurahan').empty().append('<option value="">Pilih Kelurahan</option>');
-  }
-});
-
-// Event listener for kecamatan change
-$('#kecamatan').on('change', function () {
-  const kecamatanId = $(this).val();
-  if (kecamatanId) {
-    getKelurahan(kecamatanId);
-  } else {
-    $('#kelurahan').empty().append('<option value="">Pilih Kelurahan</option>');
-  }
-});
 
 function confirmSubmit() {
   Swal.fire({

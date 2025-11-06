@@ -26,21 +26,9 @@
                       <div class="line">
                         <i class="icon-base ti tabler-chevron-right"></i>
                       </div>
-                      <div class="step" data-target="#personal-info-validation">
-                        <button type="button" class="step-trigger">
-                          <span class="bs-stepper-circle">2</span>
-                          <span class="bs-stepper-label">
-                            <span class="bs-stepper-title">Informasi Kelembagaan</span>
-                            <span class="bs-stepper-subtitle">Isi dengan data yang sesuai</span>
-                          </span>
-                        </button>
-                      </div>
-                      <div class="line">
-                        <i class="icon-base ti tabler-chevron-right"></i>
-                      </div>
                       <div class="step" data-target="#document-validation">
                         <button type="button" class="step-trigger">
-                          <span class="bs-stepper-circle">3</span>
+                          <span class="bs-stepper-circle">2</span>
                           <span class="bs-stepper-label">
                             <span class="bs-stepper-title">Dokumen Persyaratan</span>
                             <span class="bs-stepper-subtitle">Dokumen Persyaratan Pendukung</span>
@@ -110,107 +98,6 @@
                             </div>
                           </div>
                         </div>
-                        <div id="personal-info-validation" class="content">
-                          <div class="content-header mb-4">
-                            <h6 class="mb-0">Informasi Permohonan Alih Bentuk</h6>
-                            <small>Lengkapi Informasi di bawah ini.</small>
-                          </div>
-                          <div class="row g-6">
-                            <div class="col-sm-6">
-                              <h5>Data Dosen</h5>
-                                <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="magister">Jumlah Magister</label>
-                                  <input type="number" id="magister" name="magister" class="form-control" value="<?= $detail->magister?>" />
-                                </div>
-                                <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="doktor">Jumlah Doktor</label>
-                                  <input type="number" id="doktor" name="doktor" class="form-control" value="<?= $detail->doktor?>" />
-                                </div>
-                                <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="asisten_ahli">Jumlah Asisten Ahli</label>
-                                  <input type="number" id="asisten_ahli" name="asisten_ahli" class="form-control" value="<?= $detail->asisten_ahli?>" />
-                                </div>
-                                <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="lektor">Jumlah Lektor</label>
-                                  <input type="number" id="lektor" name="lektor" class="form-control" value="<?= $detail->lektor?>" />
-                                </div>
-                                <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="lektor_kepala">Jumlah Lektor Kepala</label>
-                                  <input type="number" id="lektor_kepala" name="lektor_kepala" class="form-control" value="<?= $detail->lektor_kepala?>" />
-                                </div>
-                                <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="guru_besar">Jumlah Guru Besar</label>
-                                  <input type="number" id="guru_besar" name="guru_besar" class="form-control" value="<?= $detail->guru_besar?>" />
-                                </div>
-
-                            </div>
-                            <div class="col-sm-6">
-                              <h5>Akreditasi</h5>
-                              <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="akreditasi_no">Tidak Terakreditasi</label>
-                                  <input type="number" id="akreditasi_no" name="akreditasi_no" class="form-control" value="<?= $detail->akreditasi_no?>" />
-                              </div>
-                              <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="akreditasi_unggul">Jumlah Prodi Terakreditasi Unggul/A</label>
-                                  <input type="number" id="akreditasi_unggul" name="akreditasi_unggul" class="form-control" value="<?= $detail->akreditasi_unggul?>" />
-                              </div>
-                              <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="akreditasi_baiksekali">Jumlah Prodi Terakreditasi Baik Sekali/B</label>
-                                  <input type="number" id="akreditasi_baiksekali" name="akreditasi_baiksekali" class="form-control" value="<?= $detail->akreditasi_baiksekali?>" />
-                              </div>
-                              <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="akreditasi_baik">Jumlah Prodi Terakreditasi Baik</label>
-                                  <input type="number" id="akreditasi_baik" name="akreditasi_baik" class="form-control" value="<?= $detail->akreditasi_baik?>" />
-                              </div>
-                              <h5>Data Lainnya</h5>
-                              <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="mahasiswa">Jumlah Mahasiswa</label>
-                                  <input type="number" id="mahasiswa" name="mahasiswa" class="form-control" value="<?= $detail->mahasiswa?>" />
-                              </div>
-                              <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="rasio_dm">Jumlah Rasio Dosen:Mahasiswa (Contoh: 1:24)</label>
-                                  <input type="text" id="rasio_dm" name="rasio_dm" class="form-control" value="<?= $detail->rasio_dm?>" />
-                              </div>
-                              <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="fakultas">Jumlah Fakultas</label>
-                                  <input type="number" id="fakultas" name="fakultas" class="form-control" value="<?= $detail->fakultas?>" />
-                              </div>
-                              <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="prodi">Jumlah Prodi</label>
-                                  <input type="number" id="prodi" name="prodi" class="form-control" value="<?= $detail->prodi?>" />
-                              </div>
-                              <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="pelaporan">Pelaporan PD Dikti (Contoh: 1-100)</label>
-                                  <input type="number" id="pelaporan" name="pelaporan" class="form-control" value="<?= $detail->pelaporan?>" />
-                              </div>
-                              <div class="mb-3 form-control-validation">
-                                <label class="form-label" for="tanah">Luas Tanah</label>
-                                <div class="input-group">
-                                  <input type="text" class="form-control" aria-describedby="basic-addon13" value="<?= $detail->tanah?>" name="tanah" id="tanah"/>
-                                  <span class="input-group-text" id="tanah">M²</span>
-                                </div>
-                              </div>
-                              <div class="mb-3 form-control-validation">
-                                  <label class="form-label" for="kepemilikan_tanah">Kepemilikan Tanah</label>
-                                  <select name="kepemilikan_tanah" id="kepemilikan_tanah" class="form-select">
-                                    <option value="Perorangan">Perorangan</option>
-                                    <option value="Yayasan">Yayasan</option>
-                                  </select>
-                              </div>
-                            </div>
-                            </div>
-                            
-                            <div class="col-12 d-flex justify-content-between">
-                              <button class="btn btn-label-secondary btn-prev">
-                                <i class="icon-base ti tabler-arrow-left icon-xs me-sm-2 me-0"></i>
-                                <span class="align-middle d-sm-inline-block d-none">Sebelumnya</span>
-                              </button>
-                              <button class="btn btn-primary btn-next">
-                                <span class="align-middle d-sm-inline-block d-none me-sm-2">Simpan & Selanjutnya</span>
-                                <i class="icon-base ti tabler-arrow-right icon-xs"></i>
-                              </button>
-                            </div>
-                          </div>
                         
                         <!-- Social Links -->
                         <div id="document-validation" class="content">
