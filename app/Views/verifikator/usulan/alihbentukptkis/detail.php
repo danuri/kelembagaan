@@ -82,9 +82,48 @@
     </div>
 </div>
 <div class="col-sm-12">
-        <div class="card mb-3">
-    <div class="card-body">
-        <h5 class="mb-4">Dokumen</h5>
+    <div class="nav-align-top">
+                    <ul class="nav nav-pills mb-4" role="tablist">
+                      <li class="nav-item">
+                        <button
+                          type="button"
+                          class="nav-link active"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#navs-pills-top-home"
+                          aria-controls="navs-pills-top-home"
+                          aria-selected="true">
+                          Dokumen
+                        </button>
+                      </li>
+                      <li class="nav-item">
+                        <button
+                          type="button"
+                          class="nav-link"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#navs-pills-top-profile"
+                          aria-controls="navs-pills-top-profile"
+                          aria-selected="false">
+                          Penilaian Statistik
+                        </button>
+                      </li>
+                      <li class="nav-item">
+                        <button
+                          type="button"
+                          class="nav-link"
+                          role="tab"
+                          data-bs-toggle="tab"
+                          data-bs-target="#navs-pills-instumen"
+                          aria-controls="navs-pills-instumen"
+                          aria-selected="false">
+                          Instrumen Penilaian
+                        </button>
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane fade show active" id="navs-pills-top-home" role="tabpanel">
+                        <h5 class="mb-4">Dokumen</h5>
         <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -121,11 +160,9 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
-        </div>
-    </div>
-</div>
-
-<form method="POST" action="<?= site_url('verifikator/usulan/alihbentukptkis/updatecatatan/'.encrypt($usulan->id))?>">
+                      </div>
+                      <div class="tab-pane fade" id="navs-pills-top-profile" role="tabpanel">
+                        <form method="POST" action="<?= site_url('verifikator/usulan/alihbentukptkis/updatecatatan/'.encrypt($usulan->id))?>">
 <div class="row">
     <div class="col-sm-6">
         <div class="card">
@@ -246,14 +283,9 @@
     </div>
 </div>
 </form>
-
-
-<div class="row mt-3">
-<div class="col-sm-12">
-<div class="card mb-3">
-    <div class="card-body">
-        
-        <h5 class="mb-4">Instrumen Penilaian Verifikator</h5>
+                      </div>
+                      <div class="tab-pane fade" id="navs-pills-instumen" role="tabpanel">
+                        <h5 class="mb-4">Instrumen Penilaian Verifikator</h5>
         <p>Download template <a href="<?= base_url('template/template_instrumen_alihbentuk.xlsx') ?>" class="btn btn-sm btn-primary">di sini</a></p>
         <form action="<?= site_url('verifikator/usulan/alihbentukptkis/upnilai/'.encrypt($detail->id))?>" method="POST" enctype="multipart/form-data">
             <div class="mb-6">
@@ -264,10 +296,13 @@
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </div>
         </form>
-        </div>
-    </div>
+                       </div>
+                    </div>
+                  </div>
+                </div>
+        
 </div>
-</div>
+
 <div id="preview" class="modal fade" data-bs-backdrop="static" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">

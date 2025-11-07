@@ -42,12 +42,21 @@ $routes->group('verifikator', ['filter' => 'group:verifikator'], static function
         });
 
         $routes->group('pembentukanfai', static function ($routes) {
-            $routes->get('detail/(:any)', 'Verifikator\Usulan\Alihbentukptkis::detail/$1');
-            $routes->get('validasidokumen/(:any)/(:any)/(:any)', 'Verifikator\Usulan\Alihbentukptkis::validasidokumen/$1/$2/$3');
-            $routes->post('decline/(:any)', 'Verifikator\Usulan\Alihbentukptkis::decline/$1');
-            $routes->post('updatecatatan/(:any)', 'Verifikator\Usulan\Alihbentukptkis::updatecatatan/$1');
-            $routes->get('accept/(:any)', 'Verifikator\Usulan\Alihbentukptkis::accept/$1');
-            $routes->get('proses/(:any)', 'Verifikator\Usulan\Alihbentukptkis::proses/$1');
+            $routes->get('detail/(:any)', 'Verifikator\Usulan\Pembentukanfai::detail/$1');
+            $routes->get('validasidokumen/(:any)/(:any)/(:any)', 'Verifikator\Usulan\Pembentukanfai::validasidokumen/$1/$2/$3');
+            $routes->post('decline/(:any)', 'Verifikator\Usulan\Pembentukanfai::decline/$1');
+            $routes->post('updatecatatan/(:any)', 'Verifikator\Usulan\Pembentukanfai::updatecatatan/$1');
+            $routes->get('accept/(:any)', 'Verifikator\Usulan\Pembentukanfai::accept/$1');
+            $routes->get('proses/(:any)', 'Verifikator\Usulan\Pembentukanfai::proses/$1');
+        });
+
+        $routes->group('alihkelolaptkis', static function ($routes) {
+            $routes->get('detail/(:any)', 'Verifikator\Usulan\Alihkelolaptkis::detail/$1');
+            $routes->get('validasidokumen/(:any)/(:any)/(:any)', 'Verifikator\Usulan\Alihkelolaptkis::validasidokumen/$1/$2/$3');
+            $routes->post('decline/(:any)', 'Verifikator\Usulan\Alihkelolaptkis::decline/$1');
+            $routes->post('updatecatatan/(:any)', 'Verifikator\Usulan\Alihkelolaptkis::updatecatatan/$1');
+            $routes->get('accept/(:any)', 'Verifikator\Usulan\Alihkelolaptkis::accept/$1');
+            $routes->get('proses/(:any)', 'Verifikator\Usulan\Alihkelolaptkis::proses/$1');
         });
     });
     
@@ -151,6 +160,22 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
             $routes->get('penilaianasesor/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::penilaianasesor/$1');
             $routes->post('asesor/add', 'Supervisor\Usulan\AlihBentukPtkis::addasesor');
             $routes->post('rkmadetail', 'Supervisor\Usulan\AlihBentukPtkis::rkmadetail');
+        });
+
+        $routes->group('pembentukanfai', static function ($routes) {
+            $routes->get('/', 'Supervisor\Usulan\Pembentukanfai::index');
+            $routes->get('getdata', 'Supervisor\Usulan\Pembentukanfai::getdata');
+            $routes->post('disposisi/(:any)', 'Supervisor\Usulan\Pembentukanfai::disposisi/$1');
+            $routes->get('detail/verifikasi/(:any)', 'Supervisor\Usulan\Pembentukanfai::verifikasi/$1');
+            $routes->get('detail/(:any)', 'Supervisor\Usulan\Pembentukanfai::detail/$1');
+        });
+
+        $routes->group('alihkelolaptkis', static function ($routes) {
+            $routes->get('/', 'Supervisor\Usulan\Pembentukanfai::index');
+            $routes->get('getdata', 'Supervisor\Usulan\Pembentukanfai::getdata');
+            $routes->post('disposisi/(:any)', 'Supervisor\Usulan\Pembentukanfai::disposisi/$1');
+            $routes->get('detail/verifikasi/(:any)', 'Supervisor\Usulan\Pembentukanfai::verifikasi/$1');
+            $routes->get('detail/(:any)', 'Supervisor\Usulan\Pembentukanfai::detail/$1');
         });
     });
 

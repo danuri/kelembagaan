@@ -34,31 +34,6 @@ if ( ! function_exists('ago'))
   }
 }
 
-if ( ! function_exists('get_option'))
-{
-	function get_option($name)
-	{
-		$CI =& get_instance();
-
-		$CI->db->where('option_name',$name);
-        $query	= $CI->db->get('options');
-        $result = $query->row();
-
-		return $result->option_value;
-	}
-}
-
-if ( ! function_exists('update_option'))
-{
-	function update_option($name,$value)
-	{
-		$CI =& get_instance();
-    $CI->cms_model->update('options',array('option_value' => $value), array('option_name' => $name));
-
-		return true;
-	}
-}
-
 function hari($date)
 {
 	$day = date('N', strtotime($date));
@@ -440,6 +415,10 @@ function hp($nohp) {
      $result = 'pendirianptkis';
    }else if($jenis == 2){
      $result = 'alihbentukptkis';
+   }else if($jenis == 3){
+     $result = 'alihkelolaptkis';
+   }else if($jenis == 4){
+     $result = 'pembentukanfai';
    }else{
      $result = '-';
    }

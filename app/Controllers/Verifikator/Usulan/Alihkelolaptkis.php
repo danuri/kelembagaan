@@ -6,25 +6,25 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\LayananModel;
 use App\Models\UsulanModel;
-use App\Models\FaiModel;
+use App\Models\AlihkelolaModel;
 use App\Models\UsulDokumenModel;
 use App\Models\CrudModel;
 use App\Models\LogModel;
 
-class Pembentukanfai extends BaseController
+class Alihkelolaptkis extends BaseController
 {
     public function index()
     {
         $layananModel = new LayananModel();
         $data['layanan'] = $layananModel->findAll();
 
-        return view('verifikator/usulan/pembentukanfai/index', $data);
+        return view('verifikator/usulan/alihkelolaptkis/index', $data);
     }
 
     function detail($id) {
         $id = decrypt($id);
         $model = new UsulanModel();
-        $detail = new FaiModel();
+        $detail = new AlihkelolaModel();
         $data['usulan'] = $model->where('id', $id)->first();
         $data['detail'] = $detail->where('usulan_id', $id)->first();
 
@@ -32,9 +32,9 @@ class Pembentukanfai extends BaseController
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
 
         if ($data['usulan']->status == 3) {
-            return view('verifikator/usulan/pembentukanfai/detail', $data);
+            return view('verifikator/usulan/alihkelolaptkis/detail', $data);
         }else{
-            return view('verifikator/usulan/pembentukanfai/detail_view', $data);
+            return view('verifikator/usulan/alihkelolaptkis/detail_view', $data);
         }
     }
 
@@ -92,7 +92,7 @@ class Pembentukanfai extends BaseController
 
     function updatecatatan($id) {
         $id = decrypt($id);
-        $model = new FaiModel();
+        $model = new AlihkelolaModel();
 
         $catatan = $this->request->getPost('catatan');
 

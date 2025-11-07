@@ -5,10 +5,11 @@ namespace App\Controllers\Supervisor\Usulan;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\UsulanModel;
-use App\Models\FaiModel;
+use App\Models\AlihkelolaModel;
 use App\Models\CrudModel;
 use App\Models\LogModel;
-class Pembentukanfai extends BaseController
+
+class Alihkelolaptkis extends BaseController
 {
     public function index()
     {
@@ -18,7 +19,7 @@ class Pembentukanfai extends BaseController
     function detail($id) {
         $id = decrypt($id);
         $model = new UsulanModel();
-        $detail = new FaiModel();
+        $detail = new AlihkelolaModel();
         $data['usulan'] = $model->where('id', $id)->first();
         $data['detail'] = $detail->where('usulan_id', $id)->first();
 
@@ -36,14 +37,14 @@ class Pembentukanfai extends BaseController
             ->withIdentities()
             ->findAll();
 
-            return view('supervisor/usulan/pembentukanfai/detail', $data);
+            return view('supervisor/usulan/alihkelolaptkis/detail', $data);
         }else{
             $model = new LogModel;
             $data['logs'] = $model->where('id_usul',$id)->findAll();
 
             $users = auth()->getProvider();
             $data['verifikator'] = $users->findById($data['usulan']->verifikator);
-            return view('supervisor/usulan/pembentukanfai/detail_view', $data);
+            return view('supervisor/usulan/alihkelolaptkis/detail_view', $data);
         }
     }
 
@@ -61,7 +62,7 @@ class Pembentukanfai extends BaseController
     function verifikasi($id) {
         $id = decrypt($id);
         $model = new UsulanModel();
-        $detail = new FaiModel();
+        $detail = new AlihkelolaModel();
         $data['usulan'] = $model->where('id', $id)->first();
         $data['detail'] = $detail->where('usulan_id', $id)->first();
 
@@ -71,6 +72,6 @@ class Pembentukanfai extends BaseController
         $users = auth()->getProvider();
         $data['verifikator'] = $users->findById($data['usulan']->verifikator);
 
-        return view('supervisor/usulan/pembentukanfai/detail_dokumen', $data);
+        return view('supervisor/usulan/alihkelolaptkis/detail_dokumen', $data);
     }
 }
