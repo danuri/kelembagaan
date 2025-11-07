@@ -7,6 +7,7 @@
     <div class="d-flex align-content-center flex-wrap gap-4">
     <div class="d-flex gap-4">
         <button class="btn btn-label-secondary waves-effect">Kembali</button>
+        <a href="<?= site_url('export/reportalihbentukptkis/'.encrypt($usulan->id)) ?>" class="btn btn-label-primary waves-effect" target="_blank">Export</a>
     </div>
     <button type="button" class="btn btn-primary waves-effect waves-light" onclick="declined()">Tolak Usulan</button>
     <button type="button" class="btn btn-success waves-effect waves-light" onclick="accept()">Terima Usulan</button>
