@@ -8,8 +8,10 @@
     <div class="d-flex gap-4">
         <button class="btn btn-label-secondary waves-effect">Kembali</button>
     </div>
-    <button type="button" class="btn btn-primary waves-effect waves-light" onclick="declined()">Tolak Usulan</button>
-    <button type="button" class="btn btn-success waves-effect waves-light" onclick="accept()">Terima Usulan</button>
+    
+    <?php if($usulan->status == 2): ?>
+    <a href="<?= site_url('verifikator/usulan/pembentukanfai/proses/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light">Mulai Verifikasi</a>
+    <?php endif; ?>
     </div>
 </div>
 

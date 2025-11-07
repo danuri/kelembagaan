@@ -121,42 +121,13 @@
 
             </div>
             <div class="modal-footer">
+                <a href="" target="_blank" class="btn btn-primary" id="previewfile">Buka Tab Baru</a>
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
 </div>
 
-<div id="disposisi" class="modal fade" data-bs-backdrop="static" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Disposisi Usulan</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form method="POST" action="<?= site_url('supervisor/usulan/pembentukanfai/disposisi/'.encrypt($usulan->id)) ?>">
-            <div class="modal-body">
-                        <div class="mb-6">
-                          <label class="form-label" for="basic-default-fullname">Verifikator</label>
-                          <select name="verifikator" id="verifikator" class="form-select">
-                            <?php foreach($users as $user): ?>
-                            <option value="<?= $user->id ?>"><?= $user->full_name ?></option>
-                            <?php endforeach; ?>
-                          </select>
-                        </div>
-                        <div class="mb-6">
-                          <label class="form-label" for="basic-default-message">Catatan</label>
-                          <textarea id="catatan" name="catatan" class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
-                        <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
-                    </div>
-                </form>
-        </div>
-    </div>
-</div>
 <?= $this->endSection() ?>
 <?= $this->section('scripts');?>
 <script>
@@ -167,6 +138,7 @@ function preview(berkas) {
   $('#object').html('<object data="'+berkas+'" type="application/pdf" width="100%" style="height: 80vh;" id="object">'+
                       '<p>Browser tidak mendukung!</p>'+
                     '</object>');
+    $('#previewfile').attr('href', berkas);
   $('#preview').modal('show');
 }
 
