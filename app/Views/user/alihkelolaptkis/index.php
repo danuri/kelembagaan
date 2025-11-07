@@ -68,7 +68,7 @@
       <div class="modal-body p-0">
         <div class="onboarding-content mb-0">
           <h4 class="onboarding-title text-body">Buat Usulan</h4>
-          <form action="<?= site_url('layanan/pembentukanfai/create') ?>" method="post" id="usulform">
+          <form action="<?= site_url('layanan/alihkelolaptkis/create') ?>" method="post" id="usulform">
             <div class="row mb-6">
               <label class="col-sm-4 col-form-label" for="nama_lembaga">Nama Lembaga</label>
               <div class="col-sm-8">

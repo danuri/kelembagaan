@@ -171,11 +171,11 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
         });
 
         $routes->group('alihkelolaptkis', static function ($routes) {
-            $routes->get('/', 'Supervisor\Usulan\Pembentukanfai::index');
-            $routes->get('getdata', 'Supervisor\Usulan\Pembentukanfai::getdata');
-            $routes->post('disposisi/(:any)', 'Supervisor\Usulan\Pembentukanfai::disposisi/$1');
-            $routes->get('detail/verifikasi/(:any)', 'Supervisor\Usulan\Pembentukanfai::verifikasi/$1');
-            $routes->get('detail/(:any)', 'Supervisor\Usulan\Pembentukanfai::detail/$1');
+            $routes->get('/', 'Supervisor\Usulan\Alihkelolaptkis::index');
+            $routes->get('getdata', 'Supervisor\Usulan\Alihkelolaptkis::getdata');
+            $routes->post('disposisi/(:any)', 'Supervisor\Usulan\Alihkelolaptkis::disposisi/$1');
+            $routes->get('detail/verifikasi/(:any)', 'Supervisor\Usulan\Alihkelolaptkis::verifikasi/$1');
+            $routes->get('detail/(:any)', 'Supervisor\Usulan\Alihkelolaptkis::detail/$1');
         });
     });
 
@@ -227,12 +227,12 @@ $routes->group('layanan', ['filter' => 'group:user'], static function ($routes) 
     });
 
     $routes->group('pembentukanfai', static function ($routes) {
-        $routes->get('/', 'User\PembentukanFai::index');
-        $routes->post('create', 'User\PembentukanFai::create');
-        $routes->get('detail/(:any)', 'User\PembentukanFai::detail/$1');
-        $routes->post('updateform1', 'User\PembentukanFai::updateform1');
-        $routes->post('updateform2', 'User\PembentukanFai::updateform2');
-        $routes->post('submitusul', 'User\PembentukanFai::submitusul');
+        $routes->get('/', 'User\Pembentukanfai::index');
+        $routes->post('create', 'User\Pembentukanfai::create');
+        $routes->get('detail/(:any)', 'User\Pembentukanfai::detail/$1');
+        $routes->post('updateform1', 'User\Pembentukanfai::updateform1');
+        $routes->post('updateform2', 'User\Pembentukanfai::updateform2');
+        $routes->post('submitusul', 'User\Pembentukanfai::submitusul');
     });
     
     $routes->get('alihbentukptkis', 'Layanan\AlihBentukPTKIS::index');
