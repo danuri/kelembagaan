@@ -38,10 +38,10 @@
               <td><?= usul_status($usulan->status) ?></td>
               <td>
                 <?php if($usulan->status == 0): ?>
-                  <a href="<?= site_url('layanan/pembentukanfai/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
+                  <a href="<?= site_url('layanan/alihkelolaptkis/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
                   <a href="javascript:void(0)" class="btn btn-sm btn-danger" onclick="deleteUsulan('<?= encrypt($usulan->id) ?>')">Delete</a>
                   <?php else:?>
-                    <a href="<?= site_url('layanan/pembentukanfai/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
+                    <a href="<?= site_url('layanan/alihkelolaptkis/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
                     <a href="javascript:void(0)" class="btn btn-sm btn-warning" onclick="log('<?= encrypt($usulan->id) ?>')">Log</a>
                 <?php endif;?>
               </td>
