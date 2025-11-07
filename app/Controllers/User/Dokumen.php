@@ -36,7 +36,7 @@ class Dokumen extends BaseController
         if ($file->isValid() && !$file->hasMoved()) {
             // $newName = $file->getRandomName();
             $newName = $usulanid.'_'.$dokumenid.'.pdf';
-            $file->move('./uploads', $newName);
+            $file->move('./uploads', $newName, true);
         } else {
             // return redirect()->back()->withInput()->with('error', 'File upload failed');
             return $this->response->setJSON([
@@ -177,7 +177,7 @@ class Dokumen extends BaseController
         if ($file->isValid() && !$file->hasMoved()) {
             // $newName = $file->getRandomName();
             $newName = $usulid.'_'.$kode.'.pdf';
-            $file->move('./uploads/prodi', $newName);
+            $file->move('./uploads/prodi', $newName, true);
         } else {
             // return redirect()->back()->withInput()->with('error', 'File upload failed');
             return $this->response->setJSON([
