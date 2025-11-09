@@ -31,7 +31,7 @@ class Alihkelolaptkis extends BaseController
         $crudModel = new CrudModel();
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
 
-        if ($data['usulan']->status == 3) {
+        if ($data['usulan']->status == 3 || $data['usulan']->status == 31) {
             return view('verifikator/usulan/alihkelolaptkis/detail', $data);
         }else{
             return view('verifikator/usulan/alihkelolaptkis/detail_view', $data);

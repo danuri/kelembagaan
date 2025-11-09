@@ -9,6 +9,10 @@
     <div class="d-flex gap-4">
         <button class="btn btn-label-secondary waves-effect">Kembali</button>
     </div>
+    <?php if($usulan->status == 4): ?>
+    <button type="button" class="btn btn-primary waves-effect waves-light" onclick="recheck()">Verifikasi Ulang</button>
+    <a href="<?= site_url('supervisor/usulan/pembentukanfai/done/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light">Usulan Selesai</a>
+    <?php endif; ?>
     </div>
 </div>
 
@@ -142,5 +146,41 @@ function preview(berkas) {
   $('#preview').modal('show');
 }
 
+function recheck() {
+  Swal.fire({
+    text: 'Masukan informasi Pengembalian!',
+    input: 'text',
+    inputAttributes: {
+      autocapitalize: 'off'
+    },
+    showCancelButton: true,
+    confirmButtonText: 'Verifikasi Ulang',
+    showLoaderOnConfirm: true,
+    preConfirm: (data) => {
+      return fetch('<?= site_url('supervisor/usulan/pembentukanfai/recheck/'.encrypt($usulan->id)) ?>', {
+        method: "POST",
+        body: JSON.stringify({ keterangan: data }),
+        headers: {"Content-type": "application/json; charset=UTF-8"}})
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(response.statusText)
+          }
+          return response.json()
+        })
+        .catch(error => {
+          Swal.showValidationMessage(
+            `Request failed: ${error}`
+          )
+        })
+      },
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // reload page
+        window.location.reload();
+        
+      }
+    });
+  }
 </script>
 <?= $this->endSection() ?>

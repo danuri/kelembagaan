@@ -8,6 +8,9 @@
     <div class="d-flex gap-4">
         <a href="<?= site_url('verifikator/usulan') ?>" class="btn btn-label-secondary waves-effect">Kembali</a>
     </div>
+    <?php if($usulan->status == 4): ?>
+    <button type="button" class="btn btn-primary waves-effect waves-light" onclick="recheck()">Verifikasi Ulang</button>
+    <?php endif; ?>
     </div>
 </div>
 
@@ -237,6 +240,43 @@ function preview(berkas) {
                     '</object>');
   $('#preview').modal('show');
 }
+
+function recheck() {
+  Swal.fire({
+    text: 'Masukan informasi Pengembalian!',
+    input: 'text',
+    inputAttributes: {
+      autocapitalize: 'off'
+    },
+    showCancelButton: true,
+    confirmButtonText: 'Verifikasi Ulang',
+    showLoaderOnConfirm: true,
+    preConfirm: (data) => {
+      return fetch('<?= site_url('supervisor/usulan/pendirianptkis/recheck/'.encrypt($usulan->id)) ?>', {
+        method: "POST",
+        body: JSON.stringify({ keterangan: data }),
+        headers: {"Content-type": "application/json; charset=UTF-8"}})
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(response.statusText)
+          }
+          return response.json()
+        })
+        .catch(error => {
+          Swal.showValidationMessage(
+            `Request failed: ${error}`
+          )
+        })
+      },
+      allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // reload page
+        window.location.reload();
+        
+      }
+    });
+  }
 
 </script>
 <?= $this->endSection() ?>

@@ -375,6 +375,8 @@ function hp($nohp) {
      $result = '<span class="badge bg-primary">Disposisi ke Verifikator</span>';
    }else if($status == 3){
      $result = '<span class="badge bg-success">Proses Verifikasi</span>';
+   }else if($status == 31){
+     $result = '<span class="badge bg-success">Verifikasi Ulang</span>';
    }else if($status == 4){
      $result = '<span class="badge bg-primary">Proses Verifikasi Selesai</span>';
    }else if($status == 5){

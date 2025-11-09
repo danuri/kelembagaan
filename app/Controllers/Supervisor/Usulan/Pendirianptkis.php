@@ -197,4 +197,19 @@ class Pendirianptkis extends BaseController
         $update = $model->update($id,['status'=>1]);
         return redirect()->back()->withInput()->with('message', 'Penilaian telah dikembalikan');
     }
+
+    public function recheck($id)
+    {
+      $model = new UsulanModel;
+      
+      $id = decrypt($id);
+      $keterangan = $this->request->getVar('keterangan');
+      $model->update($id,['status'=>31,'keterangan_supervisor'=>$keterangan]);
+
+      $logm = new LogModel();
+      $logm->insert(['id_usul'=>$id,'status_usulan'=>31,'keterangan'=>'Verifikasi Ulang. '.$keterangan,'created_by'=>user_id()]);
+
+      session()->setFlashdata('message', 'Usulan dikembalikan ke Verifikator.');
+      return $this->response->setJSON(['status'=>'success']);
+    }
 }

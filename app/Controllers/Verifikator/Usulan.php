@@ -61,7 +61,7 @@ class Usulan extends BaseController
         $pmodel = new ProdiModel;
         $data['prodi'] = $pmodel->where(['usul_id'=>$id])->findAll();
 
-        if ($data['usulan']->status == 3) {
+        if ($data['usulan']->status == 3 || $data['usulan']->status == 31) {
             return view('verifikator/usulan/detail', $data);
         }else{
             return view('verifikator/usulan/detail_view', $data);
