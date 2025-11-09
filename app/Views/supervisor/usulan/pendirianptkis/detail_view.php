@@ -230,6 +230,22 @@
         </div>
     </div>
 </div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="canvasDoc" aria-labelledby="canvasDocLabel">
+    <div class="offcanvas-header">
+        <h5 id="canvasDocLabel" class="offcanvas-title">Dokumen Pendukung</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body my-auto mx-0 flex-grow-0">
+        <div id="lisdoc"></div>
+        <button
+            type="button"
+            class="btn btn-label-secondary d-grid w-100"
+            data-bs-dismiss="offcanvas">
+            Tutup
+        </button>
+    </div>
+</div>
 <?= $this->endSection() ?>
 <?= $this->section('scripts');?>
 <script>
@@ -277,6 +293,13 @@ function recheck() {
       }
     });
   }
+
+  function showdoc(layanan, usulid) {
+        $('#lisdoc').html('<div class="text-center"><i class="bx bx-loader bx-spin font-size-24"></i></div>');
+        $('#lisdoc').load('<?= site_url('dokumen/verifikasi/') ?>' + layanan + '/' + usulid, function() {
+            $('#canvasDoc').offcanvas('show');
+        });
+    }
 
 </script>
 <?= $this->endSection() ?>

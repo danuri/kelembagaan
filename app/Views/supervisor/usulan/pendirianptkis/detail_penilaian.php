@@ -177,7 +177,7 @@
         <div class="modal-body p-0">
             <div class="onboarding-content mb-0">
             <h4 class="onboarding-title text-body">Penugasan Asesmen Kecukupan</h4>
-            <form action="<?= site_url('supervisor/usulan/pendirianptkis/pendirianptkis/asesor/add') ?>" method="post" id="usulform">
+            <form action="<?= site_url('supervisor/usulan/pendirianptkis/asesor/add') ?>" method="post" id="usulform">
                 <div class="row mb-6">
                 <label class="col-sm-4 col-form-label" for="nomor_surat">Asesor</label>
                 <div class="col-sm-8">

@@ -44,6 +44,11 @@ class Pendirianptkis extends BaseController
             ->withIdentities()
             ->findAll();
 
+            $data['provinsi'] = $crudModel->getRow('reg_provinces',['id'=>$data['detail']->provinsi])->name;
+            $data['kabupaten'] = $crudModel->getRow('reg_regencies',['id'=>$data['detail']->kab_kota])->name;
+            $data['kecamatan'] = $crudModel->getRow('reg_districts',['id'=>$data['detail']->kecamatan])->name;
+            $data['kelurahan'] = $crudModel->getRow('reg_villages',['id'=>$data['detail']->kelurahan])->name;
+
             return view('supervisor/usulan/pendirianptkis/detail', $data);
         }else{
             $model = new LogModel;
