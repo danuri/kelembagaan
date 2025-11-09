@@ -159,19 +159,19 @@
             <tbody>
                 <tr>
                     <td>Provinsi</td>
-                    <td>: <?= $detail->provinsi ?></td>
+                    <td>: <?= $provinsi ?></td>
                 </tr>
                 <tr>
                     <td>Kabupaten/Kota</td>
-                    <td>: <?= $detail->kab_kota ?></td>
+                    <td>: <?= $kabupaten ?></td>
                 </tr>
                 <tr>
                     <td>Kecamatan</td>
-                    <td>: <?= $detail->kecamatan ?></td>
+                    <td>: <?= $kecamatan ?></td>
                 </tr>
                 <tr>
                     <td>Kelurahan</td>
-                    <td>: <?= $detail->kelurahan ?></td>
+                    <td>: <?= $kelurahan ?></td>
                 </tr>
                 <tr>
                     <td>Kode Pos</td>

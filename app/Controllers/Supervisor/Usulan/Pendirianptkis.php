@@ -34,6 +34,11 @@ class Pendirianptkis extends BaseController
         $pmodel = new ProdiModel;
         $data['prodi'] = $pmodel->where(['usul_id'=>$id])->findAll();
 
+        $data['provinsi'] = $crudModel->getRow('reg_provinces',['id'=>$data['detail']->provinsi])->name;
+        $data['kabupaten'] = $crudModel->getRow('reg_regencies',['id'=>$data['detail']->kab_kota])->name;
+        $data['kecamatan'] = $crudModel->getRow('reg_districts',['id'=>$data['detail']->kecamatan])->name;
+        $data['kelurahan'] = $crudModel->getRow('reg_villages',['id'=>$data['detail']->kelurahan])->name;
+
         if ($data['usulan']->status == 1) {
 
             $users = auth()->getProvider();
@@ -43,11 +48,6 @@ class Pendirianptkis extends BaseController
             ->where('agu.group','verifikator')
             ->withIdentities()
             ->findAll();
-
-            $data['provinsi'] = $crudModel->getRow('reg_provinces',['id'=>$data['detail']->provinsi])->name;
-            $data['kabupaten'] = $crudModel->getRow('reg_regencies',['id'=>$data['detail']->kab_kota])->name;
-            $data['kecamatan'] = $crudModel->getRow('reg_districts',['id'=>$data['detail']->kecamatan])->name;
-            $data['kelurahan'] = $crudModel->getRow('reg_villages',['id'=>$data['detail']->kelurahan])->name;
 
             return view('supervisor/usulan/pendirianptkis/detail', $data);
         }else{
@@ -165,7 +165,7 @@ class Pendirianptkis extends BaseController
         $users = auth()->getProvider();
         $data['verifikator'] = $users->findById($data['usulan']->verifikator);
 
-        return view('supervisor/usulan/pendirianptkis/detail_pma', $data);
+        return view('supervisor/usulan/pendirianptkis/detail_kma', $data);
     }
 
     function penilaianasesor($id) {

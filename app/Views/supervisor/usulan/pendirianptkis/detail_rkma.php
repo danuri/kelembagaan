@@ -3,7 +3,6 @@
 <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 row-gap-4">
     <div class="d-flex flex-column justify-content-center">
     <h4 class="mb-1">Detail Usulan</h4>
-    <p class="mb-0">Orders placed across your store</p>
     </div>
     <div class="d-flex align-content-center flex-wrap gap-4">
     <div class="d-flex gap-4">
@@ -11,9 +10,6 @@
     </div>
     <?php if($usulan->status == 4): ?>
     <a href="<?= site_url('supervisor/usulan/pendirianptkis/penilaianasesor/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light" onclick="return confirm('Apakah Anda yakin ingin mengirim ke Penilai?')">Kirim ke Penilai</a>
-    <?php endif; ?>
-    <?php if($usulan->status == 41): ?>
-    <a href="<?= site_url('supervisor/usulan/pendirianptkis/proseskma/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light" onclick="return confirm('Apakah KMA telah ditandatangani?')">Proses KMA</a>
     <?php endif; ?>
     </div>
 </div>
@@ -198,17 +194,7 @@
                       </div>
                     </form>
             </div>
-        </div>
-        <div class="card mb-3">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="card-title m-0 me-2">Daftar Program Studi</h5>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kecukupan">Tambah Prodi</button>
-            </div>
-            <div class="card-body">
-            Form Generate Draft
-            </div>
-        </div>
-        
+        </div>        
     </div>
 </div>
 <?= $this->endSection() ?>

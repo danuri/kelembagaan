@@ -6,8 +6,11 @@
     </div>
     <div class="d-flex align-content-center flex-wrap gap-4">
     <div class="d-flex gap-4">
-        <a href="<?= site_url('verifikator/usulan') ?>" class="btn btn-label-secondary waves-effect">Kembali</a>
+        <a href="<?= site_url('supervisor/usulan') ?>" class="btn btn-label-secondary waves-effect">Kembali</a>
     </div>
+    <?php if($usulan->status == 4): ?>
+    <a href="<?= site_url('supervisor/usulan/pendirianptkis/penilaianasesor/'.encrypt($usulan->id))?>" type="button" class="btn btn-success waves-effect waves-light" onclick="return confirm('Apakah Anda yakin ingin mengirim ke Penilai?')">Kirim ke Penilai</a>
+    <?php endif; ?>
     </div>
 </div>
 
@@ -71,7 +74,7 @@
                         <h6>Verifikator</h6>
                     </div>
                     <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $verifikator->full_name?></div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->verifikator?></div>
                 </div>
             </div>
         </div>
@@ -83,7 +86,7 @@
         <a class="nav-link waves-effect waves-light" href="<?= site_url('supervisor/usulan/pendirianptkis/detail/'.encrypt($usulan->id))?>"><i class="icon-base ti tabler-user-check me-1_5 icon-sm"></i>Info Usulan</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link active waves-effect waves-light" href="#"><i class="icon-base ti tabler-user-check me-1_5 icon-sm"></i>Verifikasi Dokumen</a>
+        <a class="nav-link waves-effect waves-light" href="<?= site_url('supervisor/usulan/pendirianptkis/detail/verifikasi/'.encrypt($usulan->id))?>"><i class="icon-base ti tabler-user-check me-1_5 icon-sm"></i>Verifikasi Dokumen</a>
         </li>
         <li class="nav-item">
         <a class="nav-link waves-effect waves-light" href="<?= site_url('supervisor/usulan/pendirianptkis/detail/penilaian/'.encrypt($usulan->id))?>"><i class="icon-base ti tabler-lock me-1_5 icon-sm"></i>Penilaian</a>
@@ -92,56 +95,40 @@
         <a class="nav-link waves-effect waves-light" href="<?= site_url('supervisor/usulan/pendirianptkis/detail/rkma/'.encrypt($usulan->id))?>"><i class="icon-base ti tabler-bell me-1_5 icon-sm"></i>RKMA</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link waves-effect waves-light" href="<?= site_url('supervisor/usulan/pendirianptkis/detail/kma/'.encrypt($usulan->id))?>"><i class="icon-base ti tabler-link me-1_5 icon-sm"></i>KMA</a>
+        <a class="nav-link active waves-effect waves-light" href="#"><i class="icon-base ti tabler-link me-1_5 icon-sm"></i>KMA</a>
         </li>
     </ul>
 </div>
 <div class="row g-6">
-    
     <div class="col-sm-12">
         <div class="card mb-3">
-    <div class="card-body">
-        <h5 class="mb-4">Dokumen</h5>
-        <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th width="60%">Dokumen</th>
-                                        <th>Sesuai</th>
-                                        <th>Keterangan</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach($dokumens as $dokumen): ?>
-                                    <tr>
-                                        <td>
-                                            <?php if($dokumen->lampiran): ?>
-                                                <a href="javascript:;" onclick="preview('<?= base_url('uploads/'.$dokumen->lampiran) ?>')"><?= $dokumen->dokumen ?></a>
-                                            <?php else: ?>
-                                                <?= $dokumen->dokumen ?>
-                                            <?php endif; ?>
-                                        </td>
-                                        <td>
-                                            <?= ($dokumen->dok_status == 1)?'<span class="badge bg-label-success">Ya</span>':'<span class="badge bg-label-danger">Tidak</span>' ?>
-                                        </td>
-                                        <td><?= $dokumen->keterangan?></td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-        </div>
-    </div>
-</div>
-<div id="preview" class="modal fade" data-bs-backdrop="static" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" data-bs-scroll="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-body" id="object">
-
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title m-0 me-2">Unggah KMA</h5>
             </div>
-            <div class="modal-footer">
-                <a href="" target="_blank" class="btn btn-primary" id="previewfile">Buka Tab Baru</a>
-                <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
+            <div class="card-body">
+            <form action="">
+                <div class="row mb-6">
+                    <label class="col-sm-3 col-form-label" for="no_kma">No Keputusan</label>
+                    <div class="col-sm-9">
+                        <input type="date" id="no_kma" name="no_kma" class="form-control" value="" />
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-3 col-form-label" for="tanggal_kma">Tanggal Keputusan</label>
+                    <div class="col-sm-9">
+                        <input type="date" id="tanggal_kma" name="tanggal_kma" class="form-control" value="" />
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-3 col-form-label" for="lampiran">File Keputusan</label>
+                    <div class="col-sm-9">
+                        <input type="file" id="lampiran" name="lampiran" class="form-control" value="" />
+                    </div>
+                </div>
+            </form>
             </div>
         </div>
+        
     </div>
 </div>
 <?= $this->endSection() ?>
@@ -152,7 +139,6 @@ function preview(berkas) {
   $('#object').html('<object data="'+berkas+'" type="application/pdf" width="100%" style="height: 80vh;" id="object">'+
                       '<p>Browser tidak mendukung!</p>'+
                     '</object>');
-  $('#previewfile').attr('href', berkas);
   $('#preview').modal('show');
 }
 
