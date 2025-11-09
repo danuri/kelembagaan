@@ -2,7 +2,7 @@
 .vertical-timeline::before {
     content: '';
     position: absolute;
-    top: 0;
+    /* top: 0; */
     left: 156px;
     height: 100%;
     width: 4px;
@@ -22,7 +22,7 @@
   .vertical-timeline-element-icon {
     position: absolute;
     top: 0;
-    left: 131px;
+    left: 125px;
   }
   
   .vertical-timeline-element-icon .badge-dot-xl {
@@ -62,7 +62,8 @@
     text-transform: uppercase;
     margin: 0 0 .5rem;
     padding: 2px 0 0;
-    font-weight: bold;
+    /* font-weight: bold; */
+    line-height: inherit;
   }
   
   .vertical-timeline-element-content .vertical-timeline-element-date {

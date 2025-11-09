@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\CrudModel;
 use App\Models\LogModel;
+use App\Models\UsulanModel;
 
 class Ajax extends BaseController
 {
@@ -18,13 +19,17 @@ class Ajax extends BaseController
     $usulid = decrypt($usulid);
     $model = new LogModel;
     $logs = $model->where('id_usul',$usulid)->findAll();
+
+    $usulm = new UsulanModel;
+    $usulan = $usulm->find($usulid);
+    echo '<h6>'.$usulan->layanan_nama.': '.$usulan->nama_lembaga.'</h6>';
     echo '<div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">';
 
     foreach($logs as $row){
       echo '<div class="vertical-timeline-item vertical-timeline-element">
             <div>
               <span class="vertical-timeline-element-icon bounce-in">
-                <input class="form-check-input" type="radio" name="formradiocolor3" id="formradioRight7" checked="">
+                <input class="form-check-input" type="radio" name="formradiocolor3" id="formradioRight7" checked="" disabled>
               </span>
               <div class="vertical-timeline-element-content bounce-in">
                 <h4 class="timeline-title text-success">'.$row->keterangan.'</h4>
