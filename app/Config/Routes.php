@@ -75,6 +75,9 @@ $routes->group('verifikator', ['filter' => 'group:verifikator'], static function
 
 $routes->group('supervisor', ['filter' => 'group:supervisor'], static function ($routes) {
     $routes->get('/', 'Supervisor\Dashboard::index');
+    $routes->get('profile', 'Supervisor\Dashboard::profile');
+    $routes->post('changepassword', 'Supervisor\Dashboard::updatePassword');
+    $routes->post('profile/update', 'Supervisor\Dashboard::updateProfile');
 
     $routes->group('settings', static function ($routes) {
         $routes->get('/', 'Supervisor\Settings::index');

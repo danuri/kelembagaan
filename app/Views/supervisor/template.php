@@ -195,7 +195,7 @@
                       <div class="dropdown-divider my-1 mx-n2"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="<?= site_url('supervisor/profile')?>">
                         <i class="icon-base ti tabler-user icon-md me-3"></i><span>My Profile</span>
                       </a>
                     </li>

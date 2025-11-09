@@ -22,7 +22,7 @@ class Ajax extends BaseController
 
     $usulm = new UsulanModel;
     $usulan = $usulm->find($usulid);
-    echo '<h6>'.$usulan->layanan_nama.': '.$usulan->nama_lembaga.'</h6>';
+    echo '<i class="icon-base ti tabler-progress icon-md text-primary"></i> <span class="fw-bold">'.$usulan->layanan_nama.': '.$usulan->nama_lembaga.'</span><hr>';
     echo '<div class="vertical-timeline vertical-timeline--animate vertical-timeline--one-column">';
 
     foreach($logs as $row){

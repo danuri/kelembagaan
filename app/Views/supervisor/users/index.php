@@ -22,7 +22,7 @@
                     </div>
                 <?php endif ?>
 <div class="">
-    <table class="table">
+    <table class="table datatable">
     <thead>
         <tr>
         <th>Username</th>
