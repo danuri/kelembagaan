@@ -379,6 +379,8 @@ function hp($nohp) {
      $result = '<span class="badge bg-success">Verifikasi Ulang</span>';
    }else if($status == 4){
      $result = '<span class="badge bg-primary">Proses Verifikasi Selesai</span>';
+   }else if($status == 41){
+     $result = '<span class="badge bg-primary">Proses Penilaian Asesor</span>';
    }else if($status == 5){
      $result = '<span class="badge bg-primary">Proses Penilaian Asesor</span>';
    }else if($status == 6){
@@ -393,6 +395,43 @@ function hp($nohp) {
      $result = '<span class="badge bg-success">Selesai</span>';
    }else if($status == 21){
      $result = '<span class="badge bg-dark">Dikembalikan</span>';
+   }else{
+     $result = '';
+   }
+
+   return $result;
+ }
+
+ function usul_status_text($status)
+ {
+   if($status == 0){
+     $result = 'Draft';
+   }else if($status == 1){
+     $result = 'Dikirim';
+   }else if($status == 2){
+     $result = 'Disposisi ke Verifikator';
+   }else if($status == 3){
+     $result = 'Proses Verifikasi';
+   }else if($status == 31){
+     $result = 'Verifikasi Ulang';
+   }else if($status == 4){
+     $result = 'Proses Verifikasi Selesai';
+   }else if($status == 41){
+     $result = 'Proses Penilaian Asesor';
+   }else if($status == 5){
+     $result = 'Proses Penilaian Asesor';
+   }else if($status == 6){
+     $result = 'Penilaian Selesai';
+   }else if($status == 7){
+     $result = '';
+   }else if($status == 8){
+     $result = 'Proses RKMA';
+   }else if($status == 9){
+     $result = 'KMA Telah Terbit';
+   }else if($status == 20){
+     $result = 'Selesai';
+   }else if($status == 21){
+     $result = 'Dikembalikan';
    }else{
      $result = '';
    }

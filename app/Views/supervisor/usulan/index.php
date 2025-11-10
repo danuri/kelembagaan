@@ -1,7 +1,13 @@
 <?= $this->extend('supervisor/template') ?>
 <?= $this->section('content') ?>
-<h4 class="mb-1">Data Usulan</h4>
-
+<div class="row">
+    <div class="col">
+      <h4 class="mb-1">Data Usulan</h4>
+    </div>
+    <div class="col-md-auto">
+      <a href="<?= site_url('supervisor/usulan/download')?>" class="btn btn-primary btn-sm"><i class="icon-base ti tabler-file-type-xls"></i>Download</a>
+    </div>
+  </div>
 <div class="card mb-3">
           <div class="card-body">
             <form action="javascript:void(0);" class="row g-3">

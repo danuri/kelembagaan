@@ -6,6 +6,9 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use \Hermawan\DataTables\DataTable;
 use App\Models\LayananModel;
+use App\Models\UsulanModel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Usulan extends BaseController
 {
@@ -36,6 +39,46 @@ class Usulan extends BaseController
 
             })
           ->toJson(true);
+    }
+
+    function download() {
+        $model = new UsulanModel;
+        $data = $model->where(['status >'=>0])->findAll();
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A1', 'Layanan');
+        $sheet->setCellValue('B1', 'Nomor Surat');
+        $sheet->setCellValue('C1', 'Perihal');
+        $sheet->setCellValue('D1', 'Nama Lembaga');
+        $sheet->setCellValue('E1', 'Status');
+        $sheet->setCellValue('F1', 'Verifikator');
+        $sheet->setCellValue('G1', 'Keterangan');
+        $sheet->setCellValue('H1', 'Tanggal Usul');
+
+        $i = 2;
+        foreach ($data as $row) {
+            $sheet->setCellValue('A'.$i, $row->layanan_nama);
+            $sheet->setCellValue('B'.$i, $row->nomor_surat);
+            $sheet->setCellValue('C'.$i, $row->perihal);
+            $sheet->setCellValue('D'.$i, $row->nama_lembaga);
+            $sheet->setCellValue('E'.$i, usul_status_text($row->status));
+            $sheet->setCellValue('F'.$i, $row->verifikator);
+            $sheet->setCellValue('G'.$i, $row->keterangan);
+            $sheet->setCellValue('H'.$i, $row->submit_at);
+            $i++;
+        }
+
+        $tanggal = date('YmdHis');
+        $writer = new Xlsx($spreadsheet);
+        ob_clean();
+        ob_start();
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment; filename="Data_Usulan_'.$tanggal.'.xlsx"');
+        header('Cache-Control: max-age=0');
+        $writer->save('php://output');
+        ob_end_flush();
+        exit;
     }
 
 }

@@ -120,6 +120,7 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
 
     $routes->group('usulan', static function ($routes) {
         $routes->get('/', 'Supervisor\Usulan::index');
+        $routes->get('download', 'Supervisor\Usulan::download');
         $routes->get('getdata', 'Supervisor\Usulan::getdata');
         $routes->post('disposisi/(:any)', 'Supervisor\Usulan::disposisi/$1');
         $routes->get('detail/verifikasi/(:any)', 'Supervisor\Usulan::verifikasi/$1');

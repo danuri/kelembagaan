@@ -26,7 +26,8 @@ class Penilaian extends BaseController
       $db = \Config\Database::connect('default', false);
       $builder = $db->table('tr_usulan a')->select('a.id,a.nama_lembaga,a.nama_lembaga,a.status,b.id as ases_id, b.jenis,b.mulai_tanggal,b.sampai_tanggal,b.keterangan,b.file_hasil,b.skor,b.status as status_nilai')
                 ->join('tr_asesor b', 'b.usul_id = a.id')
-                ->where(['b.user_id'=>user_id(),'a.status'=>4]);
+                ->where(['b.user_id'=>user_id(),'a.status'=>41])
+                ->orWhere(['a.status'=>5]);
     
 
       return DataTable::of($builder)
