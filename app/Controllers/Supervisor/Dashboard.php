@@ -5,6 +5,7 @@ namespace App\Controllers\Supervisor;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\UserModel;
+use App\Models\CrudModel;
 use CodeIgniter\Shield\Config\Auth as AuthConfig;
 use CodeIgniter\Shield\Entities\User;
 use CodeIgniter\Shield\Authentication\Passwords;
@@ -13,7 +14,13 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        return view('supervisor/dashboard');
+        $crud = new CrudModel;
+        $data['jumlahUsul'] = $crud->jumlahUsul();
+        $data['jumlahUsulKirim'] = $crud->jumlahUsulKirim();
+        $data['jumlahUsulVerif'] = $crud->jumlahUsulVerif();
+        $data['jumlahUsulPenilaian'] = $crud->jumlahUsulPenilaian();
+        $data['jumlahUsulRkma'] = $crud->jumlahUsulRkma();
+        return view('supervisor/dashboard', $data);
     }
 
     function profile() {

@@ -235,13 +235,37 @@ class CrudModel extends Model
 
   public function jumlahUsul()
   {
-    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan")->getRow();
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status > 0")->getRow();
     return $query;
   }
 
-  public function jumlahUsulProv($satker)
+  public function jumlahUsulVerif()
   {
-    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE created_by_satker_id='$satker'")->getRow();
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status='3'")->getRow();
+    return $query;
+  }
+
+  public function jumlahUsulKirim()
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status='1'")->getRow();
+    return $query;
+  }
+
+  public function jumlahUsulPenilaian()
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status IN ('4','5')")->getRow();
+    return $query;
+  }
+
+  public function jumlahUsulRkma()
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status='7'")->getRow();
+    return $query;
+  }
+
+  public function jumlahUsulSelesai()
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status IN ('9','20')")->getRow();
     return $query;
   }
 }
