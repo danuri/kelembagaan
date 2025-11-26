@@ -15,7 +15,7 @@
         <div class="col-5 text-center text-sm-left">
           <div class="card-body pb-0 px-0 px-md-4">
             <img
-              src="../../assets/img/illustrations/card-advance-sale.png"
+              src="<?= base_url() ?>assets/img/illustrations/card-advance-sale.png"
               height="140"
               alt="view sales" />
           </div>
