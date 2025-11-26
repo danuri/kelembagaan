@@ -241,7 +241,7 @@ class CrudModel extends Model
 
   public function jumlahUsulVerif()
   {
-    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status='3'")->getRow();
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status IN (2,3,31,4)")->getRow();
     return $query;
   }
 
@@ -259,7 +259,7 @@ class CrudModel extends Model
 
   public function jumlahUsulRkma()
   {
-    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status='7'")->getRow();
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status IN ('7','8')")->getRow();
     return $query;
   }
 
