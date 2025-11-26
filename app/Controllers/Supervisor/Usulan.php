@@ -27,6 +27,8 @@ class Usulan extends BaseController
       return DataTable::of($builder)
           ->add('action', function($row){
                 return '<a href="'.site_url('supervisor/usulan/'.layananurl($row->layanan_id).'/detail/'.encrypt($row->id)).'" target="_blank" type="button" class="btn btn-primary btn-sm">View</a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\''.encrypt($row->id).'\')">Log</a>';
+            })->format('submit_at', function($value, $meta){
+                return date('Y-m-d', strtotime($value));
             })->format('status', function($value, $meta){
                 return usul_status($value);
             })->filter(function ($builder, $request) {

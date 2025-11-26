@@ -27,9 +27,10 @@
                           <option value="1">Dikirim</option>
                           <option value="2">Disposisi ke Verifikator</option>
                           <option value="3">Proses Verifikasi</option>
-                          <option value="4">Proses Penilaian</option>
-                          <option value="5">Proses Penilaian Asesor</option>
-                          <option value="6">Penilaian Selesai</option>
+                          <option value="31">Proses Verifikasi Ulang</option>
+                          <option value="4">Verifikasi Selesai</option>
+                          <option value="41">Proses Penilaian Asesor</option>
+                          <option value="5">Proses Penilaian Selesai</option>
                           <option value="7">Proses RKMA</option>
                           <option value="8">KMA Telah Terbit</option>
                           <option value="9">Selesai</option>

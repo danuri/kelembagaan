@@ -94,29 +94,27 @@
             <tr>
               <th>No</th>
               <th>Layanan</th>
-              <th>Status</th>
-              <th>Tanggal</th>
+              <th>Menunggu</th>
+              <th>Verifikasi</th>
+              <th>Penilaian</th>
+              <th>RKMA/KMA</th>
+              <th>Dikembalikan</th>
+              <th>Selesai</th>
             </tr>
           </thead>
           <tbody>
+            <?php $no=1; foreach($jumlahLayananStatus as $row): ?>
             <tr>
-              <td>1</td>
-              <td>Usulan A</td>
-              <td>Proses</td>
-              <td>2024-06-01</td>
+              <td><?= $no ?></td>
+              <td><?= $row->layanan ?></td>
+              <td><?= $row->menunggu ?></td>
+              <td><?= $row->verifikasi ?></td>
+              <td><?= $row->penilaian ?></td>
+              <td><?= $row->rkma_kma ?></td>
+              <td><?= $row->dikembalikan ?></td>
+              <td><?= $row->selesai ?></td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>Usulan B</td>
-              <td>Selesai</td>
-              <td>2024-05-28</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Usulan C</td>
-              <td>Usulan</td>
-              <td>2024-06-03</td>
-            </tr>
+            <?php $no++; endforeach; ?>
           </tbody>
         </table>  
       </div>

@@ -268,4 +268,18 @@ class CrudModel extends Model
     $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status IN ('9','20')")->getRow();
     return $query;
   }
+
+  public function jumlahLayananStatus()
+  {
+    $query = $this->db->query("SELECT layanan_id,layanan_nama, COUNT(id) AS jumlah,
+              (SELECT COUNT(layanan_id) FROM tr_usulan WHERE layanan_id=a.layanan_id AND status=1) AS masuk,
+              (SELECT COUNT(layanan_id) FROM tr_usulan WHERE layanan_id=a.layanan_id AND status IN (2,3,31,4)) AS verifikasi,
+              (SELECT COUNT(layanan_id) FROM tr_usulan WHERE layanan_id=a.layanan_id AND status IN (41,5)) AS penilaian,
+              (SELECT COUNT(layanan_id) FROM tr_usulan WHERE layanan_id=a.layanan_id AND status IN (7,8)) AS rkma,
+              (SELECT COUNT(layanan_id) FROM tr_usulan WHERE layanan_id=a.layanan_id AND status=9) AS selesai,
+              (SELECT COUNT(layanan_id) FROM tr_usulan WHERE layanan_id=a.layanan_id AND status=21) AS kembali
+              FROM tr_usulan a WHERE status > 0 GROUP BY layanan_id,layanan_nama
+              ")->getResult();
+    return $query;
+  }
 }

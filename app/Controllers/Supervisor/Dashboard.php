@@ -20,6 +20,7 @@ class Dashboard extends BaseController
         $data['jumlahUsulVerif'] = $crud->jumlahUsulVerif();
         $data['jumlahUsulPenilaian'] = $crud->jumlahUsulPenilaian();
         $data['jumlahUsulRkma'] = $crud->jumlahUsulRkma();
+        $data['jumlahLayananStatus'] = $crud->jumlahLayananStatus();
         return view('supervisor/dashboard', $data);
     }
 
