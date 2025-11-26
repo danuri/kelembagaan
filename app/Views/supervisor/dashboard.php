@@ -59,8 +59,8 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="d-flex align-items-center">
-                <div class="badge rounded bg-label-danger me-4 p-2">
-                  <i class="icon-base ti tabler-shopping-cart icon-lg"></i>
+                <div class="badge rounded bg-label-success me-4 p-2">
+                  <i class="icon-base ti tabler-pencil-check icon-lg"></i>
                 </div>
                 <div class="card-info">
                   <h5 class="mb-0"><?= $jumlahUsulPenilaian->jumlah ?></h5>
@@ -70,8 +70,8 @@
             </div>
             <div class="col-md-3 col-6">
               <div class="d-flex align-items-center">
-                <div class="badge rounded bg-label-danger me-4 p-2">
-                  <i class="icon-base ti tabler-shopping-cart icon-lg"></i>
+                <div class="badge rounded bg-label-primary me-4 p-2">
+                  <i class="icon-base ti tabler-certificate icon-lg"></i>
                 </div>
                 <div class="card-info">
                   <h5 class="mb-0"><?= $jumlahUsulRkma->jumlah ?></h5>
