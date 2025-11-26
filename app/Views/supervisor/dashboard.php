@@ -107,11 +107,11 @@
             <tr>
               <td><?= $no ?></td>
               <td><?= $row->layanan_nama ?></td>
-              <td><?= $row->menunggu ?></td>
+              <td><?= $row->masuk ?></td>
               <td><?= $row->verifikasi ?></td>
               <td><?= $row->penilaian ?></td>
-              <td><?= $row->rkma_kma ?></td>
-              <td><?= $row->dikembalikan ?></td>
+              <td><?= $row->rkma ?></td>
+              <td><?= $row->kembali ?></td>
               <td><?= $row->selesai ?></td>
             </tr>
             <?php $no++; endforeach; ?>
