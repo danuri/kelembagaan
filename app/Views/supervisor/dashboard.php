@@ -106,7 +106,7 @@
             <?php $no=1; foreach($jumlahLayananStatus as $row): ?>
             <tr>
               <td><?= $no ?></td>
-              <td><?= $row->layanan ?></td>
+              <td><?= $row->layanan_nama ?></td>
               <td><?= $row->menunggu ?></td>
               <td><?= $row->verifikasi ?></td>
               <td><?= $row->penilaian ?></td>
