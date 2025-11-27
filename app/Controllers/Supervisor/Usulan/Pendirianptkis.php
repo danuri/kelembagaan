@@ -217,4 +217,47 @@ class Pendirianptkis extends BaseController
       session()->setFlashdata('message', 'Usulan dikembalikan ke Verifikator.');
       return $this->response->setJSON(['status'=>'success']);
     }
+
+    function draftrkma($id) {
+        $id = decrypt($id);
+        $model = new UsulanModel();
+        $detail = new PendirianptkisModel();
+        $usulan = $model->where('id', $id)->first();
+        $detail = $detail->where('usulan_id', $id)->first();
+
+        $pmodel = new ProdiModel;
+        $prodi = $pmodel->where(['usul_id'=>$id])->findAll();
+
+        $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('template/rkma_pendirian.docx');
+        $predefinedMultilevel = array('listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_BULLET_EMPTY);
+
+        $templateProcessor->setValue('namaPtUp', strtoupper($detail->nama_lembaga));
+        $templateProcessor->setValue('namaPt', $detail->nama_lembaga);
+        $templateProcessor->setValue('alamatPt', $detail->alamat);
+
+        $templateProcessor->setValue('namaYayasan', $detail->yayasan_nama);
+        $templateProcessor->setValue('nomorAktaYayasan', $detail->yayasan_nosk);
+        $templateProcessor->setValue('tanggalAktaYayasan', $detail->yayasan_tglsk);
+        $templateProcessor->setValue('notarisAktaYayasan', $detail->yayasan_notaris);
+        $templateProcessor->setValue('kedudukanAktaYaysan', $detail->yayasan_kedudukan);
+        $templateProcessor->setValue('nomorAktaSah', $detail->yayasan_kumham_nomor);
+        $templateProcessor->setValue('tahunAktaSah', $detail->yayasan_kumham_tahun);
+        $templateProcessor->setValue('tanggalAktaSah', $detail->yayasan_kumham_tanggal);
+        // Prodi
+        $templateProcessor->cloneBlock('blockProdi', count($prodi), true, true);
+        $i = 1;
+        foreach($prodi as $pd){
+            $templateProcessor->setValue('prodiList#'.$i, $pd->nama_prodi
+        );
+            $i++;
+        }
+
+        $templateProcessor->setValue('menteriAgama', 'Nasaruddin Umar');
+
+        $lembaga = preg_replace('/[^A-Za-z0-9_\-]/', '_', $detail->nama_lembaga);
+        $fileName = 'draftRKMA_'.$lembaga.'.docx'; // Desired filename for the download
+        $templateProcessor->saveAs('draft/'.$fileName);
+
+        return $this->response->download('draft/'.$fileName,null);
+    }
 }

@@ -115,6 +115,43 @@
                             </table>
         </div>
     </div>
+    <div class="card mb-3">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="card-title m-0 me-2">KMA</h5>
+            </div>
+            <div class="card-body">
+            <form action="#" method="post" enctype="multipart/form-data">
+                <div class="row mb-6">
+                    <label class="col-sm-3 col-form-label" for="no_kma">No Keputusan</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="no_kma" name="no_kma" class="form-control" value="<?= $usulan->no_kma ?>" disabled />
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-3 col-form-label" for="tanggal_kma">Tanggal Keputusan</label>
+                    <div class="col-sm-9">
+                        <input type="date" id="tgl_kma" name="tgl_kma" class="form-control" value="<?= $usulan->tgl_kma ?>" disabled />
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-3 col-form-label" for="lampiran">File Keputusan</label>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                        <?php if($usulan->file_kma): ?>
+                        <a class="btn btn-outline-primary" type="button" id="groupLampiran" href="<?= base_url('uploads/kma/'.$usulan->file_kma) ?>" target="_blank">Lihat</a>
+                        <?php endif; ?>
+                      </div>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-3 col-form-label" for="save"></label>
+                    <div class="col-sm-9">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
 </div>
 </div>
 

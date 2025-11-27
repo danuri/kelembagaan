@@ -43,9 +43,42 @@ class Usulan extends BaseController
           ->toJson(true);
     }
 
+    function savekma($id) {
+        // validation
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'no_kma' => 'required',
+            'tgl_kma' => 'required',
+            'lampiran' => 'uploaded[lampiran]|max_size[lampiran,2048]|ext_in[lampiran,pdf]'
+        ]);
+        if (!$validation->withRequest($this->request)->run()) {
+            return redirect()->back()->withInput()->with('error', $validation->getErrors());
+        }
+        // handle file upload
+        $id = decrypt($id);
+        $file = $this->request->getFile('lampiran');
+        if ($file->isValid() && !$file->hasMoved()) {
+            // $newName = $file->getRandomName();
+            // name file kma berdasarkan id usulan
+            $newName = 'KMA_'.$id.'.'.$file->getExtension();
+            $file->move('uploads/kma', $newName);
+        } else {
+            return redirect()->back()->withInput()->with('error', 'File upload failed');
+        }
+        $model = new UsulanModel();
+        // update data
+        $data = [
+            'no_kma' => $this->request->getPost('no_kma'),
+            'tgl_kma' => $this->request->getPost('tgl_kma'),
+            'file_kma' => $newName
+        ];
+        $model->update($id, $data);
+        return redirect()->back()->withInput()->with('message', 'Data telah direkam');
+    }
+
     function download() {
         $model = new UsulanModel;
-        $data = $model->where(['status >'=>0])->findAll();
+        $data = $model->select('tr_usulan.*, users.full_name as verifikator_nama')->join('users', 'users.id = tr_usulan.verifikator')->where(['tr_usulan.status >'=>0])->findAll();
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
@@ -65,7 +98,7 @@ class Usulan extends BaseController
             $sheet->setCellValue('C'.$i, $row->perihal);
             $sheet->setCellValue('D'.$i, $row->nama_lembaga);
             $sheet->setCellValue('E'.$i, usul_status_text($row->status));
-            $sheet->setCellValue('F'.$i, $row->verifikator);
+            $sheet->setCellValue('F'.$i, $row->verifikator_nama);
             $sheet->setCellValue('G'.$i, $row->keterangan);
             $sheet->setCellValue('H'.$i, $row->submit_at);
             $i++;

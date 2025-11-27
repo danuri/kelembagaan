@@ -94,4 +94,5 @@ class Pendirianptkis extends BaseController
 
         return redirect()->back()->with('message', 'Usulan telah diproses.');
     }
+
 }

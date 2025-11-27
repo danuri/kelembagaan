@@ -104,7 +104,7 @@
         <div class="card mb-3">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="card-title m-0 me-2">Buat Draft RKMA</h5>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kecukupan">Generate</button>
+                <a href="<?= site_url('supervisor/usulan/pendirianptkis/draft/rkma/'.encrypt($usulan->id))?>" class="btn btn-primary">Generate</a>
             </div>
             <div class="card-body">
             <form class="" action="<?= site_url('supervisor/usulan/pendirianptkis/rkmadetail')?>" method="POST">
