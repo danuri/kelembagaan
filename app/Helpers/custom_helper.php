@@ -498,3 +498,9 @@ function decrypt($string)
 	$salt = explode(":",$string)[1]; $string = explode(":",$string)[0]; // read salt from entry
 	return openssl_decrypt(base64_decode($string), 'AES-256-CBC', ENCRYPTION_KEY, 0, str_pad(substr($salt, 0, 16), 16, '0', STR_PAD_LEFT));
 }
+
+function generate_uuid()
+{
+  // load Libarary Ramsey\Uuid\Uuid;
+  return \Ramsey\Uuid\Uuid::uuid4()->toString();
+}

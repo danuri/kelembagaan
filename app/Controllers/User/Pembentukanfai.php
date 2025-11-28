@@ -53,6 +53,7 @@ class Pembentukanfai extends BaseController
         $usulanModel = new UsulanModel();
         $usulanModel->save([
             'layanan_id' => 4,
+            'kode' => generate_uuid(),
             'layanan_nama' => 'Pembentukan FAI',
             'nama_lembaga' => $this->request->getPost('nama_lembaga'),
             'user_id' => user_id(),

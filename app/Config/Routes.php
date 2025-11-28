@@ -8,6 +8,8 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('dashboard', 'Home::index', ['filter' => 'group:user']);
 
+$routes->resource('api/usulan', ['controller' => 'Api\Usulan']);
+
 $routes->group('supervisor', ['filter' => 'group:supervisor'], static function ($routes) {
     $routes->get('/', 'Supervisor\Dashboard::index');
 });
