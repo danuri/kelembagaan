@@ -13,7 +13,8 @@ class Usulan extends ResourceController
 
     public function index()
     {
-        return $this->respond($this->model->findAll());
+        // return $this->respond($this->model->findAll());
+        return $this->respond(['status' => 'success', 'message' => 'API is working']);
     }
     
     public function show($id = null)
