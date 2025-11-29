@@ -177,7 +177,7 @@
                 <div class="row mb-6">
                     <label class="col-sm-8 col-form-label" for="doktor">Jumlah Doktor</label>
                     <div class="col-sm-4">
-                    <input type="text" class="form-control" id="doktor" name="doktor" value="<?= $detail->magister ?>">
+                    <input type="text" class="form-control" id="doktor" name="doktor" value="<?= $detail->doktor ?>">
                     </div>
                 </div>
                 <div class="row mb-6">
@@ -262,6 +262,16 @@
                     <label class="col-sm-8 col-form-label" for="pelaporan">Pelaporan PD Dikti (Contoh: 1-100)</label>
                     <div class="col-sm-4">
                     <input type="text" class="form-control" id="pelaporan" name="pelaporan" value="<?= $detail->pelaporan ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-8 col-form-label" for="kepemilikan_tanah">Kepemilikan Tanah</label>
+                    <div class="col-sm-4">
+                        <select name="kepemilikan_tanah" id="kepemilikan_tanah" class="form-select">
+                            <option value="Perorangan">Perorangan</option>
+                            <option value="Yayasan">Yayasan</option>
+                            <option value="Sewa">Sewa</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row mb-6">
