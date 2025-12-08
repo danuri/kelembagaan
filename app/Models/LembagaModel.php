@@ -6,6 +6,7 @@ use CodeIgniter\Model;
 
 class LembagaModel extends Model
 {
+    protected $DBGroup		= 'nspti';
     protected $table            = 'lembaga';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;

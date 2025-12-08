@@ -86,6 +86,12 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
         $routes->post('update', 'Supervisor\Settings::updateSettings');
     });
 
+    $routes->group('arsip', static function ($routes) {
+        $routes->get('/', 'Supervisor\Arsip::index');
+        $routes->get('getdata', 'Supervisor\Arsip::getdata');
+        $routes->post('detail', 'Supervisor\Arsip::detail');
+    });
+
     $routes->group("master", function ($routes) {
         
         $routes->group("users", function ($routes) {

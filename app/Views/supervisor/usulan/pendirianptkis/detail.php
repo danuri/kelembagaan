@@ -73,7 +73,7 @@
                         <h6>Verifikator</h6>
                     </div>
                     <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->verifikator?></div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $verifikator->full_name?></div>
                 </div>
             </div>
         </div>

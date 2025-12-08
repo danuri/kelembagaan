@@ -64,23 +64,24 @@
   <div class="section">
     <h2>B. DATA STATISTIK</h2>
     <table>
-      <tr><td style="width:40%">Jumlah Magister</td><td><?= $detail->magister ?></td></tr>
-      <tr><td>Jumlah Doktor</td><td><?= $detail->doktor ?></td></tr>
-      <tr><td>Jumlah Asisten Ahli</td><td><?= $detail->asisten_ahli ?></td></tr>
-      <tr><td>Jumlah Lektor</td><td><?= $detail->lektor ?></td></tr>
-      <tr><td>Jumlah Lektor Kepala</td><td><?= $detail->lektor_kepala ?></td></tr>
-      <tr><td>Jumlah Guru Besar</td><td><?= $detail->guru_besar ?></td></tr>
-      <tr><td>Jumlah Mahasiswa</td><td><?= $detail->mahasiswa ?></td></tr>
-      <tr><td>Rasio Dosen : Mahasiswa</td><td><?= $detail->rasio_dm ?></td></tr>
-      <tr><td>Jumlah Fakultas</td><td><?= $detail->fakultas ?></td></tr>
-      <tr><td>Jumlah Prodi</td><td><?= $detail->prodi ?></td></tr>
-      <tr><td>Prodi Tidak Terakreditasi</td><td><?= $detail->akreditasi_no ?></td></tr>
-      <tr><td>Prodi Terakreditasi Unggul/A</td><td><?= $detail->akreditasi_unggul ?></td></tr>
-      <tr><td>Prodi Terakreditasi Baik Sekali/B</td><td><?= $detail->akreditasi_baiksekali ?></td></tr>
-      <tr><td>Prodi Terakreditasi Baik</td><td><?= $detail->akreditasi_baik ?></td></tr>
-      <tr><td>Pelaporan PD Dikti</td><td><?= $detail->pelaporan ?></td></tr>
-      <tr><td>Luas Tanah</td><td><?= $detail->tanah ?></td></tr>
-      <tr><td>Kepemilikan Tanah</td><td><?= $detail->kepemilikan_tanah ?></td></tr>
+      <tr><td style="width:40%">DATA</td><td>IAI</td><td>UNIV</td><td>DATA KAMPUS</td><td>DATA DIKTI</td></tr>
+      <tr><td>Jumlah Magister</td><td>20</td><td>30</td><td><?= $detail->magister2 ?></td><td><?= $detail->magister ?></td></tr>
+      <tr><td>Jumlah Doktor</td><td>4</td><td>6</td><td><?= $detail->doktor2 ?></td><td><?= $detail->doktor ?></td></tr>
+      <tr><td>Jumlah Asisten Ahli</td><td>12</td><td>18</td><td><?= $detail->asisten_ahli2 ?></td><td><?= $detail->asisten_ahli ?></td></tr>
+      <tr><td>Jumlah Lektor</td><td>12</td><td>14</td><td><?= $detail->lektor2 ?></td><td><?= $detail->lektor ?></td></tr>
+      <tr><td>Jumlah Lektor Kepala</td><td>0</td><td>3</td><td><?= $detail->lektor_kepala2 ?></td><td><?= $detail->lektor_kepala ?></td></tr>
+      <tr><td>Jumlah Guru Besar</td><td>0</td><td>1</td><td><?= $detail->guru_besar2 ?></td><td><?= $detail->guru_besar ?></td></tr>
+      <tr><td>Jumlah Mahasiswa</td><td>480</td><td>1.000</td><td><?= $detail->mahasiswa2 ?></td><td><?= $detail->mahasiswa ?></td></tr>
+      <tr><td>Rasio Dosen : Mahasiswa</td><td>1:45</td><td>1:45</td><td><?= $detail->rasio_dm2 ?></td><td><?= $detail->rasio_dm ?></td></tr>
+      <tr><td>Jumlah Fakultas</td><td>0</td><td>3</td><td><?= $detail->fakultas2 ?></td><td><?= $detail->fakultas ?></td></tr>
+      <tr><td>Jumlah Prodi</td><td>4 S1 (2 Ilmu Berbeda)</td><td>6 S1 (3 Ilmu Berbeda)</td><td><?= $detail->prodi2 ?></td><td><?= $detail->prodi ?></td></tr>
+      <tr><td>Prodi Tidak Terakreditasi</td><td></td><td></td><td><?= $detail->akreditasi_no2 ?></td><td><?= $detail->akreditasi_no ?></td></tr>
+      <tr><td>Prodi Terakreditasi Unggul/A</td><td></td><td></td><td><?= $detail->akreditasi_unggul2 ?></td><td><?= $detail->akreditasi_unggul ?></td></tr>
+      <tr><td>Prodi Terakreditasi Baik Sekali/B</td><td></td><td></td><td><?= $detail->akreditasi_baiksekali2 ?></td><td><?= $detail->akreditasi_baiksekali ?></td></tr>
+      <tr><td>Prodi Terakreditasi Baik</td><td></td><td></td><td><?= $detail->akreditasi_baik2 ?></td><td><?= $detail->akreditasi_baik ?></td></tr>
+      <tr><td>Pelaporan PD Dikti</td><td></td><td></td><td><?= $detail->pelaporan2 ?></td><td><?= $detail->pelaporan ?></td></tr>
+      <tr><td>Luas Tanah</td><td>8.000M²</td><td>10.000M²</td><td><?= $detail->tanah2 ?></td><td><?= $detail->tanah ?></td></tr>
+      <tr><td>Kepemilikan Tanah</td><td></td><td></td><td><?= $detail->kepemilikan_tanah2 ?></td><td><?= $detail->kepemilikan_tanah ?></td></tr>
     </table>
   </div>
 

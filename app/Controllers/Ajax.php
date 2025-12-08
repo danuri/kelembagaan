@@ -7,6 +7,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\CrudModel;
 use App\Models\LogModel;
 use App\Models\UsulanModel;
+use App\Models\NsptiModel;
 
 class Ajax extends BaseController
 {
@@ -68,7 +69,7 @@ class Ajax extends BaseController
       if(!$nsm) {
         return $this->response->setJSON(['status' => 'error', 'message' => 'NSM tidak boleh kosong']);
       }
-      $kelembagaanModel = new CrudModel();
+      $kelembagaanModel = new NsptiModel();
       $lembaga = $kelembagaanModel->getRow('lembaga',['nss_baru' => $nsm]);
       if($lembaga) {
         return $this->response->setJSON(['status' => 'success', 'data' => $lembaga]);

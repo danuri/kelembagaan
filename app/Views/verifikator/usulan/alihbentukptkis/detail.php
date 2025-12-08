@@ -169,51 +169,84 @@
         <div class="card">
             <div class="card-body">
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="magister">Jumlah Magister</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="magister">Item</label>
+                    <div class="col-sm-3">
+                    Data Verifikator
+                    </div>
+                    <div class="col-sm-3">
+                    Data Kampus
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-6 col-form-label" for="magister">Jumlah Magister</label>
+                    <div class="col-sm-3">
                     <input type="text" class="form-control" id="magister" name="magister" value="<?= $detail->magister ?>">
                     </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="magister2" name="magister2" value="<?= $detail->magister2 ?>">
+                    </div>
                 </div>
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="doktor">Jumlah Doktor</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="doktor">Jumlah Doktor</label>
+                    <div class="col-sm-3">
                     <input type="text" class="form-control" id="doktor" name="doktor" value="<?= $detail->doktor ?>">
                     </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="doktor2" name="doktor2" value="<?= $detail->doktor2 ?>">
+                    </div>
                 </div>
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="asisten_ahli">Jumlah Asisten Ahli</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="asisten_ahli">Jumlah Asisten Ahli</label>
+                    <div class="col-sm-3">
                     <input type="text" class="form-control" id="asisten_ahli" name="asisten_ahli" value="<?= $detail->asisten_ahli ?>">
                     </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="asisten_ahli2" name="asisten_ahli2" value="<?= $detail->asisten_ahli2 ?>">
+                    </div>
                 </div>
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="lektor">Jumlah Lektor</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="lektor">Jumlah Lektor</label>
+                    <div class="col-sm-3">
                     <input type="text" class="form-control" id="lektor" name="lektor" value="<?= $detail->lektor ?>">
                     </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="lektor2" name="lektor2" value="<?= $detail->lektor2 ?>">
+                    </div>
                 </div>
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="lektor_kepala">Jumlah Lektor Kepala</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="lektor_kepala">Jumlah Lektor Kepala</label>
+                    <div class="col-sm-3">
                     <input type="text" class="form-control" id="lektor_kepala" name="lektor_kepala" value="<?= $detail->lektor_kepala ?>">
                     </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="lektor_kepala2" name="lektor_kepala2" value="<?= $detail->lektor_kepala2 ?>">
+                    </div>
                 </div>
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="guru_besar">Jumlah Guru Besar</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="guru_besar">Jumlah Guru Besar</label>
+                    <div class="col-sm-3">
                     <input type="text" class="form-control" id="guru_besar" name="guru_besar" value="<?= $detail->guru_besar ?>">
                     </div>
-                </div>
-                <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="mahasiswa">Jumlah Mahasiswa</label>
-                    <div class="col-sm-4">
-                    <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="<?= $detail->mahasiswa ?>">
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="guru_besar2" name="guru_besar2" value="<?= $detail->guru_besar2 ?>">
                     </div>
                 </div>
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="rasio_dm">Jumlah Rasio Dosen:Mahasiswa</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="mahasiswa">Jumlah Mahasiswa</label>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="mahasiswa" name="mahasiswa" value="<?= $detail->mahasiswa ?>">
+                    </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="mahasiswa2" name="mahasiswa2" value="<?= $detail->mahasiswa2 ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-6 col-form-label" for="rasio_dm">Jumlah Rasio Dosen:Mahasiswa</label>
+                    <div class="col-sm-3">
                     <input type="text" class="form-control" id="rasio_dm" name="rasio_dm" value="<?= $detail->rasio_dm ?>">
+                    </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="rasio_dm2" name="rasio_dm2" value="<?= $detail->rasio_dm2 ?>">
                     </div>
                 </div>
             </div>
@@ -223,51 +256,79 @@
         <div class="card">
             <div class="card-body">
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="akreditasi_no">Prodi Tidak Terakreditasi</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="akreditasi_no">Prodi Tidak Terakreditasi</label>
+                    <div class="col-sm-3">
                     <input type="text" class="form-control" id="akreditasi_no" name="akreditasi_no" value="<?= $detail->akreditasi_no ?>">
                     </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="akreditasi_no2" name="akreditasi_no2" value="<?= $detail->akreditasi_no2 ?>">
+                    </div>
                 </div>
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="akreditasi_unggul">Jumlah Prodi Terakreditasi Unggul/A</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="akreditasi_unggul">Jumlah Prodi Terakreditasi Unggul/A</label>
+                    <div class="col-sm-3">
                     <input type="text" class="form-control" id="akreditasi_unggul" name="akreditasi_unggul" value="<?= $detail->akreditasi_unggul ?>">
                     </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="akreditasi_unggul2" name="akreditasi_unggul2" value="<?= $detail->akreditasi_unggul2 ?>">
+                    </div>
                 </div>
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="akreditasi_baiksekali">Jumlah Prodi Terakreditasi Baik Sekali/B</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="akreditasi_baiksekali">Jumlah Prodi Terakreditasi Baik Sekali/B</label>
+                    <div class="col-sm-3">
                     <input type="text" class="form-control" id="akreditasi_baiksekali" name="akreditasi_baiksekali" value="<?= $detail->akreditasi_baiksekali ?>">
                     </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="akreditasi_baiksekali2" name="akreditasi_baiksekali2" value="<?= $detail->akreditasi_baiksekali2 ?>">
+                    </div>
                 </div>
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="akreditasi_baik">Jumlah Prodi Terakreditasi Baik</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="akreditasi_baik">Jumlah Prodi Terakreditasi Baik</label>
+                    <div class="col-sm-3">
                     <input type="text" class="form-control" id="akreditasi_baik" name="akreditasi_baik" value="<?= $detail->akreditasi_baik ?>">
                     </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="akreditasi_baik2" name="akreditasi_baik2" value="<?= $detail->akreditasi_baik2 ?>">
+                    </div>
                 </div>
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="fakultas">Jumlah Fakultas</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="fakultas">Jumlah Fakultas</label>
+                    <div class="col-sm-3">
                     <input type="text" class="form-control" id="fakultas" name="fakultas" value="<?= $detail->lektor_kepala ?>">
                     </div>
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="fakultas2" name="fakultas2" value="<?= $detail->lektor_kepala2 ?>">
+                    </div>
                 </div>
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="prodi">Jumlah Prodi</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="prodi">Jumlah Prodi</label>
+                    <div class="col-sm-3">
                     <input type="text" class="form-control" id="prodi" name="prodi" value="<?= $detail->prodi ?>">
                     </div>
-                </div>
-                <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="pelaporan">Pelaporan PD Dikti (Contoh: 1-100)</label>
-                    <div class="col-sm-4">
-                    <input type="text" class="form-control" id="pelaporan" name="pelaporan" value="<?= $detail->pelaporan ?>">
+                    <div class="col-sm-3">
+                    <input type="text" class="form-control" id="prodi2" name="prodi2" value="<?= $detail->prodi2 ?>">
                     </div>
                 </div>
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="kepemilikan_tanah">Kepemilikan Tanah</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="pelaporan">Pelaporan PD Dikti (Contoh: 1-100)</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="pelaporan" name="pelaporan" value="<?= $detail->pelaporan ?>">
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="pelaporan2" name="pelaporan2" value="<?= $detail->pelaporan2 ?>">
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <label class="col-sm-6 col-form-label" for="kepemilikan_tanah">Kepemilikan Tanah</label>
+                    <div class="col-sm-3">
                         <select name="kepemilikan_tanah" id="kepemilikan_tanah" class="form-select">
+                            <option value="Perorangan">Perorangan</option>
+                            <option value="Yayasan">Yayasan</option>
+                            <option value="Sewa">Sewa</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+                        <select name="kepemilikan_tanah2" id="kepemilikan_tanah2" class="form-select">
                             <option value="Perorangan">Perorangan</option>
                             <option value="Yayasan">Yayasan</option>
                             <option value="Sewa">Sewa</option>
@@ -275,10 +336,16 @@
                     </div>
                 </div>
                 <div class="row mb-6">
-                    <label class="col-sm-8 col-form-label" for="rasio_dm">Luas Tanah</label>
-                    <div class="col-sm-4">
+                    <label class="col-sm-6 col-form-label" for="rasio_dm">Luas Tanah</label>
+                    <div class="col-sm-3">
                         <div class="input-group input-group-merge">
                             <input type="text" id="tanah" name="tanah" class="form-control" aria-describedby="basic-tanah" value="<?= $detail->tanah ?>" />
+                            <span class="input-group-text" id="basic-tanah">M²</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group input-group-merge">
+                            <input type="text" id="tanah2" name="tanah2" class="form-control" aria-describedby="basic-tanah" value="<?= $detail->tanah2 ?>" />
                             <span class="input-group-text" id="basic-tanah">M²</span>
                         </div>
                     </div>

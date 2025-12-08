@@ -13,29 +13,46 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="col-12">
-        <div class="card shadow-none bg-label-success mb-3">
-            <div class="card-body">
-                <div class="row g-6">
-                    <div class="col-lg-6 col-md-12 col-sm-12">
-                        <div style="display: table-row;">
-                            <div style="display: table-cell; padding-right: 0.5rem;">
-                                <h6>Nomor Surat Pengantar</h6>
-                            </div>
-                            <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                            <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->nomor_surat ?></div>
-                        </div>
-                        <div style="display: table-row;">
-                            <div style="display: table-cell; padding-right: 0.5rem;">
-                                <h6>Perihal</h6>
-                            </div>
-                            <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                            <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->perihal ?></div>
-                        </div>
+<div class="card bg-label-warning mb-3">
+    <div class="card-body">
+        <div class="row g-6">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; padding-right: 0.5rem;">
+                        <h6>Nomor Surat Pengantar</h6>
                     </div>
-                    <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->nomor_surat?></div>
+                </div>
+                <div style="display: table-row;">
+                    <div style="display: table-cell; padding-right: 0.5rem;">
+                        <h6>Perihal</h6>
                     </div>
+                    <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->perihal?></div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div style="display: table-row;">
+                    <div style="display: table-cell; padding-right: 0.5rem;">
+                        <h6>Status Usulan</h6>
+                    </div>
+                    <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= usul_status($usulan->status)?></div>
+                </div>
+                <div style="display: table-row;">
+                    <div style="display: table-cell; padding-right: 0.5rem;">
+                        <h6>Keterangan BTS/TMS</h6>
+                    </div>
+                    <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->keterangan?></div>
+                </div>
+                <div style="display: table-row;">
+                    <div style="display: table-cell; padding-right: 0.5rem;">
+                        <h6>Verifikator</h6>
+                    </div>
+                    <div style="display: table-cell; padding-right: 0.5rem;">:</div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><strong><?= $verifikator->full_name?></strong></div>
                 </div>
             </div>
         </div>

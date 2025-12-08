@@ -40,7 +40,7 @@ class Penilaian extends BaseController
             })->filter(function ($builder, $request) {
 
                 if ($request->layanan)
-                    $builder->where('tr_usulan.layanan_id', $request->layanan);
+                    $builder->where('a.layanan_id', $request->layanan);
 
             })
           ->toJson(true);

@@ -32,7 +32,7 @@ class AlihBentukPtkis extends BaseController
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
 
 
-        if ($data['usulan']->status == 1) {
+        if ($data['usulan']->status == 1 || $data['usulan']->status == 2) {
 
             $users = auth()->getProvider();
 
@@ -41,6 +41,7 @@ class AlihBentukPtkis extends BaseController
             ->where('agu.group','verifikator')
             ->withIdentities()
             ->findAll();
+            $data['verifikator'] = $users->findById($data['usulan']->verifikator);
 
             return view('supervisor/usulan/alihbentukptkis/detail', $data);
         }else{

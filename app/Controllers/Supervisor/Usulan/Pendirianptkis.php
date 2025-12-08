@@ -39,7 +39,7 @@ class Pendirianptkis extends BaseController
         $data['kecamatan'] = $crudModel->getRow('reg_districts',['id'=>$data['detail']->kecamatan])->name;
         $data['kelurahan'] = $crudModel->getRow('reg_villages',['id'=>$data['detail']->kelurahan])->name;
 
-        if ($data['usulan']->status == 1) {
+        if ($data['usulan']->status == 1 || $data['usulan']->status == 2) {
 
             $users = auth()->getProvider();
 
@@ -48,7 +48,7 @@ class Pendirianptkis extends BaseController
             ->where('agu.group','verifikator')
             ->withIdentities()
             ->findAll();
-
+            $data['verifikator'] = $users->findById($data['usulan']->verifikator);
             return view('supervisor/usulan/pendirianptkis/detail', $data);
         }else{
             $model = new LogModel;
