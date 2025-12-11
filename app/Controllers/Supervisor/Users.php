@@ -59,15 +59,23 @@ class Users extends BaseController
 
     function update($id) {
         // Get the User Provider (UserModel by default)
+        // validation
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'password' => 'required'
+        ]);
+        if (!$validation->withRequest($this->request)->run()) {
+            return redirect()->back()->withInput()->with('error', $validation->getErrors());
+        }
         $users = auth()->getProvider();
 
-        $user = $users->findById(123);
+        $user = $users->findById($id);
         $user->fill([
-            'username' => 'JoeSmith111',
-            'email' => 'joe.smith@example.com',
-            'password' => 'secret123'
+            'password' => $this->request->getPost('password'),
         ]);
         $users->save($user);
+
+        return redirect()->to(site_url('supervisor/users'))->with('success', 'User updated successfully.');
     }
 
     function delete($id)

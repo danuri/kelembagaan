@@ -292,9 +292,13 @@
 
     <script src="<?= base_url()?>assets/js/main.js"></script>
     <script type="text/javascript">
-    function alert($text) {
+    function alert($text,$type='success') {
       var notyf = new Notyf();
-      notyf.success($text);
+      if($type=='success'){
+        notyf.success($text);
+      }else{
+        notyf.error($text);
+      }
     }
 
     $(document).ready(function() {
@@ -302,9 +306,17 @@
       });
 
     <?php
-    if(session()->getFlashdata('message')){
+    if(session()->getFlashdata('success')){
       ?>
-      alert("<?= session()->getFlashdata('message')?>");
+      alert("<?= session()->getFlashdata('success')?>");
+      <?php
+    }
+    ?>
+
+    <?php
+    if(session()->getFlashdata('error')){
+      ?>
+      alert("<?= session()->getFlashdata('error')?>",'error');
       <?php
     }
     ?>

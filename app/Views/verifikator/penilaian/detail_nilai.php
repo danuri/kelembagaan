@@ -217,7 +217,7 @@
           <div class="mb-6">
             <label class="form-label" for="basic-default-fullname">Lampiran Penilaian</label>
             <input type="file" class="form-control" id="lampiran" name="lampiran">
-            <?= ($asesmen->file_hasil)?$asesmen->file_hasil:'Belum unggah';?>
+            <?= ($asesmen->file_hasil)?'<a href="'.base_url('uploads/nilai/'.$asesmen->file_hasil).'" target="_blank">'.$asesmen->file_hasil.'</a>':'Belum unggah';?>
           </div>
           <button type="submit" class="btn btn-primary waves-effect waves-light">Simpan</button>
         </form>

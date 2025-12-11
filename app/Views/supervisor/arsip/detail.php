@@ -28,7 +28,7 @@
                 if(!empty($d->file)){
                   $url ="https://diktis.kemenag.go.id/kelembagaan/kemenag/";
                     if($d->url=="baru"){
-                      $url ="https://diktis.kemenag.go.id/kelembagaan/kemenag2/";
+                      $url ="https://diktis.kemenag.go.id/kelembagaan/kemenag2old/";
                     }
                   ?>
                 <a class="btn btn-danger btn-sm" href="<?php echo $url; ?>file_upload/<?php echo $d->kode_klp; ?>/<?php echo $d->file; ?>" target="_blank" ><i class="icon-base ti tabler-zoom-scan"></i> </a>

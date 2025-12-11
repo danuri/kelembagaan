@@ -48,7 +48,7 @@ class Pendirianptkis extends BaseController
             ->where('agu.group','verifikator')
             ->withIdentities()
             ->findAll();
-            $data['verifikator'] = $users->findById($data['usulan']->verifikator);
+            
             return view('supervisor/usulan/pendirianptkis/detail', $data);
         }else{
             $model = new LogModel;
@@ -68,7 +68,7 @@ class Pendirianptkis extends BaseController
 
         $logm = new LogModel();
         $logm->insert(['id_usul' => $id, 'status_usulan' => 2, 'keterangan' => 'Usulan didisposisi ke verifikator.','disposisi'=>'sss', 'created_by' => user_id()]);
-        return redirect()->back()->with('message', 'Usulan telah didisposisi.');
+        return redirect()->back()->with('success', 'Usulan telah didisposisi.');
     }
 
     function verifikasi($id) {
@@ -152,7 +152,7 @@ class Pendirianptkis extends BaseController
         ];
         $detail->update($id,$data);
 
-        return redirect()->back()->withInput()->with('message', 'Data telah direkam');
+        return redirect()->back()->withInput()->with('success', 'Data telah direkam');
     }
 
     function kma($id) {
@@ -177,7 +177,7 @@ class Pendirianptkis extends BaseController
         $logm = new LogModel();
         $logm->insert(['id_usul' => $id, 'status_usulan' => 41, 'keterangan' => 'Proses penilaian oleh Asesor', 'created_by' => user_id()]);
 
-        return redirect()->back()->with('message', 'Data sudah dikirim ke Asesor untuk dinilai.');
+        return redirect()->back()->with('success', 'Data sudah dikirim ke Asesor untuk dinilai.');
     }
 
     function addasesor() {
@@ -192,7 +192,7 @@ class Pendirianptkis extends BaseController
         ];
         $insert = $model->insert($data);
 
-        return redirect()->back()->withInput()->with('message', 'Asesor telah direkam');
+        return redirect()->back()->withInput()->with('success', 'Asesor telah direkam');
     }
     
     function penilaianreview($id) {
@@ -200,7 +200,7 @@ class Pendirianptkis extends BaseController
         
         $id = decrypt($id);
         $update = $model->update($id,['status'=>1]);
-        return redirect()->back()->withInput()->with('message', 'Penilaian telah dikembalikan');
+        return redirect()->back()->withInput()->with('success', 'Penilaian telah dikembalikan');
     }
 
     public function recheck($id)
@@ -214,7 +214,7 @@ class Pendirianptkis extends BaseController
       $logm = new LogModel();
       $logm->insert(['id_usul'=>$id,'status_usulan'=>31,'keterangan'=>'Verifikasi Ulang. '.$keterangan,'created_by'=>user_id()]);
 
-      session()->setFlashdata('message', 'Usulan dikembalikan ke Verifikator.');
+      session()->setFlashdata('success', 'Usulan dikembalikan ke Verifikator.');
       return $this->response->setJSON(['status'=>'success']);
     }
 
@@ -259,5 +259,17 @@ class Pendirianptkis extends BaseController
         $templateProcessor->saveAs('draft/'.$fileName);
 
         return $this->response->download('draft/'.$fileName,null);
+    }
+
+    function done($id) {
+      $model = new UsulanModel;
+      
+      $id = decrypt($id);
+      $keterangan = $this->request->getVar('keterangan');
+      $model->update($id,['status'=>20,'keterangan_supervisor'=>$keterangan]);
+
+      $logm = new LogModel();
+      $logm->insert(['id_usul'=>$id,'status_usulan'=>20,'keterangan'=>'Usulan Selesai','created_by'=>user_id()]);
+      return redirect()->back()->with('success', 'Usulan telah ditandai selesai.');
     }
 }

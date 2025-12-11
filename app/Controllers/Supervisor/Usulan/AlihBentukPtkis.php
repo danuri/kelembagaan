@@ -41,7 +41,12 @@ class AlihBentukPtkis extends BaseController
             ->where('agu.group','verifikator')
             ->withIdentities()
             ->findAll();
-            $data['verifikator'] = $users->findById($data['usulan']->verifikator);
+
+            if($data['usulan']->verifikator){
+              $data['verifikator'] = $users->findById($data['usulan']->verifikator);
+            }else{
+                $data['verifikator'] = (object) ['full_name'=>'-','email'=>'-','phone'=>'-'];
+            }
 
             return view('supervisor/usulan/alihbentukptkis/detail', $data);
         }else{
@@ -62,7 +67,7 @@ class AlihBentukPtkis extends BaseController
 
         $logm = new LogModel();
         $logm->insert(['id_usul' => $id, 'status_usulan' => 2, 'keterangan' => 'Usulan didisposisi ke verifikator.','disposisi'=>'sss', 'created_by' => user_id()]);
-        return redirect()->back()->with('message', 'Usulan telah didisposisi.');
+        return redirect()->back()->with('success', 'Usulan telah didisposisi.');
     }
 
     function verifikasi($id) {
@@ -92,8 +97,20 @@ class AlihBentukPtkis extends BaseController
       $logm = new LogModel();
       $logm->insert(['id_usul'=>$id,'status_usulan'=>31,'keterangan'=>'Verifikasi Ulang. '.$keterangan,'created_by'=>user_id()]);
 
-      session()->setFlashdata('message', 'Usulan dikembalikan ke Verifikator.');
+      session()->setFlashdata('success', 'Usulan dikembalikan ke Verifikator.');
       return $this->response->setJSON(['status'=>'success']);
+    }
+
+    function done($id) {
+      $model = new UsulanModel;
+      
+      $id = decrypt($id);
+      $keterangan = $this->request->getVar('keterangan');
+      $model->update($id,['status'=>20,'keterangan_supervisor'=>$keterangan]);
+
+      $logm = new LogModel();
+      $logm->insert(['id_usul'=>$id,'status_usulan'=>20,'keterangan'=>'Usulan Selesai','created_by'=>user_id()]);
+      return redirect()->back()->with('success', 'Usulan telah ditandai selesai.');
     }
 
 }

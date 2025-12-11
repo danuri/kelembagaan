@@ -214,7 +214,7 @@
           </div>
           <div class="mb-6">
             <label class="form-label" for="basic-default-fullname">Lampiran Penilaian</label>
-            <?= ($asesmen->file_hasil)?$asesmen->file_hasil:'Belum unggah';?>
+            <?= ($asesmen->file_hasil)?'<a href="'.base_url('uploads/nilai/'.$asesmen->file_hasil).'" target="_blank">'.$asesmen->file_hasil.'</a>':'Belum unggah';?>
           </div>
         </form>
         </div>

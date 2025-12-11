@@ -159,6 +159,7 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
             $routes->post('asesor/add', 'Supervisor\Usulan\Pendirianptkis::addasesor');
             $routes->post('rkmadetail', 'Supervisor\Usulan\Pendirianptkis::rkmadetail');
             $routes->post('recheck/(:any)', 'Supervisor\Usulan\Pendirianptkis::recheck/$1');
+            $routes->get('done/(:any)', 'Supervisor\Usulan\Pendirianptkis::done/$1');
         });
 
         $routes->group('alihbentukptkis', static function ($routes) {
@@ -167,6 +168,7 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
             $routes->post('disposisi/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::disposisi/$1');
             $routes->get('detail/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::detail/$1');
             $routes->post('recheck/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::recheck/$1');
+            $routes->get('done/(:any)', 'Supervisor\Usulan\AlihBentukPtkis::done/$1');
         });
 
         $routes->group('pembentukanfai', static function ($routes) {
@@ -176,6 +178,7 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
             $routes->get('detail/verifikasi/(:any)', 'Supervisor\Usulan\Pembentukanfai::verifikasi/$1');
             $routes->get('detail/(:any)', 'Supervisor\Usulan\Pembentukanfai::detail/$1');
             $routes->post('recheck/(:any)', 'Supervisor\Usulan\Pembentukanfai::recheck/$1');
+            $routes->get('done/(:any)', 'Supervisor\Usulan\Pembentukanfai::done/$1');
         });
 
         $routes->group('alihkelolaptkis', static function ($routes) {
@@ -185,6 +188,7 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
             $routes->get('detail/verifikasi/(:any)', 'Supervisor\Usulan\Alihkelolaptkis::verifikasi/$1');
             $routes->get('detail/(:any)', 'Supervisor\Usulan\Alihkelolaptkis::detail/$1');
             $routes->post('recheck/(:any)', 'Supervisor\Usulan\Alihkelolaptkis::recheck/$1');
+            $routes->get('done/(:any)', 'Supervisor\Usulan\Alihkelolaptkis::done/$1');
         });
     });
 

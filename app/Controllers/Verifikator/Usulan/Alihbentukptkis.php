@@ -99,22 +99,39 @@ class Alihbentukptkis extends BaseController
 
         $model->where('usulan_id', $id)->set([
             'magister' => $this->request->getPost('magister'),
+            'magister2' => $this->request->getPost('magister2'),
             'doktor' => $this->request->getPost('doktor'),
+            'doktor2' => $this->request->getPost('doktor2'),
             'asisten_ahli' => $this->request->getPost('asisten_ahli'),
+            'asisten_ahli2' => $this->request->getPost('asisten_ahli2'),
             'lektor' => $this->request->getPost('lektor'),
+            'lektor2' => $this->request->getPost('lektor2'),
             'lektor_kepala' => $this->request->getPost('lektor_kepala'),
+            'lektor_kepala2' => $this->request->getPost('lektor_kepala2'),
             'guru_besar' => $this->request->getPost('guru_besar'),
+            'guru_besar2' => $this->request->getPost('guru_besar2'),
             'akreditasi_no' => $this->request->getPost('akreditasi_no'),
+            'akreditasi_no2' => $this->request->getPost('akreditasi_no2'),
             'akreditasi_unggul' => $this->request->getPost('akreditasi_unggul'),
+            'akreditasi_unggul2' => $this->request->getPost('akreditasi_unggul2'),
             'akreditasi_baiksekali' => $this->request->getPost('akreditasi_baiksekali'),
+            'akreditasi_baiksekali2' => $this->request->getPost('akreditasi_baiksekali2'),
             'akreditasi_baik' => $this->request->getPost('akreditasi_baik'),
+            'akreditasi_baik2' => $this->request->getPost('akreditasi_baik2'),
             'mahasiswa' => $this->request->getPost('mahasiswa'),
+            'mahasiswa2' => $this->request->getPost('mahasiswa2'),
             'rasio_dm' => $this->request->getPost('rasio_dm'),
+            'rasio_dm2' => $this->request->getPost('rasio_dm2'),
             'fakultas' => $this->request->getPost('fakultas'),
+            'fakultas2' => $this->request->getPost('fakultas2'),
             'prodi' => $this->request->getPost('prodi'),
+            'prodi2' => $this->request->getPost('prodi2'),
             'pelaporan' => $this->request->getPost('pelaporan'),
+            'pelaporan2' => $this->request->getPost('pelaporan2'),
             'tanah' => $this->request->getPost('tanah'),
+            'tanah2' => $this->request->getPost('tanah2'),
             'kepemilikan_tanah' => $this->request->getPost('kepemilikan_tanah'),
+            'kepemilikan_tanah2' => $this->request->getPost('kepemilikan_tanah2'),
             'catatan' => $catatan
           ])->update();
 
@@ -125,7 +142,6 @@ class Alihbentukptkis extends BaseController
         $id = decrypt($id);
         $validation = \Config\Services::validation();
         $validation->setRules([
-            'skor' => 'required',
             'lampiran' => 'uploaded[lampiran]|max_size[lampiran,2048]|ext_in[lampiran,pdf,xls,xlsx]'
         ]);
         if (!$validation->withRequest($this->request)->run()) {

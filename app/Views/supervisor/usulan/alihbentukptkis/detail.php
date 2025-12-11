@@ -9,7 +9,11 @@
         <div class="d-flex gap-4">
             <button class="btn btn-label-secondary waves-effect">Kembali</button>
         </div>
+        <?php if($verifikator->id){?>
+        <button type="button" class="btn btn-success waves-effect waves-light" onclick="disposisi()">Ubah Disposisi</button>
+        <?php }else{ ?>
         <button type="button" class="btn btn-success waves-effect waves-light" onclick="disposisi()">Disposisi</button>
+        <?php } ?>
     </div>
 </div>
 

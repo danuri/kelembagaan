@@ -55,7 +55,7 @@ class Pembentukanfai extends BaseController
 
         $logm = new LogModel();
         $logm->insert(['id_usul' => $id, 'status_usulan' => 2, 'keterangan' => 'Usulan didisposisi ke verifikator.','disposisi'=>'sss', 'created_by' => user_id()]);
-        return redirect()->back()->with('message', 'Usulan telah didisposisi.');
+        return redirect()->back()->with('success', 'Usulan telah didisposisi.');
     }
 
     function verifikasi($id) {
@@ -85,7 +85,19 @@ class Pembentukanfai extends BaseController
       $logm = new LogModel();
       $logm->insert(['id_usul'=>$id,'status_usulan'=>31,'keterangan'=>'Verifikasi Ulang. '.$keterangan,'created_by'=>user_id()]);
 
-      session()->setFlashdata('message', 'Usulan dikembalikan ke Verifikator.');
+      session()->setFlashdata('success', 'Usulan dikembalikan ke Verifikator.');
       return $this->response->setJSON(['status'=>'success']);
+    }
+
+    function done($id) {
+      $model = new UsulanModel;
+      
+      $id = decrypt($id);
+      $keterangan = $this->request->getVar('keterangan');
+      $model->update($id,['status'=>20,'keterangan_supervisor'=>$keterangan]);
+
+      $logm = new LogModel();
+      $logm->insert(['id_usul'=>$id,'status_usulan'=>20,'keterangan'=>'Usulan Selesai','created_by'=>user_id()]);
+      return redirect()->back()->with('success', 'Usulan telah ditandai selesai.');
     }
 }
