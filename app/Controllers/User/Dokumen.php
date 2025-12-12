@@ -101,7 +101,7 @@ class Dokumen extends BaseController
         <tbody>
           <?php
           foreach ($dokumen as $row) {
-            $download = ($row->lampiran)?'<a href="'.base_url('uploads/prodi/'.$row->lampiran).'" target="_blank">Lihat</a>':'Belum Upload';
+            $download = ($row->lampiran)?'<a href="'.base_url('uploads/prodi/'.$row->lampiran.'?'.time()).'" target="_blank">Lihat</a>':'Belum Upload';
             echo '
             <tr>
             <td>'.$row->dokumen.'</td>

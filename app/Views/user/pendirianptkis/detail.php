@@ -220,7 +220,7 @@
                                     <input type="hidden" name="iddok" value="<?= $dokumen->id ?>">
                                     <input type="file" id="dok<?= $dokumen->id?>" name="dokumen" class="form-control" onchange="uploadfile('<?= $dokumen->id ?>')" />
                                     <?php if($dokumen->lampiran): ?>
-                                    <button class="btn btn-outline-primary waves-effect" type="button" id="button-addon2" onclick="preview('<?= base_url('uploads/'.$dokumen->lampiran) ?>')">View</button>
+                                    <button class="btn btn-outline-primary waves-effect" type="button" id="button-addon2" onclick="preview('<?= base_url('uploads/'.$dokumen->lampiran.'?'.time()) ?>')">View</button>
                                     <?php else: ?>
                                     <button class="btn btn-outline-primary waves-effect" type="button" id="btn<?= $dokumen->id ?>" onclick="" disabled>View</button>
                                     <?php endif; ?>
