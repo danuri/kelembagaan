@@ -254,6 +254,7 @@
 
             </div>
             <div class="modal-footer">
+              <a href="" target="_blank" class="btn btn-primary" id="previewfile">Buka Tab Baru</a>
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Tutup</button>
             </div>
         </div>
@@ -296,6 +297,7 @@ function preview(berkas) {
   $('#object').html('<object data="'+berkas+'" type="application/pdf" width="100%" style="height: 80vh;" id="object">'+
                       '<p>Browser tidak mendukung!</p>'+
                     '</object>');
+  $('#previewfile').attr('href', berkas);
   $('#preview').modal('show');
 }
 </script>

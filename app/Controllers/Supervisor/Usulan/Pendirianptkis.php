@@ -104,8 +104,15 @@ class Pendirianptkis extends BaseController
             ->findAll();
 
         $am = new AsesorModel;
-        $data['asesorkecukupan'] = $am->where(['jenis'=>1,'usul_id'=>$id])->findAll();
-        $data['asesorlapangan'] = $am->where(['jenis'=>2,'usul_id'=>$id])->findAll();
+        // join with users
+        $data['asesorkecukupan'] = $am->join('users', 'users.id = asesor.user_id')
+            ->where(['jenis'=>1,'usul_id'=>$id])
+            ->withIdentities()
+            ->findAll();
+        $data['asesorlapangan'] = $am->join('users', 'users.id = asesor.user_id')
+            ->where(['jenis'=>2,'usul_id'=>$id])
+            ->withIdentities()
+            ->findAll();
 
         return view('supervisor/usulan/pendirianptkis/detail_penilaian', $data);
     }
@@ -193,6 +200,12 @@ class Pendirianptkis extends BaseController
         $insert = $model->insert($data);
 
         return redirect()->back()->withInput()->with('success', 'Asesor telah direkam');
+    }
+
+    function deleteasesor($id) {
+        $model = new AsesorModel;
+        $delete = $model->delete($id);
+        return redirect()->back()->withInput()->with('success', 'Asesor telah dihapus');
     }
     
     function penilaianreview($id) {

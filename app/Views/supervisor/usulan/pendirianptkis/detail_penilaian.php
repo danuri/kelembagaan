@@ -119,7 +119,7 @@
                     </tr>
                     <?php foreach($asesorkecukupan as $ak):?>
                     <tr>
-                        <td><?= $ak->user_id?></td>
+                        <td><?= $ak->full_name?></td>
                         <td><?= $ak->mulai_tanggal.' - '.$ak->sampai_tanggal?></td>
                         <td><?= ($ak->file_hasil)?'<a href="'.base_url('uploads/nilai/'.$ak->file_hasil).'" target="_blank">Unduh</a>':'Belum Mengunggah'; ?></td>
                         <td><?= $ak->skor?></td>
@@ -127,9 +127,9 @@
                             <?php
                             if($ak->status == 2){
                             ?>
-                            <a href="<?= site_url('supervisor/asesor/review/'.$ak->id)?>" class="btn btn-sm btn-warning" onclick="return confirm('Nilai akan dikembalikan ke Asesor untuk ditinjau ulang?')">Kembalikan</a>
+                            <a href="<?= site_url('supervisor/usulan/pendirianptkis/detail/penilaian/review/'.$ak->id)?>" class="btn btn-sm btn-warning" onclick="return confirm('Nilai akan dikembalikan ke Asesor untuk ditinjau ulang?')">Kembalikan</a>
                             <?php }else{?>
-                            <a href="<?= site_url('supervisor/asesor/delete/'.$ak->id)?>" class="btn btn-sm btn-danger" onclick="return confirm('Asesor Kecukupan akan dihapus?')">Hapus</a>
+                            <a href="<?= site_url('supervisor/usulan/pendirianptkis/asesor/delete/'.$ak->id)?>" class="btn btn-sm btn-danger" onclick="return confirm('Asesor Kecukupan akan dihapus?')">Hapus</a>
                             <?php }?>
                         </td>
                     </tr>
@@ -151,11 +151,11 @@
                     </tr>
                     <?php foreach($asesorlapangan as $al):?>
                     <tr>
-                        <td><?= $al->user_id?></td>
+                        <td><?= $al->full_name?></td>
                         <td><?= $al->mulai_tanggal.' - '.$al->sampai_tanggal?></td>
-                        <td><?= $ak->file_hasil?></td>
-                        <td><?= $ak->skor?></td>
-                        <td><a href="<?= site_url('supervisor/asesor/delete/'.$al->id)?>" class="btn btn-sm btn-danger" onclick="return confirm('Asesor Lapangan akan dihapus?')">Hapus</a></td>
+                        <td><?= $al->file_hasil?></td>
+                        <td><?= $al->skor?></td>
+                        <td><a href="<?= site_url('supervisor/usulan/pendirianptkis/asesor/delete/'.$al->id)?>" class="btn btn-sm btn-danger" onclick="return confirm('Asesor Lapangan akan dihapus?')">Hapus</a></td>
                     </tr>
                     <?php endforeach;?>
                 </table>

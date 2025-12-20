@@ -28,6 +28,7 @@ class Dokumen extends BaseController
                 'message' => $validation->getErrors()
             ]);
         }
+        
         // handle file upload
         $dokumenid = $this->request->getPost('iddok');
         $usulanid = $this->request->getPost('usul');
@@ -44,7 +45,6 @@ class Dokumen extends BaseController
                 'message' => 'File upload failed'
             ]);
         }
-
         
         // save to database
         $dokumenModel = new UsulDokumenModel();

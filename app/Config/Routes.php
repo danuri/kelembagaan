@@ -156,6 +156,7 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
             $routes->get('detail/kma/(:any)', 'Supervisor\Usulan\Pendirianptkis::kma/$1');
             $routes->get('detail/(:any)', 'Supervisor\Usulan\Pendirianptkis::detail/$1');
             $routes->get('penilaianasesor/(:any)', 'Supervisor\Usulan\Pendirianptkis::penilaianasesor/$1');
+            $routes->get('asesor/delete/(:any)', 'Supervisor\Usulan\Pendirianptkis::deleteasesor/$1');
             $routes->post('asesor/add', 'Supervisor\Usulan\Pendirianptkis::addasesor');
             $routes->post('rkmadetail', 'Supervisor\Usulan\Pendirianptkis::rkmadetail');
             $routes->post('recheck/(:any)', 'Supervisor\Usulan\Pendirianptkis::recheck/$1');
@@ -253,6 +254,7 @@ $routes->group('layanan', ['filter' => 'group:user'], static function ($routes) 
 });
 
 $routes->group('dokumen', ['filter' => 'group:user,verifikator,supervisor'], static function ($routes) {
+    $routes->get('upload', 'User\Dokumen::index');
     $routes->post('upload', 'User\Dokumen::upload');
     $routes->post('uploadprodi', 'User\Dokumen::uploadprodi');
     $routes->get('embed/(:num)/(:any)', 'User\Dokumen::embed/$1/$2');
