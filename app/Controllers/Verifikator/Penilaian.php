@@ -37,6 +37,8 @@ class Penilaian extends BaseController
                 return usul_status($value);
             })->format('jenis', function($value, $meta){
                 return jenisasesmen($value);
+            })->format('file_hasil', function($value, $meta){
+                return ($value)?'<a href="'.base_url('uploads/nilai/'.$value).'" target="_blank">Lihat</a>':'Belum Mengunggah';
             })->filter(function ($builder, $request) {
 
                 if ($request->layanan)

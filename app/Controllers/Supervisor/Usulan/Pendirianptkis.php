@@ -105,13 +105,13 @@ class Pendirianptkis extends BaseController
 
         $am = new AsesorModel;
         // join with users
-        $data['asesorkecukupan'] = $am->join('users', 'users.id = asesor.user_id')
+        $data['asesorkecukupan'] = $am->select('tr_asesor.*,users.full_name')->join('users', 'users.id = tr_asesor.user_id')
             ->where(['jenis'=>1,'usul_id'=>$id])
-            ->withIdentities()
+            // ->withIdentities()
             ->findAll();
-        $data['asesorlapangan'] = $am->join('users', 'users.id = asesor.user_id')
+        $data['asesorlapangan'] = $am->select('tr_asesor.*,users.full_name')->join('users', 'users.id = tr_asesor.user_id')
             ->where(['jenis'=>2,'usul_id'=>$id])
-            ->withIdentities()
+            // ->withIdentities()
             ->findAll();
 
         return view('supervisor/usulan/pendirianptkis/detail_penilaian', $data);

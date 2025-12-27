@@ -25,7 +25,7 @@ class Dokumen extends BaseController
         if (!$validation->withRequest($this->request)->run()) {
             return $this->response->setJSON([
                 'status' => 'error',
-                'message' => $validation->getErrors()
+                'message' => $validation->getError('dokumen')
             ]);
         }
         

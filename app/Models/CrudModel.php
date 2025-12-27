@@ -183,56 +183,6 @@ class CrudModel extends Model
     return $query;
   }
 
-  public function rekapUsulProv($satker)
-  {
-    $query = $this->db->query("SELECT
-                              tr_usulan.layanan AS layanan_id, 
-                              COUNT(tr_usulan.id) AS jumlah, 
-                              tm_layanan.layanan
-                            FROM
-                              tr_usulan
-                              INNER JOIN
-                              tm_layanan
-                              ON 
-                                tr_usulan.layanan = tm_layanan.id
-                            WHERE tr_usulan.created_by_satker_id='$satker'
-                            GROUP BY
-                              tr_usulan.layanan")->getResult();
-    return $query;
-  }
-
-  public function rekapDetail($satker)
-  {
-    $query = $this->db->query("SELECT
-                                tr_usulan.id, 
-                                tr_usulan.nip, 
-                                tr_usulan.nama, 
-                                tr_usulan.jabatan, 
-                                tr_usulan.created_by_kabupaten, 
-                                tm_layanan.layanan
-                              FROM
-                                tr_usulan
-                                LEFT JOIN
-                                tm_layanan
-                                ON 
-                                  tr_usulan.layanan = tm_layanan.id
-                              WHERE
-                                tr_usulan.created_by_satker_id = '$satker'")->getResult();
-    return $query;
-  }
-
-  public function rekapJumlah()
-  {
-    $query = $this->db->query("SELECT created_by_satker_id,created_by_satker AS provinsi, COUNT(id) AS jumlah FROM tr_usulan GROUP BY created_by_satker_id,created_by_satker")->getResult();
-    return $query;
-  }
-
-  public function rekapJumlahKab($satker)
-  {
-    $query = $this->db->query("SELECT created_by_kabupaten AS kabupaten, COUNT(id) AS jumlah FROM tr_usulan WHERE created_by_satker_id='$satker' GROUP BY created_by_kabupaten")->getResult();
-    return $query;
-  }
-
   public function jumlahUsul()
   {
     $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status > 0")->getRow();
@@ -280,6 +230,36 @@ class CrudModel extends Model
               (SELECT COUNT(layanan_id) FROM tr_usulan WHERE layanan_id=a.layanan_id AND status=21) AS kembali
               FROM tr_usulan a WHERE status > 0 GROUP BY layanan_id,layanan_nama
               ")->getResult();
+    return $query;
+  }
+
+  public function jumlahUsulVerifikator($vid)
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status > 1 AND verifikator='$vid'")->getRow();
+    return $query;
+  }
+
+  public function jumlahUsulVerifVerifikator($vid)
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status IN (2,3,31,4) AND verifikator='$vid'")->getRow();
+    return $query;
+  }
+
+  public function jumlahUsulPenilaianVerifikator($vid)
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status IN ('41','5','6') AND verifikator='$vid'")->getRow();
+    return $query;
+  }
+
+  public function jumlahUsulDikembalikanVerifikator($vid)
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status='21' AND verifikator='$vid'")->getRow();
+    return $query;
+  }
+
+  public function jumlahUsulSelesaiVerifikator($vid)
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status='20' AND verifikator='$vid'")->getRow();
     return $query;
   }
 }

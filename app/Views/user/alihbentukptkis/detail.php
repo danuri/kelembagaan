@@ -103,7 +103,7 @@
                         <div id="document-validation" class="content">
                           <div class="content-header mb-4">
                             <h6 class="mb-0">Dokumen Persyaratan</h6>
-                            <small>Lengkapi Dokumen Persyaratan.</small>
+                            <small>Lengkapi Dokumen Persyaratan. File pdf maksimal 2MB</small>
                           </div>
                           <div class="row g-6">
                             <?php foreach($dokumens as $dokumen): ?>
