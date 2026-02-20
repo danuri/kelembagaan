@@ -8,6 +8,7 @@ use App\Models\UsulanModel;
 use App\Models\FaiModel;
 use App\Models\CrudModel;
 use App\Models\LogModel;
+use App\Models\LayananModel;
 
 class Pembentukanfai extends BaseController
 {
@@ -15,6 +16,10 @@ class Pembentukanfai extends BaseController
     {
         $model = new UsulanModel();
         $data['usulans'] = $model->where(['layanan_id'=>4,'user_id'=>user_id()])->findAll();
+        
+        $layanan = new LayananModel;
+        $data['layanan'] = $layanan->find(4);
+        
         return view('user/pembentukanfai/index', $data);
     }
 

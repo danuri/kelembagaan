@@ -304,6 +304,28 @@
       </section>
       <!-- Useful features: End -->
 
+      <section id="landingCTA" class="section-py landing-cta position-relative p-lg-5 pb-0">
+        <img src="../../assets/img/front-pages/backgrounds/cta-bg-light.png" class="position-absolute bottom-0 end-0 scaleX-n1-rtl h-100 w-100 z-n1" alt="cta image" data-app-light-img="front-pages/backgrounds/cta-bg-light.png" data-app-dark-img="front-pages/backgrounds/cta-bg-dark.png">
+        <div class="container">
+          <div class="row align-items-center gy-12">
+            <div class="col-lg-6 text-start text-sm-center text-lg-start">
+              <h3 class="cta-title text-primary fw-bold mb-0">FORM PENGAJUAN RUMAH PTK BARU</h3>
+              <ul>
+                <li>PTK yang baru Berdiri</li>
+                <li>PTK yang melakukan Alih Bentuk</li>
+                <li>PTK yang melakukan Alih Kelola</li>
+              </ul>
+              <a href="https://s.id/RumahPTKBaru" class="btn btn-lg btn-primary waves-effect waves-light" target="_blank">Daftar</a>
+            </div>
+            <div class="col-lg-6 pt-lg-12 text-center text-lg-end">
+              <img src="<?= base_url()?>assets/img/logo-kemenag.png" alt="cta dashboard" class="img-fluid mt-lg-4" width="100">
+              <img src="https://pddikti.kemdiktisaintek.go.id/static/media/logo-pddikti.079f9b910c956907fa49f7fabaef609a.svg" alt="cta dashboard" class="img-fluid mt-lg-4" width="80">
+              <img src="https://pddikti.kemdiktisaintek.go.id/static/media/pddikti-navbar.c5287e5a315c9d0dadd76989237034e6.svg" alt="cta dashboard" class="img-fluid mt-lg-4" width="150">
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Real customers reviews: Start -->
        <section id="landingDasarHukum" class="section-py bg-body landing-reviews pb-0">
         <!-- What people say slider: Start -->

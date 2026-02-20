@@ -9,6 +9,7 @@ use App\Models\PendirianptkisModel;
 use App\Models\ProdiModel;
 use App\Models\CrudModel;
 use App\Models\LogModel;
+use App\Models\LayananModel;
 
 class Pendirianptkis extends BaseController
 {
@@ -16,6 +17,10 @@ class Pendirianptkis extends BaseController
     {
         $model = new UsulanModel();
         $data['usulans'] = $model->where(['layanan_id'=>1,'user_id'=>user_id()])->findAll();
+        
+        $layanan = new LayananModel;
+        $data['layanan'] = $layanan->find(1);
+        
         return view('user/pendirianptkis/index', $data);
     }
 

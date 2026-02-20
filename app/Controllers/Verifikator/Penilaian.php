@@ -26,8 +26,7 @@ class Penilaian extends BaseController
       $db = \Config\Database::connect('default', false);
       $builder = $db->table('tr_usulan a')->select('a.id,a.nama_lembaga,a.nama_lembaga,a.status,b.id as ases_id, b.jenis,b.mulai_tanggal,b.sampai_tanggal,b.keterangan,b.file_hasil,b.skor,b.status as status_nilai')
                 ->join('tr_asesor b', 'b.usul_id = a.id')
-                ->where(['b.user_id'=>user_id(),'a.status'=>41])
-                ->orWhere(['a.status'=>5]);
+                ->where(['b.user_id'=>user_id(),'a.status'=>5]);
     
 
       return DataTable::of($builder)
@@ -107,10 +106,10 @@ class Penilaian extends BaseController
         $model = new AsesorModel();
 
         $id = decrypt($id);
-        $model->update($id, ['status' => 5]);
+        $model->update($id, ['status' => 6]);
 
         $logm = new LogModel();
-        $logm->insert(['id_usul' => $id, 'status_usulan' => 5, 'keterangan' => 'Penilaian oleh Asesor '.auth()->user()->full_name.' telah selesai.', 'created_by' => user_id()]);
+        $logm->insert(['id_usul' => $id, 'status_usulan' => 6, 'keterangan' => 'Penilaian oleh Asesor '.auth()->user()->full_name.' telah selesai.', 'created_by' => user_id()]);
 
         return redirect()->back()->with('message', 'Nilai telah dikirimkan ke supervisor.');
     }

@@ -179,10 +179,10 @@ class Pendirianptkis extends BaseController
         $model = new UsulanModel();
 
         $id = decrypt($id);
-        $model->update($id, ['status' => 41]);
+        $model->update($id, ['status' => 5]);
 
         $logm = new LogModel();
-        $logm->insert(['id_usul' => $id, 'status_usulan' => 41, 'keterangan' => 'Proses penilaian oleh Asesor', 'created_by' => user_id()]);
+        $logm->insert(['id_usul' => $id, 'status_usulan' => 5, 'keterangan' => 'Proses penilaian oleh Asesor', 'created_by' => user_id()]);
 
         return redirect()->back()->with('success', 'Data sudah dikirim ke Asesor untuk dinilai.');
     }

@@ -22,7 +22,13 @@
                 <tr>
                   <td><?= $row->layanan ?></td>
                   <td><?= $row->keterangan ?></td>
-                  <td><?= $row->is_active == 1 ? 'Aktif' : 'Tidak Aktif' ?></td>
+                  <td>
+                    <?php if($row->is_active == 1){ ?>
+                      <a href="<?= site_url('supervisor/master/layanan/deactivate/'. $row->id) ?>" class="btn btn-xs btn-danger" onclick="return confirm('Layanan akan dinonaktifkan?')">Aktif</a>
+                    <?php }else{ ?>
+                      <a href="<?= site_url('supervisor/master/layanan/activate/'. $row->id) ?>" class="btn btn-xs btn-success" onclick="return confirm('Layanan akan diaktifkan?')">Tidak Aktif</a>
+                    <?php } ?>
+                  </td>
                   <td>
                     <a href="<?= site_url('supervisor/master/layanan/delete/'. $row->id) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Layanan akan dihapus?')">Delete</a>
                     <a href="<?= site_url('supervisor/master/layanan/dokumen/'. $row->id) ?>" class="btn btn-sm btn-success">Dokumen</a>

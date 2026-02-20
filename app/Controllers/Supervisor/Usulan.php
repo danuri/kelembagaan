@@ -78,7 +78,7 @@ class Usulan extends BaseController
 
     function download() {
         $model = new UsulanModel;
-        $data = $model->select('tr_usulan.*, users.full_name as verifikator_nama')->join('users', 'users.id = tr_usulan.verifikator')->where(['tr_usulan.status >'=>0])->findAll();
+        $data = $model->select('tr_usulan.*, users.full_name as verifikator_nama')->join('users', 'users.id = tr_usulan.verifikator','left')->where(['tr_usulan.status >'=>0])->findAll();
 
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();

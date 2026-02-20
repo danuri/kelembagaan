@@ -9,7 +9,9 @@
 <div class="card border border-primary">
   <div class="card-header border-bottom d-flex justify-content-between align-items-center">
   <h5 class="card-title m-0 me-2">Data Usulan</h5>
+  <?php if($layanan->is_active == 1) { ?>
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat Usulan</button>
+  <?php } ?>
 </div>
   <div class="justify-content-between dt-layout-table">
     <table class="table table-bordered">
@@ -56,6 +58,7 @@
 
 </div>
 
+<?php if($layanan->is_active == 1) { ?>
 <div class="modal-onboarding modal fade animate__animated" id="onboardImageModal" tabindex="-1" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content text-center">
@@ -111,4 +114,5 @@
                               </div>
                             </div>
                           </div>
+                          <?php } ?>
 <?= $this->endSection() ?>

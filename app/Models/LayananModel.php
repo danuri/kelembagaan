@@ -12,7 +12,7 @@ class LayananModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['layanan','kode','keterangan'];
+    protected $allowedFields    = ['layanan','kode','keterangan','is_active'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

@@ -109,6 +109,8 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
             $routes->get('dokumen/(:num)', 'Supervisor\Layanan::dokumen/$1');
             $routes->get('dokumen/delete/(:num)', 'Supervisor\Layanan::dokumendelete/$1');
             $routes->post('dokumen/save', 'Supervisor\Layanan::dokumensave');
+            $routes->get('activate/(:num)', 'Supervisor\Layanan::activate/$1');
+            $routes->get('deactivate/(:num)', 'Supervisor\Layanan::deactivate/$1');
         });
 
         $routes->group("info", function ($routes) {

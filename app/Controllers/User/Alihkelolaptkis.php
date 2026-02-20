@@ -8,6 +8,7 @@ use App\Models\UsulanModel;
 use App\Models\AlihkelolaModel;
 use App\Models\CrudModel;
 use App\Models\LogModel;
+use App\Models\LayananModel;
 
 class Alihkelolaptkis extends BaseController
 {
@@ -15,6 +16,10 @@ class Alihkelolaptkis extends BaseController
     {
         $model = new UsulanModel();
         $data['usulans'] = $model->where(['layanan_id'=>3,'user_id'=>user_id()])->findAll();
+        
+        $layanan = new LayananModel;
+        $data['layanan'] = $layanan->find(3);
+        
         return view('user/alihkelolaptkis/index', $data);
     }
 

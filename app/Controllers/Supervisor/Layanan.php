@@ -105,5 +105,17 @@ class Layanan extends BaseController
       return redirect()->back()->with('message', 'Layanan telah diupdate.');
     }
 
+    function activate($id) {
+      $model = new LayananModel;
+      $model->update($id, ['is_active' => 1]);
+      return redirect()->back()->with('message', 'Layanan telah diaktifkan.');
+    }
+
+    function deactivate($id) {
+      $model = new LayananModel;
+      $model->update($id, ['is_active' => 0]);
+      return redirect()->back()->with('message', 'Layanan telah dinonaktifkan.');
+    }
+
 
 }
