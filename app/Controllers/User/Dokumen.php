@@ -7,6 +7,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\DokumenModel;
 use App\Models\UsulDokumenModel;
 use App\Models\DokumenprodiModel;
+use App\Models\DokumenProdiFaiModel;
 use App\Models\CrudModel;
 
 class Dokumen extends BaseController
@@ -189,6 +190,71 @@ class Dokumen extends BaseController
         
         // save to database
         $dokumenModel = new DokumenprodiModel();
+        $cek = $dokumenModel->where(['dokumen_id' => $kode,'usul_id' => $usulid])->first();
+
+        if ($cek) {
+            // update
+            $dokumenModel->update($cek->id, [
+                'lampiran' => $newName,
+                'dok_status' => 0,
+            ]);
+            // return redirect()->to(site_url('layanan/pendirianptkis/detail/'.$this->request->getPost('usul')))->with('message', 'Dokumen berhasil diunggah');
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Dokumen berhasil diunggah',
+                'file' => $newName
+            ]);
+        }else{
+            // insert
+            $dokumenModel->insert([
+                'dokumen_id' => $kode,
+                'usul_id' => $usulid,
+                'lampiran' => $newName,
+                'dok_status' => 0,
+            ]);
+            // return redirect()->to(site_url('layanan/pendirianptkis/detail/'.$this->request->getPost('usul')))->with('message', 'Dokumen berhasil diunggah');
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Dokumen berhasil diunggah',
+                'file' => $newName
+            ]);
+        }
+
+        // return redirect()->to(site_url('layanan/dokumen'))->with('message', 'Dokumen berhasil diunggah');
+    }
+
+    function uploadprodifai() {
+        // validation input
+        $validation = \Config\Services::validation();
+        $validation->setRules([
+            'dokumen' => 'uploaded[dokumen]|max_size[dokumen,2048]|ext_in[dokumen,pdf]'
+        ]);
+        if (!$validation->withRequest($this->request)->run()) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => $validation->getErrors()
+            ]);
+        }
+        // handle file upload
+        $usulid = $this->request->getPost('usulid');
+        $kode = $this->request->getPost('kode');
+
+        $file = $this->request->getFile('dokumen');
+        if ($file->isValid() && !$file->hasMoved()) {
+            // $newName = $file->getRandomName();
+            $newName = $usulid.'_'.$kode.'.pdf';
+            $file->move('./uploads/prodi', $newName, true);
+        } else {
+            // return redirect()->back()->withInput()->with('error', 'File upload failed');
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'File upload failed'
+            ]);
+        }
+
+        
+        // save to database
+        $dokumenModel = new DokumenProdiFaiModel();
         $cek = $dokumenModel->where(['dokumen_id' => $kode,'usul_id' => $usulid])->first();
 
         if ($cek) {

@@ -1,5 +1,12 @@
 <?= $this->extend('user/template') ?>
 <?= $this->section('content') ?>
+<?php if ($layanan->is_active == 0) { ?>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    Layanan ini sedang tidak aktif. Anda hanya dapat membuat draft. Layanan bisa disubmit/dikirim hanya ketika dalam
+    status aktif.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<?php } ?>
 <h4 class="text-center mb-1">
   Pembentukan Fakultas Agama Islam (FAI)
 </h4>
@@ -8,11 +15,10 @@
 </p>
 <div class="card">
   <div class="card-header border-bottom d-flex justify-content-between align-items-center">
-  <h5 class="card-title m-0 me-2">Data Usulan</h5>
-  <?php if($layanan->is_active == 1) { ?>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat Usulan</button>
-  <?php } ?>
-</div>
+    <h5 class="card-title m-0 me-2">Data Usulan</h5>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat
+      Usulan</button>
+  </div>
   <div class="justify-content-between dt-layout-table">
     <table class="table table-bordered">
       <thead>
@@ -39,13 +45,19 @@
               <td><?= $usulan->nama_lembaga ?></td>
               <td><?= usul_status($usulan->status) ?></td>
               <td>
-                <?php if($usulan->status == 0): ?>
-                  <a href="<?= site_url('layanan/pembentukanfai/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
-                  <a href="javascript:void(0)" class="btn btn-sm btn-danger" onclick="deleteUsulan('<?= encrypt($usulan->id) ?>')">Delete</a>
-                  <?php else:?>
-                    <a href="<?= site_url('layanan/pembentukanfai/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
-                    <a href="javascript:void(0)" class="btn btn-sm btn-warning" onclick="log('<?= encrypt($usulan->id) ?>')">Log</a>
-                <?php endif;?>
+                <?php if ($usulan->status == 0 || $usulan->status == 21): ?>
+                  <a href="<?= site_url('layanan/pembentukanfai/prodi/' . encrypt($usulan->id)) ?>"
+                    class="btn btn-sm btn-warning">Prodi</a>
+                  <a href="<?= site_url('layanan/pembentukanfai/detail/' . encrypt($usulan->id)) ?>"
+                    class="btn btn-sm btn-info">Detail</a>
+                  <a href="javascript:void(0)" class="btn btn-sm btn-danger"
+                    onclick="deleteUsulan('<?= encrypt($usulan->id) ?>')">Delete</a>
+                <?php else: ?>
+                  <a href="<?= site_url('layanan/pembentukanfai/detail/' . encrypt($usulan->id)) ?>"
+                    class="btn btn-sm btn-info">Detail</a>
+                  <a href="javascript:void(0)" class="btn btn-sm btn-warning"
+                    onclick="log('<?= encrypt($usulan->id) ?>')">Log</a>
+                <?php endif; ?>
               </td>
             </tr>
           <?php endforeach; ?>
@@ -57,16 +69,11 @@
 
 </div>
 
-<?php if($layanan->is_active == 1) { ?>
 <div class="modal-onboarding modal fade animate__animated" id="onboardImageModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content text-center">
       <div class="modal-header border-0">
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-0">
         <div class="onboarding-content mb-0">
@@ -101,12 +108,12 @@
         <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
           Tutup
         </button>
-        <button type="button" class="btn btn-primary" onclick="document.getElementById('usulform').submit();">Simpan</button>
+        <button type="button" class="btn btn-primary"
+          onclick="document.getElementById('usulform').submit();">Simpan</button>
       </div>
     </div>
   </div>
 </div>
-<?php } ?>
 <?= $this->endSection() ?>
 <?= $this->section('scripts') ?>
 <script>

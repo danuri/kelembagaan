@@ -15,15 +15,16 @@ class Alihbentukptkis extends BaseController
     public function index()
     {
         $model = new UsulanModel();
-        $data['usulans'] = $model->where(['layanan_id'=>2,'user_id'=>user_id()])->findAll();
-        
+        $data['usulans'] = $model->where(['layanan_id' => 2, 'user_id' => user_id()])->findAll();
+
         $layanan = new LayananModel;
         $data['layanan'] = $layanan->find(2);
 
         return view('user/alihbentukptkis/index', $data);
     }
 
-    function detail($id) {
+    function detail($id)
+    {
         $id = decrypt($id);
         $model = new UsulanModel();
         $detail = new AlihbentukptkisModel();
@@ -36,14 +37,15 @@ class Alihbentukptkis extends BaseController
         $crudModel = new CrudModel();
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
 
-        if($data['usulan']->status == 0 || $data['usulan']->status == 21){
+        if ($data['usulan']->status == 0 || $data['usulan']->status == 21) {
             return view('user/alihbentukptkis/detail', $data);
-        }else{
+        } else {
             return view('user/alihbentukptkis/detail_view', $data);
         }
     }
 
-    function create() {
+    function create()
+    {
         // validation input
         $validation = \Config\Services::validation();
         $validation->setRules([
@@ -56,7 +58,7 @@ class Alihbentukptkis extends BaseController
             return redirect()->back()->withInput()->with('error', $validation->getErrors());
         }
         // handle file upload
-        
+
         // save to database
         $usulanModel = new UsulanModel();
         $usulanModel->save([
@@ -78,17 +80,18 @@ class Alihbentukptkis extends BaseController
         ]);
 
         $logm = new LogModel();
-        $logm->insert(['id_usul'=>$usulanModel->getInsertID(),'status_usulan'=>0,'keterangan'=>'Membuat Draft Usulan','created_by'=>session('nip'),'created_by_name'=>session('nama')]);
-        
+        $logm->insert(['id_usul' => $usulanModel->getInsertID(), 'status_usulan' => 0, 'keterangan' => 'Membuat Draft Usulan', 'created_by' => session('nip'), 'created_by_name' => session('nama')]);
+
         return redirect()->to(site_url('layanan/alihbentukptkis'))->with('message', 'Draft Usulan berhasil dibuat');
     }
 
-    function updateform1() {
+    function updateform1()
+    {
         // update usulan
         $json_data = file_get_contents('php://input');
         $request_data = json_decode($json_data, true);
         $usulanModel = new UsulanModel();
-        $usulanModel->update($request_data['usul_id'],[
+        $usulanModel->update($request_data['usul_id'], [
             'nomor_surat' => $request_data['nomor_surat'],
             'perihal' => $request_data['perihal'],
             'nama_lembaga' => $request_data['nama_lembaga'],
@@ -96,71 +99,80 @@ class Alihbentukptkis extends BaseController
 
         $detailModel = new AlihbentukptkisModel();
         $detailModel
-        ->where('usulan_id',$request_data['usul_id'])
-        ->set([
-            'nama_lembaga' => $request_data['nama_lembaga'],
-            'alamat_lembaga' => $request_data['alamat_lembaga'],
-            'nama_lembaga_baru' => $request_data['nama_lembaga_baru'],
-            'kategori' => $request_data['kategori']
-        ])->update();
+            ->where('usulan_id', $request_data['usul_id'])
+            ->set([
+                'nama_lembaga' => $request_data['nama_lembaga'],
+                'alamat_lembaga' => $request_data['alamat_lembaga'],
+                'nama_lembaga_baru' => $request_data['nama_lembaga_baru'],
+                'kategori' => $request_data['kategori']
+            ])->update();
         return $this->response->setJSON(['status' => 'success', 'message' => 'Data berhasil disimpan']);
     }
 
-    function updateform2() {
+    function updateform2()
+    {
         // update usulan
         $json_data = file_get_contents('php://input');
         $request_data = json_decode($json_data, true);
         $usulanModel = new AlihbentukptkisModel();
         $usulanModel
-        ->where('usulan_id',$request_data['usul_id'])
-        ->set([
-            'magister' => $request_data['magister'],
-            'magister2' => $request_data['magister2'],
-            'doktor' => $request_data['doktor'],
-            'doktor2' => $request_data['doktor2'],
-            'asisten_ahli' => $request_data['asisten_ahli'],
-            'asisten_ahli2' => $request_data['asisten_ahli2'],
-            'lektor' => $request_data['lektor'],
-            'lektor2' => $request_data['lektor2'],
-            'lektor_kepala' => $request_data['lektor_kepala'],
-            'lektor_kepala2' => $request_data['lektor_kepala2'],
-            'guru_besar' => $request_data['guru_besar'],
-            'guru_besar2' => $request_data['guru_besar2'],
-            'akreditasi_no' => $request_data['akreditasi_no'],
-            'akreditasi_no2' => $request_data['akreditasi_no2'],
-            'akreditasi_unggul' => $request_data['akreditasi_unggul'],
-            'akreditasi_unggul2' => $request_data['akreditasi_unggul2'],
-            'akreditasi_baiksekali' => $request_data['akreditasi_baiksekali'],
-            'akreditasi_baiksekali2' => $request_data['akreditasi_baiksekali2'],
-            'akreditasi_baik' => $request_data['akreditasi_baik'],
-            'akreditasi_baik2' => $request_data['akreditasi_baik2'],
-            'mahasiswa' => $request_data['mahasiswa'],
-            'mahasiswa2' => $request_data['mahasiswa2'],
-            'rasio_dm' => $request_data['rasio_dm'],
-            'rasio_dm2' => $request_data['rasio_dm2'],
-            'fakultas' => $request_data['fakultas'],
-            'fakultas2' => $request_data['fakultas2'],
-            'prodi' => $request_data['prodi'],
-            'prodi2' => $request_data['prodi2'],
-            'pelaporan' => $request_data['pelaporan'],
-            'pelaporan2' => $request_data['pelaporan2'],
-            'tanah' => $request_data['tanah'],
-            'tanah2' => $request_data['tanah2'],
-            'kepemilikan_tanah' => $request_data['kepemilikan_tanah'],
-            'kepemilikan_tanah2' => $request_data['kepemilikan_tanah2'],
-            'catatan' => $request_data['catatan'],
-        ])->update();
+            ->where('usulan_id', $request_data['usul_id'])
+            ->set([
+                'magister' => $request_data['magister'],
+                'magister2' => $request_data['magister2'],
+                'doktor' => $request_data['doktor'],
+                'doktor2' => $request_data['doktor2'],
+                'asisten_ahli' => $request_data['asisten_ahli'],
+                'asisten_ahli2' => $request_data['asisten_ahli2'],
+                'lektor' => $request_data['lektor'],
+                'lektor2' => $request_data['lektor2'],
+                'lektor_kepala' => $request_data['lektor_kepala'],
+                'lektor_kepala2' => $request_data['lektor_kepala2'],
+                'guru_besar' => $request_data['guru_besar'],
+                'guru_besar2' => $request_data['guru_besar2'],
+                'akreditasi_no' => $request_data['akreditasi_no'],
+                'akreditasi_no2' => $request_data['akreditasi_no2'],
+                'akreditasi_unggul' => $request_data['akreditasi_unggul'],
+                'akreditasi_unggul2' => $request_data['akreditasi_unggul2'],
+                'akreditasi_baiksekali' => $request_data['akreditasi_baiksekali'],
+                'akreditasi_baiksekali2' => $request_data['akreditasi_baiksekali2'],
+                'akreditasi_baik' => $request_data['akreditasi_baik'],
+                'akreditasi_baik2' => $request_data['akreditasi_baik2'],
+                'mahasiswa' => $request_data['mahasiswa'],
+                'mahasiswa2' => $request_data['mahasiswa2'],
+                'rasio_dm' => $request_data['rasio_dm'],
+                'rasio_dm2' => $request_data['rasio_dm2'],
+                'fakultas' => $request_data['fakultas'],
+                'fakultas2' => $request_data['fakultas2'],
+                'prodi' => $request_data['prodi'],
+                'prodi2' => $request_data['prodi2'],
+                'pelaporan' => $request_data['pelaporan'],
+                'pelaporan2' => $request_data['pelaporan2'],
+                'tanah' => $request_data['tanah'],
+                'tanah2' => $request_data['tanah2'],
+                'kepemilikan_tanah' => $request_data['kepemilikan_tanah'],
+                'kepemilikan_tanah2' => $request_data['kepemilikan_tanah2'],
+                'catatan' => $request_data['catatan'],
+            ])->update();
         return $this->response->setJSON(['status' => 'success', 'message' => 'Data berhasil disimpan']);
     }
 
-    function submitusul() {
+    function submitusul()
+    {
+        $layanan = new LayananModel;
+        $layanan = $layanan->find(2);
+
+        if ($layanan->is_active == 0) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Layanan sedang tidak aktif']);
+        }
+
         $json_data = file_get_contents('php://input');
         $request_data = json_decode($json_data, true);
         $usulanModel = new UsulanModel();
-        $usulanModel->update($request_data['usul_id'], ['status' => 1,'submit_at'=>date('Y-m-d H:i:s')]);
+        $usulanModel->update($request_data['usul_id'], ['status' => 1, 'submit_at' => date('Y-m-d H:i:s')]);
 
         $logm = new LogModel();
-        $logm->insert(['id_usul'=>$request_data['usul_id'],'status_usulan'=>1,'keterangan'=>'Submit Usulan','created_by'=>session('nip'),'created_by_name'=>session('nama')]);
+        $logm->insert(['id_usul' => $request_data['usul_id'], 'status_usulan' => 1, 'keterangan' => 'Submit Usulan', 'created_by' => session('nip'), 'created_by_name' => session('nama')]);
 
         return $this->response->setJSON(['status' => 'success', 'message' => 'Data berhasil disimpan']);
     }

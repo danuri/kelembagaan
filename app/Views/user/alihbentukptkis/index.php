@@ -1,5 +1,12 @@
 <?= $this->extend('user/template') ?>
 <?= $this->section('content') ?>
+<?php if ($layanan->is_active == 0) { ?>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    Layanan ini sedang tidak aktif. Anda hanya dapat membuat draft. Layanan bisa disubmit/dikirim hanya ketika dalam
+    status aktif.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<?php } ?>
 <h4 class="text-center mb-1">
   Alih Bentuk PTKIS
 </h4>
@@ -9,9 +16,7 @@
 <div class="card">
   <div class="card-header border-bottom d-flex justify-content-between align-items-center">
   <h5 class="card-title m-0 me-2">Data Usulan</h5>
-  <?php if($layanan->is_active == 1) { ?>
   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat Usulan</button>
-  <?php } ?>
 </div>
   <div class="justify-content-between dt-layout-table">
     <table class="table table-bordered">
@@ -56,7 +61,6 @@
   </div>
 
 </div>
-<?php if($layanan->is_active == 1) { ?>
 <div class="modal-onboarding modal fade animate__animated" id="onboardImageModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content text-center">
@@ -121,7 +125,6 @@
     </div>
   </div>
 </div>
-<?php } ?>
 <?= $this->endSection() ?>
 <?= $this->section('scripts') ?>
 <script>

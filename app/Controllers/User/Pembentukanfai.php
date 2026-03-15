@@ -9,21 +9,23 @@ use App\Models\FaiModel;
 use App\Models\CrudModel;
 use App\Models\LogModel;
 use App\Models\LayananModel;
+use App\Models\ProdiFaiModel;
 
 class Pembentukanfai extends BaseController
 {
     public function index()
     {
         $model = new UsulanModel();
-        $data['usulans'] = $model->where(['layanan_id'=>4,'user_id'=>user_id()])->findAll();
-        
+        $data['usulans'] = $model->where(['layanan_id' => 4, 'user_id' => user_id()])->findAll();
+
         $layanan = new LayananModel;
         $data['layanan'] = $layanan->find(4);
-        
+
         return view('user/pembentukanfai/index', $data);
     }
 
-    function detail($id) {
+    function detail($id)
+    {
         $id = decrypt($id);
         $model = new UsulanModel();
         $detail = new FaiModel();
@@ -33,17 +35,21 @@ class Pembentukanfai extends BaseController
             return redirect()->to(site_url('layanan/pembentukanfai'))->with('error', 'Usulan tidak ditemukan');
         }
 
+        $pmodel = new ProdiFaiModel;
+        $data['prodi'] = $pmodel->where(['usul_id' => $id])->findAll();
+
         $crudModel = new CrudModel();
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
 
-        if($data['usulan']->status == 0 || $data['usulan']->status == 21){
+        if ($data['usulan']->status == 0 || $data['usulan']->status == 21) {
             return view('user/pembentukanfai/detail', $data);
-        }else{
+        } else {
             return view('user/pembentukanfai/detail_view', $data);
         }
     }
 
-    function create() {
+    function create()
+    {
         // validation input
         $validation = \Config\Services::validation();
         $validation->setRule('nama_lembaga', 'Nama Lembaga', 'required');
@@ -53,7 +59,7 @@ class Pembentukanfai extends BaseController
             return redirect()->back()->withInput()->with('error', $validation->getErrors());
         }
         // handle file upload
-        
+
         // save to database
         $usulanModel = new UsulanModel();
         $usulanModel->save([
@@ -73,17 +79,18 @@ class Pembentukanfai extends BaseController
         ]);
 
         $logm = new LogModel();
-        $logm->insert(['id_usul'=>$usulanModel->getInsertID(),'status_usulan'=>0,'keterangan'=>'Membuat Draft Usulan','created_by'=>session('nip'),'created_by_name'=>session('nama')]);
-        
+        $logm->insert(['id_usul' => $usulanModel->getInsertID(), 'status_usulan' => 0, 'keterangan' => 'Membuat Draft Usulan', 'created_by' => session('nip'), 'created_by_name' => session('nama')]);
+
         return redirect()->to(site_url('layanan/pembentukanfai'))->with('message', 'Draft Usulan berhasil dibuat');
     }
 
-    function updateform1() {
+    function updateform1()
+    {
         // update usulan
         $json_data = file_get_contents('php://input');
         $request_data = json_decode($json_data, true);
         $usulanModel = new UsulanModel();
-        $usulanModel->update($request_data['usul_id'],[
+        $usulanModel->update($request_data['usul_id'], [
             'nomor_surat' => $request_data['nomor_surat'],
             'perihal' => $request_data['perihal'],
             'nama_lembaga' => $request_data['nama_lembaga'],
@@ -91,23 +98,64 @@ class Pembentukanfai extends BaseController
 
         $detailModel = new FaiModel();
         $detailModel
-        ->where('usulan_id',$request_data['usul_id'])
-        ->set([
-            'nama_lembaga' => $request_data['nama_lembaga'],
-            'alamat_lembaga' => $request_data['alamat_lembaga'],
-            'kategori' => $request_data['kategori']
-        ])->update();
+            ->where('usulan_id', $request_data['usul_id'])
+            ->set([
+                'nama_lembaga' => $request_data['nama_lembaga'],
+                'alamat_lembaga' => $request_data['alamat_lembaga'],
+                'kategori' => $request_data['kategori']
+            ])->update();
         return $this->response->setJSON(['status' => 'success', 'message' => 'Data berhasil disimpan']);
     }
 
-    function submitusul() {
+    function prodi($id)
+    {
+        $id = decrypt($id);
+
+        $model = new UsulanModel();
+        $detail = new FaiModel();
+        $data['usulan'] = $model->where('id', $id)->where('user_id', user_id())->first();
+        $data['detail'] = $detail->where('usulan_id', $id)->first();
+
+        $pmodel = new ProdiFaiModel;
+        $data['prodi'] = $pmodel->where(['usul_id' => $id])->findAll();
+
+        return view('user/pembentukanfai/prodi', $data);
+    }
+
+    function saveprodi()
+    {
+        $pmodel = new ProdiFaiModel();
+        $usulid = $this->request->getPost('usul_id');
+        $nama_prodi = $this->request->getPost('nama_prodi');
+        $jenjang = $this->request->getPost('jenjang');
+        $status_aktif = $this->request->getPost('status_prodi');
+
+        $pmodel->insert([
+            'usul_id' => $usulid,
+            'nama_prodi' => $nama_prodi,
+            'jenjang' => $jenjang
+        ]);
+
+        return redirect()->to(site_url('layanan/pembentukanfai/prodi/' . encrypt($usulid)))->with('message', 'Program Studi berhasil ditambahkan');
+    }
+
+    function submitusul()
+    {
+
+        $layanan = new LayananModel;
+        $layanan = $layanan->find(4);
+
+        if ($layanan->is_active == 0) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Layanan sedang tidak aktif']);
+        }
+
         $json_data = file_get_contents('php://input');
         $request_data = json_decode($json_data, true);
         $usulanModel = new UsulanModel();
-        $usulanModel->update($request_data['usul_id'], ['status' => 1,'submit_at'=>date('Y-m-d H:i:s')]);
+        $usulanModel->update($request_data['usul_id'], ['status' => 1, 'submit_at' => date('Y-m-d H:i:s')]);
 
         $logm = new LogModel();
-        $logm->insert(['id_usul'=>$request_data['usul_id'],'status_usulan'=>1,'keterangan'=>'Submit Usulan','created_by'=>session('nip'),'created_by_name'=>session('nama')]);
+        $logm->insert(['id_usul' => $request_data['usul_id'], 'status_usulan' => 1, 'keterangan' => 'Submit Usulan', 'created_by' => session('nip'), 'created_by_name' => session('nama')]);
 
         return $this->response->setJSON(['status' => 'success', 'message' => 'Data berhasil disimpan']);
     }

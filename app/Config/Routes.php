@@ -246,6 +246,8 @@ $routes->group('layanan', ['filter' => 'group:user'], static function ($routes) 
         $routes->get('/', 'User\Pembentukanfai::index');
         $routes->post('create', 'User\Pembentukanfai::create');
         $routes->get('detail/(:any)', 'User\Pembentukanfai::detail/$1');
+        $routes->get('prodi/(:any)', 'User\Pembentukanfai::prodi/$1');
+        $routes->post('saveprodi', 'User\Pembentukanfai::saveprodi');
         $routes->post('updateform1', 'User\Pembentukanfai::updateform1');
         $routes->post('updateform2', 'User\Pembentukanfai::updateform2');
         $routes->post('submitusul', 'User\Pembentukanfai::submitusul');

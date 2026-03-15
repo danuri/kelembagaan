@@ -1,5 +1,12 @@
 <?= $this->extend('user/template') ?>
 <?= $this->section('content') ?>
+<?php if ($layanan->is_active == 0) { ?>
+  <div class="alert alert-danger alert-dismissible" role="alert">
+    Layanan ini sedang tidak aktif. Anda hanya dapat membuat draft. Layanan bisa disubmit/dikirim hanya ketika dalam
+    status aktif.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<?php } ?>
 <h4 class="text-center mb-1">
   Pendirian PTKIS
 </h4>
@@ -8,11 +15,10 @@
 </p>
 <div class="card border border-primary">
   <div class="card-header border-bottom d-flex justify-content-between align-items-center">
-  <h5 class="card-title m-0 me-2">Data Usulan</h5>
-  <?php if($layanan->is_active == 1) { ?>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat Usulan</button>
-  <?php } ?>
-</div>
+    <h5 class="card-title m-0 me-2">Data Usulan</h5>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat
+      Usulan</button>
+  </div>
   <div class="justify-content-between dt-layout-table">
     <table class="table table-bordered">
       <thead class="text-bg-warning">
@@ -39,14 +45,19 @@
               <td><?= $usulan->nama_lembaga ?></td>
               <td><?= usul_status($usulan->status) ?></td>
               <td>
-                <?php if($usulan->status == 0 || $usulan->status == 21): ?>
-                  <a href="<?= site_url('layanan/pendirianptkis/prodi/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-warning">Prodi</a>
-                  <a href="<?= site_url('layanan/pendirianptkis/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
-                  <a href="javascript:void(0)" class="btn btn-sm btn-danger" onclick="deleteUsulan('<?= encrypt($usulan->id) ?>')">Delete</a>
-                  <?php else:?>
-                    <a href="<?= site_url('layanan/pendirianptkis/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
-                    <a href="javascript:void(0)" class="btn btn-sm btn-warning" onclick="log('<?= encrypt($usulan->id) ?>')">Log</a>
-                <?php endif;?>
+                <?php if ($usulan->status == 0 || $usulan->status == 21): ?>
+                  <a href="<?= site_url('layanan/pendirianptkis/prodi/' . encrypt($usulan->id)) ?>"
+                    class="btn btn-sm btn-warning">Prodi</a>
+                  <a href="<?= site_url('layanan/pendirianptkis/detail/' . encrypt($usulan->id)) ?>"
+                    class="btn btn-sm btn-info">Detail</a>
+                  <a href="javascript:void(0)" class="btn btn-sm btn-danger"
+                    onclick="deleteUsulan('<?= encrypt($usulan->id) ?>')">Delete</a>
+                <?php else: ?>
+                  <a href="<?= site_url('layanan/pendirianptkis/detail/' . encrypt($usulan->id)) ?>"
+                    class="btn btn-sm btn-info">Detail</a>
+                  <a href="javascript:void(0)" class="btn btn-sm btn-warning"
+                    onclick="log('<?= encrypt($usulan->id) ?>')">Log</a>
+                <?php endif; ?>
               </td>
             </tr>
           <?php endforeach; ?>
@@ -58,61 +69,57 @@
 
 </div>
 
-<?php if($layanan->is_active == 1) { ?>
 <div class="modal-onboarding modal fade animate__animated" id="onboardImageModal" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content text-center">
-                                <div class="modal-header border-0">
-                                  <button
-                                    type="button"
-                                    class="btn-close"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body p-0">
-                                  <div class="onboarding-content mb-0">
-                                    <h4 class="onboarding-title text-body">Buat Usulan</h4>
-                                    <div class="onboarding-info">
-                                      In this example you can see a form where you can request some additional
-                                      information from the customer when they land on the app page.
-                                    </div>
-                                    <form action="<?= site_url('layanan/pendirianptkis/create') ?>" method="post" enctype="multipart/form-data" id="usulform">
-                                      <div class="row mb-6">
-                                        <label class="col-sm-4 col-form-label" for="nomor_surat">Nomor Surat</label>
-                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" id="nomor_surat" name="nomor_surat">
-                                        </div>
-                                      </div>
-                                      <div class="row mb-6">
-                                        <label class="col-sm-4 col-form-label" for="perihal">Perihal</label>
-                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" id="perihal" name="perihal">
-                                        </div>
-                                      </div>
-                                      <div class="row mb-6">
-                                        <label class="col-sm-4 col-form-label" for="nama_lembaga">Nama Lembaga</label>
-                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" id="nama_lembaga" name="nama_lembaga">
-                                        </div>
-                                      </div>
-                                      <!-- <div class="row mb-6">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content text-center">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="onboarding-content mb-0">
+          <h4 class="onboarding-title text-body">Buat Usulan</h4>
+          <div class="onboarding-info">
+            In this example you can see a form where you can request some additional
+            information from the customer when they land on the app page.
+          </div>
+          <form action="<?= site_url('layanan/pendirianptkis/create') ?>" method="post" enctype="multipart/form-data"
+            id="usulform">
+            <div class="row mb-6">
+              <label class="col-sm-4 col-form-label" for="nomor_surat">Nomor Surat</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="nomor_surat" name="nomor_surat">
+              </div>
+            </div>
+            <div class="row mb-6">
+              <label class="col-sm-4 col-form-label" for="perihal">Perihal</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="perihal" name="perihal">
+              </div>
+            </div>
+            <div class="row mb-6">
+              <label class="col-sm-4 col-form-label" for="nama_lembaga">Nama Lembaga</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="nama_lembaga" name="nama_lembaga">
+              </div>
+            </div>
+            <!-- <div class="row mb-6">
                                         <label class="col-sm-4 col-form-label" for="surat_pengantar">Surat Pengantar</label>
                                         <div class="col-sm-8">
                                           <input type="file" class="form-control" id="surat_pengantar" name="surat_pengantar">
                                           <p>Lampiran surat pengantar dalam bentuk pdf</p>
                                         </div>
                                       </div> -->
-                                    </form>
-                                  </div>
-                                </div>
-                                <div class="modal-footer border-0">
-                                  <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
-                                    Tutup
-                                  </button>
-                                  <button type="button" class="btn btn-primary" onclick="document.getElementById('usulform').submit();">Simpan</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <?php } ?>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer border-0">
+        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
+          Tutup
+        </button>
+        <button type="button" class="btn btn-primary"
+          onclick="document.getElementById('usulform').submit();">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
 <?= $this->endSection() ?>
