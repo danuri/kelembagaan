@@ -1,0 +1,2456 @@
+﻿commit e0a1da9914bf905bccd4429bd218b8f45337721b
+Author: danuri <danualbantani@gmail.com>
+Date:   Sun Mar 15 10:46:57 2026 +0700
+
+    Add Status Non Aktif to service
+
+ app/Config/Routes.php                    |   2 +
+ app/Controllers/User/Alihbentukptkis.php | 132 ++++++++++---------
+ app/Controllers/User/Alihkelolaptkis.php |  54 +++++---
+ app/Controllers/User/Dokumen.php         |  66 ++++++++++
+ app/Controllers/User/Pembentukanfai.php  |  90 ++++++++++---
+ app/Controllers/User/Pendirianptkis.php  | 107 +++++++++-------
+ app/Models/DokumenProdiFaiModel.php      |  46 +++++++
+ app/Models/ProdiFaiModel.php             |  46 +++++++
+ app/Views/user/alihbentukptkis/index.php |  11 +-
+ app/Views/user/alihkelolaptkis/index.php |  45 ++++---
+ app/Views/user/pembentukanfai/index.php  |  47 ++++---
+ app/Views/user/pembentukanfai/prodi.php  | 213 +++++++++++++++++++++++++++++++
+ app/Views/user/pendirianptkis/index.php  | 133 ++++++++++---------
+ 13 files changed, 737 insertions(+), 255 deletions(-)
+
+commit 699a4ba1158606e096d6f744c0a4a2153bf5816b
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Feb 20 21:36:08 2026 +0700
+
+    Add Active Deactive Layanan
+
+ app/Config/Routes.php                              |  2 ++
+ app/Controllers/Supervisor/Layanan.php             | 12 ++++++++++++
+ app/Controllers/Supervisor/Usulan.php              |  2 +-
+ .../Supervisor/Usulan/AlihBentukPtkis.php          |  4 ++--
+ .../Supervisor/Usulan/Pendirianptkis.php           |  4 ++--
+ app/Controllers/User/Alihbentukptkis.php           |  5 +++++
+ app/Controllers/User/Alihkelolaptkis.php           |  5 +++++
+ app/Controllers/User/Pembentukanfai.php            |  5 +++++
+ app/Controllers/User/Pendirianptkis.php            |  5 +++++
+ app/Controllers/Verifikator/Penilaian.php          |  7 +++----
+ app/Models/LayananModel.php                        |  2 +-
+ app/Views/supervisor/master/layanan.php            |  8 +++++++-
+ app/Views/supervisor/usulan/index.php              |  4 ++--
+ app/Views/user/alihbentukptkis/index.php           |  5 ++++-
+ app/Views/user/alihkelolaptkis/index.php           |  4 ++++
+ app/Views/user/pembentukanfai/index.php            |  4 ++++
+ app/Views/user/pendirianptkis/index.php            |  4 ++++
+ app/Views/welcome_message.php                      | 22 ++++++++++++++++++++++
+ 18 files changed, 90 insertions(+), 14 deletions(-)
+
+commit 474c2723d6317a07950ba818dcb27f90ea524568
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Dec 27 08:52:50 2025 +0700
+
+    27Desember25
+
+ .../Supervisor/Usulan/Pendirianptkis.php           |  8 +-
+ app/Controllers/User/Dokumen.php                   |  2 +-
+ app/Controllers/Verifikator/Dashboard.php          |  9 ++-
+ app/Controllers/Verifikator/Penilaian.php          |  2 +
+ app/Models/CrudModel.php                           | 80 ++++++++------------
+ app/Views/user/alihbentukptkis/detail.php          |  2 +-
+ app/Views/verifikator/dashboard.php                | 86 +++++++++++++++++++++-
+ 7 files changed, 131 insertions(+), 58 deletions(-)
+
+commit 1d86c6d78a0dcd61ad7a7b17c1b5b4efd9695b86
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Dec 20 11:25:50 2025 +0700
+
+    ok
+
+ app/Config/Routes.php                                  |   2 ++
+ app/Controllers/Supervisor/Usulan/Pendirianptkis.php   |  17 +++++++++++++++--
+ app/Controllers/User/Dokumen.php                       |   2 +-
+ app/Views/supervisor/usulan/alihbentukptkis/detail.php |   2 +-
+ .../usulan/pendirianptkis/detail_penilaian.php         |  14 +++++++-------
+ app/Views/user/pendirianptkis/detail.php               |   2 ++
+ public/uploads/69_4.pdf                                | Bin 0 -> 196019 bytes
+ 7 files changed, 28 insertions(+), 11 deletions(-)
+
+commit 2479b35b9fd726b7063885f96af6de5eadf88436
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Dec 12 11:53:16 2025 +0700
+
+    update
+
+ app/Controllers/User/Dokumen.php                   |  2 +-
+ .../supervisor/usulan/pendirianptkis/detail.php    | 23 ++++++++++++++++++++++
+ app/Views/user/pendirianptkis/detail.php           |  2 +-
+ 3 files changed, 25 insertions(+), 2 deletions(-)
+
+commit 77cb7f54adfabf3478a76f393b566c546f57d57a
+Author: danuri <danualbantani@gmail.com>
+Date:   Thu Dec 11 13:16:21 2025 +0700
+
+    update
+
+ app/Config/Routes.php                              |   4 +
+ app/Controllers/Supervisor/Users.php               |  16 ++-
+ .../Supervisor/Usulan/AlihBentukPtkis.php          |  23 +++-
+ .../Supervisor/Usulan/Alihkelolaptkis.php          |  16 ++-
+ .../Supervisor/Usulan/Pembentukanfai.php           |  16 ++-
+ .../Supervisor/Usulan/Pendirianptkis.php           |  26 +++-
+ .../Verifikator/Usulan/Alihbentukptkis.php         |  18 ++-
+ app/Models/CrudModel.php                           |   2 +-
+ app/Views/supervisor/arsip/detail.php              |   2 +-
+ app/Views/supervisor/template.php                  |  20 ++-
+ app/Views/supervisor/users/edit.php                | 153 ++++++---------------
+ .../supervisor/usulan/alihbentukptkis/detail.php   |   4 +
+ .../usulan/alihbentukptkis/detail_view.php         |  89 ++++++++----
+ .../supervisor/usulan/pendirianptkis/detail.php    |   2 +-
+ app/Views/verifikator/penilaian/detail_nilai.php   |   2 +-
+ app/Views/verifikator/penilaian/detail_view.php    |   2 +-
+ 16 files changed, 224 insertions(+), 171 deletions(-)
+
+commit d980123c8a30ac4b258dfb6333b8e513d4f127f6
+Author: danuri <danualbantani@gmail.com>
+Date:   Mon Dec 8 10:57:38 2025 +0700
+
+    update
+
+ app/Config/Database.php                            |  27 ++
+ app/Config/Routes.php                              |   6 +
+ app/Controllers/Ajax.php                           |   3 +-
+ app/Controllers/Supervisor/Arsip.php               |  60 +++++
+ .../Supervisor/Usulan/AlihBentukPtkis.php          |   3 +-
+ .../Supervisor/Usulan/Pendirianptkis.php           |   4 +-
+ app/Controllers/User/Alihbentukptkis.php           |  18 ++
+ app/Controllers/Verifikator/Penilaian.php          |   2 +-
+ app/Models/ArsipModel.php                          | 285 +++++++++++++++++++++
+ app/Models/LembagaModel.php                        |   1 +
+ app/Models/NsptiModel.php                          |  62 +++++
+ app/Views/pdf/alihbentukptkis.php                  |  35 +--
+ app/Views/supervisor/arsip/detail.php              |  54 ++++
+ app/Views/supervisor/arsip/index.php               | 119 +++++++++
+ .../supervisor/usulan/alihbentukptkis/detail.php   |  59 +++--
+ .../supervisor/usulan/pendirianptkis/detail.php    |   2 +-
+ .../verifikator/usulan/alihbentukptkis/detail.php  | 137 +++++++---
+ 17 files changed, 798 insertions(+), 79 deletions(-)
+
+commit f8ac34528da67f6b565f9d2faaab12c63f87480b
+Author: danuri <danualbantani@gmail.com>
+Date:   Mon Dec 1 12:11:23 2025 +0700
+
+    favicon
+
+ app/Views/supervisor/template.php                      |   2 +-
+ app/Views/template.php                                 |   2 +-
+ app/Views/user/template.php                            |   2 +-
+ app/Views/verifikator/template.php                     |   2 +-
+ app/Views/welcome_message.php                          |   2 +-
+ public/uploads/1_1.pdf                                 | Bin 51978 -> 0 bytes
+ public/uploads/1_12.pdf                                | Bin 51978 -> 0 bytes
+ public/uploads/1_2.pdf                                 | Bin 51978 -> 0 bytes
+ public/uploads/1_3.pdf                                 | Bin 51978 -> 0 bytes
+ public/uploads/1_4.pdf                                 | Bin 51978 -> 0 bytes
+ public/uploads/1_7.pdf                                 | Bin 220158 -> 0 bytes
+ public/uploads/6_46.pdf                                | Bin 51978 -> 0 bytes
+ public/uploads/6_48.pdf                                | Bin 51978 -> 0 bytes
+ public/uploads/_.pdf                                   | Bin 51978 -> 0 bytes
+ .../uploads/nilai/1761309218_59feefd8693bfded7467.xlsx | Bin 0 -> 6087 bytes
+ public/uploads/prodi/1_92.pdf                          | Bin 51978 -> 0 bytes
+ public/uploads/prodi/34_92.pdf                         | Bin 51978 -> 0 bytes
+ public/uploads/prodi/index.html                        |   0
+ 18 files changed, 5 insertions(+), 5 deletions(-)
+
+commit 204bec6a2efe44659ab15a5a19324ac7ad75ff9d
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Nov 29 09:37:22 2025 +0700
+
+    form
+
+ app/Views/verifikator/usulan/alihbentukptkis/detail.php | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+commit 586160894b8d230d30203b5be0923e05c41f547c
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Nov 28 10:09:09 2025 +0700
+
+    API Status
+
+ app/Controllers/Api/Usulan.php | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit edef22419838b875c204c3a525f978740f2e4ac7
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Nov 28 10:04:17 2025 +0700
+
+    composer
+
+ composer.lock | 181 +++++++++++++++++++++++++++++++++++-----------------------
+ 1 file changed, 109 insertions(+), 72 deletions(-)
+
+commit 50309e8ec42c85d1c36af0254dcfb0db7a55ec59
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Nov 28 09:53:46 2025 +0700
+
+    API
+
+ app/Config/Routes.php                              |   2 +
+ app/Controllers/Api/Usulan.php                     |  28 +
+ app/Controllers/User/Alihbentukptkis.php           |   1 +
+ app/Controllers/User/Alihkelolaptkis.php           |   1 +
+ app/Controllers/User/Pembentukanfai.php            |   1 +
+ app/Controllers/User/Pendirianptkis.php            |   1 +
+ app/Helpers/custom_helper.php                      |   6 +
+ .../supervisor/usulan/alihbentukptkis/detail.php   | 678 +++++++++++----------
+ .../supervisor/usulan/alihkelolaptkis/detail.php   | 239 ++++----
+ composer.json                                      |   3 +-
+ composer.lock                                      | 216 ++++++-
+ 11 files changed, 749 insertions(+), 427 deletions(-)
+
+commit 7009f74382f6f6d056b2e154e9ab812eaac57969
+Author: danuri <danualbantani@gmail.com>
+Date:   Thu Nov 27 13:22:10 2025 +0700
+
+    fix bug 271125
+
+ app/Config/Routes.php                              |   2 +
+ app/Controllers/Supervisor/Usulan.php              |  37 +++++++++++++++++-
+ .../Supervisor/Usulan/Pendirianptkis.php           |  43 +++++++++++++++++++++
+ .../Verifikator/Usulan/Pendirianptkis.php          |   1 +
+ .../supervisor/usulan/alihbentukptkis/detail.php   |  39 +++++++++++++++++++
+ .../usulan/alihbentukptkis/detail_view.php         |  37 ++++++++++++++++++
+ .../supervisor/usulan/alihkelolaptkis/detail.php   |  39 +++++++++++++++++++
+ .../usulan/alihkelolaptkis/detail_view.php         |  37 ++++++++++++++++++
+ .../supervisor/usulan/pembentukanfai/detail.php    |  39 +++++++++++++++++++
+ .../usulan/pembentukanfai/detail_view.php          |  37 ++++++++++++++++++
+ .../usulan/pendirianptkis/detail_kma.php           |  19 +++++++--
+ .../usulan/pendirianptkis/detail_penilaian.php     |   4 +-
+ .../usulan/pendirianptkis/detail_rkma.php          |   2 +-
+ public/draft/draftRKMA_STAI_Jangkar.docx           | Bin 0 -> 28642 bytes
+ public/draft/draftRKMA_STAI_Jangkar_docx           | Bin 0 -> 28642 bytes
+ public/uploads/kma/KMA_7.pdf                       | Bin 0 -> 51978 bytes
+ public/uploads/kma/index.html                      |   0
+ 17 files changed, 327 insertions(+), 9 deletions(-)
+
+commit 0d5552722aec045c4a1e03456fc47ac4a5d63c09
+Author: danuri <danualbantani@gmail.com>
+Date:   Wed Nov 26 17:43:29 2025 +0700
+
+    dashboard
+
+ app/Models/CrudModel.php | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 480d027012132020c6f34c010bb1ae9000cbeaea
+Author: danuri <danualbantani@gmail.com>
+Date:   Wed Nov 26 17:41:24 2025 +0700
+
+    change icon dashboard
+
+ app/Views/supervisor/dashboard.php | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 26221253aa31f3dcd992daf89d636edbb0256ecb
+Author: danuri <danualbantani@gmail.com>
+Date:   Wed Nov 26 17:38:49 2025 +0700
+
+    fix assets illustration
+
+ app/Views/supervisor/dashboard.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 6e8624b141e71323fade566917a08afbcfda660e
+Author: danuri <danualbantani@gmail.com>
+Date:   Wed Nov 26 17:37:43 2025 +0700
+
+    Dashboard
+
+ app/Views/supervisor/dashboard.php | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 1b265c5162e41d69224dfd87e114d76e5a84d9cc
+Author: danuri <danualbantani@gmail.com>
+Date:   Wed Nov 26 17:36:25 2025 +0700
+
+    dashboard
+
+ app/Views/supervisor/dashboard.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 18c322edfc82501b1813478a30b9b46f52246b9b
+Author: danuri <danualbantani@gmail.com>
+Date:   Wed Nov 26 17:34:45 2025 +0700
+
+    dashboard
+
+ app/Controllers/Supervisor/Dashboard.php |  1 +
+ app/Controllers/Supervisor/Usulan.php    |  2 ++
+ app/Models/CrudModel.php                 | 14 +++++++++++++
+ app/Views/supervisor/dashboard.php       | 34 +++++++++++++++-----------------
+ app/Views/supervisor/usulan/index.php    |  7 ++++---
+ 5 files changed, 37 insertions(+), 21 deletions(-)
+
+commit 4db4bcf782bbe40dca9d03794bd0d4dd825f1f3d
+Author: danuri <danualbantani@gmail.com>
+Date:   Tue Nov 25 10:54:03 2025 +0700
+
+    dfdf
+
+ app/Controllers/Supervisor/Dashboard.php |   9 +-
+ app/Models/CrudModel.php                 |  30 ++++-
+ app/Views/supervisor/dashboard.php       | 201 ++++++++++++++++++-------------
+ 3 files changed, 154 insertions(+), 86 deletions(-)
+
+commit 1226e248ab3861c6d471ae6cde0a61247ab96990
+Author: danuri <danualbantani@gmail.com>
+Date:   Mon Nov 10 12:44:17 2025 +0700
+
+    dfd
+
+ app/Config/Routes.php                              |   1 +
+ app/Controllers/Supervisor/Usulan.php              |  43 ++
+ app/Controllers/Verifikator/Penilaian.php          |   3 +-
+ app/Helpers/custom_helper.php                      |  39 ++
+ app/Views/supervisor/profile.php                   |  72 +-
+ .../usulan/alihkelolaptkis/detail_view.php         |   2 +-
+ app/Views/supervisor/usulan/index.php              |  10 +-
+ .../usulan/pembentukanfai/detail_view.php          |   2 +-
+ composer.json                                      |   4 +-
+ composer.lock                                      | 743 ++++++++++++++++++++-
+ 10 files changed, 876 insertions(+), 43 deletions(-)
+
+commit b91a819caf6cd9615918fed2a90d79edec162439
+Author: danuri <danualbantani@gmail.com>
+Date:   Sun Nov 9 15:47:43 2025 +0700
+
+    update profil
+
+ app/Config/Routes.php                    |  3 ++
+ app/Controllers/Ajax.php                 |  2 +-
+ app/Controllers/Supervisor/Dashboard.php | 76 +++++++++++++++++++++++++++++
+ app/Views/supervisor/profile.php         | 84 ++++++++++++++++++++++++++++++++
+ app/Views/supervisor/template.php        |  2 +-
+ app/Views/supervisor/users/index.php     |  2 +-
+ app/Views/supervisor/usulan/index.php    |  2 +-
+ public/assets/css/custom.css             |  2 +-
+ 8 files changed, 168 insertions(+), 5 deletions(-)
+
+commit e48177a0e240e29efdc9949753d448bff8298f50
+Author: danuri <danualbantani@gmail.com>
+Date:   Sun Nov 9 15:16:13 2025 +0700
+
+    log
+
+ app/Controllers/Ajax.php     | 7 ++++++-
+ public/assets/css/custom.css | 7 ++++---
+ 2 files changed, 10 insertions(+), 4 deletions(-)
+
+commit 8e2ea5f6d8447068000a0129577cda3958fbc6bf
+Author: danuri <danualbantani@gmail.com>
+Date:   Sun Nov 9 14:57:27 2025 +0700
+
+    dfdf
+
+ .../Supervisor/Usulan/Pendirianptkis.php           |  12 +-
+ .../usulan/pendirianptkis/detail_dokumen.php       |  10 --
+ .../usulan/pendirianptkis/detail_kma.php           | 146 +++++++++++++++++++++
+ .../usulan/pendirianptkis/detail_penilaian.php     |   1 -
+ .../usulan/pendirianptkis/detail_rkma.php          |  16 +--
+ .../usulan/pendirianptkis/detail_view.php          |   8 +-
+ 6 files changed, 157 insertions(+), 36 deletions(-)
+
+commit fbfa672b527626f9ff0520f1ef955f6d26e2ef05
+Author: danuri <danualbantani@gmail.com>
+Date:   Sun Nov 9 14:41:53 2025 +0700
+
+    provinsi
+
+ .../Supervisor/Usulan/Pendirianptkis.php           |  5 +++++
+ .../supervisor/usulan/pendirianptkis/detail.php    | 16 ++++-----------
+ .../usulan/pendirianptkis/detail_penilaian.php     |  2 +-
+ .../usulan/pendirianptkis/detail_view.php          | 23 ++++++++++++++++++++++
+ 4 files changed, 33 insertions(+), 13 deletions(-)
+
+commit 7487e6f7f622d87bdac418e4ba382eaa797f0f27
+Author: danuri <danualbantani@gmail.com>
+Date:   Sun Nov 9 11:00:46 2025 +0700
+
+    verifikasi ulang
+
+ app/Config/Routes.php                              | 13 +++----
+ .../Supervisor/Usulan/AlihBentukPtkis.php          | 15 ++++++++
+ .../Supervisor/Usulan/Alihkelolaptkis.php          | 15 ++++++++
+ .../Supervisor/Usulan/Pembentukanfai.php           | 15 ++++++++
+ .../Supervisor/Usulan/Pendirianptkis.php           | 15 ++++++++
+ app/Controllers/Verifikator/Usulan.php             |  2 +-
+ .../Verifikator/Usulan/Alihbentukptkis.php         |  2 +-
+ .../Verifikator/Usulan/Alihkelolaptkis.php         |  2 +-
+ .../Verifikator/Usulan/Pembentukanfai.php          |  2 +-
+ .../Verifikator/Usulan/Pendirianptkis.php          |  2 +-
+ app/Helpers/custom_helper.php                      |  2 ++
+ .../usulan/alihbentukptkis/detail_view.php         | 37 +++++++++++++++++++
+ .../usulan/alihkelolaptkis/detail_view.php         | 41 ++++++++++++++++++++++
+ .../usulan/pembentukanfai/detail_view.php          | 40 +++++++++++++++++++++
+ .../usulan/pendirianptkis/detail_view.php          | 40 +++++++++++++++++++++
+ 15 files changed, 229 insertions(+), 14 deletions(-)
+
+commit 2d008c643c9f1fa061001d330e9f060bdf6cae7a
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Nov 7 18:32:24 2025 +0700
+
+    sdsd
+
+ app/Views/verifikator/usulan/alihbentukptkis/detail.php | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 6c5a3c3e6a0e5e0a03c003ba404f30f4fc354072
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Nov 7 17:53:38 2025 +0700
+
+    zxc
+
+ .../usulan/alihkelolaptkis/detail_view.php         | 32 ++--------------------
+ .../usulan/pembentukanfai/detail_view.php          | 32 ++--------------------
+ .../usulan/alihkelolaptkis/detail_view.php         |  6 ++--
+ .../usulan/pembentukanfai/detail_view.php          |  6 ++--
+ 4 files changed, 12 insertions(+), 64 deletions(-)
+
+commit 5072fe0e8e35e8a93a3b3ac224a504a7d8d26a5b
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Nov 7 15:49:18 2025 +0700
+
+    sdw
+
+ app/Views/user/alihkelolaptkis/index.php | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 51f485e6f484d204cf55b58fca69ffcbf474049b
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Nov 7 15:37:14 2025 +0700
+
+    url
+
+ app/Config/Routes.php                    | 22 +++++++++++-----------
+ app/Views/user/alihkelolaptkis/index.php |  2 +-
+ 2 files changed, 12 insertions(+), 12 deletions(-)
+
+commit 8ef1755ec4a1e4be463ab854ae50d6ce195ad271
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Nov 7 09:32:09 2025 +0700
+
+    add new tab button
+
+ app/Views/user/alihbentukptkis/detail.php | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 8a755d9addec51c415deb8a8fc4aabcd44471d6c
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Nov 7 09:28:27 2025 +0700
+
+    overwrite file
+
+ app/Controllers/User/Dokumen.php | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 5d331cb818332947480a2bf9fa1080069ed02222
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Nov 7 09:10:47 2025 +0700
+
+    layanan baru
+
+ app/Config/Routes.php                              |  37 +++-
+ .../Supervisor/Usulan/Alihkelolaptkis.php          |  77 ++++++++
+ .../Supervisor/Usulan/Pembentukanfai.php           |  64 ++++++-
+ .../Verifikator/Usulan/Alihkelolaptkis.php         | 103 ++++++++++
+ .../Verifikator/Usulan/Pembentukanfai.php          |   6 +-
+ app/Helpers/custom_helper.php                      |  29 +--
+ .../supervisor/usulan/alihkelolaptkis/detail.php   | 179 +++++++++++++++++
+ .../usulan/alihkelolaptkis/detail_view.php         | 174 +++++++++++++++++
+ .../supervisor/usulan/pembentukanfai/detail.php    | 179 +++++++++++++++++
+ .../usulan/pembentukanfai/detail_view.php          | 174 +++++++++++++++++
+ .../verifikator/usulan/alihbentukptkis/detail.php  |  73 +++++--
+ .../verifikator/usulan/alihkelolaptkis/detail.php  | 211 ++++++++++++++++++++
+ .../usulan/alihkelolaptkis/detail_view.php         | 203 ++++++++++++++++++++
+ .../verifikator/usulan/pembentukanfai/detail.php   | 213 +++++++++++++++++++++
+ .../usulan/pembentukanfai/detail_view.php          | 203 ++++++++++++++++++++
+ 15 files changed, 1871 insertions(+), 54 deletions(-)
+
+commit f3351fb7fabc2b91531a59db460c9d8fb589d43a
+Author: danuri <danualbantani@gmail.com>
+Date:   Thu Nov 6 19:52:50 2025 +0700
+
+    banyak
+
+ app/Config/Routes.php                     |  34 +++++++++
+ app/Controllers/Supervisor/Layanan.php    | 109 +++++++++++++++++++++++++++
+ app/Views/supervisor/master/dokumen.php   |  92 +++++++++++++++++++++++
+ app/Views/supervisor/master/layanan.php   |  80 ++++++++++++++++++++
+ app/Views/supervisor/template.php         |   8 +-
+ public/assets/js/form-alihbentuk-ptkis.js | 120 +++++++++++++++---------------
+ public/uploads/prodi/34_92.pdf            | Bin 0 -> 51978 bytes
+ 7 files changed, 379 insertions(+), 64 deletions(-)
+
+commit dda25668182725450664558ef479e9bc8cfc6f5c
+Author: danuri <danualbantani@gmail.com>
+Date:   Thu Nov 6 11:19:29 2025 +0700
+
+    debug
+
+ app/Views/user/alihbentukptkis/detail.php | 115 +----------------------------
+ app/Views/user/pendirianptkis/index.php   |   2 +-
+ public/assets/js/form-alihbentuk-ptkis.js | 117 ++----------------------------
+ 3 files changed, 9 insertions(+), 225 deletions(-)
+
+commit 973a502ed1f6547659598fe37f9e9f6ee28c05c4
+Author: danuri <danualbantani@gmail.com>
+Date:   Wed Nov 5 16:09:58 2025 +0700
+
+    alih bentuk
+
+ app/Controllers/User/Alihkelolaptkis.php           |   8 +-
+ .../Verifikator/Usulan/Alihbentukptkis.php         |  21 +-
+ app/Models/AlihkelolaModel.php                     |  46 ++++
+ app/Views/user/alihbentukptkis/detail_view.php     |  97 +-------
+ .../verifikator/usulan/alihbentukptkis/detail.php  | 257 ++++++++++++---------
+ 5 files changed, 215 insertions(+), 214 deletions(-)
+
+commit 3b4226b2fcaa2ae9fb9b4b0a6abc0ba39eefae80
+Author: danuri <danualbantani@gmail.com>
+Date:   Wed Nov 5 15:40:09 2025 +0700
+
+    cek
+
+ public/assets/js/form-alihkelola.js | 338 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 338 insertions(+)
+
+commit 0347674d6f4491f2dbee8a44799c00d3be41e5f3
+Author: danuri <danualbantani@gmail.com>
+Date:   Wed Nov 5 15:38:34 2025 +0700
+
+    dsd
+
+ app/Controllers/User/Alihkelolaptkis.php           |  60 ++-------
+ app/Views/user/alihkelolaptkis/detail.php          | 148 ++-------------------
+ app/Views/user/alihkelolaptkis/detail_view.php     |  14 +-
+ app/Views/user/alihkelolaptkis/index.php           |  70 +++-------
+ app/Views/user/pembentukanfai/detail_view.php      | 123 +----------------
+ app/Views/user/template.php                        |   2 +-
+ app/Views/welcome_message.php                      |   6 +-
+ public/assets/img/siptika.png                      | Bin 64620 -> 47995 bytes
+ public/assets/img/siptikax.png                     | Bin 0 -> 64620 bytes
+ .../assets/vendor/css/pages/front-page-landing.css |   2 +-
+ 10 files changed, 46 insertions(+), 379 deletions(-)
+
+commit eb315853bd522437e3d8bfc8234fd512116d2196
+Author: danuri <danualbantani@gmail.com>
+Date:   Mon Nov 3 15:19:43 2025 +0700
+
+    users
+
+ app/Controllers/Supervisor/Users.php |  2 +
+ app/Views/supervisor/users/index.php | 89 +++++++++++++++++++++++++++++++++++-
+ 2 files changed, 90 insertions(+), 1 deletion(-)
+
+commit e4d18c12448785671f5674674722698e916112cd
+Author: danuri <danualbantani@gmail.com>
+Date:   Mon Nov 3 08:35:10 2025 +0700
+
+    Pembentukan FAI
+
+ app/Config/Routes.php                              |  19 ++
+ .../Supervisor/Usulan/Pembentukanfai.php           |  14 +
+ app/Controllers/User/Pembentukanfai.php            | 108 +++++++
+ .../Verifikator/Usulan/Alihbentukptkis.php         |  24 ++
+ .../Verifikator/Usulan/Pembentukanfai.php          | 103 +++++++
+ app/Models/FaiModel.php                            |  46 +++
+ app/Views/user/pembentukanfai/detail.php           | 195 ++++++++++++
+ app/Views/user/pembentukanfai/detail_view.php      | 295 ++++++++++++++++++
+ app/Views/user/pembentukanfai/index.php            | 111 +++++++
+ app/Views/user/template.php                        |   7 +-
+ .../verifikator/usulan/alihbentukptkis/detail.php  |  16 +
+ public/assets/js/form-pembentukan-fai.js           | 338 +++++++++++++++++++++
+ public/template/template_instrumen_alihbentuk.xlsx | Bin 0 -> 51715 bytes
+ 13 files changed, 1273 insertions(+), 3 deletions(-)
+
+commit b6825105aa0acda154d626c42490942e6d5e0020
+Author: danuri <danualbantani@gmail.com>
+Date:   Sun Nov 2 21:26:31 2025 +0700
+
+    asdsadad
+
+ app/Config/Routes.php                              |   5 +
+ app/Controllers/Export.php                         |  54 ++++
+ .../Verifikator/Usulan/Alihbentukptkis.php         |  11 +
+ app/Views/pdf/alihbentukptkis.php                  | 115 ++++++++
+ app/Views/user/alihbentukptkis/detail_view.php     |  13 +
+ .../verifikator/usulan/alihbentukptkis/detail.php  |  28 +-
+ .../usulan/alihbentukptkis/detail_view.php         |  37 ++-
+ .../usulan/pendirianptkis/detail_view.php          |  47 +++-
+ composer.json                                      |   1 +
+ composer.lock                                      | 290 ++++++++++++++++++++-
+ 10 files changed, 571 insertions(+), 30 deletions(-)
+
+commit b34981c0ccbdb86e5cb4e8d4ce8b99855cc6172e
+Author: danuri <danualbantani@gmail.com>
+Date:   Sun Nov 2 10:18:17 2025 +0700
+
+    asdsd
+
+ app/Views/verifikator/usulan/alihbentukptkis/detail.php | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+commit e3fd2d380cd7ae2bf8cbb7c6040173b937bc774f
+Author: danuri <danualbantani@gmail.com>
+Date:   Sun Nov 2 10:17:18 2025 +0700
+
+    asdsd
+
+ app/Controllers/Verifikator/Usulan.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit c64c99ae8cf31bfd3580b613bcdfdf714a7becff
+Author: danuri <danualbantani@gmail.com>
+Date:   Sun Nov 2 10:15:46 2025 +0700
+
+    penilaian
+
+ app/Controllers/Verifikator/Penilaian.php          | 23 ++++++++++------------
+ app/Helpers/custom_helper.php                      |  2 +-
+ .../usulan/pendirianptkis/detail_penilaian.php     |  2 +-
+ app/Views/verifikator/penilaian/detail_nilai.php   |  2 +-
+ app/Views/verifikator/penilaian/index.php          | 19 +-----------------
+ 5 files changed, 14 insertions(+), 34 deletions(-)
+
+commit aa2d74ee6703f0f847a15593cb455c15cf002cc0
+Author: danuri <danualbantani@gmail.com>
+Date:   Sun Nov 2 10:03:42 2025 +0700
+
+    srgrgr
+
+ app/Config/Routes.php                              |   5 +
+ app/Controllers/Admin/Settings.php                 |   3 +
+ app/Controllers/Supervisor/Settings.php            |  21 ++
+ app/Controllers/Verifikator/Usulan.php             |   4 +-
+ app/Views/admin/settings.php                       |   6 +
+ app/Views/supervisor/settings.php                  |  30 +++
+ .../usulan/alihbentukptkis/detail_view.php         | 243 +++++++++++++++++++++
+ .../usulan/alihbentukptkis/detail_view.php         |  16 +-
+ 8 files changed, 325 insertions(+), 3 deletions(-)
+
+commit 8a7db6f71ebb2edd7156a4bda8b98bb6f45cff7e
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Oct 31 06:31:54 2025 +0700
+
+    df
+
+ .../supervisor/usulan/alihbentukptkis/detail.php   | 44 ++++++++++++++++------
+ app/Views/welcome_message.php                      |  2 +-
+ 2 files changed, 34 insertions(+), 12 deletions(-)
+
+commit 4d60f4ba633e2939411d5dca33a251dbe572f2e6
+Author: danuri <danualbantani@gmail.com>
+Date:   Fri Oct 31 05:49:10 2025 +0700
+
+    change skema
+
+ app/Config/Routes.php                              |  21 +-
+ .../Supervisor/Usulan/AlihBentukPtkis.php          | 117 +-------
+ .../Verifikator/Usulan/Alihbentukptkis.php         |  93 ++++++
+ .../Verifikator/Usulan/Pendirianptkis.php          |  97 +++++++
+ app/Views/supervisor/template.php                  |   3 +-
+ .../supervisor/usulan/alihbentukptkis/detail.php   |   4 +-
+ .../supervisor/usulan/pendirianptkis/detail.php    |  32 +++
+ .../usulan/pendirianptkis/detail_dokumen.php       |   2 +-
+ .../usulan/pendirianptkis/detail_view.php          |  29 +-
+ app/Views/user/pendirianptkis/detail_view.php      |   2 +
+ app/Views/user/template.php                        |   2 +-
+ app/Views/verifikator/template.php                 |  11 +-
+ .../verifikator/usulan/alihbentukptkis/detail.php  | 313 +++++++++++++++++++++
+ .../usulan/alihbentukptkis/detail_view.php         | 216 ++++++++++++++
+ .../usulan/{ => pendirianptkis}/detail.php         |  15 +-
+ .../usulan/{ => pendirianptkis}/detail_view.php    |   4 +-
+ 16 files changed, 806 insertions(+), 155 deletions(-)
+
+commit e2d1daf63c84d5e97c0de9122bf1742059911b56
+Author: danuri <danualbantani@gmail.com>
+Date:   Wed Oct 29 16:55:28 2025 +0700
+
+    g
+
+ app/Views/user/alihbentukptkis/detail.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 85c151b87e572edb6ae1e3cebd3c9a696652e6f2
+Author: danuri <danualbantani@gmail.com>
+Date:   Wed Oct 29 16:54:05 2025 +0700
+
+    ffdf
+
+ public/assets/js/form-alihbentuk-ptkis.js | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+commit 6fe7349db2439a79ea24b8e52af89ce94d4ed832
+Author: danuri <danualbantani@gmail.com>
+Date:   Wed Oct 29 16:09:41 2025 +0700
+
+    asd
+
+ app/Controllers/Supervisor/Usulan/Pendirianptkis.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 483b7694b5948917d162aab2787176c39a403823
+Author: danuri <danualbantani@gmail.com>
+Date:   Wed Oct 29 16:02:25 2025 +0700
+
+    sds
+
+ app/Config/Routes.php                              |  32 ++
+ app/Controllers/Supervisor/Usulan.php              | 189 +----------
+ .../Supervisor/Usulan/AlihBentukPtkis.php          | 198 ++++++++++++
+ .../Supervisor/Usulan/Pendirianptkis.php           | 200 ++++++++++++
+ app/Helpers/custom_helper.php                      |  12 +
+ .../supervisor/usulan/alihbentukptkis/detail.php   | 348 +++++++++++++++++++++
+ .../usulan/{ => pendirianptkis}/detail.php         |   2 +-
+ .../usulan/{ => pendirianptkis}/detail_dokumen.php |   8 +-
+ .../{ => pendirianptkis}/detail_penilaian.php      |  16 +-
+ .../usulan/{ => pendirianptkis}/detail_rkma.php    |  14 +-
+ .../usulan/{ => pendirianptkis}/detail_view.php    |   8 +-
+ app/Views/user/template.php                        |   9 +-
+ 12 files changed, 819 insertions(+), 217 deletions(-)
+
+commit 3040e3d47a9d8d7d279d2ecdbd5196983cb2f5c7
+Author: danuri <danualbantani@gmail.com>
+Date:   Tue Oct 28 15:11:19 2025 +0700
+
+    asdasd
+
+ app/Views/user/alihbentukptkis/detail.php | 4 ++--
+ app/Views/user/template.php               | 9 +++++----
+ 2 files changed, 7 insertions(+), 6 deletions(-)
+
+commit 052cfc90fc7a5b6037d6533e5595e66febc6ef18
+Author: danuri <danualbantani@gmail.com>
+Date:   Tue Oct 28 12:32:03 2025 +0700
+
+    asdasd
+
+ app/Config/Routes.php                       |   5 +-
+ app/Controllers/Supervisor/Usulan.php       |   4 +
+ app/Controllers/User/Dokumen.php            | 143 ++++++++++
+ app/Controllers/Verifikator/Usulan.php      |   4 +
+ app/Models/DokumenprodiModel.php            |  46 ++++
+ app/Views/shield/login.php                  |  18 +-
+ app/Views/supervisor/usulan/detail_view.php |  25 +-
+ app/Views/user/pendirianptkis/index.php     |   4 +-
+ app/Views/user/pendirianptkis/prodi.php     |  64 ++++-
+ app/Views/user/template.php                 | 279 +++++++------------
+ app/Views/user/template1.php                | 408 ++++++++++++++++++++++++++++
+ app/Views/verifikator/usulan/detail.php     |  67 ++++-
+ public/assets/img/bg-login.png              | Bin 0 -> 133255 bytes
+ public/assets/img/bg-login2.png             | Bin 0 -> 58582 bytes
+ public/assets/img/bg.jpg                    | Bin 0 -> 1321195 bytes
+ public/uploads/_.pdf                        | Bin 0 -> 51978 bytes
+ public/uploads/prodi/1_92.pdf               | Bin 0 -> 51978 bytes
+ public/uploads/prodi/index.html             |   0
+ 18 files changed, 852 insertions(+), 215 deletions(-)
+
+commit 5b3bdbe81f92f9af258d3de1b6de0177dde50f68
+Author: danuri <danualbantani@gmail.com>
+Date:   Mon Oct 27 12:29:19 2025 +0700
+
+    asdasd
+
+ app/Config/Database.php                        |  27 +++
+ app/Config/Routes.php                          |   7 +
+ app/Controllers/Ajax.php                       |  15 ++
+ app/Controllers/Supervisor/Lembaga.php         |  18 ++
+ app/Controllers/User/Alihbentukptkis.php       |   8 +-
+ app/Controllers/User/Pendirianptkis.php        |   6 +-
+ app/Models/KelembagaanModel.php                | 247 +++++++++++++++++++++++++
+ app/Models/LembagaModel.php                    |  46 +++++
+ app/Models/ProdiModel.php                      |   2 +-
+ app/Views/supervisor/lembaga/index.php         |  34 ++++
+ app/Views/supervisor/template.php              |   6 +
+ app/Views/user/alihbentukptkis/detail.php      |  10 -
+ app/Views/user/alihbentukptkis/detail_view.php | 100 +++++++++-
+ app/Views/user/alihbentukptkis/index.php       |  22 +--
+ app/Views/user/pendirianptkis/detail_view.php  |  39 ++++
+ app/Views/user/pendirianptkis/index.php        |   6 +-
+ app/Views/user/pendirianptkis/prodi.php        |   4 -
+ app/Views/user/template.php                    |   2 +-
+ app/Views/welcome_message.php                  | 210 ++-------------------
+ public/assets/img/emis.png                     | Bin 0 -> 13879 bytes
+ public/assets/img/logo-kemenag.png             | Bin 0 -> 20990 bytes
+ public/assets/js/form-alihbentuk-ptkis.js      |   1 -
+ 22 files changed, 576 insertions(+), 234 deletions(-)
+
+commit b445ae8b4e907423c55125e3b01b59852a8449ba
+Author: danuri <danualbantani@gmail.com>
+Date:   Sun Oct 26 10:52:40 2025 +0700
+
+    asdasd
+
+ app/Controllers/User/Pendirianptkis.php  |  32 ++++++
+ app/Models/ProdiModel.php                |  46 +++++++++
+ app/Views/user/alihbentukptkis/index.php |   4 -
+ app/Views/user/pendirianptkis/index.php  |   1 +
+ app/Views/user/pendirianptkis/prodi.php  | 169 +++++++++++++++++++++++++++++++
+ 5 files changed, 248 insertions(+), 4 deletions(-)
+
+commit 4394710f78b4c68045cf19bf1f32efd19741e3af
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Oct 25 20:01:55 2025 +0700
+
+    asdasd
+
+ app/Views/supervisor/usulan/detail.php  |   2 +-
+ app/Views/verifikator/usulan/detail.php |   4 +-
+ app/Views/welcome_message.php           | 212 +++++++++++++++++++++-----------
+ public/assets/img/faq.png               | Bin 0 -> 65039 bytes
+ 4 files changed, 146 insertions(+), 72 deletions(-)
+
+commit 6cf5e3e31d96aff393b042ceaa271927babf579c
+Author: danuri <danualbantani@gmail.com>
+Date:   Tue Oct 21 21:21:02 2025 +0700
+
+    wewe
+
+ app/Controllers/User/Pendirianptkis.php |  1 +
+ app/Views/supervisor/template.php       | 42 ++-------------------------------
+ app/Views/supervisor/usulan/index.php   |  8 +++++++
+ app/Views/verifikator/template.php      | 34 +++-----------------------
+ app/Views/verifikator/usulan/detail.php |  2 ++
+ 5 files changed, 16 insertions(+), 71 deletions(-)
+
+commit c5f49d0036afe8cda4ee584249d2e2e2c10a1df8
+Author: danuri <danualbantani@gmail.com>
+Date:   Tue Oct 21 16:42:43 2025 +0700
+
+    ss
+
+ app/Views/user/template.php              |  1 +
+ public/assets/js/form-pendirian-ptkis.js | 14 +++++++-------
+ 2 files changed, 8 insertions(+), 7 deletions(-)
+
+commit 389a12d0a166ae9174cdb09d4312fc187fe473d9
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Oct 18 23:37:54 2025 +0700
+
+    sds
+
+ app/Controllers/User/Alihbentukptkis.php | 1 +
+ app/Controllers/User/Pendirianptkis.php  | 1 +
+ 2 files changed, 2 insertions(+)
+
+commit 64d124ab3e50812266c46bedaaa0b0b377b5c5d1
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Oct 18 15:48:53 2025 +0700
+
+    sdsd
+
+ app/Views/user/index.php                | 3 +--
+ app/Views/user/pendirianptkis/index.php | 2 +-
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+commit 59a92bb565086d3ad464756520768e01f2d1ff40
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Oct 18 15:45:44 2025 +0700
+
+    sd
+
+ app/Views/user/template.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 6dc414812d065d06d239dd5bfe9c3ee906c250b8
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Oct 18 15:44:13 2025 +0700
+
+    custom user
+
+ app/Config/Validation.php | 49 +++++++++++++++++++++++++++++++++++++++++++++++
+ app/Models/UserModel.php  |  1 -
+ 2 files changed, 49 insertions(+), 1 deletion(-)
+
+commit c62f06605461f894af3bb7678a85219ffef779f5
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Oct 18 15:38:28 2025 +0700
+
+    sdsd
+
+ app/Entities/User.php         |   1 +
+ app/Views/shield/register.php |   6 +++---
+ public/assets/img/favicon.png | Bin 0 -> 17873 bytes
+ 3 files changed, 4 insertions(+), 3 deletions(-)
+
+commit df2d8a88fe29e8626fd679cdb4b652cddc890b9f
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Oct 18 15:34:06 2025 +0700
+
+    change icon
+
+ app/Views/shield/login.php         |  2 +-
+ app/Views/shield/register.php      |  2 +-
+ app/Views/supervisor/template.php  |  4 ++--
+ app/Views/template.php             | 34 ++++------------------------------
+ app/Views/user/template.php        | 20 ++------------------
+ app/Views/verifikator/template.php | 26 ++------------------------
+ app/Views/welcome_message.php      |  2 +-
+ 7 files changed, 13 insertions(+), 77 deletions(-)
+
+commit 6916fd7c192de6f20848ae0bad07251e5aeee9f1
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Oct 18 15:29:27 2025 +0700
+
+    aset login
+
+ app/Views/shield/register.php | 82 +++++++++++++++----------------------------
+ app/Views/template.php        | 40 ++++++++++-----------
+ 2 files changed, 49 insertions(+), 73 deletions(-)
+
+commit 811c227d4da2e351840205932f5c5705a3e9591f
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Oct 18 11:10:12 2025 +0700
+
+    s
+
+ app/Views/supervisor/usulan/detail_dokumen.php | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit a7248fd96b04a6a2186515c25de65a7e50fe792c
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Oct 18 10:50:06 2025 +0700
+
+    asdads
+
+ app/Config/Routes.php                          |   9 +
+ app/Controllers/User/Alihkelolaptkis.php       | 144 +++++++++++
+ app/Views/user/alihkelolaptkis/detail.php      | 321 +++++++++++++++++++++++++
+ app/Views/user/alihkelolaptkis/detail_view.php | 184 ++++++++++++++
+ app/Views/user/alihkelolaptkis/index.php       | 151 ++++++++++++
+ app/Views/user/template.php                    |  34 ++-
+ app/Views/welcome_message.php                  |  26 +-
+ 7 files changed, 841 insertions(+), 28 deletions(-)
+
+commit 5dd63adf474ee899c2366c313d2942a9d4909f99
+Author: danuri <danualbantani@gmail.com>
+Date:   Sat Oct 18 10:15:17 2025 +0700
+
+    update
+
+ app/Config/Routes.php                              |  23 ++
+ app/Controllers/Supervisor/Usulan.php              |  30 ++
+ app/Controllers/User/Alihbentukptkis.php           | 144 +++++++
+ app/Controllers/User/Pendirianptkis.php            |  20 +-
+ app/Controllers/Verifikator/Penilaian.php          | 117 ++++++
+ app/Helpers/custom_helper.php                      |  22 +-
+ app/Models/AlihbentukptkisModel.php                |  46 +++
+ app/Views/shield/login.php                         |  29 +-
+ app/Views/supervisor/usulan/detail_penilaian.php   |  18 +-
+ app/Views/supervisor/usulan/detail_rkma.php        |  47 +--
+ app/Views/supervisor/usulan/index.php              |  15 +-
+ app/Views/user/alihbentukptkis/detail.php          | 321 +++++++++++++++
+ app/Views/user/alihbentukptkis/detail_view.php     | 184 +++++++++
+ app/Views/user/alihbentukptkis/index.php           | 169 ++++++++
+ app/Views/user/pendirianptkis/detail_view.php      |  86 ++--
+ app/Views/user/pendirianptkis/index.php            |   4 +-
+ app/Views/user/template.php                        |  30 +-
+ app/Views/verifikator/dashboard.php                |   2 +-
+ app/Views/verifikator/penilaian/detail_nilai.php   | 252 ++++++++++++
+ app/Views/verifikator/penilaian/detail_view.php    | 248 ++++++++++++
+ app/Views/verifikator/penilaian/index.php          | 162 ++++++++
+ app/Views/verifikator/template.php                 |  32 +-
+ app/Views/welcome_message.php                      | 346 +++++++++-------
+ public/assets/js/form-alihbentuk-ptkis.js          | 444 +++++++++++++++++++++
+ public/uploads/6_46.pdf                            | Bin 0 -> 51978 bytes
+ public/uploads/6_48.pdf                            | Bin 0 -> 51978 bytes
+ .../nilai/1760085262_0ff4b37cbba0053d8b17.xlsx     | Bin 0 -> 52490 bytes
+ public/uploads/nilai/index.html                    |   0
+ 28 files changed, 2536 insertions(+), 255 deletions(-)
+
+commit 0d0f5848ce4b34fe4819d949722a2870ccfb5fb0
+Author: danuri <danualbantani@gmail.com>
+Date:   Tue Oct 7 14:24:31 2025 +0700
+
+    logo
+
+ app/Views/welcome_message.php | 36 +++++-------------------------------
+ 1 file changed, 5 insertions(+), 31 deletions(-)
+
+commit 7eddd1a0f1d40a40aad3d5a7be92753385a9bd2e
+Author: danuri <danualbantani@gmail.com>
+Date:   Tue Oct 7 14:17:01 2025 +0700
+
+    change logo
+
+ app/Views/template.php        |  26 +-------------------------
+ app/Views/user/template.php   |  26 +-------------------------
+ app/Views/welcome_message.php |  28 ++--------------------------
+ public/assets/img/siptika.png | Bin 0 -> 64620 bytes
+ 4 files changed, 4 insertions(+), 76 deletions(-)
+
+commit b9201ed308dd22ae288a2b2f4345922fdd775f40
+Author: danuri <danualbantani@gmail.com>
+Date:   Tue Oct 7 14:04:31 2025 +0700
+
+    login url
+
+ app/Views/welcome_message.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 23046c79a95372916bf45ada252c948a4fe8e392
+Author: danuri <danualbantani@gmail.com>
+Date:   Tue Oct 7 13:50:42 2025 +0700
+
+    asset vendor
+
+ .gitignore                                         |     3 +
+ public/assets/vendor/css/core.css                  | 28762 +++++++++++++++++++
+ .../vendor/css/pages/app-academy-details.css       |    11 +
+ public/assets/vendor/css/pages/app-academy.css     |    30 +
+ public/assets/vendor/css/pages/app-calendar.css    |    90 +
+ public/assets/vendor/css/pages/app-chat.css        |   311 +
+ public/assets/vendor/css/pages/app-ecommerce.css   |    24 +
+ public/assets/vendor/css/pages/app-email.css       |   369 +
+ .../assets/vendor/css/pages/app-invoice-print.css  |    24 +
+ public/assets/vendor/css/pages/app-invoice.css     |    33 +
+ public/assets/vendor/css/pages/app-kanban.css      |   163 +
+ .../vendor/css/pages/app-logistics-dashboard.css   |    42 +
+ .../vendor/css/pages/app-logistics-fleet.css       |    88 +
+ public/assets/vendor/css/pages/cards-advance.css   |    45 +
+ .../vendor/css/pages/front-page-help-center.css    |    19 +
+ .../assets/vendor/css/pages/front-page-landing.css |   262 +
+ .../assets/vendor/css/pages/front-page-payment.css |     8 +
+ .../assets/vendor/css/pages/front-page-pricing.css |    32 +
+ public/assets/vendor/css/pages/front-page.css      |   254 +
+ public/assets/vendor/css/pages/page-auth.css       |   140 +
+ public/assets/vendor/css/pages/page-faq.css        |    31 +
+ public/assets/vendor/css/pages/page-icons.css      |    38 +
+ public/assets/vendor/css/pages/page-misc.css       |    31 +
+ public/assets/vendor/css/pages/page-pricing.css    |     8 +
+ public/assets/vendor/css/pages/page-profile.css    |    27 +
+ public/assets/vendor/css/pages/page-user-view.css  |     4 +
+ public/assets/vendor/css/pages/ui-carousel.css     |    56 +
+ .../assets/vendor/css/pages/wizard-ex-checkout.css |    15 +
+ public/assets/vendor/fonts/flag-icons.css          |  1920 ++
+ public/assets/vendor/fonts/flags/1x1/ad.svg        |   148 +
+ public/assets/vendor/fonts/flags/1x1/ae.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/af.svg        |    81 +
+ public/assets/vendor/fonts/flags/1x1/ag.svg        |    14 +
+ public/assets/vendor/fonts/flags/1x1/ai.svg        |    29 +
+ public/assets/vendor/fonts/flags/1x1/al.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/am.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/ao.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/aq.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/ar.svg        |    32 +
+ public/assets/vendor/fonts/flags/1x1/arab.svg      |   109 +
+ public/assets/vendor/fonts/flags/1x1/as.svg        |    73 +
+ public/assets/vendor/fonts/flags/1x1/asean.svg     |    13 +
+ public/assets/vendor/fonts/flags/1x1/at.svg        |     4 +
+ public/assets/vendor/fonts/flags/1x1/au.svg        |     8 +
+ public/assets/vendor/fonts/flags/1x1/aw.svg        |   186 +
+ public/assets/vendor/fonts/flags/1x1/ax.svg        |    18 +
+ public/assets/vendor/fonts/flags/1x1/az.svg        |     8 +
+ public/assets/vendor/fonts/flags/1x1/ba.svg        |    12 +
+ public/assets/vendor/fonts/flags/1x1/bb.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/bd.svg        |     4 +
+ public/assets/vendor/fonts/flags/1x1/be.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/bf.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/bg.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/bh.svg        |     4 +
+ public/assets/vendor/fonts/flags/1x1/bi.svg        |    15 +
+ public/assets/vendor/fonts/flags/1x1/bj.svg        |    14 +
+ public/assets/vendor/fonts/flags/1x1/bl.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/bm.svg        |    97 +
+ public/assets/vendor/fonts/flags/1x1/bn.svg        |    36 +
+ public/assets/vendor/fonts/flags/1x1/bo.svg        |   674 +
+ public/assets/vendor/fonts/flags/1x1/bq.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/br.svg        |    45 +
+ public/assets/vendor/fonts/flags/1x1/bs.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/bt.svg        |    89 +
+ public/assets/vendor/fonts/flags/1x1/bv.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/bw.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/by.svg        |    18 +
+ public/assets/vendor/fonts/flags/1x1/bz.svg        |   145 +
+ public/assets/vendor/fonts/flags/1x1/ca.svg        |     4 +
+ public/assets/vendor/fonts/flags/1x1/cc.svg        |    19 +
+ public/assets/vendor/fonts/flags/1x1/cd.svg        |    12 +
+ public/assets/vendor/fonts/flags/1x1/cefta.svg     |    13 +
+ public/assets/vendor/fonts/flags/1x1/cf.svg        |    15 +
+ public/assets/vendor/fonts/flags/1x1/cg.svg        |    12 +
+ public/assets/vendor/fonts/flags/1x1/ch.svg        |     9 +
+ public/assets/vendor/fonts/flags/1x1/ci.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/ck.svg        |     9 +
+ public/assets/vendor/fonts/flags/1x1/cl.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/cm.svg        |    15 +
+ public/assets/vendor/fonts/flags/1x1/cn.svg        |    11 +
+ public/assets/vendor/fonts/flags/1x1/co.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/cp.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/cr.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/cu.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/cv.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/cw.svg        |    14 +
+ public/assets/vendor/fonts/flags/1x1/cx.svg        |    15 +
+ public/assets/vendor/fonts/flags/1x1/cy.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/cz.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/de.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/dg.svg        |   130 +
+ public/assets/vendor/fonts/flags/1x1/dj.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/dk.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/dm.svg        |   152 +
+ public/assets/vendor/fonts/flags/1x1/do.svg        |   123 +
+ public/assets/vendor/fonts/flags/1x1/dz.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/eac.svg       |    48 +
+ public/assets/vendor/fonts/flags/1x1/ec.svg        |   138 +
+ public/assets/vendor/fonts/flags/1x1/ee.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/eg.svg        |    38 +
+ public/assets/vendor/fonts/flags/1x1/eh.svg        |    11 +
+ public/assets/vendor/fonts/flags/1x1/er.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/es-ct.svg     |     4 +
+ public/assets/vendor/fonts/flags/1x1/es-ga.svg     |   187 +
+ public/assets/vendor/fonts/flags/1x1/es-pv.svg     |     5 +
+ public/assets/vendor/fonts/flags/1x1/es.svg        |   547 +
+ public/assets/vendor/fonts/flags/1x1/et.svg        |    14 +
+ public/assets/vendor/fonts/flags/1x1/eu.svg        |    28 +
+ public/assets/vendor/fonts/flags/1x1/fi.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/fj.svg        |   123 +
+ public/assets/vendor/fonts/flags/1x1/fk.svg        |    89 +
+ public/assets/vendor/fonts/flags/1x1/fm.svg        |    11 +
+ public/assets/vendor/fonts/flags/1x1/fo.svg        |    12 +
+ public/assets/vendor/fonts/flags/1x1/fr.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/ga.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/gb-eng.svg    |     5 +
+ public/assets/vendor/fonts/flags/1x1/gb-nir.svg    |   131 +
+ public/assets/vendor/fonts/flags/1x1/gb-sct.svg    |     4 +
+ public/assets/vendor/fonts/flags/1x1/gb-wls.svg    |     9 +
+ public/assets/vendor/fonts/flags/1x1/gb.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/gd.svg        |    27 +
+ public/assets/vendor/fonts/flags/1x1/ge.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/gf.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/gg.svg        |     9 +
+ public/assets/vendor/fonts/flags/1x1/gh.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/gi.svg        |    32 +
+ public/assets/vendor/fonts/flags/1x1/gl.svg        |     4 +
+ public/assets/vendor/fonts/flags/1x1/gm.svg        |     9 +
+ public/assets/vendor/fonts/flags/1x1/gn.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/gp.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/gq.svg        |    23 +
+ public/assets/vendor/fonts/flags/1x1/gr.svg        |    16 +
+ public/assets/vendor/fonts/flags/1x1/gs.svg        |   132 +
+ public/assets/vendor/fonts/flags/1x1/gt.svg        |   204 +
+ public/assets/vendor/fonts/flags/1x1/gu.svg        |    19 +
+ public/assets/vendor/fonts/flags/1x1/gw.svg        |    15 +
+ public/assets/vendor/fonts/flags/1x1/gy.svg        |     9 +
+ public/assets/vendor/fonts/flags/1x1/hk.svg        |     8 +
+ public/assets/vendor/fonts/flags/1x1/hm.svg        |     8 +
+ public/assets/vendor/fonts/flags/1x1/hn.svg        |    18 +
+ public/assets/vendor/fonts/flags/1x1/hr.svg        |    56 +
+ public/assets/vendor/fonts/flags/1x1/ht.svg        |   116 +
+ public/assets/vendor/fonts/flags/1x1/hu.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/ic.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/id.svg        |     4 +
+ public/assets/vendor/fonts/flags/1x1/ie.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/il.svg        |    14 +
+ public/assets/vendor/fonts/flags/1x1/im.svg        |    36 +
+ public/assets/vendor/fonts/flags/1x1/in.svg        |    25 +
+ public/assets/vendor/fonts/flags/1x1/io.svg        |   130 +
+ public/assets/vendor/fonts/flags/1x1/iq.svg        |    10 +
+ public/assets/vendor/fonts/flags/1x1/ir.svg        |   219 +
+ public/assets/vendor/fonts/flags/1x1/is.svg        |    12 +
+ public/assets/vendor/fonts/flags/1x1/it.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/je.svg        |    62 +
+ public/assets/vendor/fonts/flags/1x1/jm.svg        |     8 +
+ public/assets/vendor/fonts/flags/1x1/jo.svg        |    16 +
+ public/assets/vendor/fonts/flags/1x1/jp.svg        |    11 +
+ public/assets/vendor/fonts/flags/1x1/ke.svg        |    23 +
+ public/assets/vendor/fonts/flags/1x1/kg.svg        |     4 +
+ public/assets/vendor/fonts/flags/1x1/kh.svg        |    61 +
+ public/assets/vendor/fonts/flags/1x1/ki.svg        |    36 +
+ public/assets/vendor/fonts/flags/1x1/km.svg        |    16 +
+ public/assets/vendor/fonts/flags/1x1/kn.svg        |    14 +
+ public/assets/vendor/fonts/flags/1x1/kp.svg        |    15 +
+ public/assets/vendor/fonts/flags/1x1/kr.svg        |    17 +
+ public/assets/vendor/fonts/flags/1x1/kw.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/ky.svg        |   103 +
+ public/assets/vendor/fonts/flags/1x1/kz.svg        |    36 +
+ public/assets/vendor/fonts/flags/1x1/la.svg        |    12 +
+ public/assets/vendor/fonts/flags/1x1/lb.svg        |    15 +
+ public/assets/vendor/fonts/flags/1x1/lc.svg        |     8 +
+ public/assets/vendor/fonts/flags/1x1/li.svg        |    43 +
+ public/assets/vendor/fonts/flags/1x1/lk.svg        |    22 +
+ public/assets/vendor/fonts/flags/1x1/lr.svg        |    14 +
+ public/assets/vendor/fonts/flags/1x1/ls.svg        |     8 +
+ public/assets/vendor/fonts/flags/1x1/lt.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/lu.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/lv.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/ly.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/ma.svg        |     4 +
+ public/assets/vendor/fonts/flags/1x1/mc.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/md.svg        |    71 +
+ public/assets/vendor/fonts/flags/1x1/me.svg        |   118 +
+ public/assets/vendor/fonts/flags/1x1/mf.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/mg.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/mh.svg        |     8 +
+ public/assets/vendor/fonts/flags/1x1/mk.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/ml.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/mm.svg        |    10 +
+ public/assets/vendor/fonts/flags/1x1/mn.svg        |    14 +
+ public/assets/vendor/fonts/flags/1x1/mo.svg        |     9 +
+ public/assets/vendor/fonts/flags/1x1/mp.svg        |    86 +
+ public/assets/vendor/fonts/flags/1x1/mq.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/mr.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/ms.svg        |    25 +
+ public/assets/vendor/fonts/flags/1x1/mt.svg        |    56 +
+ public/assets/vendor/fonts/flags/1x1/mu.svg        |     8 +
+ public/assets/vendor/fonts/flags/1x1/mv.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/mw.svg        |    15 +
+ public/assets/vendor/fonts/flags/1x1/mx.svg        |   377 +
+ public/assets/vendor/fonts/flags/1x1/my.svg        |    18 +
+ public/assets/vendor/fonts/flags/1x1/mz.svg        |    21 +
+ public/assets/vendor/fonts/flags/1x1/na.svg        |    16 +
+ public/assets/vendor/fonts/flags/1x1/nc.svg        |    12 +
+ public/assets/vendor/fonts/flags/1x1/ne.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/nf.svg        |    11 +
+ public/assets/vendor/fonts/flags/1x1/ng.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/ni.svg        |   129 +
+ public/assets/vendor/fonts/flags/1x1/nl.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/no.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/np.svg        |    18 +
+ public/assets/vendor/fonts/flags/1x1/nr.svg        |    12 +
+ public/assets/vendor/fonts/flags/1x1/nu.svg        |    10 +
+ public/assets/vendor/fonts/flags/1x1/nz.svg        |    36 +
+ public/assets/vendor/fonts/flags/1x1/om.svg        |   115 +
+ public/assets/vendor/fonts/flags/1x1/pa.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/pc.svg        |    33 +
+ public/assets/vendor/fonts/flags/1x1/pe.svg        |     4 +
+ public/assets/vendor/fonts/flags/1x1/pf.svg        |    18 +
+ public/assets/vendor/fonts/flags/1x1/pg.svg        |    16 +
+ public/assets/vendor/fonts/flags/1x1/ph.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/pk.svg        |    15 +
+ public/assets/vendor/fonts/flags/1x1/pl.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/pm.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/pn.svg        |    53 +
+ public/assets/vendor/fonts/flags/1x1/pr.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/ps.svg        |    15 +
+ public/assets/vendor/fonts/flags/1x1/pt.svg        |    57 +
+ public/assets/vendor/fonts/flags/1x1/pw.svg        |    11 +
+ public/assets/vendor/fonts/flags/1x1/py.svg        |   156 +
+ public/assets/vendor/fonts/flags/1x1/qa.svg        |     4 +
+ public/assets/vendor/fonts/flags/1x1/re.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/ro.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/rs.svg        |   296 +
+ public/assets/vendor/fonts/flags/1x1/ru.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/rw.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/sa.svg        |    25 +
+ public/assets/vendor/fonts/flags/1x1/sb.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/sc.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/sd.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/se.svg        |     4 +
+ public/assets/vendor/fonts/flags/1x1/sg.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/sh-ac.svg     |   690 +
+ public/assets/vendor/fonts/flags/1x1/sh-hl.svg     |   164 +
+ public/assets/vendor/fonts/flags/1x1/sh-ta.svg     |    76 +
+ public/assets/vendor/fonts/flags/1x1/sh.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/si.svg        |    18 +
+ public/assets/vendor/fonts/flags/1x1/sj.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/sk.svg        |     9 +
+ public/assets/vendor/fonts/flags/1x1/sl.svg        |    12 +
+ public/assets/vendor/fonts/flags/1x1/sm.svg        |    73 +
+ public/assets/vendor/fonts/flags/1x1/sn.svg        |     8 +
+ public/assets/vendor/fonts/flags/1x1/so.svg        |    11 +
+ public/assets/vendor/fonts/flags/1x1/sr.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/ss.svg        |     8 +
+ public/assets/vendor/fonts/flags/1x1/st.svg        |    16 +
+ public/assets/vendor/fonts/flags/1x1/sv.svg        |   593 +
+ public/assets/vendor/fonts/flags/1x1/sx.svg        |    56 +
+ public/assets/vendor/fonts/flags/1x1/sy.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/sz.svg        |    34 +
+ public/assets/vendor/fonts/flags/1x1/tc.svg        |    50 +
+ public/assets/vendor/fonts/flags/1x1/td.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/tf.svg        |    15 +
+ public/assets/vendor/fonts/flags/1x1/tg.svg        |    14 +
+ public/assets/vendor/fonts/flags/1x1/th.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/tj.svg        |    26 +
+ public/assets/vendor/fonts/flags/1x1/tk.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/tl.svg        |    13 +
+ public/assets/vendor/fonts/flags/1x1/tm.svg        |   205 +
+ public/assets/vendor/fonts/flags/1x1/tn.svg        |     4 +
+ public/assets/vendor/fonts/flags/1x1/to.svg        |    10 +
+ public/assets/vendor/fonts/flags/1x1/tr.svg        |     8 +
+ public/assets/vendor/fonts/flags/1x1/tt.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/tv.svg        |     9 +
+ public/assets/vendor/fonts/flags/1x1/tw.svg        |    32 +
+ public/assets/vendor/fonts/flags/1x1/tz.svg        |    15 +
+ public/assets/vendor/fonts/flags/1x1/ua.svg        |     6 +
+ public/assets/vendor/fonts/flags/1x1/ug.svg        |    30 +
+ public/assets/vendor/fonts/flags/1x1/um.svg        |     9 +
+ public/assets/vendor/fonts/flags/1x1/un.svg        |    16 +
+ public/assets/vendor/fonts/flags/1x1/us.svg        |     9 +
+ public/assets/vendor/fonts/flags/1x1/uy.svg        |    28 +
+ public/assets/vendor/fonts/flags/1x1/uz.svg        |    30 +
+ public/assets/vendor/fonts/flags/1x1/va.svg        |   190 +
+ public/assets/vendor/fonts/flags/1x1/vc.svg        |     8 +
+ public/assets/vendor/fonts/flags/1x1/ve.svg        |    26 +
+ public/assets/vendor/fonts/flags/1x1/vg.svg        |    59 +
+ public/assets/vendor/fonts/flags/1x1/vi.svg        |    28 +
+ public/assets/vendor/fonts/flags/1x1/vn.svg        |    11 +
+ public/assets/vendor/fonts/flags/1x1/vu.svg        |    21 +
+ public/assets/vendor/fonts/flags/1x1/wf.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/ws.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/xk.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/xx.svg        |     4 +
+ public/assets/vendor/fonts/flags/1x1/ye.svg        |     7 +
+ public/assets/vendor/fonts/flags/1x1/yt.svg        |     5 +
+ public/assets/vendor/fonts/flags/1x1/za.svg        |    17 +
+ public/assets/vendor/fonts/flags/1x1/zm.svg        |    27 +
+ public/assets/vendor/fonts/flags/1x1/zw.svg        |    21 +
+ public/assets/vendor/fonts/flags/4x3/ad.svg        |   150 +
+ public/assets/vendor/fonts/flags/4x3/ae.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/af.svg        |    81 +
+ public/assets/vendor/fonts/flags/4x3/ag.svg        |    14 +
+ public/assets/vendor/fonts/flags/4x3/ai.svg        |    29 +
+ public/assets/vendor/fonts/flags/4x3/al.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/am.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/ao.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/aq.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/ar.svg        |    32 +
+ public/assets/vendor/fonts/flags/4x3/arab.svg      |   109 +
+ public/assets/vendor/fonts/flags/4x3/as.svg        |    72 +
+ public/assets/vendor/fonts/flags/4x3/asean.svg     |    13 +
+ public/assets/vendor/fonts/flags/4x3/at.svg        |     4 +
+ public/assets/vendor/fonts/flags/4x3/au.svg        |     8 +
+ public/assets/vendor/fonts/flags/4x3/aw.svg        |   186 +
+ public/assets/vendor/fonts/flags/4x3/ax.svg        |    18 +
+ public/assets/vendor/fonts/flags/4x3/az.svg        |     8 +
+ public/assets/vendor/fonts/flags/4x3/ba.svg        |    12 +
+ public/assets/vendor/fonts/flags/4x3/bb.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/bd.svg        |     4 +
+ public/assets/vendor/fonts/flags/4x3/be.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/bf.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/bg.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/bh.svg        |     4 +
+ public/assets/vendor/fonts/flags/4x3/bi.svg        |    15 +
+ public/assets/vendor/fonts/flags/4x3/bj.svg        |    14 +
+ public/assets/vendor/fonts/flags/4x3/bl.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/bm.svg        |    97 +
+ public/assets/vendor/fonts/flags/4x3/bn.svg        |    36 +
+ public/assets/vendor/fonts/flags/4x3/bo.svg        |   673 +
+ public/assets/vendor/fonts/flags/4x3/bq.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/br.svg        |    45 +
+ public/assets/vendor/fonts/flags/4x3/bs.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/bt.svg        |    89 +
+ public/assets/vendor/fonts/flags/4x3/bv.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/bw.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/by.svg        |    18 +
+ public/assets/vendor/fonts/flags/4x3/bz.svg        |   145 +
+ public/assets/vendor/fonts/flags/4x3/ca.svg        |     4 +
+ public/assets/vendor/fonts/flags/4x3/cc.svg        |    19 +
+ public/assets/vendor/fonts/flags/4x3/cd.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/cefta.svg     |    13 +
+ public/assets/vendor/fonts/flags/4x3/cf.svg        |    15 +
+ public/assets/vendor/fonts/flags/4x3/cg.svg        |    12 +
+ public/assets/vendor/fonts/flags/4x3/ch.svg        |     9 +
+ public/assets/vendor/fonts/flags/4x3/ci.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/ck.svg        |     9 +
+ public/assets/vendor/fonts/flags/4x3/cl.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/cm.svg        |    15 +
+ public/assets/vendor/fonts/flags/4x3/cn.svg        |    11 +
+ public/assets/vendor/fonts/flags/4x3/co.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/cp.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/cr.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/cu.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/cv.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/cw.svg        |    14 +
+ public/assets/vendor/fonts/flags/4x3/cx.svg        |    15 +
+ public/assets/vendor/fonts/flags/4x3/cy.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/cz.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/de.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/dg.svg        |   130 +
+ public/assets/vendor/fonts/flags/4x3/dj.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/dk.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/dm.svg        |   152 +
+ public/assets/vendor/fonts/flags/4x3/do.svg        |   121 +
+ public/assets/vendor/fonts/flags/4x3/dz.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/eac.svg       |    48 +
+ public/assets/vendor/fonts/flags/4x3/ec.svg        |   138 +
+ public/assets/vendor/fonts/flags/4x3/ee.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/eg.svg        |    38 +
+ public/assets/vendor/fonts/flags/4x3/eh.svg        |    16 +
+ public/assets/vendor/fonts/flags/4x3/er.svg        |     8 +
+ public/assets/vendor/fonts/flags/4x3/es-ct.svg     |     4 +
+ public/assets/vendor/fonts/flags/4x3/es-ga.svg     |   187 +
+ public/assets/vendor/fonts/flags/4x3/es-pv.svg     |     5 +
+ public/assets/vendor/fonts/flags/4x3/es.svg        |   544 +
+ public/assets/vendor/fonts/flags/4x3/et.svg        |    14 +
+ public/assets/vendor/fonts/flags/4x3/eu.svg        |    28 +
+ public/assets/vendor/fonts/flags/4x3/fi.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/fj.svg        |   120 +
+ public/assets/vendor/fonts/flags/4x3/fk.svg        |    90 +
+ public/assets/vendor/fonts/flags/4x3/fm.svg        |    11 +
+ public/assets/vendor/fonts/flags/4x3/fo.svg        |    12 +
+ public/assets/vendor/fonts/flags/4x3/fr.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/ga.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/gb-eng.svg    |     5 +
+ public/assets/vendor/fonts/flags/4x3/gb-nir.svg    |   132 +
+ public/assets/vendor/fonts/flags/4x3/gb-sct.svg    |     4 +
+ public/assets/vendor/fonts/flags/4x3/gb-wls.svg    |     9 +
+ public/assets/vendor/fonts/flags/4x3/gb.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/gd.svg        |    27 +
+ public/assets/vendor/fonts/flags/4x3/ge.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/gf.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/gg.svg        |     9 +
+ public/assets/vendor/fonts/flags/4x3/gh.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/gi.svg        |    32 +
+ public/assets/vendor/fonts/flags/4x3/gl.svg        |     4 +
+ public/assets/vendor/fonts/flags/4x3/gm.svg        |    14 +
+ public/assets/vendor/fonts/flags/4x3/gn.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/gp.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/gq.svg        |    23 +
+ public/assets/vendor/fonts/flags/4x3/gr.svg        |    16 +
+ public/assets/vendor/fonts/flags/4x3/gs.svg        |   133 +
+ public/assets/vendor/fonts/flags/4x3/gt.svg        |   204 +
+ public/assets/vendor/fonts/flags/4x3/gu.svg        |    19 +
+ public/assets/vendor/fonts/flags/4x3/gw.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/gy.svg        |     9 +
+ public/assets/vendor/fonts/flags/4x3/hk.svg        |     8 +
+ public/assets/vendor/fonts/flags/4x3/hm.svg        |     8 +
+ public/assets/vendor/fonts/flags/4x3/hn.svg        |    18 +
+ public/assets/vendor/fonts/flags/4x3/hr.svg        |    58 +
+ public/assets/vendor/fonts/flags/4x3/ht.svg        |   116 +
+ public/assets/vendor/fonts/flags/4x3/hu.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/ic.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/id.svg        |     4 +
+ public/assets/vendor/fonts/flags/4x3/ie.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/il.svg        |    14 +
+ public/assets/vendor/fonts/flags/4x3/im.svg        |    36 +
+ public/assets/vendor/fonts/flags/4x3/in.svg        |    25 +
+ public/assets/vendor/fonts/flags/4x3/io.svg        |   130 +
+ public/assets/vendor/fonts/flags/4x3/iq.svg        |    10 +
+ public/assets/vendor/fonts/flags/4x3/ir.svg        |   219 +
+ public/assets/vendor/fonts/flags/4x3/is.svg        |    12 +
+ public/assets/vendor/fonts/flags/4x3/it.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/je.svg        |    62 +
+ public/assets/vendor/fonts/flags/4x3/jm.svg        |     8 +
+ public/assets/vendor/fonts/flags/4x3/jo.svg        |    16 +
+ public/assets/vendor/fonts/flags/4x3/jp.svg        |    11 +
+ public/assets/vendor/fonts/flags/4x3/ke.svg        |    23 +
+ public/assets/vendor/fonts/flags/4x3/kg.svg        |     4 +
+ public/assets/vendor/fonts/flags/4x3/kh.svg        |    61 +
+ public/assets/vendor/fonts/flags/4x3/ki.svg        |    36 +
+ public/assets/vendor/fonts/flags/4x3/km.svg        |    16 +
+ public/assets/vendor/fonts/flags/4x3/kn.svg        |    14 +
+ public/assets/vendor/fonts/flags/4x3/kp.svg        |    15 +
+ public/assets/vendor/fonts/flags/4x3/kr.svg        |    24 +
+ public/assets/vendor/fonts/flags/4x3/kw.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/ky.svg        |   103 +
+ public/assets/vendor/fonts/flags/4x3/kz.svg        |    36 +
+ public/assets/vendor/fonts/flags/4x3/la.svg        |    12 +
+ public/assets/vendor/fonts/flags/4x3/lb.svg        |    15 +
+ public/assets/vendor/fonts/flags/4x3/lc.svg        |     8 +
+ public/assets/vendor/fonts/flags/4x3/li.svg        |    43 +
+ public/assets/vendor/fonts/flags/4x3/lk.svg        |    22 +
+ public/assets/vendor/fonts/flags/4x3/lr.svg        |    14 +
+ public/assets/vendor/fonts/flags/4x3/ls.svg        |     8 +
+ public/assets/vendor/fonts/flags/4x3/lt.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/lu.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/lv.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/ly.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/ma.svg        |     4 +
+ public/assets/vendor/fonts/flags/4x3/mc.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/md.svg        |    70 +
+ public/assets/vendor/fonts/flags/4x3/me.svg        |   116 +
+ public/assets/vendor/fonts/flags/4x3/mf.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/mg.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/mh.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/mk.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/ml.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/mm.svg        |    12 +
+ public/assets/vendor/fonts/flags/4x3/mn.svg        |    14 +
+ public/assets/vendor/fonts/flags/4x3/mo.svg        |     9 +
+ public/assets/vendor/fonts/flags/4x3/mp.svg        |    86 +
+ public/assets/vendor/fonts/flags/4x3/mq.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/mr.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/ms.svg        |    29 +
+ public/assets/vendor/fonts/flags/4x3/mt.svg        |    58 +
+ public/assets/vendor/fonts/flags/4x3/mu.svg        |     8 +
+ public/assets/vendor/fonts/flags/4x3/mv.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/mw.svg        |    10 +
+ public/assets/vendor/fonts/flags/4x3/mx.svg        |   382 +
+ public/assets/vendor/fonts/flags/4x3/my.svg        |    26 +
+ public/assets/vendor/fonts/flags/4x3/mz.svg        |    21 +
+ public/assets/vendor/fonts/flags/4x3/na.svg        |    16 +
+ public/assets/vendor/fonts/flags/4x3/nc.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/ne.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/nf.svg        |     9 +
+ public/assets/vendor/fonts/flags/4x3/ng.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/ni.svg        |   129 +
+ public/assets/vendor/fonts/flags/4x3/nl.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/no.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/np.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/nr.svg        |    12 +
+ public/assets/vendor/fonts/flags/4x3/nu.svg        |    10 +
+ public/assets/vendor/fonts/flags/4x3/nz.svg        |    36 +
+ public/assets/vendor/fonts/flags/4x3/om.svg        |   115 +
+ public/assets/vendor/fonts/flags/4x3/pa.svg        |    14 +
+ public/assets/vendor/fonts/flags/4x3/pc.svg        |    33 +
+ public/assets/vendor/fonts/flags/4x3/pe.svg        |     4 +
+ public/assets/vendor/fonts/flags/4x3/pf.svg        |    19 +
+ public/assets/vendor/fonts/flags/4x3/pg.svg        |     9 +
+ public/assets/vendor/fonts/flags/4x3/ph.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/pk.svg        |    15 +
+ public/assets/vendor/fonts/flags/4x3/pl.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/pm.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/pn.svg        |    53 +
+ public/assets/vendor/fonts/flags/4x3/pr.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/ps.svg        |    15 +
+ public/assets/vendor/fonts/flags/4x3/pt.svg        |    57 +
+ public/assets/vendor/fonts/flags/4x3/pw.svg        |    11 +
+ public/assets/vendor/fonts/flags/4x3/py.svg        |   157 +
+ public/assets/vendor/fonts/flags/4x3/qa.svg        |     4 +
+ public/assets/vendor/fonts/flags/4x3/re.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/ro.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/rs.svg        |   292 +
+ public/assets/vendor/fonts/flags/4x3/ru.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/rw.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/sa.svg        |    25 +
+ public/assets/vendor/fonts/flags/4x3/sb.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/sc.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/sd.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/se.svg        |     4 +
+ public/assets/vendor/fonts/flags/4x3/sg.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/sh-ac.svg     |   689 +
+ public/assets/vendor/fonts/flags/4x3/sh-hl.svg     |   164 +
+ public/assets/vendor/fonts/flags/4x3/sh-ta.svg     |    76 +
+ public/assets/vendor/fonts/flags/4x3/sh.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/si.svg        |    18 +
+ public/assets/vendor/fonts/flags/4x3/sj.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/sk.svg        |     9 +
+ public/assets/vendor/fonts/flags/4x3/sl.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/sm.svg        |    75 +
+ public/assets/vendor/fonts/flags/4x3/sn.svg        |     8 +
+ public/assets/vendor/fonts/flags/4x3/so.svg        |    11 +
+ public/assets/vendor/fonts/flags/4x3/sr.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/ss.svg        |     8 +
+ public/assets/vendor/fonts/flags/4x3/st.svg        |    16 +
+ public/assets/vendor/fonts/flags/4x3/sv.svg        |   593 +
+ public/assets/vendor/fonts/flags/4x3/sx.svg        |    56 +
+ public/assets/vendor/fonts/flags/4x3/sy.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/sz.svg        |    34 +
+ public/assets/vendor/fonts/flags/4x3/tc.svg        |    50 +
+ public/assets/vendor/fonts/flags/4x3/td.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/tf.svg        |    15 +
+ public/assets/vendor/fonts/flags/4x3/tg.svg        |    14 +
+ public/assets/vendor/fonts/flags/4x3/th.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/tj.svg        |    22 +
+ public/assets/vendor/fonts/flags/4x3/tk.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/tl.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/tm.svg        |   204 +
+ public/assets/vendor/fonts/flags/4x3/tn.svg        |     4 +
+ public/assets/vendor/fonts/flags/4x3/to.svg        |    10 +
+ public/assets/vendor/fonts/flags/4x3/tr.svg        |     8 +
+ public/assets/vendor/fonts/flags/4x3/tt.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/tv.svg        |     9 +
+ public/assets/vendor/fonts/flags/4x3/tw.svg        |    34 +
+ public/assets/vendor/fonts/flags/4x3/tz.svg        |    13 +
+ public/assets/vendor/fonts/flags/4x3/ua.svg        |     6 +
+ public/assets/vendor/fonts/flags/4x3/ug.svg        |    30 +
+ public/assets/vendor/fonts/flags/4x3/um.svg        |     9 +
+ public/assets/vendor/fonts/flags/4x3/un.svg        |    16 +
+ public/assets/vendor/fonts/flags/4x3/us.svg        |     9 +
+ public/assets/vendor/fonts/flags/4x3/uy.svg        |    28 +
+ public/assets/vendor/fonts/flags/4x3/uz.svg        |    30 +
+ public/assets/vendor/fonts/flags/4x3/va.svg        |   190 +
+ public/assets/vendor/fonts/flags/4x3/vc.svg        |     8 +
+ public/assets/vendor/fonts/flags/4x3/ve.svg        |    26 +
+ public/assets/vendor/fonts/flags/4x3/vg.svg        |    59 +
+ public/assets/vendor/fonts/flags/4x3/vi.svg        |    28 +
+ public/assets/vendor/fonts/flags/4x3/vn.svg        |    11 +
+ public/assets/vendor/fonts/flags/4x3/vu.svg        |    21 +
+ public/assets/vendor/fonts/flags/4x3/wf.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/ws.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/xk.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/xx.svg        |     4 +
+ public/assets/vendor/fonts/flags/4x3/ye.svg        |     7 +
+ public/assets/vendor/fonts/flags/4x3/yt.svg        |     5 +
+ public/assets/vendor/fonts/flags/4x3/za.svg        |    17 +
+ public/assets/vendor/fonts/flags/4x3/zm.svg        |    27 +
+ public/assets/vendor/fonts/flags/4x3/zw.svg        |    21 +
+ public/assets/vendor/fonts/fontawesome.css         | 10466 +++++++
+ .../vendor/fonts/fontawesome/fa-brands-400.ttf     |   Bin 0 -> 210792 bytes
+ .../vendor/fonts/fontawesome/fa-brands-400.woff2   |   Bin 0 -> 118684 bytes
+ .../vendor/fonts/fontawesome/fa-regular-400.ttf    |   Bin 0 -> 68064 bytes
+ .../vendor/fonts/fontawesome/fa-regular-400.woff2  |   Bin 0 -> 25472 bytes
+ .../vendor/fonts/fontawesome/fa-solid-900.ttf      |   Bin 0 -> 426112 bytes
+ .../vendor/fonts/fontawesome/fa-solid-900.woff2    |   Bin 0 -> 158220 bytes
+ .../fonts/fontawesome/fa-v4compatibility.ttf       |   Bin 0 -> 10836 bytes
+ .../fonts/fontawesome/fa-v4compatibility.woff2     |   Bin 0 -> 4796 bytes
+ public/assets/vendor/fonts/iconify-icons.css       | 23580 +++++++++++++++
+ public/assets/vendor/js/bootstrap.js               |     1 +
+ public/assets/vendor/js/dropdown-hover.js          |     1 +
+ public/assets/vendor/js/helpers.js                 |     1 +
+ public/assets/vendor/js/mega-dropdown.js           |     1 +
+ public/assets/vendor/js/menu.js                    |     1 +
+ public/assets/vendor/js/template-customizer.js     |     1 +
+ .../assets/vendor/libs/@algolia/autocomplete-js.js |     1 +
+ .../vendor/libs/@form-validation/auto-focus.js     |     1 +
+ .../vendor/libs/@form-validation/bootstrap5.js     |     1 +
+ .../libs/@form-validation/form-validation.css      |    84 +
+ .../assets/vendor/libs/@form-validation/popular.js |     1 +
+ public/assets/vendor/libs/animate-css/animate.css  |  3704 +++
+ .../libs/animate-on-scroll/animate-on-scroll.css   |   952 +
+ .../libs/animate-on-scroll/animate-on-scroll.js    |     1 +
+ .../assets/vendor/libs/apex-charts/apex-charts.css |   752 +
+ .../assets/vendor/libs/apex-charts/apexcharts.js   |     1 +
+ public/assets/vendor/libs/bloodhound/bloodhound.js |     1 +
+ .../bootstrap-daterangepicker.css                  |   287 +
+ .../bootstrap-daterangepicker.js                   |     1 +
+ .../libs/bootstrap-select/bootstrap-select.css     |   548 +
+ .../libs/bootstrap-select/bootstrap-select.js      |     1 +
+ .../assets/vendor/libs/bs-stepper/bs-stepper.css   |   454 +
+ public/assets/vendor/libs/bs-stepper/bs-stepper.js |     1 +
+ public/assets/vendor/libs/chartjs/chartjs.css      |    20 +
+ public/assets/vendor/libs/chartjs/chartjs.js       |     1 +
+ public/assets/vendor/libs/cleave-zen/cleave-zen.js |     1 +
+ public/assets/vendor/libs/clipboard/clipboard.js   |     1 +
+ .../libs/datatables-bs5/datatables-bootstrap5.js   |     1 +
+ .../libs/datatables-bs5/datatables.bootstrap5.css  |   822 +
+ .../datatables-buttons-bs5/buttons.bootstrap5.css  |   459 +
+ .../fixedcolumns.bootstrap5.css                    |   167 +
+ .../fixedheader.bootstrap5.css                     |    44 +
+ .../responsive.bootstrap5.css                      |   282 +
+ .../rowgroup.bootstrap5.css                        |    82 +
+ .../datatables-select-bs5/select.bootstrap5.css    |   113 +
+ public/assets/vendor/libs/dropzone/dropzone.css    |   250 +
+ public/assets/vendor/libs/dropzone/dropzone.js     |     1 +
+ public/assets/vendor/libs/flatpickr/flatpickr.css  |   494 +
+ public/assets/vendor/libs/flatpickr/flatpickr.js   |     1 +
+ .../vendor/libs/fullcalendar/fullcalendar.css      |   439 +
+ .../vendor/libs/fullcalendar/fullcalendar.js       |     1 +
+ public/assets/vendor/libs/hammer/hammer.js         |     1 +
+ .../vendor/libs/highlight/highlight-github.css     |     1 +
+ public/assets/vendor/libs/highlight/highlight.css  |   207 +
+ public/assets/vendor/libs/highlight/highlight.js   |     1 +
+ public/assets/vendor/libs/i18n/i18n.js             |     1 +
+ public/assets/vendor/libs/jkanban/jkanban.css      |   150 +
+ public/assets/vendor/libs/jkanban/jkanban.js       |     1 +
+ .../libs/jquery-idletimer/jquery-idletimer.js      |     1 +
+ .../vendor/libs/jquery-repeater/jquery-repeater.js |     1 +
+ .../libs/jquery-timepicker/jquery-timepicker.css   |   114 +
+ .../libs/jquery-timepicker/jquery-timepicker.js    |     1 +
+ public/assets/vendor/libs/jquery/jquery.js         |     1 +
+ public/assets/vendor/libs/jstree/jstree.css        |  2848 ++
+ public/assets/vendor/libs/jstree/jstree.js         |     1 +
+ .../libs/jstree/themes/default-dark/32px.png       |   Bin 0 -> 1562 bytes
+ .../libs/jstree/themes/default-dark/40px.png       |   Bin 0 -> 5717 bytes
+ .../libs/jstree/themes/default-dark/throbber.gif   |   Bin 0 -> 1720 bytes
+ .../vendor/libs/jstree/themes/default/32px.png     |   Bin 0 -> 4617 bytes
+ .../vendor/libs/jstree/themes/default/40px.png     |   Bin 0 -> 1880 bytes
+ .../vendor/libs/jstree/themes/default/throbber.gif |   Bin 0 -> 1720 bytes
+ .../vendor/libs/leaflet/images/layers-2x.png       |   Bin 0 -> 1259 bytes
+ .../assets/vendor/libs/leaflet/images/layers.png   |   Bin 0 -> 696 bytes
+ .../vendor/libs/leaflet/images/marker-icon-2x.png  |   Bin 0 -> 2464 bytes
+ .../vendor/libs/leaflet/images/marker-icon.png     |   Bin 0 -> 1466 bytes
+ .../vendor/libs/leaflet/images/marker-shadow.png   |   Bin 0 -> 618 bytes
+ public/assets/vendor/libs/leaflet/leaflet.css      |   769 +
+ public/assets/vendor/libs/leaflet/leaflet.js       |     1 +
+ public/assets/vendor/libs/mapbox-gl/mapbox-gl.css  |   760 +
+ public/assets/vendor/libs/mapbox-gl/mapbox-gl.js   |     1 +
+ public/assets/vendor/libs/masonry/masonry.js       |     1 +
+ public/assets/vendor/libs/maxLength/maxLength.css  |    31 +
+ public/assets/vendor/libs/moment/moment.js         |     1 +
+ .../assets/vendor/libs/node-waves/node-waves.css   |   146 +
+ public/assets/vendor/libs/node-waves/node-waves.js |     1 +
+ public/assets/vendor/libs/notiflix/notiflix.css    |  1751 ++
+ public/assets/vendor/libs/notiflix/notiflix.js     |     1 +
+ public/assets/vendor/libs/notyf/notyf.css          |   368 +
+ public/assets/vendor/libs/notyf/notyf.js           |     1 +
+ .../assets/vendor/libs/nouislider/nouislider.css   |   621 +
+ public/assets/vendor/libs/nouislider/nouislider.js |     1 +
+ public/assets/vendor/libs/numeral/numeral.js       |     1 +
+ .../libs/perfect-scrollbar/perfect-scrollbar.css   |   186 +
+ .../libs/perfect-scrollbar/perfect-scrollbar.js    |     1 +
+ public/assets/vendor/libs/pickr/pickr-themes.css   |  1239 +
+ public/assets/vendor/libs/pickr/pickr.js           |     1 +
+ public/assets/vendor/libs/plyr/plyr.css            |  1182 +
+ public/assets/vendor/libs/plyr/plyr.js             |     1 +
+ public/assets/vendor/libs/popper/popper.js         |     1 +
+ public/assets/vendor/libs/quill/editor.css         |   775 +
+ .../vendor/libs/quill/fonts/KaTeX_AMS-Regular.ttf  |   Bin 0 -> 63632 bytes
+ .../vendor/libs/quill/fonts/KaTeX_AMS-Regular.woff |   Bin 0 -> 33516 bytes
+ .../libs/quill/fonts/KaTeX_AMS-Regular.woff2       |   Bin 0 -> 28076 bytes
+ .../libs/quill/fonts/KaTeX_Caligraphic-Bold.ttf    |   Bin 0 -> 12368 bytes
+ .../libs/quill/fonts/KaTeX_Caligraphic-Bold.woff   |   Bin 0 -> 7716 bytes
+ .../libs/quill/fonts/KaTeX_Caligraphic-Bold.woff2  |   Bin 0 -> 6912 bytes
+ .../libs/quill/fonts/KaTeX_Caligraphic-Regular.ttf |   Bin 0 -> 12344 bytes
+ .../quill/fonts/KaTeX_Caligraphic-Regular.woff     |   Bin 0 -> 7656 bytes
+ .../quill/fonts/KaTeX_Caligraphic-Regular.woff2    |   Bin 0 -> 6908 bytes
+ .../vendor/libs/quill/fonts/KaTeX_Fraktur-Bold.ttf |   Bin 0 -> 19584 bytes
+ .../libs/quill/fonts/KaTeX_Fraktur-Bold.woff       |   Bin 0 -> 13296 bytes
+ .../libs/quill/fonts/KaTeX_Fraktur-Bold.woff2      |   Bin 0 -> 11348 bytes
+ .../libs/quill/fonts/KaTeX_Fraktur-Regular.ttf     |   Bin 0 -> 19572 bytes
+ .../libs/quill/fonts/KaTeX_Fraktur-Regular.woff    |   Bin 0 -> 13208 bytes
+ .../libs/quill/fonts/KaTeX_Fraktur-Regular.woff2   |   Bin 0 -> 11316 bytes
+ .../vendor/libs/quill/fonts/KaTeX_Main-Bold.ttf    |   Bin 0 -> 51336 bytes
+ .../vendor/libs/quill/fonts/KaTeX_Main-Bold.woff   |   Bin 0 -> 29912 bytes
+ .../vendor/libs/quill/fonts/KaTeX_Main-Bold.woff2  |   Bin 0 -> 25324 bytes
+ .../libs/quill/fonts/KaTeX_Main-BoldItalic.ttf     |   Bin 0 -> 32968 bytes
+ .../libs/quill/fonts/KaTeX_Main-BoldItalic.woff    |   Bin 0 -> 19412 bytes
+ .../libs/quill/fonts/KaTeX_Main-BoldItalic.woff2   |   Bin 0 -> 16780 bytes
+ .../vendor/libs/quill/fonts/KaTeX_Main-Italic.ttf  |   Bin 0 -> 33580 bytes
+ .../vendor/libs/quill/fonts/KaTeX_Main-Italic.woff |   Bin 0 -> 19676 bytes
+ .../libs/quill/fonts/KaTeX_Main-Italic.woff2       |   Bin 0 -> 16988 bytes
+ .../vendor/libs/quill/fonts/KaTeX_Main-Regular.ttf |   Bin 0 -> 53580 bytes
+ .../libs/quill/fonts/KaTeX_Main-Regular.woff       |   Bin 0 -> 30772 bytes
+ .../libs/quill/fonts/KaTeX_Main-Regular.woff2      |   Bin 0 -> 26272 bytes
+ .../libs/quill/fonts/KaTeX_Math-BoldItalic.ttf     |   Bin 0 -> 31196 bytes
+ .../libs/quill/fonts/KaTeX_Math-BoldItalic.woff    |   Bin 0 -> 18668 bytes
+ .../libs/quill/fonts/KaTeX_Math-BoldItalic.woff2   |   Bin 0 -> 16400 bytes
+ .../vendor/libs/quill/fonts/KaTeX_Math-Italic.ttf  |   Bin 0 -> 31308 bytes
+ .../vendor/libs/quill/fonts/KaTeX_Math-Italic.woff |   Bin 0 -> 18748 bytes
+ .../libs/quill/fonts/KaTeX_Math-Italic.woff2       |   Bin 0 -> 16440 bytes
+ .../libs/quill/fonts/KaTeX_SansSerif-Bold.ttf      |   Bin 0 -> 24504 bytes
+ .../libs/quill/fonts/KaTeX_SansSerif-Bold.woff     |   Bin 0 -> 14408 bytes
+ .../libs/quill/fonts/KaTeX_SansSerif-Bold.woff2    |   Bin 0 -> 12216 bytes
+ .../libs/quill/fonts/KaTeX_SansSerif-Italic.ttf    |   Bin 0 -> 22364 bytes
+ .../libs/quill/fonts/KaTeX_SansSerif-Italic.woff   |   Bin 0 -> 14112 bytes
+ .../libs/quill/fonts/KaTeX_SansSerif-Italic.woff2  |   Bin 0 -> 12028 bytes
+ .../libs/quill/fonts/KaTeX_SansSerif-Regular.ttf   |   Bin 0 -> 19436 bytes
+ .../libs/quill/fonts/KaTeX_SansSerif-Regular.woff  |   Bin 0 -> 12316 bytes
+ .../libs/quill/fonts/KaTeX_SansSerif-Regular.woff2 |   Bin 0 -> 10344 bytes
+ .../libs/quill/fonts/KaTeX_Script-Regular.ttf      |   Bin 0 -> 16648 bytes
+ .../libs/quill/fonts/KaTeX_Script-Regular.woff     |   Bin 0 -> 10588 bytes
+ .../libs/quill/fonts/KaTeX_Script-Regular.woff2    |   Bin 0 -> 9644 bytes
+ .../libs/quill/fonts/KaTeX_Size1-Regular.ttf       |   Bin 0 -> 12228 bytes
+ .../libs/quill/fonts/KaTeX_Size1-Regular.woff      |   Bin 0 -> 6496 bytes
+ .../libs/quill/fonts/KaTeX_Size1-Regular.woff2     |   Bin 0 -> 5468 bytes
+ .../libs/quill/fonts/KaTeX_Size2-Regular.ttf       |   Bin 0 -> 11508 bytes
+ .../libs/quill/fonts/KaTeX_Size2-Regular.woff      |   Bin 0 -> 6188 bytes
+ .../libs/quill/fonts/KaTeX_Size2-Regular.woff2     |   Bin 0 -> 5208 bytes
+ .../libs/quill/fonts/KaTeX_Size3-Regular.ttf       |   Bin 0 -> 7588 bytes
+ .../libs/quill/fonts/KaTeX_Size3-Regular.woff      |   Bin 0 -> 4420 bytes
+ .../libs/quill/fonts/KaTeX_Size3-Regular.woff2     |   Bin 0 -> 3624 bytes
+ .../libs/quill/fonts/KaTeX_Size4-Regular.ttf       |   Bin 0 -> 10364 bytes
+ .../libs/quill/fonts/KaTeX_Size4-Regular.woff      |   Bin 0 -> 5980 bytes
+ .../libs/quill/fonts/KaTeX_Size4-Regular.woff2     |   Bin 0 -> 4928 bytes
+ .../libs/quill/fonts/KaTeX_Typewriter-Regular.ttf  |   Bin 0 -> 27556 bytes
+ .../libs/quill/fonts/KaTeX_Typewriter-Regular.woff |   Bin 0 -> 16028 bytes
+ .../quill/fonts/KaTeX_Typewriter-Regular.woff2     |   Bin 0 -> 13568 bytes
+ public/assets/vendor/libs/quill/katex.css          |  1438 +
+ public/assets/vendor/libs/quill/katex.js           |     1 +
+ public/assets/vendor/libs/quill/quill.js           |     1 +
+ public/assets/vendor/libs/quill/typography.css     |   238 +
+ public/assets/vendor/libs/raty-js/raty-js.css      |    54 +
+ public/assets/vendor/libs/raty-js/raty-js.js       |     1 +
+ public/assets/vendor/libs/select2/select2.css      |   868 +
+ public/assets/vendor/libs/select2/select2.js       |     1 +
+ public/assets/vendor/libs/shepherd/shepherd.css    |   298 +
+ public/assets/vendor/libs/shepherd/shepherd.js     |     1 +
+ public/assets/vendor/libs/sortablejs/sortable.js   |     1 +
+ public/assets/vendor/libs/spinkit/spinkit.css      |   821 +
+ .../assets/vendor/libs/sweetalert2/sweetalert2.css |  1224 +
+ .../assets/vendor/libs/sweetalert2/sweetalert2.js  |     1 +
+ public/assets/vendor/libs/swiper/swiper.css        |   926 +
+ public/assets/vendor/libs/swiper/swiper.js         |     1 +
+ public/assets/vendor/libs/tagify/tagify.css        |   839 +
+ public/assets/vendor/libs/tagify/tagify.js         |     1 +
+ .../assets/vendor/libs/typeahead-js/typeahead.css  |    51 +
+ .../assets/vendor/libs/typeahead-js/typeahead.js   |     1 +
+ 751 files changed, 116328 insertions(+)
+
+commit e1c88c7f7c6f6db39ddd52bb9eba241f3477c635
+Author: danuri <danualbantani@gmail.com>
+Date:   Tue Oct 7 12:54:34 2025 +0700
+
+    First
+
+ .gitignore                                         |  126 +
+ LICENSE                                            |   22 +
+ README.md                                          |   68 +
+ app/.htaccess                                      |    6 +
+ app/Authentication/Actions/WhatsappActivator.php   |   82 +
+ app/Common.php                                     |   15 +
+ app/Config/App.php                                 |  202 +
+ app/Config/Auth.php                                |  547 +++
+ app/Config/AuthGroups.php                          |  126 +
+ app/Config/AuthToken.php                           |  138 +
+ app/Config/Autoload.php                            |   92 +
+ app/Config/Boot/development.php                    |   34 +
+ app/Config/Boot/production.php                     |   25 +
+ app/Config/Boot/testing.php                        |   38 +
+ app/Config/CURLRequest.php                         |   20 +
+ app/Config/Cache.php                               |  162 +
+ app/Config/Constants.php                           |   79 +
+ app/Config/ContentSecurityPolicy.php               |  176 +
+ app/Config/Cookie.php                              |  107 +
+ app/Config/Cors.php                                |  105 +
+ app/Config/Database.php                            |  203 +
+ app/Config/DocTypes.php                            |   43 +
+ app/Config/Email.php                               |  121 +
+ app/Config/Encryption.php                          |   92 +
+ app/Config/Events.php                              |   55 +
+ app/Config/Exceptions.php                          |  106 +
+ app/Config/Feature.php                             |   37 +
+ app/Config/Filters.php                             |  108 +
+ app/Config/ForeignCharacters.php                   |   12 +
+ app/Config/Format.php                              |   64 +
+ app/Config/Generators.php                          |   44 +
+ app/Config/Honeypot.php                            |   42 +
+ app/Config/Images.php                              |   31 +
+ app/Config/Kint.php                                |   63 +
+ app/Config/Logger.php                              |  150 +
+ app/Config/Migrations.php                          |   50 +
+ app/Config/Mimes.php                               |  534 +++
+ app/Config/Modules.php                             |   82 +
+ app/Config/Optimize.php                            |   30 +
+ app/Config/Pager.php                               |   37 +
+ app/Config/Paths.php                               |   75 +
+ app/Config/Publisher.php                           |   28 +
+ app/Config/Routes.php                              |  104 +
+ app/Config/Routing.php                             |  140 +
+ app/Config/Security.php                            |   86 +
+ app/Config/Services.php                            |   32 +
+ app/Config/Session.php                             |  127 +
+ app/Config/Toolbar.php                             |  122 +
+ app/Config/UserAgents.php                          |  252 ++
+ app/Config/Validation.php                          |   44 +
+ app/Config/View.php                                |   62 +
+ app/Config/Wablas.php                              |   10 +
+ app/Controllers/Admin/Dashboard.php                |   14 +
+ app/Controllers/Admin/Dokumen.php                  |   48 +
+ app/Controllers/Admin/Layanan.php                  |  109 +
+ app/Controllers/Admin/Settings.php                 |   18 +
+ app/Controllers/Admin/Users.php                    |  112 +
+ app/Controllers/Ajax.php                           |   59 +
+ app/Controllers/BaseController.php                 |   58 +
+ app/Controllers/Dashboard.php                      |   14 +
+ app/Controllers/Home.php                           |   15 +
+ app/Controllers/Supervisor/Dashboard.php           |   14 +
+ app/Controllers/Supervisor/Users.php               |  112 +
+ app/Controllers/Supervisor/Usulan.php              |  194 +
+ app/Controllers/User/Dokumen.php                   |   81 +
+ app/Controllers/User/Pendirianptkis.php            |  134 +
+ app/Controllers/Verifikator/Dashboard.php          |   14 +
+ app/Controllers/Verifikator/Usulan.php             |  118 +
+ app/Database/Migrations/.gitkeep                   |    0
+ app/Database/Seeds/.gitkeep                        |    0
+ app/Entities/User.php                              |   12 +
+ app/Filters/.gitkeep                               |    0
+ app/Helpers/.gitkeep                               |    0
+ app/Helpers/custom_helper.php                      |  456 ++
+ app/Language/.gitkeep                              |    0
+ app/Language/en/Validation.php                     |    4 +
+ app/Libraries/.gitkeep                             |    0
+ app/Libraries/WhatsappSender.php                   |   57 +
+ app/Models/.gitkeep                                |    0
+ app/Models/AsesorModel.php                         |   46 +
+ app/Models/CrudModel.php                           |  247 ++
+ app/Models/DokLayananModel.php                     |   57 +
+ app/Models/DokumenModel.php                        |   46 +
+ app/Models/LayananModel.php                        |   46 +
+ app/Models/LogModel.php                            |   46 +
+ app/Models/PendirianptkisModel.php                 |   46 +
+ app/Models/UserModel.php                           |   22 +
+ app/Models/UsulDokumenModel.php                    |   46 +
+ app/Models/UsulanModel.php                         |   46 +
+ app/ThirdParty/.gitkeep                            |    0
+ app/Views/admin/dashboard.php                      |    4 +
+ app/Views/admin/settings.php                       |   24 +
+ app/Views/admin/template.php                       |  329 ++
+ app/Views/admin/users/edit.php                     |  116 +
+ app/Views/admin/users/index.php                    |   65 +
+ app/Views/errors/cli/error_404.php                 |    7 +
+ app/Views/errors/cli/error_exception.php           |   65 +
+ app/Views/errors/cli/production.php                |    5 +
+ app/Views/errors/html/debug.css                    |  194 +
+ app/Views/errors/html/debug.js                     |  116 +
+ app/Views/errors/html/error_400.php                |   84 +
+ app/Views/errors/html/error_404.php                |   84 +
+ app/Views/errors/html/error_exception.php          |  429 ++
+ app/Views/errors/html/production.php               |   25 +
+ app/Views/shield/Email/email_2fa_email.php         |   32 +
+ app/Views/shield/Email/email_activate_email.php    |   32 +
+ app/Views/shield/Email/magic_link_email.php        |   37 +
+ app/Views/shield/email_2fa_show.php                |   44 +
+ app/Views/shield/email_2fa_verify.php              |   36 +
+ app/Views/shield/email_activate_show.php           |   37 +
+ app/Views/shield/layout.php                        |   23 +
+ app/Views/shield/login.php                         |  245 ++
+ app/Views/shield/magic_link_form.php               |   48 +
+ app/Views/shield/magic_link_message.php            |   19 +
+ app/Views/shield/register.php                      |  255 ++
+ app/Views/supervisor/dashboard.php                 |   89 +
+ app/Views/supervisor/template.php                  |  351 ++
+ app/Views/supervisor/users/edit.php                |  116 +
+ app/Views/supervisor/users/index.php               |   65 +
+ app/Views/supervisor/usulan/detail.php             |  323 ++
+ app/Views/supervisor/usulan/detail_dokumen.php     |  168 +
+ app/Views/supervisor/usulan/detail_penilaian.php   |  274 ++
+ app/Views/supervisor/usulan/detail_rkma.php        |  225 +
+ app/Views/supervisor/usulan/detail_view.php        |  212 +
+ app/Views/supervisor/usulan/index.php              |   75 +
+ app/Views/template.php                             |  287 ++
+ app/Views/user/index.php                           |   20 +
+ app/Views/user/pendirianptkis/detail.php           |  302 ++
+ app/Views/user/pendirianptkis/detail2.php          |  225 +
+ app/Views/user/pendirianptkis/detail_view.php      |  209 +
+ app/Views/user/pendirianptkis/index.php            |  113 +
+ app/Views/user/template.php                        |  399 ++
+ app/Views/verifikator/dashboard.php                |    4 +
+ app/Views/verifikator/template.php                 |  333 ++
+ app/Views/verifikator/usulan/detail.php            |  271 ++
+ app/Views/verifikator/usulan/detail_view.php       |  203 +
+ app/Views/verifikator/usulan/index.php             |   83 +
+ app/Views/welcome_message.php                      |  685 +++
+ app/index.html                                     |   11 +
+ builds                                             |  125 +
+ composer.json                                      |   46 +
+ composer.lock                                      | 2302 ++++++++++
+ phpunit.xml.dist                                   |   63 +
+ preload.php                                        |  109 +
+ public/.htaccess                                   |   49 +
+ public/assets/audio/Water_Lily.mp3                 |  Bin 0 -> 5184961 bytes
+ public/assets/css/custom.css                       |   84 +
+ public/assets/css/demo.css                         |  105 +
+ public/assets/img/avatars/1.png                    |  Bin 0 -> 5339 bytes
+ public/assets/img/avatars/10.png                   |  Bin 0 -> 6263 bytes
+ public/assets/img/avatars/11.png                   |  Bin 0 -> 6105 bytes
+ public/assets/img/avatars/12.png                   |  Bin 0 -> 6586 bytes
+ public/assets/img/avatars/13.png                   |  Bin 0 -> 5319 bytes
+ public/assets/img/avatars/14.png                   |  Bin 0 -> 5988 bytes
+ public/assets/img/avatars/15.png                   |  Bin 0 -> 6383 bytes
+ public/assets/img/avatars/2.png                    |  Bin 0 -> 6347 bytes
+ public/assets/img/avatars/3.png                    |  Bin 0 -> 5613 bytes
+ public/assets/img/avatars/4.png                    |  Bin 0 -> 6760 bytes
+ public/assets/img/avatars/5.png                    |  Bin 0 -> 6636 bytes
+ public/assets/img/avatars/6.png                    |  Bin 0 -> 6633 bytes
+ public/assets/img/avatars/7.png                    |  Bin 0 -> 5500 bytes
+ public/assets/img/avatars/8.png                    |  Bin 0 -> 5605 bytes
+ public/assets/img/avatars/9.png                    |  Bin 0 -> 5749 bytes
+ public/assets/img/backgrounds/1.jpg                |  Bin 0 -> 93295 bytes
+ public/assets/img/backgrounds/2.jpg                |  Bin 0 -> 217738 bytes
+ public/assets/img/backgrounds/3.jpg                |  Bin 0 -> 74875 bytes
+ public/assets/img/backgrounds/4.jpg                |  Bin 0 -> 133864 bytes
+ public/assets/img/backgrounds/5.jpg                |  Bin 0 -> 74443 bytes
+ public/assets/img/backgrounds/6.jpg                |  Bin 0 -> 197487 bytes
+ public/assets/img/backgrounds/7.jpg                |  Bin 0 -> 88783 bytes
+ public/assets/img/backgrounds/airpods.png          |  Bin 0 -> 47550 bytes
+ public/assets/img/backgrounds/event.jpg            |  Bin 0 -> 29705 bytes
+ public/assets/img/backgrounds/headphones.png       |  Bin 0 -> 63934 bytes
+ public/assets/img/backgrounds/mac.png              |  Bin 0 -> 45263 bytes
+ public/assets/img/backgrounds/phone.png            |  Bin 0 -> 56391 bytes
+ public/assets/img/backgrounds/speaker.png          |  Bin 0 -> 75871 bytes
+ public/assets/img/backgrounds/watch.png            |  Bin 0 -> 41379 bytes
+ public/assets/img/branding/brand-img-dark.png      |  Bin 0 -> 5526 bytes
+ public/assets/img/branding/brand-img-light.png     |  Bin 0 -> 6024 bytes
+ public/assets/img/branding/brand-img-small.png     |  Bin 0 -> 3023 bytes
+ public/assets/img/branding/logo.png                |  Bin 0 -> 1137 bytes
+ public/assets/img/customizer/content-compact.svg   |    1 +
+ public/assets/img/customizer/content-wide.svg      |    1 +
+ public/assets/img/customizer/direction-ltr.svg     |    1 +
+ public/assets/img/customizer/direction-rtl.svg     |    1 +
+ public/assets/img/customizer/horizontal-fixed.svg  |   11 +
+ public/assets/img/customizer/horizontal-static.svg |    1 +
+ public/assets/img/customizer/layouts-collapsed.svg |    1 +
+ public/assets/img/customizer/layouts-expanded.svg  |    1 +
+ public/assets/img/customizer/navbar-hidden.svg     |   12 +
+ public/assets/img/customizer/navbar-static.svg     |   17 +
+ public/assets/img/customizer/navbar-sticky.svg     |   17 +
+ public/assets/img/customizer/skin-border.svg       |    1 +
+ public/assets/img/customizer/skin-default.svg      |    1 +
+ public/assets/img/ecommerce-images/product-1.png   |  Bin 0 -> 8598 bytes
+ public/assets/img/ecommerce-images/product-10.png  |  Bin 0 -> 7918 bytes
+ public/assets/img/ecommerce-images/product-11.png  |  Bin 0 -> 6408 bytes
+ public/assets/img/ecommerce-images/product-12.png  |  Bin 0 -> 5671 bytes
+ public/assets/img/ecommerce-images/product-13.png  |  Bin 0 -> 9926 bytes
+ public/assets/img/ecommerce-images/product-14.png  |  Bin 0 -> 6377 bytes
+ public/assets/img/ecommerce-images/product-15.png  |  Bin 0 -> 7116 bytes
+ public/assets/img/ecommerce-images/product-16.png  |  Bin 0 -> 7430 bytes
+ public/assets/img/ecommerce-images/product-17.png  |  Bin 0 -> 6639 bytes
+ public/assets/img/ecommerce-images/product-18.png  |  Bin 0 -> 8754 bytes
+ public/assets/img/ecommerce-images/product-19.png  |  Bin 0 -> 12502 bytes
+ public/assets/img/ecommerce-images/product-2.png   |  Bin 0 -> 9615 bytes
+ public/assets/img/ecommerce-images/product-20.png  |  Bin 0 -> 6454 bytes
+ public/assets/img/ecommerce-images/product-21.png  |  Bin 0 -> 7474 bytes
+ public/assets/img/ecommerce-images/product-22.png  |  Bin 0 -> 6035 bytes
+ public/assets/img/ecommerce-images/product-23.png  |  Bin 0 -> 6909 bytes
+ public/assets/img/ecommerce-images/product-24.png  |  Bin 0 -> 4277 bytes
+ public/assets/img/ecommerce-images/product-25.png  |  Bin 0 -> 5071 bytes
+ public/assets/img/ecommerce-images/product-26.png  |  Bin 0 -> 5738 bytes
+ public/assets/img/ecommerce-images/product-3.png   |  Bin 0 -> 6426 bytes
+ public/assets/img/ecommerce-images/product-4.png   |  Bin 0 -> 9892 bytes
+ public/assets/img/ecommerce-images/product-5.png   |  Bin 0 -> 7922 bytes
+ public/assets/img/ecommerce-images/product-6.png   |  Bin 0 -> 5203 bytes
+ public/assets/img/ecommerce-images/product-7.png   |  Bin 0 -> 7154 bytes
+ public/assets/img/ecommerce-images/product-8.png   |  Bin 0 -> 8739 bytes
+ public/assets/img/ecommerce-images/product-9.png   |  Bin 0 -> 6930 bytes
+ public/assets/img/elements/1.png                   |  Bin 0 -> 312709 bytes
+ public/assets/img/elements/10.png                  |  Bin 0 -> 452502 bytes
+ public/assets/img/elements/11.png                  |  Bin 0 -> 121473 bytes
+ public/assets/img/elements/12.png                  |  Bin 0 -> 112313 bytes
+ public/assets/img/elements/13.png                  |  Bin 0 -> 252199 bytes
+ public/assets/img/elements/14.png                  |  Bin 0 -> 117431 bytes
+ public/assets/img/elements/15.png                  |  Bin 0 -> 121091 bytes
+ public/assets/img/elements/16.png                  |  Bin 0 -> 191932 bytes
+ public/assets/img/elements/17.png                  |  Bin 0 -> 150697 bytes
+ public/assets/img/elements/18.png                  |  Bin 0 -> 226685 bytes
+ public/assets/img/elements/19.png                  |  Bin 0 -> 198454 bytes
+ public/assets/img/elements/2.png                   |  Bin 0 -> 448920 bytes
+ public/assets/img/elements/20.png                  |  Bin 0 -> 195681 bytes
+ public/assets/img/elements/21.png                  |  Bin 0 -> 92892 bytes
+ public/assets/img/elements/22.png                  |  Bin 0 -> 150182 bytes
+ public/assets/img/elements/23.png                  |  Bin 0 -> 113524 bytes
+ public/assets/img/elements/24.png                  |  Bin 0 -> 240376 bytes
+ public/assets/img/elements/25.png                  |  Bin 0 -> 186357 bytes
+ public/assets/img/elements/26.png                  |  Bin 0 -> 197554 bytes
+ public/assets/img/elements/27.png                  |  Bin 0 -> 245656 bytes
+ public/assets/img/elements/28.png                  |  Bin 0 -> 180962 bytes
+ public/assets/img/elements/29.png                  |  Bin 0 -> 163977 bytes
+ public/assets/img/elements/3.png                   |  Bin 0 -> 168470 bytes
+ public/assets/img/elements/30.png                  |  Bin 0 -> 231861 bytes
+ public/assets/img/elements/31.png                  |  Bin 0 -> 194163 bytes
+ public/assets/img/elements/32.png                  |  Bin 0 -> 146054 bytes
+ public/assets/img/elements/33.png                  |  Bin 0 -> 213461 bytes
+ public/assets/img/elements/34.png                  |  Bin 0 -> 285535 bytes
+ public/assets/img/elements/35.png                  |  Bin 0 -> 187588 bytes
+ public/assets/img/elements/36.png                  |  Bin 0 -> 209538 bytes
+ public/assets/img/elements/37.png                  |  Bin 0 -> 150678 bytes
+ public/assets/img/elements/38.png                  |  Bin 0 -> 203173 bytes
+ public/assets/img/elements/39.png                  |  Bin 0 -> 172793 bytes
+ public/assets/img/elements/4.png                   |  Bin 0 -> 267917 bytes
+ public/assets/img/elements/40.png                  |  Bin 0 -> 106162 bytes
+ public/assets/img/elements/41.png                  |  Bin 0 -> 184488 bytes
+ public/assets/img/elements/42.png                  |  Bin 0 -> 198556 bytes
+ public/assets/img/elements/43.png                  |  Bin 0 -> 144697 bytes
+ public/assets/img/elements/44.png                  |  Bin 0 -> 200864 bytes
+ public/assets/img/elements/45.png                  |  Bin 0 -> 258144 bytes
+ public/assets/img/elements/46.png                  |  Bin 0 -> 123824 bytes
+ public/assets/img/elements/47.png                  |  Bin 0 -> 60153 bytes
+ public/assets/img/elements/48.png                  |  Bin 0 -> 104954 bytes
+ public/assets/img/elements/49.png                  |  Bin 0 -> 128646 bytes
+ public/assets/img/elements/5.png                   |  Bin 0 -> 319463 bytes
+ public/assets/img/elements/50.png                  |  Bin 0 -> 84474 bytes
+ public/assets/img/elements/51.png                  |  Bin 0 -> 324484 bytes
+ public/assets/img/elements/52.png                  |  Bin 0 -> 224590 bytes
+ public/assets/img/elements/53.png                  |  Bin 0 -> 432329 bytes
+ public/assets/img/elements/54.png                  |  Bin 0 -> 262972 bytes
+ public/assets/img/elements/55.png                  |  Bin 0 -> 287210 bytes
+ public/assets/img/elements/56.jpg                  |  Bin 0 -> 31223 bytes
+ public/assets/img/elements/6.png                   |  Bin 0 -> 292701 bytes
+ public/assets/img/elements/7.png                   |  Bin 0 -> 180330 bytes
+ public/assets/img/elements/8.png                   |  Bin 0 -> 252690 bytes
+ public/assets/img/elements/9.png                   |  Bin 0 -> 300612 bytes
+ public/assets/img/favicon/favicon.ico              |  Bin 0 -> 5430 bytes
+ .../img/front-pages/backgrounds/cta-bg-dark.png    |  Bin 0 -> 798199 bytes
+ .../img/front-pages/backgrounds/cta-bg-light.png   |  Bin 0 -> 1447003 bytes
+ .../img/front-pages/backgrounds/footer-bg.png      |  Bin 0 -> 804826 bytes
+ .../assets/img/front-pages/backgrounds/hero-bg.png |  Bin 0 -> 1469432 bytes
+ public/assets/img/front-pages/branding/logo-1.png  |  Bin 0 -> 3220 bytes
+ public/assets/img/front-pages/branding/logo-2.png  |  Bin 0 -> 5100 bytes
+ public/assets/img/front-pages/branding/logo-3.png  |  Bin 0 -> 4892 bytes
+ public/assets/img/front-pages/branding/logo-4.png  |  Bin 0 -> 2166 bytes
+ public/assets/img/front-pages/branding/logo-5.png  |  Bin 0 -> 3045 bytes
+ public/assets/img/front-pages/branding/logo-6.png  |  Bin 0 -> 5906 bytes
+ .../img/front-pages/branding/logo_1-dark.png       |  Bin 0 -> 3836 bytes
+ .../img/front-pages/branding/logo_1-light.png      |  Bin 0 -> 2035 bytes
+ .../img/front-pages/branding/logo_2-dark.png       |  Bin 0 -> 1979 bytes
+ .../img/front-pages/branding/logo_2-light.png      |  Bin 0 -> 1155 bytes
+ .../img/front-pages/branding/logo_3-dark.png       |  Bin 0 -> 4498 bytes
+ .../img/front-pages/branding/logo_3-light.png      |  Bin 0 -> 2271 bytes
+ .../img/front-pages/branding/logo_4-dark.png       |  Bin 0 -> 3611 bytes
+ .../img/front-pages/branding/logo_4-light.png      |  Bin 0 -> 1868 bytes
+ .../img/front-pages/branding/logo_5-dark.png       |  Bin 0 -> 5043 bytes
+ .../img/front-pages/branding/logo_5-light.png      |  Bin 0 -> 2552 bytes
+ .../img/front-pages/icons/Join-community-arrow.png |  Bin 0 -> 1667 bytes
+ .../assets/img/front-pages/icons/check-warning.png |  Bin 0 -> 1525 bytes
+ public/assets/img/front-pages/icons/check.png      |  Bin 0 -> 1781 bytes
+ .../img/front-pages/icons/contact-border.png       |  Bin 0 -> 4180 bytes
+ .../assets/img/front-pages/icons/diamond-info.png  |  Bin 0 -> 1765 bytes
+ public/assets/img/front-pages/icons/facebook.svg   |    3 +
+ public/assets/img/front-pages/icons/github.svg     |    3 +
+ public/assets/img/front-pages/icons/instagram.svg  |    4 +
+ public/assets/img/front-pages/icons/keyboard.png   |  Bin 0 -> 439 bytes
+ public/assets/img/front-pages/icons/laptop.png     |  Bin 0 -> 634 bytes
+ .../img/front-pages/icons/paper-airplane.png       |  Bin 0 -> 4009 bytes
+ public/assets/img/front-pages/icons/paper.png      |  Bin 0 -> 1501 bytes
+ public/assets/img/front-pages/icons/plane.png      |  Bin 0 -> 5243 bytes
+ .../img/front-pages/icons/pricing-plans-arrow.png  |  Bin 0 -> 1315 bytes
+ public/assets/img/front-pages/icons/rocket.png     |  Bin 0 -> 1966 bytes
+ .../img/front-pages/icons/section-title-icon.png   |  Bin 0 -> 2090 bytes
+ .../img/front-pages/icons/shuttle-rocket.png       |  Bin 0 -> 4759 bytes
+ public/assets/img/front-pages/icons/twitter.svg    |    3 +
+ .../assets/img/front-pages/icons/user-success.png  |  Bin 0 -> 2140 bytes
+ public/assets/img/front-pages/icons/user.png       |  Bin 0 -> 2162 bytes
+ .../img/front-pages/landing-page/apple-icon.png    |  Bin 0 -> 3448 bytes
+ .../landing-page/contact-customer-service.png      |  Bin 0 -> 495160 bytes
+ .../img/front-pages/landing-page/cta-dashboard.png |  Bin 0 -> 48023 bytes
+ .../landing-page/faq-boy-with-logos.png            |  Bin 0 -> 229311 bytes
+ .../front-pages/landing-page/google-play-icon.png  |  Bin 0 -> 3788 bytes
+ .../landing-page/hero-dashboard-dark.png           |  Bin 0 -> 881953 bytes
+ .../landing-page/hero-dashboard-light.png          |  Bin 0 -> 931406 bytes
+ .../landing-page/hero-elements-dark.png            |  Bin 0 -> 392880 bytes
+ .../landing-page/hero-elements-light.png           |  Bin 0 -> 360008 bytes
+ .../img/front-pages/landing-page/team-member-1.png |  Bin 0 -> 69226 bytes
+ .../img/front-pages/landing-page/team-member-2.png |  Bin 0 -> 67293 bytes
+ .../img/front-pages/landing-page/team-member-3.png |  Bin 0 -> 80767 bytes
+ .../img/front-pages/landing-page/team-member-4.png |  Bin 0 -> 88475 bytes
+ .../assets/img/front-pages/misc/checkout-image.png |  Bin 0 -> 58284 bytes
+ .../img/front-pages/misc/nav-item-col-img.png      |  Bin 0 -> 267058 bytes
+ .../assets/img/front-pages/misc/product-image.png  |  Bin 0 -> 117774 bytes
+ public/assets/img/front.jpg                        |  Bin 0 -> 875488 bytes
+ public/assets/img/icons/brands/asana.png           |  Bin 0 -> 2236 bytes
+ public/assets/img/icons/brands/behance.png         |  Bin 0 -> 1731 bytes
+ public/assets/img/icons/brands/bootstrap-logo.png  |  Bin 0 -> 1741 bytes
+ public/assets/img/icons/brands/brave.png           |  Bin 0 -> 3595 bytes
+ public/assets/img/icons/brands/chrome.png          |  Bin 0 -> 1859 bytes
+ public/assets/img/icons/brands/dribbble.png        |  Bin 0 -> 2848 bytes
+ public/assets/img/icons/brands/edge.png            |  Bin 0 -> 3231 bytes
+ public/assets/img/icons/brands/event-label.png     |  Bin 0 -> 1512 bytes
+ public/assets/img/icons/brands/facebook.png        |  Bin 0 -> 681 bytes
+ public/assets/img/icons/brands/figma-label.png     |  Bin 0 -> 1030 bytes
+ public/assets/img/icons/brands/figma-logo.png      |  Bin 0 -> 818 bytes
+ public/assets/img/icons/brands/firefox.png         |  Bin 0 -> 2371 bytes
+ public/assets/img/icons/brands/github.png          |  Bin 0 -> 1842 bytes
+ public/assets/img/icons/brands/google.png          |  Bin 0 -> 1932 bytes
+ public/assets/img/icons/brands/html-label.png      |  Bin 0 -> 2229 bytes
+ public/assets/img/icons/brands/instagram.png       |  Bin 0 -> 3128 bytes
+ public/assets/img/icons/brands/laravel-logo.png    |  Bin 0 -> 963 bytes
+ public/assets/img/icons/brands/linkedin.png        |  Bin 0 -> 698 bytes
+ public/assets/img/icons/brands/mailchimp.png       |  Bin 0 -> 1445 bytes
+ public/assets/img/icons/brands/opera.png           |  Bin 0 -> 1531 bytes
+ public/assets/img/icons/brands/react-label.png     |  Bin 0 -> 3168 bytes
+ public/assets/img/icons/brands/react-logo.png      |  Bin 0 -> 1395 bytes
+ public/assets/img/icons/brands/safari.png          |  Bin 0 -> 746 bytes
+ public/assets/img/icons/brands/sketch-label.png    |  Bin 0 -> 1980 bytes
+ public/assets/img/icons/brands/sketch-logo.png     |  Bin 0 -> 1414 bytes
+ public/assets/img/icons/brands/slack.png           |  Bin 0 -> 2550 bytes
+ public/assets/img/icons/brands/social-label.png    |  Bin 0 -> 1173 bytes
+ public/assets/img/icons/brands/support-label.png   |  Bin 0 -> 1430 bytes
+ public/assets/img/icons/brands/twitter-dark.png    |  Bin 0 -> 75692 bytes
+ public/assets/img/icons/brands/twitter-label.png   |  Bin 0 -> 2100 bytes
+ public/assets/img/icons/brands/twitter-light.png   |  Bin 0 -> 74208 bytes
+ public/assets/img/icons/brands/twitter.png         |  Bin 0 -> 1564 bytes
+ public/assets/img/icons/brands/vue-label.png       |  Bin 0 -> 1986 bytes
+ public/assets/img/icons/brands/vue-logo.png        |  Bin 0 -> 975 bytes
+ public/assets/img/icons/brands/xd-label.png        |  Bin 0 -> 2334 bytes
+ public/assets/img/icons/misc/authentication-QR.png |  Bin 0 -> 4525 bytes
+ public/assets/img/icons/misc/doc.png               |  Bin 0 -> 4761 bytes
+ public/assets/img/icons/misc/leaf-green.png        |  Bin 0 -> 2750 bytes
+ public/assets/img/icons/misc/leaf-orange.png       |  Bin 0 -> 2792 bytes
+ public/assets/img/icons/misc/leaf-red.png          |  Bin 0 -> 2784 bytes
+ public/assets/img/icons/misc/leaf-shadow.png       |  Bin 0 -> 1932 bytes
+ public/assets/img/icons/misc/pdf.png               |  Bin 0 -> 763 bytes
+ public/assets/img/icons/misc/search-doc.png        |  Bin 0 -> 2622 bytes
+ public/assets/img/icons/misc/search-jpg.png        |  Bin 0 -> 2536 bytes
+ public/assets/img/icons/misc/search-xls.png        |  Bin 0 -> 2420 bytes
+ public/assets/img/icons/misc/xls.png               |  Bin 0 -> 4716 bytes
+ public/assets/img/icons/payments/ae-dark.png       |  Bin 0 -> 2167 bytes
+ public/assets/img/icons/payments/ae-light.png      |  Bin 0 -> 2179 bytes
+ .../img/icons/payments/american-express-img.png    |  Bin 0 -> 1298 bytes
+ .../img/icons/payments/american-express-logo.png   |  Bin 0 -> 3050 bytes
+ public/assets/img/icons/payments/amex-cc.png       |  Bin 0 -> 1390 bytes
+ public/assets/img/icons/payments/dc-dark.png       |  Bin 0 -> 1311 bytes
+ public/assets/img/icons/payments/dc-light.png      |  Bin 0 -> 1339 bytes
+ public/assets/img/icons/payments/diners-cc.png     |  Bin 0 -> 1500 bytes
+ public/assets/img/icons/payments/diners.png        |  Bin 0 -> 949 bytes
+ public/assets/img/icons/payments/discover-cc.png   |  Bin 0 -> 1280 bytes
+ public/assets/img/icons/payments/discover.png      |  Bin 0 -> 3139 bytes
+ public/assets/img/icons/payments/jcb-cc.png        |  Bin 0 -> 880 bytes
+ public/assets/img/icons/payments/jcb-dark.png      |  Bin 0 -> 1265 bytes
+ public/assets/img/icons/payments/jcb-light.png     |  Bin 0 -> 1276 bytes
+ public/assets/img/icons/payments/maestro-cc.png    |  Bin 0 -> 1554 bytes
+ .../assets/img/icons/payments/master-card-img.png  |  Bin 0 -> 2016 bytes
+ public/assets/img/icons/payments/master-dark.png   |  Bin 0 -> 2455 bytes
+ public/assets/img/icons/payments/master-light.png  |  Bin 0 -> 2454 bytes
+ public/assets/img/icons/payments/mastercard-cc.png |  Bin 0 -> 943 bytes
+ public/assets/img/icons/payments/mastercard.png    |  Bin 0 -> 1452 bytes
+ public/assets/img/icons/payments/paypal-dark.png   |  Bin 0 -> 850 bytes
+ public/assets/img/icons/payments/paypal-light.png  |  Bin 0 -> 1359 bytes
+ public/assets/img/icons/payments/paypal.png        |  Bin 0 -> 773 bytes
+ public/assets/img/icons/payments/paypal_logo.png   |  Bin 0 -> 2330 bytes
+ public/assets/img/icons/payments/uatp-cc.png       |  Bin 0 -> 1475 bytes
+ public/assets/img/icons/payments/unionPay-cc.png   |  Bin 0 -> 1521 bytes
+ public/assets/img/icons/payments/visa-cc.png       |  Bin 0 -> 1034 bytes
+ public/assets/img/icons/payments/visa-dark.png     |  Bin 0 -> 1555 bytes
+ public/assets/img/icons/payments/visa-img.png      |  Bin 0 -> 1087 bytes
+ public/assets/img/icons/payments/visa-light.png    |  Bin 0 -> 1770 bytes
+ public/assets/img/icons/payments/visa.png          |  Bin 0 -> 2805 bytes
+ public/assets/img/illustrations/add-new-roles.png  |  Bin 0 -> 12544 bytes
+ .../auth-forgot-password-illustration-dark.png     |  Bin 0 -> 49459 bytes
+ .../auth-forgot-password-illustration-light.png    |  Bin 0 -> 48508 bytes
+ .../illustrations/auth-login-illustration-dark.png |  Bin 0 -> 57789 bytes
+ .../auth-login-illustration-light.png              |  Bin 0 -> 55767 bytes
+ .../auth-register-illustration-dark.png            |  Bin 0 -> 89300 bytes
+ .../auth-register-illustration-light.png           |  Bin 0 -> 90351 bytes
+ .../auth-register-multisteps-illustration.png      |  Bin 0 -> 33754 bytes
+ .../auth-register-multisteps-shape-dark.png        |  Bin 0 -> 3083 bytes
+ .../auth-register-multisteps-shape-light.png       |  Bin 0 -> 2934 bytes
+ .../auth-reset-password-illustration-dark.png      |  Bin 0 -> 45127 bytes
+ .../auth-reset-password-illustration-light.png     |  Bin 0 -> 45817 bytes
+ .../auth-two-step-illustration-dark.png            |  Bin 0 -> 52283 bytes
+ .../auth-two-step-illustration-light.png           |  Bin 0 -> 67640 bytes
+ .../auth-verify-email-illustration-dark.png        |  Bin 0 -> 60363 bytes
+ .../auth-verify-email-illustration-light.png       |  Bin 0 -> 60830 bytes
+ .../img/illustrations/bg-shape-image-dark.png      |  Bin 0 -> 1902 bytes
+ .../img/illustrations/bg-shape-image-light.png     |  Bin 0 -> 3666 bytes
+ .../assets/img/illustrations/boy-app-academy.png   |  Bin 0 -> 39377 bytes
+ .../img/illustrations/boy-verify-email-dark.png    |  Bin 0 -> 59443 bytes
+ .../img/illustrations/boy-verify-email-light.png   |  Bin 0 -> 61073 bytes
+ .../img/illustrations/boy-with-laptop-dark.png     |  Bin 0 -> 39546 bytes
+ .../img/illustrations/boy-with-laptop-light.png    |  Bin 0 -> 36429 bytes
+ .../img/illustrations/boy-with-rocket-dark.png     |  Bin 0 -> 52989 bytes
+ .../img/illustrations/boy-with-rocket-light.png    |  Bin 0 -> 52270 bytes
+ public/assets/img/illustrations/bulb-dark.png      |  Bin 0 -> 30197 bytes
+ public/assets/img/illustrations/bulb-light.png     |  Bin 0 -> 30044 bytes
+ .../assets/img/illustrations/card-advance-sale.png |  Bin 0 -> 14740 bytes
+ .../img/illustrations/card-website-analytics-1.png |  Bin 0 -> 24539 bytes
+ .../img/illustrations/card-website-analytics-2.png |  Bin 0 -> 37015 bytes
+ .../img/illustrations/card-website-analytics-3.png |  Bin 0 -> 26761 bytes
+ public/assets/img/illustrations/fleet-car.png      |  Bin 0 -> 6857 bytes
+ .../assets/img/illustrations/girl-app-academy.png  |  Bin 0 -> 41975 bytes
+ .../img/illustrations/girl-doing-yoga-dark.png     |  Bin 0 -> 190544 bytes
+ .../img/illustrations/girl-doing-yoga-light.png    |  Bin 0 -> 33100 bytes
+ .../img/illustrations/girl-sitting-with-laptop.png |  Bin 0 -> 28370 bytes
+ .../illustrations/girl-unlock-password-dark.png    |  Bin 0 -> 30693 bytes
+ .../illustrations/girl-unlock-password-light.png   |  Bin 0 -> 27173 bytes
+ .../illustrations/girl-verify-password-dark.png    |  Bin 0 -> 34568 bytes
+ .../illustrations/girl-verify-password-light.png   |  Bin 0 -> 37593 bytes
+ .../img/illustrations/girl-with-laptop-dark.png    |  Bin 0 -> 32904 bytes
+ .../img/illustrations/girl-with-laptop-light.png   |  Bin 0 -> 183173 bytes
+ .../assets/img/illustrations/girl-with-laptop.png  |  Bin 0 -> 23862 bytes
+ .../img/illustrations/lady-with-laptop-dark.png    |  Bin 0 -> 3602 bytes
+ .../img/illustrations/lady-with-laptop-light.png   |  Bin 0 -> 3584 bytes
+ .../assets/img/illustrations/page-misc-error.png   |  Bin 0 -> 34200 bytes
+ .../img/illustrations/page-misc-launching-soon.png |  Bin 0 -> 33046 bytes
+ .../illustrations/page-misc-under-maintenance.png  |  Bin 0 -> 97471 bytes
+ .../page-misc-you-are-not-authorized.png           |  Bin 0 -> 30627 bytes
+ .../img/illustrations/page-pricing-basic.png       |  Bin 0 -> 9472 bytes
+ .../img/illustrations/page-pricing-enterprise.png  |  Bin 0 -> 9395 bytes
+ .../img/illustrations/page-pricing-standard.png    |  Bin 0 -> 12102 bytes
+ public/assets/img/illustrations/pencil-rocket.png  |  Bin 0 -> 123979 bytes
+ public/assets/img/illustrations/rocket.png         |  Bin 0 -> 32636 bytes
+ .../illustrations/wizard-create-deal-confirm.png   |  Bin 0 -> 10325 bytes
+ .../wizard-create-deal-girl-with-laptop-dark.png   |  Bin 0 -> 39166 bytes
+ .../wizard-create-deal-girl-with-laptop-light.png  |  Bin 0 -> 39166 bytes
+ .../img/layouts/layout-collapsed-menu-dark.png     |  Bin 0 -> 17617 bytes
+ .../img/layouts/layout-collapsed-menu-light.png    |  Bin 0 -> 16892 bytes
+ .../assets/img/layouts/layout-container-dark.png   |  Bin 0 -> 20006 bytes
+ .../assets/img/layouts/layout-container-light.png  |  Bin 0 -> 19403 bytes
+ .../layout-content-navbar-and-sidebar-dark.png     |  Bin 0 -> 21349 bytes
+ .../layout-content-navbar-and-sidebar-light.png    |  Bin 0 -> 21989 bytes
+ .../img/layouts/layout-content-navbar-dark.png     |  Bin 0 -> 20316 bytes
+ .../img/layouts/layout-content-navbar-light.png    |  Bin 0 -> 19522 bytes
+ public/assets/img/layouts/layout-fluid-dark.png    |  Bin 0 -> 18022 bytes
+ public/assets/img/layouts/layout-fluid-light.png   |  Bin 0 -> 17572 bytes
+ .../layouts/layout-horizontal-container-dark.png   |  Bin 0 -> 16434 bytes
+ .../layouts/layout-horizontal-container-light.png  |  Bin 0 -> 16162 bytes
+ .../img/layouts/layout-horizontal-fluid-dark.png   |  Bin 0 -> 14179 bytes
+ .../img/layouts/layout-horizontal-fluid-light.png  |  Bin 0 -> 12918 bytes
+ .../layout-horizontal-without-menu-dark.png        |  Bin 0 -> 15151 bytes
+ .../layout-horizontal-without-menu-light.png       |  Bin 0 -> 14597 bytes
+ .../img/layouts/layout-without-menu-dark.png       |  Bin 0 -> 14942 bytes
+ .../img/layouts/layout-without-menu-light.png      |  Bin 0 -> 14489 bytes
+ .../img/layouts/layout-without-navbar-dark.png     |  Bin 0 -> 21208 bytes
+ .../img/layouts/layout-without-navbar-light.png    |  Bin 0 -> 21736 bytes
+ public/assets/img/pages/app-academy-tutor-1.png    |  Bin 0 -> 279675 bytes
+ public/assets/img/pages/app-academy-tutor-2.png    |  Bin 0 -> 162155 bytes
+ public/assets/img/pages/app-academy-tutor-3.png    |  Bin 0 -> 303520 bytes
+ public/assets/img/pages/app-academy-tutor-4.png    |  Bin 0 -> 356668 bytes
+ public/assets/img/pages/app-academy-tutor-5.png    |  Bin 0 -> 335081 bytes
+ public/assets/img/pages/app-academy-tutor-6.png    |  Bin 0 -> 288598 bytes
+ public/assets/img/pages/header.png                 |  Bin 0 -> 31097 bytes
+ public/assets/img/pages/profile-banner.png         |  Bin 0 -> 207763 bytes
+ public/assets/img/products/1.png                   |  Bin 0 -> 12120 bytes
+ public/assets/img/products/2.png                   |  Bin 0 -> 14446 bytes
+ public/assets/img/products/amazon-echo.png         |  Bin 0 -> 4441 bytes
+ public/assets/img/products/apple-watch.png         |  Bin 0 -> 2570 bytes
+ public/assets/img/products/facecream.png           |  Bin 0 -> 1443 bytes
+ public/assets/img/products/headphones.png          |  Bin 0 -> 3996 bytes
+ public/assets/img/products/iphone.png              |  Bin 0 -> 2694 bytes
+ public/assets/img/products/nike-air-jordan.png     |  Bin 0 -> 3090 bytes
+ public/assets/img/products/nikejordan.png          |  Bin 0 -> 1529 bytes
+ public/assets/img/products/oneplus.png             |  Bin 0 -> 2362 bytes
+ public/assets/img/products/play-station.png        |  Bin 0 -> 3534 bytes
+ public/assets/img/products/woodenchair.png         |  Bin 0 -> 1480 bytes
+ public/assets/js/app-academy-course-details.js     |   27 +
+ public/assets/js/app-academy-course.js             |   18 +
+ public/assets/js/app-academy-dashboard.js          |  532 +++
+ public/assets/js/app-access-permission.js          |  231 +
+ public/assets/js/app-access-roles.js               |  563 +++
+ public/assets/js/app-calendar-events.js            |  123 +
+ public/assets/js/app-calendar.js                   |  548 +++
+ public/assets/js/app-chat.js                       |  213 +
+ public/assets/js/app-ecommerce-category-list.js    |  309 ++
+ public/assets/js/app-ecommerce-customer-all.js     |  539 +++
+ .../js/app-ecommerce-customer-detail-overview.js   |  214 +
+ public/assets/js/app-ecommerce-customer-detail.js  |   90 +
+ public/assets/js/app-ecommerce-dashboard.js        | 1128 +++++
+ public/assets/js/app-ecommerce-order-details.js    |  254 ++
+ public/assets/js/app-ecommerce-order-list.js       |  450 ++
+ public/assets/js/app-ecommerce-product-add.js      |  138 +
+ public/assets/js/app-ecommerce-product-list.js     |  678 +++
+ public/assets/js/app-ecommerce-referral.js         |  384 ++
+ public/assets/js/app-ecommerce-reviews.js          |  751 ++++
+ public/assets/js/app-ecommerce-settings.js         |   39 +
+ public/assets/js/app-email.js                      |  359 ++
+ public/assets/js/app-invoice-add.js                |  135 +
+ public/assets/js/app-invoice-edit.js               |  140 +
+ public/assets/js/app-invoice-list.js               |  419 ++
+ public/assets/js/app-invoice-print.js              |    9 +
+ public/assets/js/app-kanban.js                     |  456 ++
+ public/assets/js/app-logistics-dashboard.js        |  510 +++
+ public/assets/js/app-logistics-fleet.js            |  135 +
+ public/assets/js/app-user-list.js                  |  686 +++
+ public/assets/js/app-user-view-account.js          |  566 +++
+ public/assets/js/app-user-view-billing.js          |   57 +
+ public/assets/js/app-user-view-security.js         |   79 +
+ public/assets/js/app-user-view.js                  |   89 +
+ public/assets/js/cards-actions.js                  |  142 +
+ public/assets/js/cards-advance.js                  |  170 +
+ public/assets/js/cards-analytics.js                | 1455 +++++++
+ public/assets/js/cards-statistics.js               | 1591 +++++++
+ public/assets/js/charts-apex.js                    | 1166 +++++
+ public/assets/js/charts-chartjs-legend.js          |   52 +
+ public/assets/js/charts-chartjs.js                 | 1118 +++++
+ public/assets/js/config.js                         |   99 +
+ public/assets/js/dashboards-analytics.js           |  793 ++++
+ public/assets/js/dashboards-crm.js                 |  861 ++++
+ public/assets/js/extended-ui-blockui.js            |  863 ++++
+ public/assets/js/extended-ui-drag-and-drop.js      |   92 +
+ public/assets/js/extended-ui-media-player.js       |   10 +
+ public/assets/js/extended-ui-misc-clipboardjs.js   |   29 +
+ public/assets/js/extended-ui-misc-idle-timer.js    |  212 +
+ public/assets/js/extended-ui-misc-numeraljs.js     |   37 +
+ public/assets/js/extended-ui-perfect-scrollbar.js  |   37 +
+ public/assets/js/extended-ui-star-ratings.js       |  286 ++
+ public/assets/js/extended-ui-sweetalert2.js        |  558 +++
+ public/assets/js/extended-ui-timeline.js           |   16 +
+ public/assets/js/extended-ui-tour.js               |  194 +
+ public/assets/js/extended-ui-treeview.js           |  440 ++
+ public/assets/js/form-basic-inputs.js              |   11 +
+ public/assets/js/form-input-group.js               |   37 +
+ public/assets/js/form-layouts.js                   |  115 +
+ public/assets/js/form-pendirian-ptkis.js           |  512 +++
+ public/assets/js/form-validation.js                |  345 ++
+ public/assets/js/form-wizard-icons.js              |  164 +
+ public/assets/js/form-wizard-numbered.js           |  155 +
+ public/assets/js/form-wizard-validation.js         |  282 ++
+ public/assets/js/forms-editors.js                  |   90 +
+ public/assets/js/forms-extras.js                   |  204 +
+ public/assets/js/forms-file-upload.js              |   53 +
+ public/assets/js/forms-pickers.js                  |  346 ++
+ public/assets/js/forms-selects.js                  |   52 +
+ public/assets/js/forms-sliders.js                  |  328 ++
+ public/assets/js/forms-tagify.js                   |  249 ++
+ public/assets/js/forms-typeahead.js                |  314 ++
+ public/assets/js/front-config.js                   |   40 +
+ public/assets/js/front-main.js                     |  140 +
+ public/assets/js/front-page-landing.js             |  146 +
+ public/assets/js/front-page-payment.js             |   77 +
+ public/assets/js/front-page-pricing.js             |   39 +
+ public/assets/js/main.js                           |  715 +++
+ public/assets/js/maps-leaflet.js                   | 4596 ++++++++++++++++++++
+ public/assets/js/modal-add-new-address.js          |   73 +
+ public/assets/js/modal-add-new-cc.js               |  101 +
+ public/assets/js/modal-add-permission.js           |   35 +
+ public/assets/js/modal-add-role.js                 |   44 +
+ public/assets/js/modal-create-app.js               |   97 +
+ public/assets/js/modal-edit-cc.js                  |   91 +
+ public/assets/js/modal-edit-permission.js          |   35 +
+ public/assets/js/modal-edit-user.js                |   61 +
+ public/assets/js/modal-enable-otp.js               |   60 +
+ public/assets/js/modal-share-project.js            |   41 +
+ public/assets/js/modal-two-factor-auth.js          |   28 +
+ public/assets/js/offcanvas-add-payment.js          |   31 +
+ public/assets/js/offcanvas-send-invoice.js         |   14 +
+ public/assets/js/pages-account-settings-account.js |  198 +
+ public/assets/js/pages-account-settings-billing.js |  215 +
+ .../assets/js/pages-account-settings-security.js   |  125 +
+ public/assets/js/pages-auth-multisteps.js          |  326 ++
+ public/assets/js/pages-auth-two-steps.js           |   88 +
+ public/assets/js/pages-auth.js                     |  114 +
+ public/assets/js/pages-pricing.js                  |   37 +
+ public/assets/js/pages-profile.js                  |  237 +
+ public/assets/js/tables-datatables-advanced.js     |  626 +++
+ public/assets/js/tables-datatables-basic.js        | 1092 +++++
+ public/assets/js/tables-datatables-extensions.js   |  595 +++
+ public/assets/js/ui-app-brand.js                   |   79 +
+ public/assets/js/ui-carousel.js                    |  191 +
+ public/assets/js/ui-menu.js                        |  142 +
+ public/assets/js/ui-modals.js                      |   73 +
+ public/assets/js/ui-navbar.js                      |   19 +
+ public/assets/js/ui-popover.js                     |   12 +
+ public/assets/js/ui-toasts.js                      |  198 +
+ public/assets/js/wizard-ex-checkout.js             |   98 +
+ public/assets/js/wizard-ex-create-deal.js          |  243 ++
+ public/assets/js/wizard-ex-property-listing.js     |  323 ++
+ public/assets/json/ajax.php                        |  463 ++
+ public/assets/json/app-academy-dashboard.json      |  329 ++
+ public/assets/json/app-ecommerce-reviews.json      | 1404 ++++++
+ public/assets/json/earning-reports-charts.json     |   64 +
+ public/assets/json/ecommerce-category-list.json    |  116 +
+ public/assets/json/ecommerce-customer-all.json     | 1104 +++++
+ public/assets/json/ecommerce-customer-order.json   | 1404 ++++++
+ public/assets/json/ecommerce-order-details.json    |   36 +
+ public/assets/json/ecommerce-product-list.json     | 1204 +++++
+ public/assets/json/ecommerce-referral.json         | 1004 +++++
+ public/assets/json/invoice-list.json               |  604 +++
+ public/assets/json/jstree-data.json                |   66 +
+ public/assets/json/kanban.json                     |  127 +
+ public/assets/json/locales/ar.json                 |  177 +
+ public/assets/json/locales/de.json                 |  177 +
+ public/assets/json/locales/en.json                 |  177 +
+ public/assets/json/locales/fr.json                 |  177 +
+ public/assets/json/logistics-dashboard.json        |  254 ++
+ public/assets/json/permissions-list.json           |   85 +
+ public/assets/json/projects-list.json              |   92 +
+ public/assets/json/search-horizontal.json          |  958 ++++
+ public/assets/json/search-vertical.json            |  978 +++++
+ public/assets/json/table-datatable.json            | 1304 ++++++
+ public/assets/json/table-ecommerce.json            | 1304 ++++++
+ public/assets/json/typeahead-data-2.json           |  452 ++
+ public/assets/json/typeahead.json                  |   52 +
+ public/assets/json/user-list.json                  |  554 +++
+ public/assets/json/user-profile.json               |  148 +
+ public/assets/svg/icons/check.svg                  |    6 +
+ public/assets/svg/icons/form-wizard-account.svg    |    6 +
+ public/assets/svg/icons/form-wizard-address.svg    |   18 +
+ public/assets/svg/icons/form-wizard-personal.svg   |    6 +
+ .../assets/svg/icons/form-wizard-social-link.svg   |    6 +
+ public/assets/svg/icons/form-wizard-submit.svg     |    6 +
+ public/assets/svg/icons/laptop.svg                 |    6 +
+ public/assets/svg/icons/lightbulb.svg              |    6 +
+ public/assets/svg/icons/paper.svg                  |    4 +
+ public/assets/svg/icons/rocket.svg                 |    4 +
+ public/assets/svg/icons/user-info.svg              |    4 +
+ .../assets/svg/icons/wizard-checkout-address.svg   |   11 +
+ public/assets/svg/icons/wizard-checkout-cart.svg   |    7 +
+ .../svg/icons/wizard-checkout-confirmation.svg     |   12 +
+ .../assets/svg/icons/wizard-checkout-payment.svg   |   12 +
+ public/favicon.ico                                 |  Bin 0 -> 5430 bytes
+ public/index.php                                   |   59 +
+ public/robots.txt                                  |    2 +
+ public/template/rkma_alihbentuk.docx               |  Bin 0 -> 35915 bytes
+ public/template/rkma_pendirian.docx                |  Bin 0 -> 29995 bytes
+ public/uploads/1_1.pdf                             |  Bin 0 -> 51978 bytes
+ public/uploads/1_12.pdf                            |  Bin 0 -> 51978 bytes
+ public/uploads/1_2.pdf                             |  Bin 0 -> 51978 bytes
+ public/uploads/1_3.pdf                             |  Bin 0 -> 51978 bytes
+ public/uploads/1_4.pdf                             |  Bin 0 -> 51978 bytes
+ public/uploads/1_7.pdf                             |  Bin 0 -> 220158 bytes
+ spark                                              |   87 +
+ tests/.htaccess                                    |    6 +
+ tests/README.md                                    |  118 +
+ .../2020-02-22-222222_example_migration.php        |   37 +
+ tests/_support/Database/Seeds/ExampleSeeder.php    |   41 +
+ tests/_support/Libraries/ConfigReader.php          |   19 +
+ tests/_support/Models/ExampleModel.php             |   24 +
+ tests/database/ExampleDatabaseTest.php             |   46 +
+ tests/index.html                                   |   11 +
+ tests/session/ExampleSessionTest.php               |   17 +
+ tests/unit/HealthTest.php                          |   49 +
+ writable/.htaccess                                 |    6 +
+ writable/cache/index.html                          |   11 +
+ writable/index.html                                |   11 +
+ writable/logs/index.html                           |   11 +
+ writable/session/index.html                        |   11 +
+ writable/uploads/index.html                        |   11 +
+ 691 files changed, 69154 insertions(+)

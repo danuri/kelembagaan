@@ -12,6 +12,7 @@ use App\Models\UsulDokumenModel;
 use App\Models\ProdiModel;
 use App\Models\CrudModel;
 use App\Models\LogModel;
+use App\Libraries\Notifikasi;
 
 class Pendirianptkis extends BaseController
 {
@@ -66,6 +67,31 @@ class Pendirianptkis extends BaseController
 
       $logm = new LogModel();
       $logm->insert(['id_usul'=>$id,'status_usulan'=>21,'keterangan'=>'Dikembalikan Ke Pengusul. '.$keterangan,'created_by'=>user_id()]);
+
+    //   $text = '📑 *Info SIPTIKA*
+//
+// Yth. *'.$pegawai->NAMA.'*
+//
+// Kami informasikan Usulan *PENDIRIAN PTKIS*
+//
+// Nomor Surat  : *'.$absid.'*
+// Perihal  : *'.$tugas->remark.'*
+// Tanggal     : *'.local_date($tugas->start_date).'* sd *'.local_date($tugas->end_date).'*
+// dinyatakan *DITOLAK* dengan alasan sebagai berikut :
+//
+// *'.$content->keterangan.'*
+//
+// Segera perbaiki Usulan pada
+// https://diktis.kemenag.go.id/kelembagaan/ptki
+// ---------------------------------------------
+//
+// *Nomor ini tidak menerima balasan atau telepon*
+//
+// *Diktis - Kemenag*' ;
+//         $hp   = hp($pegawai->NO_HP);
+//
+//         $notif = new Notifikasi();
+//         $notif->sendWhatsapp($hp,$text);
 
       session()->setFlashdata('message', 'Usulan telah ditolak.');
       return $this->response->setJSON(['status'=>'success']);
