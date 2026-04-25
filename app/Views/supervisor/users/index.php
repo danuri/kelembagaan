@@ -27,7 +27,7 @@
         <tr>
         <th>Username</th>
         <th>Email</th>
-        <th>Identities</th>
+        <th>Grup</th>
         <th>Status</th>
         <th>Actions</th>
         </tr>
@@ -38,9 +38,9 @@
         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong><?= esc($user->username) ?></strong></td>
         <td><?= esc($user->email) ?></td>
         <td>
-            <?php if ($user->identities): ?>
-                <?php foreach ($user->identities as $identity): ?>
-                    <span class="badge bg-label-primary me-1"><?= esc($identity->provider) ?></span>
+            <?php if ($user->getGroups()): ?>
+                <?php foreach ($user->getGroups() as $group): ?>
+                    <span class="badge bg-label-info me-1"><?= esc(ucfirst($group)) ?></span>
                 <?php endforeach; ?>
             <?php endif; ?>
         </td>
@@ -128,12 +128,12 @@
               </div>
             </div>
             <div class="row mb-6">
-              <label class="col-sm-4 col-form-label" for="group">Role</label>
-              <div class="col-sm-8">
-                <select name="group" id="group" class="form-select">
-                  <option value="supervisor">Supervisor</option>
-                  <option value="verifikator">Verifikator</option>
-                  <option value="user">Pengusul</option>
+              <label class="col-sm-4 col-form-label" for="groups">Role</label>
+              <div class="col-sm-8 text-start">
+                <select name="groups[]" id="groups" class="form-select select2" multiple="multiple" data-placeholder="Pilih Role" required>
+                  <?php foreach ($groups as $key => $group): ?>
+                    <option value="<?= $key ?>"><?= $group['title'] ?></option>
+                  <?php endforeach; ?>
                 </select>
               </div>
             </div>

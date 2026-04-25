@@ -1,4 +1,4 @@
-<?= $this->extend('user/template') ?>
+<?= $this->extend('user/template2') ?>
 <?= $this->section('content') ?>
 <?php if ($layanan->is_active == 0) { ?>
   <div class="alert alert-danger alert-dismissible" role="alert">

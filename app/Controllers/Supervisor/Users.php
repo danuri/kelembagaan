@@ -18,6 +18,8 @@ class Users extends BaseController
             ->withPermissions()
             ->findAll();
 
+        $data['groups'] = config('AuthGroups')->groups;
+
         return view('supervisor/users/index', $data);
     }
 
@@ -38,7 +40,12 @@ class Users extends BaseController
 
         // Add to default group
         // $users->addToDefaultGroup($user);
-        $user->addGroup($this->request->getPost('group'));
+        $groups = $this->request->getPost('groups');
+        if (is_array($groups)) {
+            $user->syncGroups(...$groups);
+        } elseif ($groups) {
+            $user->addGroup($groups);
+        }
 
         return redirect()->to(site_url('supervisor/users'))->with('success', 'User created successfully.');
     }
@@ -53,6 +60,7 @@ class Users extends BaseController
         }
 
         $data['user'] = $user;
+        $data['groups'] = config('AuthGroups')->groups;
 
         return view('supervisor/users/edit', $data);
     }
@@ -61,18 +69,39 @@ class Users extends BaseController
         // Get the User Provider (UserModel by default)
         // validation
         $validation = \Config\Services::validation();
-        $validation->setRules([
-            'password' => 'required'
-        ]);
-        if (!$validation->withRequest($this->request)->run()) {
-            return redirect()->back()->withInput()->with('error', $validation->getErrors());
+        $rules = [];
+        $password = $this->request->getPost('password');
+        
+        if (!empty($password)) {
+            $rules['password'] = 'required';
         }
+
+        if (!empty($rules)) {
+            $validation->setRules($rules);
+            if (!$validation->withRequest($this->request)->run()) {
+                return redirect()->back()->withInput()->with('error', $validation->getErrors());
+            }
+        }
+
         $users = auth()->getProvider();
 
         $user = $users->findById($id);
-        $user->fill([
-            'password' => $this->request->getPost('password'),
-        ]);
+        
+        if (!empty($password)) {
+            $user->fill([
+                'password' => $password,
+            ]);
+        }
+
+        $groups = $this->request->getPost('groups');
+        if ($groups !== null) {
+            if (is_array($groups)) {
+                $user->syncGroups(...$groups);
+            } else {
+                $user->syncGroups($groups);
+            }
+        }
+
         $users->save($user);
 
         return redirect()->to(site_url('supervisor/users'))->with('success', 'User updated successfully.');

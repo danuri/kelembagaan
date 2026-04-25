@@ -1,4 +1,4 @@
-<?= $this->extend('user/template') ?>
+<?= $this->extend('user/template2') ?>
 <?= $this->section('content') ?>
 <?php if ($layanan->is_active == 0) { ?>
   <div class="alert alert-danger alert-dismissible" role="alert">
@@ -14,11 +14,13 @@
   Pengajuan usulan Pendirian PTKIS. Silahkan klik tombol "Buat Usulan" untuk memulai.
 </p>
 <div class="card border border-primary">
-  <div class="card-header border-bottom d-flex justify-content-between align-items-center">
-    <h5 class="card-title m-0 me-2">Data Usulan</h5>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat
-      Usulan</button>
-  </div>
+  <?php if ($layanan->is_active == 0) { ?>
+    <div class="card-header border-bottom d-flex justify-content-between align-items-center">
+      <h5 class="card-title m-0 me-2">Data Usulan</h5>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat
+        Usulan</button>
+    </div>
+  <?php } ?>
   <div class="justify-content-between dt-layout-table">
     <table class="table table-bordered">
       <thead class="text-bg-warning">

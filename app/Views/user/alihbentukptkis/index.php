@@ -1,4 +1,4 @@
-<?= $this->extend('user/template') ?>
+<?= $this->extend('user/template2') ?>
 <?= $this->section('content') ?>
 <?php if ($layanan->is_active == 0) { ?>
   <div class="alert alert-danger alert-dismissible" role="alert">
@@ -15,9 +15,10 @@
 </p>
 <div class="card">
   <div class="card-header border-bottom d-flex justify-content-between align-items-center">
-  <h5 class="card-title m-0 me-2">Data Usulan</h5>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat Usulan</button>
-</div>
+    <h5 class="card-title m-0 me-2">Data Usulan</h5>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat
+      Usulan</button>
+  </div>
   <div class="justify-content-between dt-layout-table">
     <table class="table table-bordered">
       <thead>
@@ -44,13 +45,17 @@
               <td><?= $usulan->nama_lembaga ?></td>
               <td><?= usul_status($usulan->status) ?></td>
               <td>
-                <?php if($usulan->status == 0): ?>
-                  <a href="<?= site_url('layanan/alihbentukptkis/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
-                  <a href="javascript:void(0)" class="btn btn-sm btn-danger" onclick="deleteUsulan('<?= encrypt($usulan->id) ?>')">Delete</a>
-                  <?php else:?>
-                    <a href="<?= site_url('layanan/alihbentukptkis/detail/'.encrypt($usulan->id)) ?>" class="btn btn-sm btn-info">Detail</a>
-                    <a href="javascript:void(0)" class="btn btn-sm btn-warning" onclick="log('<?= encrypt($usulan->id) ?>')">Log</a>
-                <?php endif;?>
+                <?php if ($usulan->status == 0): ?>
+                  <a href="<?= site_url('layanan/alihbentukptkis/detail/' . encrypt($usulan->id)) ?>"
+                    class="btn btn-sm btn-info">Detail</a>
+                  <a href="javascript:void(0)" class="btn btn-sm btn-danger"
+                    onclick="deleteUsulan('<?= encrypt($usulan->id) ?>')">Delete</a>
+                <?php else: ?>
+                  <a href="<?= site_url('layanan/alihbentukptkis/detail/' . encrypt($usulan->id)) ?>"
+                    class="btn btn-sm btn-info">Detail</a>
+                  <a href="javascript:void(0)" class="btn btn-sm btn-warning"
+                    onclick="log('<?= encrypt($usulan->id) ?>')">Log</a>
+                <?php endif; ?>
               </td>
             </tr>
           <?php endforeach; ?>
@@ -65,21 +70,19 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content text-center">
       <div class="modal-header border-0">
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-0">
         <div class="onboarding-content mb-0">
           <h4 class="onboarding-title text-body">Buat Usulan</h4>
-          <form action="<?= site_url('layanan/alihbentukptkis/create') ?>" method="post" enctype="multipart/form-data" id="usulform">
+          <form action="<?= site_url('layanan/alihbentukptkis/create') ?>" method="post" enctype="multipart/form-data"
+            id="usulform">
             <div class="row mb-6">
               <label class="col-sm-4 col-form-label" for="nspt">NSPT Lembaga</label>
               <div class="col-sm-8">
                 <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Masukan NSPT" aria-describedby="btnCari" name="nspt" id="nspt" required />
+                  <input type="text" class="form-control" placeholder="Masukan NSPT" aria-describedby="btnCari"
+                    name="nspt" id="nspt" required />
                   <button class="btn btn-outline-primary waves-effect" type="button" id="btnCari">Cari</button>
                 </div>
               </div>
@@ -120,7 +123,8 @@
         <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">
           Tutup
         </button>
-        <button type="button" class="btn btn-primary" onclick="document.getElementById('usulform').submit();">Simpan</button>
+        <button type="button" class="btn btn-primary"
+          onclick="document.getElementById('usulform').submit();">Simpan</button>
       </div>
     </div>
   </div>
@@ -132,7 +136,7 @@
   // url https://diktis.kemenag.go.id/kelembagaan/kemenag/master/getLembaga
   // method post
   // data { nsm: nspt }
-  $('#btnCari').click(function() {
+  $('#btnCari').click(function () {
     var nspt = $('#nspt').val();
     if (nspt == '') {
       alert('NSPT tidak boleh kosong');
@@ -143,7 +147,7 @@
       method: 'POST',
       data: { nsm: nspt },
       dataType: 'json',
-      success: function(response) {
+      success: function (response) {
         if (response.status == 'success') {
           $('#nama_lembaga').val(response.data.nama_ptai);
           $('#alamat_lembaga').val(response.data.alamat);
@@ -151,7 +155,7 @@
           alert('Data tidak ditemukan');
         }
       },
-      error: function() {
+      error: function () {
         alert('Terjadi kesalahan saat menghubungi server');
       }
     });

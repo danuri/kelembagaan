@@ -6,116 +6,79 @@ use CodeIgniter\Config\BaseConfig;
 
 class Email extends BaseConfig
 {
-    public string $fromEmail  = 'e-pa@kemenag.go.id';
-    public string $fromName   = 'EPA Kemenag';
+    public string $fromEmail = 'diktis.lembaga@gmail.com';
+    public string $fromName = 'Diktis Kelembagaan Kemenag';
     public string $recipients = '';
 
-    /**
-     * The "user agent"
-     */
+    /** The "user agent" */
     public string $userAgent = 'CodeIgniter';
 
-    /**
-     * The mail sending protocol: mail, sendmail, smtp
-     */
-    public string $protocol = 'mail';
+    /** The mail sending protocol: mail, sendmail, smtp */
+    public string $protocol = 'smtp';
 
-    /**
-     * The server path to Sendmail.
-     */
+    /** Path to Sendmail */
     public string $mailPath = '/usr/sbin/sendmail';
 
-    /**
-     * SMTP Server Hostname
-     */
-    public string $SMTPHost = 'smtp2.kemenag.go.id';
+    /** SMTP Server Hostname */
+    public string $SMTPHost = 'smtp.googlemail.com';
 
-    /**
-     * SMTP Username
-     */
-    public string $SMTPUser = 'e-pa@kemenag.go.id';
+    /** SMTP Auth Method: login = Sandi Biasa */
+    public string $SMTPAuthMethod = 'login';
+
+    /** SMTP Username */
+    public string $SMTPUser = 'diktis.lembaga@gmail.com';
 
     /**
      * SMTP Password
+     * Simpan di file .env dengan key: email.SMTPPass = your_password
      */
-    public string $SMTPPass = 'email2021';
+    public string $SMTPPass = '';
 
-    /**
-     * SMTP Port
-     */
-    public int $SMTPPort = 587;
+    /** SMTP Port */
+    public int $SMTPPort = 465;
 
-    /**
-     * SMTP Timeout (in seconds)
-     */
-    public int $SMTPTimeout = 5;
+    /** SMTP Timeout (in seconds) */
+    public int $SMTPTimeout = 30;
 
-    /**
-     * Enable persistent SMTP connections
-     */
+    /** Enable persistent SMTP connections */
     public bool $SMTPKeepAlive = false;
 
     /**
      * SMTP Encryption.
-     *
-     * @var string '', 'tls' or 'ssl'. 'tls' will issue a STARTTLS command
-     *             to the server. 'ssl' means implicit SSL. Connection on port
-     *             465 should set this to ''.
+     * 'tls' = STARTTLS (sesuai konfigurasi server Kemenag port 587)
      */
-    public string $SMTPCrypto = 'tls';
+    public string $SMTPCrypto = 'ssl';
 
-    /**
-     * Enable word-wrap
-     */
+    /** Enable word-wrap */
     public bool $wordWrap = true;
 
-    /**
-     * Character count to wrap at
-     */
+    /** Character count to wrap at */
     public int $wrapChars = 76;
 
-    /**
-     * Type of mail, either 'text' or 'html'
-     */
-    public string $mailType = 'text';
+    /** Type of mail */
+    public string $mailType = 'html';
 
-    /**
-     * Character set (utf-8, iso-8859-1, etc.)
-     */
+    /** Character set */
     public string $charset = 'UTF-8';
 
-    /**
-     * Whether to validate the email address
-     */
+    /** Whether to validate the email address */
     public bool $validate = false;
 
-    /**
-     * Email Priority. 1 = highest. 5 = lowest. 3 = normal
-     */
+    /** Email Priority. 1 = highest. 5 = lowest. 3 = normal */
     public int $priority = 3;
 
-    /**
-     * Newline character. (Use “\r\n” to comply with RFC 822)
-     */
+    /** Newline character */
     public string $CRLF = "\r\n";
 
-    /**
-     * Newline character. (Use “\r\n” to comply with RFC 822)
-     */
+    /** Newline character */
     public string $newline = "\r\n";
 
-    /**
-     * Enable BCC Batch Mode.
-     */
+    /** Enable BCC Batch Mode */
     public bool $BCCBatchMode = false;
 
-    /**
-     * Number of emails in each BCC batch
-     */
+    /** Number of emails in each BCC batch */
     public int $BCCBatchSize = 200;
 
-    /**
-     * Enable notify message from server
-     */
+    /** Enable notify message from server */
     public bool $DSN = false;
 }

@@ -20,7 +20,7 @@ $routes->group('export', ['filter' => 'group:verifikator'], static function ($ro
 
 $routes->group('verifikator', ['filter' => 'group:verifikator'], static function ($routes) {
     $routes->get('/', 'Verifikator\Dashboard::index');
-    
+
     $routes->group('usulan', static function ($routes) {
         $routes->get('/', 'Verifikator\Usulan::index');
         $routes->get('getdata', 'Verifikator\Usulan::getdata');
@@ -61,7 +61,7 @@ $routes->group('verifikator', ['filter' => 'group:verifikator'], static function
             $routes->get('proses/(:any)', 'Verifikator\Usulan\Alihkelolaptkis::proses/$1');
         });
     });
-    
+
     $routes->group('penilaian', static function ($routes) {
         $routes->get('/', 'Verifikator\Penilaian::index');
         $routes->get('getdata', 'Verifikator\Penilaian::getdata');
@@ -93,7 +93,7 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
     });
 
     $routes->group("master", function ($routes) {
-        
+
         $routes->group("users", function ($routes) {
             $routes->get('', 'Supervisor\Users::index');
             $routes->get('getdata', 'Supervisor\Users::getdata');
@@ -101,7 +101,7 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
             $routes->get('detail/(:any)', 'Supervisor\Users::detail/$1');
             $routes->post('save', 'Supervisor\Users::save');
         });
-        
+
         $routes->group("layanan", function ($routes) {
             $routes->get('', 'Supervisor\Layanan::index');
             $routes->post('save', 'Supervisor\Layanan::save');
@@ -252,9 +252,17 @@ $routes->group('layanan', ['filter' => 'group:user'], static function ($routes) 
         $routes->post('updateform2', 'User\Pembentukanfai::updateform2');
         $routes->post('submitusul', 'User\Pembentukanfai::submitusul');
     });
-    
-    $routes->get('alihbentukptkis', 'Layanan\AlihBentukPTKIS::index');
-    $routes->get('bantuanptkis', 'Layanan\BantuanPTKIS::index');
+
+    $routes->group('penggabunganptki', static function ($routes) {
+        $routes->get('/', 'User\Penggabunganptki::index');
+        $routes->post('create', 'User\Penggabunganptki::create');
+        $routes->get('detail/(:any)', 'User\Penggabunganptki::detail/$1');
+        $routes->post('updateform1', 'User\Penggabunganptki::updateform1');
+        $routes->post('submitusul', 'User\Penggabunganptki::submitusul');
+    });
+
+    // $routes->get('alihbentukptkis', 'Layanan\AlihBentukPTKIS::index');
+    // $routes->get('bantuanptkis', 'Layanan\BantuanPTKIS::index');
 });
 
 $routes->group('dokumen', ['filter' => 'group:user,verifikator,supervisor'], static function ($routes) {

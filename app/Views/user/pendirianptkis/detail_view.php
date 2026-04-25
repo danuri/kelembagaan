@@ -1,4 +1,4 @@
-<?= $this->extend('user/template') ?>
+<?= $this->extend('user/template2') ?>
 <?= $this->section('content') ?>
 
 <h4 class="mb-1">

@@ -8,10 +8,10 @@
   </div>
 <?php } ?>
 <h4 class="text-center mb-1">
-  Pembentukan Fakultas Agama Islam (FAI)
+  Penggabungan PTKIS
 </h4>
 <p class="text-center mb-12">
-  Pengajuan usulan Pembentukan Fakultas Agama Islam (FAI). Silahkan klik tombol "Buat Usulan" untuk memulai.
+  Pengajuan usulan Penggabungan PTKIS. Silahkan klik tombol "Buat Usulan" untuk memulai.
 </p>
 <div class="card">
   <div class="card-header border-bottom d-flex justify-content-between align-items-center">
@@ -26,7 +26,7 @@
           <th>No Surat</th>
           <th>Tanggal Usul</th>
           <th>Perihal</th>
-          <th>Nama Perguruan Tinggi</th>
+          <th>Nama PTKIS</th>
           <th>Status</th>
           <th>Aksi</th>
         </tr>
@@ -45,15 +45,13 @@
               <td><?= $usulan->nama_lembaga ?></td>
               <td><?= usul_status($usulan->status) ?></td>
               <td>
-                <?php if ($usulan->status == 0 || $usulan->status == 21): ?>
-                  <a href="<?= site_url('layanan/pembentukanfai/prodi/' . encrypt($usulan->id)) ?>"
-                    class="btn btn-sm btn-warning">Prodi</a>
-                  <a href="<?= site_url('layanan/pembentukanfai/detail/' . encrypt($usulan->id)) ?>"
+                <?php if ($usulan->status == 0): ?>
+                  <a href="<?= site_url('layanan/penggabunganptki/detail/' . encrypt($usulan->id)) ?>"
                     class="btn btn-sm btn-info">Detail</a>
                   <a href="javascript:void(0)" class="btn btn-sm btn-danger"
                     onclick="deleteUsulan('<?= encrypt($usulan->id) ?>')">Delete</a>
                 <?php else: ?>
-                  <a href="<?= site_url('layanan/pembentukanfai/detail/' . encrypt($usulan->id)) ?>"
+                  <a href="<?= site_url('layanan/penggabunganptki/detail/' . encrypt($usulan->id)) ?>"
                     class="btn btn-sm btn-info">Detail</a>
                   <a href="javascript:void(0)" class="btn btn-sm btn-warning"
                     onclick="log('<?= encrypt($usulan->id) ?>')">Log</a>
@@ -68,7 +66,6 @@
   </div>
 
 </div>
-
 <div class="modal-onboarding modal fade animate__animated" id="onboardImageModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content text-center">
@@ -78,27 +75,12 @@
       <div class="modal-body p-0">
         <div class="onboarding-content mb-0">
           <h4 class="onboarding-title text-body">Buat Usulan</h4>
-          <form action="<?= site_url('layanan/pembentukanfai/create') ?>" method="post" id="usulform">
+          <form action="<?= site_url('layanan/penggabunganptki/create') ?>" method="post" enctype="multipart/form-data"
+            id="usulform">
             <div class="row mb-6">
-              <label class="col-sm-4 col-form-label" for="nama_lembaga">Nama Lembaga</label>
+              <label class="col-sm-4 col-form-label" for="nama_lembaga">Nama Lembaga Lama</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="nama_lembaga" name="nama_lembaga" required>
-              </div>
-            </div>
-            <div class="row mb-6">
-              <label class="col-sm-4 col-form-label" for="alamat_lembaga">Alamat Lembaga</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control" id="alamat_lembaga" name="alamat_lembaga" required>
-              </div>
-            </div>
-            <div class="row mb-6">
-              <label class="col-sm-4 col-form-label" for="kategori">Kategori Lembaga</label>
-              <div class="col-sm-8">
-                <select name="kategori" id="kategori" class="form-select">
-                  <option value="SEKOLAH TINGGI">SEKOLAH TINGGI</option>
-                  <option value="INSTITUT">INSTITUT</option>
-                  <option value="UNIVERSITAS">UNIVERSITAS</option>
-                </select>
               </div>
             </div>
           </form>
