@@ -9,9 +9,11 @@
         <div class="d-flex gap-4">
             <button class="btn btn-label-secondary waves-effect">Kembali</button>
         </div>
-        <button type="button" class="btn btn-primary waves-effect waves-light" onclick="declined()">Tolak
-            Usulan</button>
-        <button type="button" class="btn btn-success waves-effect waves-light" onclick="accept()">Terima Usulan</button>
+
+        <?php if ($usulan->status == 2): ?>
+            <a href="<?= site_url('verifikator/usulan/penggabunganptki/proses/' . encrypt($usulan->id)) ?>" type="button"
+                class="btn btn-success waves-effect waves-light">Mulai Verifikasi</a>
+        <?php endif; ?>
     </div>
 </div>
 
@@ -38,14 +40,7 @@
                         <h6>Nama Lembaga</h6>
                     </div>
                     <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $detail->nama_lembaga ?></div>
-                </div>
-                <div style="display: table-row;">
-                    <div style="display: table-cell; padding-right: 0.5rem;">
-                        <h6>Alamat Lembaga</h6>
-                    </div>
-                    <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $detail->alamat_lembaga ?></div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->nama_lembaga ?></div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12">
@@ -91,28 +86,15 @@
                             <?php endif; ?>
                         </td>
                         <td>
-                            <?php if ($dokumen->lampiran) { ?>
-                                <input type="checkbox" class="form-check-input formcheck" id="<?= $dokumen->usul_dokumen_id; ?>"
-                                    <?= ($dokumen->dok_status == 1) ? 'checked' : ''; ?> value="1">
+                            <?= ($dokumen->dok_status == 1) ? '<span class="badge bg-label-success">Ya</span>' : '<span class="badge bg-label-danger">Tidak</span>' ?>
+                        </td>
+                        <td><?= $dokumen->keterangan ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 
-            </div>
-        <?php } ?>
-        </td>
-        <td>
-            <select name="keterangan_dokumen[<?= $dokumen->usul_dokumen_id ?>]"
-                id="keterangan_dokumen<?= $dokumen->usul_dokumen_id ?>" data-dok="<?= $dokumen->usul_dokumen_id ?>"
-                class="form-select form-select-sm keterangancheck">
-                <option value=""></option>
-                <option value="Berkas Tidak Sesuai" <?= ($dokumen->keterangan == 'Berkas Tidak Sesuai') ? 'selected' : ''; ?>>Berkas
-                    Tidak Sesuai</option>
-                <option value="Berkas Tidak Asli" <?= ($dokumen->keterangan == 'Berkas Tidak Asli') ? 'selected' : ''; ?>>Berkas
-                    Tidak Asli</option>
-            </select>
-        </td>
-        </tr>
-    <?php endforeach; ?>
-    </tbody>
-    </table>
 </div>
 
 <div id="preview" class="modal fade" data-bs-backdrop="static" tabindex="-1" aria-labelledby="myModalLabel"
@@ -135,18 +117,18 @@
     $(document).ready(function () {
         $('.formcheck').change(function (event) {
             if (this.checked) {
-                $.get('<?= site_url('verifikator/usulan/alihkelolaptkis/validasidokumen'); ?>/' + this.id + '/1/0', function () {
+                $.get('<?= site_url('verifikator/usulan/penggabunganptki/validasidokumen'); ?>/' + this.id + '/1/0', function () {
                     alert('Berkas divalidasi');
                 });
             } else {
-                $.get('<?= site_url('verifikator/usulan/alihkelolaptkis/validasidokumen'); ?>/' + this.id + '/0/' + $('#keterangan_dokumen' + this.id).val(), function () {
+                $.get('<?= site_url('verifikator/usulan/penggabunganptki/validasidokumen'); ?>/' + this.id + '/0/' + $('#keterangan_dokumen' + this.id).val(), function () {
                     alert('Berkas belum divalidasi');
                 });
             }
         });
         $('.keterangancheck').change(function (event) {
             if (this.value) {
-                $.get('<?= site_url('verifikator/usulan/alihkelolaptkis/validasidokumen'); ?>/' + this.dataset.dok + '/0/' + this.value, function () {
+                $.get('<?= site_url('verifikator/usulan/penggabunganptki/validasidokumen'); ?>/' + this.dataset.dok + '/0/' + this.value, function () {
                     alert('Update keterangan berhasil');
                 });
                 // uncheck checkbox
@@ -174,7 +156,7 @@
             confirmButtonText: 'Kembalikan Berkas',
             showLoaderOnConfirm: true,
             preConfirm: (data) => {
-                return fetch('<?= site_url('verifikator/usulan/alihkelolaptkis/decline/' . encrypt($usulan->id)) ?>', {
+                return fetch('<?= site_url('verifikator/usulan/penggabunganptki/decline/' . encrypt($usulan->id)) ?>', {
                     method: "POST",
                     body: JSON.stringify({ keterangan: data }),
                     headers: { "Content-type": "application/json; charset=UTF-8" }
@@ -211,8 +193,8 @@
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                // redirect to verifikator/usulan/pembentukanfai/accept/id
-                window.location.href = '<?= site_url('verifikator/usulan/alihkelolaptkis/accept/' . encrypt($usulan->id)) ?>';
+                // redirect to verifikator/usulan/alihbentukptkis/accept/id
+                window.location.href = '<?= site_url('verifikator/usulan/penggabunganptki/accept/' . encrypt($usulan->id)) ?>';
             }
         });
     }

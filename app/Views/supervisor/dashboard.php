@@ -14,10 +14,7 @@
         </div>
         <div class="col-5 text-center text-sm-left">
           <div class="card-body pb-0 px-0 px-md-4">
-            <img
-              src="<?= base_url() ?>assets/img/illustrations/card-advance-sale.png"
-              height="140"
-              alt="view sales" />
+            <img src="<?= base_url() ?>assets/img/illustrations/card-advance-sale.png" height="140" alt="view sales" />
           </div>
         </div>
       </div>
@@ -37,17 +34,6 @@
           <div class="row gy-3">
             <div class="col-md-3 col-6">
               <div class="d-flex align-items-center">
-                <div class="badge rounded bg-label-primary me-4 p-2">
-                  <i class="icon-base ti tabler-chart-pie-2 icon-lg"></i>
-                </div>
-                <div class="card-info">
-                  <h5 class="mb-0"><?= $jumlahUsulKirim->jumlah ?></h5>
-                  <small>Menunggu</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 col-6">
-              <div class="d-flex align-items-center">
                 <div class="badge rounded bg-label-info me-4 p-2">
                   <i class="icon-base ti tabler-users icon-lg"></i>
                 </div>
@@ -65,17 +51,6 @@
                 <div class="card-info">
                   <h5 class="mb-0"><?= $jumlahUsulPenilaian->jumlah ?></h5>
                   <small>Penilaian</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3 col-6">
-              <div class="d-flex align-items-center">
-                <div class="badge rounded bg-label-primary me-4 p-2">
-                  <i class="icon-base ti tabler-certificate icon-lg"></i>
-                </div>
-                <div class="card-info">
-                  <h5 class="mb-0"><?= $jumlahUsulRkma->jumlah ?></h5>
-                  <small>RKMA</small>
                 </div>
               </div>
             </div>
@@ -103,20 +78,21 @@
             </tr>
           </thead>
           <tbody>
-            <?php $no=1; foreach($jumlahLayananStatus as $row): ?>
-            <tr>
-              <td><?= $no ?></td>
-              <td><?= $row->layanan_nama ?></td>
-              <td><?= $row->masuk ?></td>
-              <td><?= $row->verifikasi ?></td>
-              <td><?= $row->penilaian ?></td>
-              <td><?= $row->rkma ?></td>
-              <td><?= $row->kembali ?></td>
-              <td><?= $row->selesai ?></td>
-            </tr>
-            <?php $no++; endforeach; ?>
+            <?php $no = 1;
+            foreach ($jumlahLayananStatus as $row): ?>
+              <tr>
+                <td><?= $no ?></td>
+                <td><?= $row->layanan_nama ?></td>
+                <td><?= $row->masuk ?></td>
+                <td><?= $row->verifikasi ?></td>
+                <td><?= $row->penilaian ?></td>
+                <td><?= $row->rkma ?></td>
+                <td><?= $row->kembali ?></td>
+                <td><?= $row->selesai ?></td>
+              </tr>
+              <?php $no++; endforeach; ?>
           </tbody>
-        </table>  
+        </table>
       </div>
     </div>
   </div>

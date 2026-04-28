@@ -61,6 +61,7 @@
   <!-- Page CSS -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/css/pages/cards-advance.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/libs/sweetalert2/sweetalert2.css" />
   <!-- Helpers -->
   <script src="<?= base_url() ?>assets/vendor/js/helpers.js"></script>
   <script src="<?= base_url() ?>assets/vendor/js/template-customizer.js"></script>
@@ -212,8 +213,7 @@
                           </div>
                         </div>
                         <div class="flex-grow-1">
-                          <h6 class="mb-0">John Doe</h6>
-                          <small class="text-body-secondary">Admin</small>
+                          <h6 class="mb-0"><?= auth()->user()->username ?></h6>
                         </div>
                       </div>
                     </a>
@@ -222,8 +222,9 @@
                     <div class="dropdown-divider my-1 mx-n2"></div>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="pages-profile-user.html"> <i
-                        class="icon-base ti tabler-user me-3 icon-md"></i><span class="align-middle">My Profile</span>
+                    <a class="dropdown-item" href="<?= site_url('profile') ?>">
+                      <i class=" icon-base ti tabler-user me-3 icon-md"></i><span class="align-middle">My
+                        Profile</span>
                     </a>
                   </li>
                   <li>
@@ -250,7 +251,7 @@
               <div
                 class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
                 <div class="text-body">
-                  ©2025 SIPTIKA
+                  ©2026 SIPTIKA
                 </div>
                 <div class="d-none d-lg-inline-block"><?= setting('App.siteFooter') ?></div>
               </div>
@@ -305,7 +306,7 @@
   <script src="<?= base_url() ?>assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
   <script src="<?= base_url() ?>assets/vendor/libs/bs-stepper/bs-stepper.js"></script>
   <script src="<?= base_url() ?>assets/vendor/libs/notyf/notyf.js"></script>
-
+  <script src="<?= base_url() ?>assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
   <script src="<?= base_url() ?>assets/js/main.js"></script>
 
 

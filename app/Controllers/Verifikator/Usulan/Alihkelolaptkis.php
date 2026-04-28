@@ -13,91 +13,95 @@ use App\Models\LogModel;
 
 class Alihkelolaptkis extends BaseController
 {
-    public function index()
-    {
-        $layananModel = new LayananModel();
-        $data['layanan'] = $layananModel->findAll();
+  public function index()
+  {
+    $layananModel = new LayananModel();
+    $data['layanan'] = $layananModel->findAll();
 
-        return view('verifikator/usulan/alihkelolaptkis/index', $data);
+    return view('verifikator/usulan/alihkelolaptkis/index', $data);
+  }
+
+  function detail($id)
+  {
+    $id = decrypt($id);
+    $model = new UsulanModel();
+    $detail = new AlihkelolaModel();
+    $data['usulan'] = $model->where('id', $id)->first();
+    $data['detail'] = $detail->where('usulan_id', $id)->first();
+
+    $crudModel = new CrudModel();
+    $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
+
+    if ($data['usulan']->status == 3 || $data['usulan']->status == 31) {
+      return view('verifikator/usulan/alihkelolaptkis/detail', $data);
+    } else {
+      return view('verifikator/usulan/alihkelolaptkis/detail_view', $data);
+    }
+  }
+
+  public function validasidokumen($id, $status, $keterangan = false)
+  {
+    $model = new UsulDokumenModel();
+
+    if ($status == 0) {
+      $update = $model->update($id, ['dok_status' => $status, 'keterangan' => $keterangan]);
+    } else {
+      $update = $model->update($id, ['dok_status' => $status, 'keterangan' => null]);
     }
 
-    function detail($id) {
-        $id = decrypt($id);
-        $model = new UsulanModel();
-        $detail = new AlihkelolaModel();
-        $data['usulan'] = $model->where('id', $id)->first();
-        $data['detail'] = $detail->where('usulan_id', $id)->first();
+    echo 'ok';
+  }
 
-        $crudModel = new CrudModel();
-        $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
+  public function decline($id)
+  {
+    $model = new UsulanModel;
 
-        if ($data['usulan']->status == 3 || $data['usulan']->status == 31) {
-            return view('verifikator/usulan/alihkelolaptkis/detail', $data);
-        }else{
-            return view('verifikator/usulan/alihkelolaptkis/detail_view', $data);
-        }
-    }
+    $id = decrypt($id);
+    $keterangan = $this->request->getVar('keterangan');
+    $model->update($id, ['status' => 21, 'keterangan' => $keterangan]);
 
-    public function validasidokumen($id,$status,$keterangan=false)
-    {
-      $model = new UsulDokumenModel();
-    
-      if($status == 0){
-        $update = $model->update($id,['dok_status'=>$status,'keterangan'=>$keterangan]);
-      }else{
-        $update = $model->update($id,['dok_status'=>$status,'keterangan'=>null]);
-      }
+    $logm = new LogModel();
+    $logm->insert(['id_usul' => $id, 'status_usulan' => 21, 'keterangan' => 'Dikembalikan Ke Pengusul. ' . $keterangan, 'created_by' => user_id()]);
 
-      echo 'ok';
-    }
+    session()->setFlashdata('message', 'Usulan telah ditolak.');
+    return $this->response->setJSON(['status' => 'success']);
+  }
 
-    public function decline($id)
-    {
-      $model = new UsulanModel;
-      
-      $id = decrypt($id);
-      $keterangan = $this->request->getVar('keterangan');
-      $model->update($id,['status'=>21,'keterangan'=>$keterangan]);
+  function accept($id)
+  {
+    $model = new UsulanModel();
 
-      $logm = new LogModel();
-      $logm->insert(['id_usul'=>$id,'status_usulan'=>21,'keterangan'=>'Dikembalikan Ke Pengusul. '.$keterangan,'created_by'=>user_id()]);
+    $id = decrypt($id);
+    $model->update($id, ['status' => 4, 'verifikator' => user_id()]);
 
-      session()->setFlashdata('message', 'Usulan telah ditolak.');
-      return $this->response->setJSON(['status'=>'success']);
-    }
+    $logm = new LogModel();
+    $logm->insert(['id_usul' => $id, 'status_usulan' => 4, 'keterangan' => 'Dokumen Valid dan telah dikirim ke Suvervisor untuk proses selanjutnya.', 'created_by' => user_id()]);
 
-    function accept($id) {
-        $model = new UsulanModel();
+    return redirect()->back()->with('message', 'Dokumen Valid dan telah dikirim ke Suvervisor untuk proses selanjutnya.');
+  }
 
-        $id = decrypt($id);
-        $model->update($id, ['status' => 4,'verifikator'=>user_id()]);
+  function proses($id)
+  {
+    $model = new UsulanModel();
 
-        $logm = new LogModel();
-        $logm->insert(['id_usul' => $id, 'status_usulan' => 4, 'keterangan' => 'Dokumen Valid dan telah dikirim ke Suvervisor untuk proses selanjutnya.', 'created_by' => user_id()]);
+    $id = decrypt($id);
+    $model->update($id, ['status' => 3, 'verifikator' => user_id()]);
 
-        return redirect()->back()->with('message', 'Dokumen Valid dan telah dikirim ke Suvervisor untuk proses selanjutnya.');
-    }
+    $logm = new LogModel();
+    $logm->insert(['id_usul' => $id, 'status_usulan' => 3, 'keterangan' => 'Usulan sedang diverifikasi.', 'created_by' => user_id()]);
 
-    function proses($id) {
-        $model = new UsulanModel();
+    return redirect()->back()->with('message', 'Usulan telah diproses.');
+  }
 
-        $id = decrypt($id);
-        $model->update($id, ['status' => 3,'verifikator'=>user_id()]);
+  function updatecatatan($id)
+  {
+    $id = decrypt($id);
+    $model = new AlihkelolaModel();
 
-        $logm = new LogModel();
-        $logm->insert(['id_usul' => $id, 'status_usulan' => 3, 'keterangan' => 'Usulan sedang diverifikasi.', 'created_by' => user_id()]);
+    $catatan = $this->request->getPost('catatan');
 
-        return redirect()->back()->with('message', 'Usulan telah diproses.');
-    }
+    $model->where('usulan_id', $id)->set(['catatan' => $catatan])->update();
 
-    function updatecatatan($id) {
-        $id = decrypt($id);
-        $model = new AlihkelolaModel();
-
-        $catatan = $this->request->getPost('catatan');
-
-        $model->where('usulan_id', $id)->set(['catatan' => $catatan])->update();
-
-        return redirect()->back()->with('message', 'Catatan verifikator telah diperbarui.');
-    }
+    return redirect()->back()->with('message', 'Catatan verifikator telah diperbarui.');
+  }
 }

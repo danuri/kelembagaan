@@ -60,6 +60,15 @@ $routes->group('verifikator', ['filter' => 'group:verifikator'], static function
             $routes->get('accept/(:any)', 'Verifikator\Usulan\Alihkelolaptkis::accept/$1');
             $routes->get('proses/(:any)', 'Verifikator\Usulan\Alihkelolaptkis::proses/$1');
         });
+
+        $routes->group('penggabunganptki', static function ($routes) {
+            $routes->get('detail/(:any)', 'Verifikator\Usulan\Penggabunganptki::detail/$1');
+            $routes->get('validasidokumen/(:any)/(:any)/(:any)', 'Verifikator\Usulan\Penggabunganptki::validasidokumen/$1/$2/$3');
+            $routes->post('decline/(:any)', 'Verifikator\Usulan\Penggabunganptki::decline/$1');
+            $routes->post('updatecatatan/(:any)', 'Verifikator\Usulan\Penggabunganptki::updatecatatan/$1');
+            $routes->get('accept/(:any)', 'Verifikator\Usulan\Penggabunganptki::accept/$1');
+            $routes->get('proses/(:any)', 'Verifikator\Usulan\Penggabunganptki::proses/$1');
+        });
     });
 
     $routes->group('penilaian', static function ($routes) {
@@ -193,6 +202,16 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
             $routes->post('recheck/(:any)', 'Supervisor\Usulan\Alihkelolaptkis::recheck/$1');
             $routes->get('done/(:any)', 'Supervisor\Usulan\Alihkelolaptkis::done/$1');
         });
+
+        $routes->group('penggabunganptki', static function ($routes) {
+            $routes->get('/', 'Supervisor\Usulan\Penggabunganptki::index');
+            $routes->get('getdata', 'Supervisor\Usulan\Penggabunganptki::getdata');
+            $routes->post('disposisi/(:any)', 'Supervisor\Usulan\Penggabunganptki::disposisi/$1');
+            $routes->get('detail/verifikasi/(:any)', 'Supervisor\Usulan\Penggabunganptki::verifikasi/$1');
+            $routes->get('detail/(:any)', 'Supervisor\Usulan\Penggabunganptki::detail/$1');
+            $routes->post('recheck/(:any)', 'Supervisor\Usulan\Penggabunganptki::recheck/$1');
+            $routes->get('done/(:any)', 'Supervisor\Usulan\Penggabunganptki::done/$1');
+        });
     });
 
     $routes->group('users', static function ($routes) {
@@ -209,6 +228,12 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
     $routes->group('lembaga', static function ($routes) {
         $routes->get('/', 'Supervisor\Lembaga::index');
     });
+});
+
+$routes->group('profile', ['filter' => 'group:user'], static function ($routes) {
+    $routes->get('/', 'User\Profile::index');
+    $routes->post('update', 'User\Profile::updateProfile');
+    $routes->post('changepassword', 'User\Profile::updatePassword');
 });
 
 $routes->group('layanan', ['filter' => 'group:user'], static function ($routes) {

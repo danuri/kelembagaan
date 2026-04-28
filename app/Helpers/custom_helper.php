@@ -1,123 +1,132 @@
 <?php
 
-if ( ! function_exists('ago'))
-{
+if (!function_exists('ago')) {
   function timeago($time)
   {
-    $ptime  = strtotime($time);
+    $ptime = strtotime($time);
     $estimate_time = time() - $ptime;
 
-    if( $estimate_time < 1 )
-    {
-        return 'less than 1 second ago';
+    if ($estimate_time < 1) {
+      return 'less than 1 second ago';
     }
 
     $condition = array(
-                12 * 30 * 24 * 60 * 60  =>  'year',
-                30 * 24 * 60 * 60       =>  'month',
-                24 * 60 * 60            =>  'day',
-                60 * 60                 =>  'hour',
-                60                      =>  'minute',
-                1                       =>  'second'
+      12 * 30 * 24 * 60 * 60 => 'year',
+      30 * 24 * 60 * 60 => 'month',
+      24 * 60 * 60 => 'day',
+      60 * 60 => 'hour',
+      60 => 'minute',
+      1 => 'second'
     );
 
-    foreach( $condition as $secs => $str )
-    {
-        $d = $estimate_time / $secs;
+    foreach ($condition as $secs => $str) {
+      $d = $estimate_time / $secs;
 
-        if( $d >= 1 )
-        {
-            $r = round( $d );
-            return $r . ' ' . $str . ( $r > 1 ? 's' : '' ) . ' ago';
-        }
+      if ($d >= 1) {
+        $r = round($d);
+        return $r . ' ' . $str . ($r > 1 ? 's' : '') . ' ago';
+      }
     }
   }
 }
 
 function hari($date)
 {
-	$day = date('N', strtotime($date));
+  $day = date('N', strtotime($date));
 
-	$hari = array(
-						'1' => 'Senin',
-						'2' => 'Selasa',
-						'3' => 'rabu',
-						'4' => 'Kamis',
-						'5' => "Jum'at",
-						'6' => 'Sabtu',
-						'7' => 'Minggu',
- 					);
-	return $hari[$day];
+  $hari = array(
+    '1' => 'Senin',
+    '2' => 'Selasa',
+    '3' => 'rabu',
+    '4' => 'Kamis',
+    '5' => "Jum'at",
+    '6' => 'Sabtu',
+    '7' => 'Minggu',
+  );
+  return $hari[$day];
 }
 
 function bulan($date)
 {
-	$month = date('n', strtotime($date));
+  $month = date('n', strtotime($date));
 
-	$bulan = array(
-						'1' => 'Januari','2' => 'Februari','3' => 'Maret','4' => 'April',
-						'5' => 'Mei','6' => 'Juni','7' => 'Juli','8' => 'Agustus',
-						'9' => 'September','10' => 'Oktober','11' => 'November','12' => 'Desember'
- 					);
-	return $bulan[$month];
+  $bulan = array(
+    '1' => 'Januari',
+    '2' => 'Februari',
+    '3' => 'Maret',
+    '4' => 'April',
+    '5' => 'Mei',
+    '6' => 'Juni',
+    '7' => 'Juli',
+    '8' => 'Agustus',
+    '9' => 'September',
+    '10' => 'Oktober',
+    '11' => 'November',
+    '12' => 'Desember'
+  );
+  return $bulan[$month];
 }
 
-function local_date($tgl){
-	$tanggal = substr($tgl,8,2);
-	$bulan = bulan($tgl);
-	$tahun = substr($tgl,0,4);
-	return $tanggal.' '.$bulan.' '.$tahun;
+function local_date($tgl)
+{
+  $tanggal = substr($tgl, 8, 2);
+  $bulan = bulan($tgl);
+  $tahun = substr($tgl, 0, 4);
+  return $tanggal . ' ' . $bulan . ' ' . $tahun;
 }
 
-function id_date($tgl){
-	$tanggal = substr($tgl,8,2);
-	$bulan = substr($tgl,5,2);
-	$tahun = substr($tgl,0,4);
-	return $tanggal.'/'.$bulan.'/'.$tahun;
+function id_date($tgl)
+{
+  $tanggal = substr($tgl, 8, 2);
+  $bulan = substr($tgl, 5, 2);
+  $tahun = substr($tgl, 0, 4);
+  return $tanggal . '/' . $bulan . '/' . $tahun;
 }
 
-function conv_date($tgl){
-	$tanggal = substr($tgl,0,2);
-	$bulan = substr($tgl,3,2);
-	$tahun = substr($tgl,6,4);
-	return $tahun.'-'.$bulan.'-'.$tanggal;
+function conv_date($tgl)
+{
+  $tanggal = substr($tgl, 0, 2);
+  $bulan = substr($tgl, 3, 2);
+  $tahun = substr($tgl, 6, 4);
+  return $tahun . '-' . $bulan . '-' . $tanggal;
 }
 
-function read_date($tgl){
+function read_date($tgl)
+{
   $time = strtotime($tgl);
   return date('d/m/Y', $time);
 }
 
 function agama($status)
 {
-	$agama = array(
-						'1' => 'Islam',
-						'2' => 'Kristen',
-						'3' => 'Katolik',
-						'4' => 'Hindu',
-						'5' => 'Buddha',
-						'6' => 'Konghucu'
- 					);
-	return $agama[$status];
+  $agama = array(
+    '1' => 'Islam',
+    '2' => 'Kristen',
+    '3' => 'Katolik',
+    '4' => 'Hindu',
+    '5' => 'Buddha',
+    '6' => 'Konghucu'
+  );
+  return $agama[$status];
 }
 
 function kodekepala($kode)
 {
-  if($kode == 0){
+  if ($kode == 0) {
     $kodebuntut = 14;
-  }else if(substr($kode,-12) == '000000000000'){
+  } else if (substr($kode, -12) == '000000000000') {
     $kodebuntut = 12;
-  }else if(substr($kode,-10) == '0000000000'){
+  } else if (substr($kode, -10) == '0000000000') {
     $kodebuntut = 10;
-  }else if(substr($kode,-8) == '00000000'){
+  } else if (substr($kode, -8) == '00000000') {
     $kodebuntut = 8;
-  }else if(substr($kode,-6) == '000000'){
+  } else if (substr($kode, -6) == '000000') {
     $kodebuntut = 6;
-  }else if(substr($kode,-4) == '0000'){
+  } else if (substr($kode, -4) == '0000') {
     $kodebuntut = 4;
-  }else if(substr($kode,-2) == '00'){
+  } else if (substr($kode, -2) == '00') {
     $kodebuntut = 2;
-  }else if(substr($kode,-2) != '00'){
+  } else if (substr($kode, -2) != '00') {
     $kodebuntut = 2;
   }
 
@@ -128,21 +137,21 @@ function kodekepala($kode)
 
 function kodekelola($kode)
 {
-  if($kode == 0){
+  if ($kode == 0) {
     $kodebuntut = 14;
-  }else if(substr($kode,-12) == '000000000000'){
+  } else if (substr($kode, -12) == '000000000000') {
     $kodebuntut = 12;
-  }else if(substr($kode,-10) == '0000000000'){
+  } else if (substr($kode, -10) == '0000000000') {
     $kodebuntut = 10;
-  }else if(substr($kode,-8) == '00000000'){
+  } else if (substr($kode, -8) == '00000000') {
     $kodebuntut = 8;
-  }else if(substr($kode,-6) == '000000'){
+  } else if (substr($kode, -6) == '000000') {
     $kodebuntut = 6;
-  }else if(substr($kode,-4) == '0000'){
+  } else if (substr($kode, -4) == '0000') {
     $kodebuntut = 4;
-  }else if(substr($kode,-2) == '00'){
+  } else if (substr($kode, -2) == '00') {
     $kodebuntut = 2;
-  }else if(substr($kode,-2) != '00'){
+  } else if (substr($kode, -2) != '00') {
     $kodebuntut = 2;
   }
   return $kodebuntut;
@@ -155,67 +164,67 @@ function kodeparent($kode)
   return $kodeparent;
 }
 
-function timeDiff($firstTime,$lastTime)
+function timeDiff($firstTime, $lastTime)
 {
-  $firstTime=strtotime($firstTime);
-  $lastTime=strtotime($lastTime);
+  $firstTime = strtotime($firstTime);
+  $lastTime = strtotime($lastTime);
 
-  $timeDiff=$lastTime-$firstTime;
+  $timeDiff = $lastTime - $firstTime;
 
   return gmdate("H:i:s", $timeDiff);
 
 }
 
-function to_date($date='')
+function to_date($date = '')
 {
   $time = strtotime($date);
   return date('Y-m-d', $time);
 }
 
-function to_time($date='')
+function to_time($date = '')
 {
   $time = strtotime($date);
   return date('H:i:s', $time);
 }
 
-function std_to_time($std='')
+function std_to_time($std = '')
 {
   $time1 = substr($std, 0, 2);
   $time2 = substr($std, -2);
 
-  return $time1.':'.$time2.':00';
+  return $time1 . ':' . $time2 . ':00';
 
 }
 
-function format_number($dates='')
+function format_number($dates = '')
 {
   $date = date('d', strtotime($dates));
   $month = date('M', strtotime($dates));
   $year = date('Y', strtotime($dates));
 
-  return $date.'/'.$month.' '.$year;
+  return $date . '/' . $month . ' ' . $year;
 }
 
 function rupiah($angka)
 {
-	$hasil_rupiah = number_format(($angka ?? 0),0,',','.');
-	return $hasil_rupiah;
+  $hasil_rupiah = number_format(($angka ?? 0), 0, ',', '.');
+  return $hasil_rupiah;
 }
 
-function shortdec($number='')
+function shortdec($number = '')
 {
-  return number_format((float)$number, 2, '.', '');
+  return number_format((float) $number, 2, '.', '');
 }
 
 function konsultasi_status($status)
 {
-  if($status == 0){
+  if ($status == 0) {
     $result = 'Dikirim';
-  }else if($status == 1){
+  } else if ($status == 1) {
     $result = 'Admin Membalas';
-  }else if($status == 2){
+  } else if ($status == 2) {
     $result = 'Anda Membalas';
-  }else if($status == 3){
+  } else if ($status == 3) {
     $result = 'Ditutup';
   }
 
@@ -224,106 +233,107 @@ function konsultasi_status($status)
 
 function laporanstatus($status)
 {
-  if($status == 0){
+  if ($status == 0) {
     $result = '<span class="badge bg-warning">Dikirim</span>';
-  }else if($status == 1){
+  } else if ($status == 1) {
     $result = '<span class="badge bg-success">Diterima</span>';
-  }else if($status == 2){
+  } else if ($status == 2) {
     $result = '<span class="badge bg-danger">Ditolak</span>';
-  }else{
+  } else {
     $result = '';
   }
 
   return $result;
 }
 
-function hp($nohp) {
-  $nohp = str_replace(" ","",$nohp);
-  $nohp = str_replace("(","",$nohp);
-  $nohp = str_replace(")","",$nohp);
-  $nohp = str_replace(".","",$nohp);
+function hp($nohp)
+{
+  $nohp = str_replace(" ", "", $nohp);
+  $nohp = str_replace("(", "", $nohp);
+  $nohp = str_replace(")", "", $nohp);
+  $nohp = str_replace(".", "", $nohp);
 
   $hp = null;
-  if(!preg_match('/[^+0-9]/',trim($nohp))){
-     if(substr(trim($nohp), 0, 3)=='+62'){
-         $hp = trim($nohp);
-     }
-     elseif(substr(trim($nohp), 0, 1)=='0'){
-         $hp = '62'.substr(trim($nohp), 1);
-     }
+  if (!preg_match('/[^+0-9]/', trim($nohp))) {
+    if (substr(trim($nohp), 0, 3) == '+62') {
+      $hp = trim($nohp);
+    } elseif (substr(trim($nohp), 0, 1) == '0') {
+      $hp = '62' . substr(trim($nohp), 1);
+    }
   }
   return $hp;
- }
+}
 
- function setagenda($id)
- {
-   $db          = \Config\Database::connect();
-   $tahun       = date('Y');
-   $getagenda   = $db->query("exec sp_get_agenda @tahun='".$tahun."'")->getRow();
-   $urutagenda    = ($getagenda->AGENDA > 0)?$getagenda->AGENDA:1;
-   $noagenda    = setzeroagenda($urutagenda);
+function setagenda($id)
+{
+  $db = \Config\Database::connect();
+  $tahun = date('Y');
+  $getagenda = $db->query("exec sp_get_agenda @tahun='" . $tahun . "'")->getRow();
+  $urutagenda = ($getagenda->AGENDA > 0) ? $getagenda->AGENDA : 1;
+  $noagenda = setzeroagenda($urutagenda);
 
-   // $usul = new \App\Models\UsulModel();
-   // $usul->update($id,['AGENDA' => $noagenda,'AGENDA_URUT' => $urutagenda]);
+  // $usul = new \App\Models\UsulModel();
+  // $usul->update($id,['AGENDA' => $noagenda,'AGENDA_URUT' => $urutagenda]);
 
-   $update = $db->query("UPDATE TR_USULAN SET AGENDA='$noagenda', AGENDA_URUT='$urutagenda' WHERE ID='$id'");
- }
+  $update = $db->query("UPDATE TR_USULAN SET AGENDA='$noagenda', AGENDA_URUT='$urutagenda' WHERE ID='$id'");
+}
 
- function setzeroagenda($id)
- {
-   if(strlen($id) == 1){
-     return '00000'.$id;
-   }else if(strlen($id) == 2){
-     return '0000'.$id;
-   }else if(strlen($id) == 3){
-     return '000'.$id;
-   }else if(strlen($id) == 4){
-     return '00'.$id;
-   }else if(strlen($id) == 5){
-     return '0'.$id;
-   }else{
-     return $id;
-   }
- }
+function setzeroagenda($id)
+{
+  if (strlen($id) == 1) {
+    return '00000' . $id;
+  } else if (strlen($id) == 2) {
+    return '0000' . $id;
+  } else if (strlen($id) == 3) {
+    return '000' . $id;
+  } else if (strlen($id) == 4) {
+    return '00' . $id;
+  } else if (strlen($id) == 5) {
+    return '0' . $id;
+  } else {
+    return $id;
+  }
+}
 
- function gender($kode)
- {
-   if($kode == 1){
-     return 'Laki-Laki';
-   }else if($kode == 0){
-     return 'Perempuan';
-   }else{
-     return '-';
-   }
- }
+function gender($kode)
+{
+  if ($kode == 1) {
+    return 'Laki-Laki';
+  } else if ($kode == 0) {
+    return 'Perempuan';
+  } else {
+    return '-';
+  }
+}
 
- function level($kode)
- {
-   if($kode == 1){
-     return 'Pusat';
-   }else if($kode == 2){
-     return 'Kanwil';
-   }else if($kode == 3){
-     return 'Kankemenag';
-   }else if($kode == 4){
-     return 'Madrasah';
-   }else{
-     return '-';
-   }
- }
+function level($kode)
+{
+  if ($kode == 1) {
+    return 'Pusat';
+  } else if ($kode == 2) {
+    return 'Kanwil';
+  } else if ($kode == 3) {
+    return 'Kankemenag';
+  } else if ($kode == 4) {
+    return 'Madrasah';
+  } else {
+    return '-';
+  }
+}
 
- function role($kode)
- {
-   if($kode == 1){
-     return 'Operator';
-   }else if($kode == 2){
-     return 'Penandatangan';
-   }else{
-     return '-';
-   }
- }
+function role($kode)
+{
+  if ($kode == 1) {
+    return 'Operator';
+  } else if ($kode == 2) {
+    return 'Penandatangan';
+  } else {
+    return '-';
+  }
+}
 
- function alasanFormat($string) {
+function alasanFormat($string)
+{
 
   // $bits = explode("\n", $string);
 
@@ -335,168 +345,175 @@ function hp($nohp) {
   // $newstring .= "</ol>";
 
   // return $newstring;
-  
+
   $bits = @unserialize($string);
 
-  if(!is_array($bits)) {
+  if (!is_array($bits)) {
     $bits = explode("\n", $string);
     $newstring = "<ol>";
-    foreach($bits as $bit)
-    {
+    foreach ($bits as $bit) {
       $newstring .= "<li>" . $bit . "</li>";
     }
     $newstring .= "</ol>";
-  }else{
+  } else {
     $newstring = "<ol>";
-    for($i = 0; $i < count($bits); $i++)
-    {
+    for ($i = 0; $i < count($bits); $i++) {
       $newstring .= "<li>" . $bits[$i] . "</li>";
     }
     $newstring .= "</ol>";
   }
 
   return $newstring;
- }
+}
 
- function alasanArray($string) {
+function alasanArray($string)
+{
 
   $strings = explode("\n", $string);
 
   return $strings;
- }
+}
 
- function usul_status($status)
- {
-   if($status == 0){
-     $result = '<span class="badge bg-secondary">Draft</span>';
-   }else if($status == 1){
-     $result = '<span class="badge bg-primary">Dikirim</span>';
-   }else if($status == 2){
-     $result = '<span class="badge bg-primary">Disposisi ke Verifikator</span>';
-   }else if($status == 3){
-     $result = '<span class="badge bg-success">Proses Verifikasi</span>';
-   }else if($status == 31){
-     $result = '<span class="badge bg-success">Verifikasi Ulang</span>';
-   }else if($status == 4){
-     $result = '<span class="badge bg-primary">Proses Verifikasi Selesai</span>';
-   }else if($status == 41){
-     $result = '<span class="badge bg-primary">Proses Penilaian Asesor</span>';
-   }else if($status == 5){
-     $result = '<span class="badge bg-primary">Proses Penilaian Asesor</span>';
-   }else if($status == 6){
-     $result = '<span class="badge bg-primary">Penilaian Selesai</span>';
-   }else if($status == 7){
-     $result = '<span class="badge bg-primary">xxx</span>';
-   }else if($status == 8){
-     $result = '<span class="badge bg-primary">Proses RKMA</span>';
-   }else if($status == 9){
-     $result = '<span class="badge bg-primary">KMA Telah Terbit</span>';
-   }else if($status == 20){
-     $result = '<span class="badge bg-success">Selesai</span>';
-   }else if($status == 21){
-     $result = '<span class="badge bg-dark">Dikembalikan</span>';
-   }else{
-     $result = '';
-   }
+function usul_status($status)
+{
+  if ($status == 0) {
+    $result = '<span class="badge bg-secondary">Draft</span>';
+  } else if ($status == 1) {
+    $result = '<span class="badge bg-primary">Dikirim</span>';
+  } else if ($status == 2) {
+    $result = '<span class="badge bg-primary">Disposisi ke Verifikator</span>';
+  } else if ($status == 3) {
+    $result = '<span class="badge bg-success">Proses Verifikasi</span>';
+  } else if ($status == 31) {
+    $result = '<span class="badge bg-success">Verifikasi Ulang</span>';
+  } else if ($status == 4) {
+    $result = '<span class="badge bg-primary">Proses Verifikasi Selesai</span>';
+  } else if ($status == 41) {
+    $result = '<span class="badge bg-primary">Proses Penilaian Asesor</span>';
+  } else if ($status == 5) {
+    $result = '<span class="badge bg-primary">Proses Penilaian Asesor</span>';
+  } else if ($status == 6) {
+    $result = '<span class="badge bg-primary">Penilaian Selesai</span>';
+  } else if ($status == 7) {
+    $result = '<span class="badge bg-primary">xxx</span>';
+  } else if ($status == 8) {
+    $result = '<span class="badge bg-primary">Proses RKMA</span>';
+  } else if ($status == 9) {
+    $result = '<span class="badge bg-primary">KMA Telah Terbit</span>';
+  } else if ($status == 20) {
+    $result = '<span class="badge bg-success">Selesai</span>';
+  } else if ($status == 21) {
+    $result = '<span class="badge bg-dark">Dikembalikan</span>';
+  } else {
+    $result = '';
+  }
 
-   return $result;
- }
+  return $result;
+}
 
- function usul_status_text($status)
- {
-   if($status == 0){
-     $result = 'Draft';
-   }else if($status == 1){
-     $result = 'Dikirim';
-   }else if($status == 2){
-     $result = 'Disposisi ke Verifikator';
-   }else if($status == 3){
-     $result = 'Proses Verifikasi';
-   }else if($status == 31){
-     $result = 'Verifikasi Ulang';
-   }else if($status == 4){
-     $result = 'Proses Verifikasi Selesai';
-   }else if($status == 41){
-     $result = 'Proses Penilaian Asesor';
-   }else if($status == 5){
-     $result = 'Proses Penilaian Asesor';
-   }else if($status == 6){
-     $result = 'Penilaian Selesai';
-   }else if($status == 7){
-     $result = '';
-   }else if($status == 8){
-     $result = 'Proses RKMA';
-   }else if($status == 9){
-     $result = 'KMA Telah Terbit';
-   }else if($status == 20){
-     $result = 'Selesai';
-   }else if($status == 21){
-     $result = 'Dikembalikan';
-   }else{
-     $result = '';
-   }
+function usul_status_text($status)
+{
+  if ($status == 0) {
+    $result = 'Draft';
+  } else if ($status == 1) {
+    $result = 'Dikirim';
+  } else if ($status == 2) {
+    $result = 'Disposisi ke Verifikator';
+  } else if ($status == 3) {
+    $result = 'Proses Verifikasi';
+  } else if ($status == 31) {
+    $result = 'Verifikasi Ulang';
+  } else if ($status == 4) {
+    $result = 'Proses Verifikasi Selesai';
+  } else if ($status == 41) {
+    $result = 'Proses Penilaian Asesor';
+  } else if ($status == 5) {
+    $result = 'Proses Penilaian Asesor';
+  } else if ($status == 6) {
+    $result = 'Penilaian Selesai';
+  } else if ($status == 7) {
+    $result = '';
+  } else if ($status == 8) {
+    $result = 'Proses RKMA';
+  } else if ($status == 9) {
+    $result = 'KMA Telah Terbit';
+  } else if ($status == 20) {
+    $result = 'Selesai';
+  } else if ($status == 21) {
+    $result = 'Dikembalikan';
+  } else {
+    $result = '';
+  }
 
-   return $result;
- }
+  return $result;
+}
 
- function jenisasesmen($jenis) {
-  if($jenis == 1){
-     $result = 'Asesmen Kecukupan';
-   }else if($jenis == 2){
-     $result = 'Asesmen Lapangan';
-   }else{
-     $result = '-';
-   }
+function jenisasesmen($jenis)
+{
+  if ($jenis == 1) {
+    $result = 'Asesmen Kecukupan';
+  } else if ($jenis == 2) {
+    $result = 'Asesmen Lapangan';
+  } else {
+    $result = '-';
+  }
 
-   return $result;
- }
+  return $result;
+}
 
- function layananurl($jenis) {
-  if($jenis == 1){
-     $result = 'pendirianptkis';
-   }else if($jenis == 2){
-     $result = 'alihbentukptkis';
-   }else if($jenis == 3){
-     $result = 'alihkelolaptkis';
-   }else if($jenis == 4){
-     $result = 'pembentukanfai';
-   }else{
-     $result = '-';
-   }
+function layananurl($jenis)
+{
+  if ($jenis == 1) {
+    $result = 'pendirianptkis';
+  } else if ($jenis == 2) {
+    $result = 'alihbentukptkis';
+  } else if ($jenis == 3) {
+    $result = 'alihkelolaptkis';
+  } else if ($jenis == 4) {
+    $result = 'pembentukanfai';
+  } else if ($jenis == 5) {
+    $result = 'penggabunganptki';
+  } else {
+    $result = '-';
+  }
 
-   return $result;
- }
+  return $result;
+}
 
- function nomorsurat($urut) {
+function nomorsurat($urut)
+{
   // 000001
-  if(strlen($urut) == 1){
-    $nomor = '00000'.$urut;
-  }else if(strlen($urut) == 2){
-    $nomor = '0000'.$urut;
-  }else if(strlen($urut) == 3){
-    $nomor = '000'.$urut;
-  }else if(strlen($urut) == 4){
-    $nomor = '00'.$urut;
-  }else if(strlen($urut) == 5){
-    $nomor = '0'.$urut;
-  }else{
+  if (strlen($urut) == 1) {
+    $nomor = '00000' . $urut;
+  } else if (strlen($urut) == 2) {
+    $nomor = '0000' . $urut;
+  } else if (strlen($urut) == 3) {
+    $nomor = '000' . $urut;
+  } else if (strlen($urut) == 4) {
+    $nomor = '00' . $urut;
+  } else if (strlen($urut) == 5) {
+    $nomor = '0' . $urut;
+  } else {
     $nomor = $urut;
   }
-  
-  return $nomor.'/DJ.1/Dt.I.II/KP.07/'.date('n').'/'.date('Y');
+
+  return $nomor . '/DJ.1/Dt.I.II/KP.07/' . date('n') . '/' . date('Y');
 }
 
 define('ENCRYPTION_KEY', '4736d52f85bdb63e46bf7d6d41bbd551af36e1bfb7c68164bf81e2400d291319');
 function encrypt($string, $salt = null)
 {
-	if($salt === null) { $salt = hash('sha256', uniqid(mt_rand(), true)); }  // this is an unique salt per entry and directly stored within a password
-	return base64_encode(openssl_encrypt($string, 'AES-256-CBC', ENCRYPTION_KEY, 0, str_pad(substr($salt, 0, 16), 16, '0', STR_PAD_LEFT))).':'.$salt;
+  if ($salt === null) {
+    $salt = hash('sha256', uniqid(mt_rand(), true));
+  }  // this is an unique salt per entry and directly stored within a password
+  return base64_encode(openssl_encrypt($string, 'AES-256-CBC', ENCRYPTION_KEY, 0, str_pad(substr($salt, 0, 16), 16, '0', STR_PAD_LEFT))) . ':' . $salt;
 }
 function decrypt($string)
 {
-  	// if( count(explode(':', $string)) !== 2 ) { return $string; }
-	$salt = explode(":",$string)[1]; $string = explode(":",$string)[0]; // read salt from entry
-	return openssl_decrypt(base64_decode($string), 'AES-256-CBC', ENCRYPTION_KEY, 0, str_pad(substr($salt, 0, 16), 16, '0', STR_PAD_LEFT));
+  // if( count(explode(':', $string)) !== 2 ) { return $string; }
+  $salt = explode(":", $string)[1];
+  $string = explode(":", $string)[0]; // read salt from entry
+  return openssl_decrypt(base64_decode($string), 'AES-256-CBC', ENCRYPTION_KEY, 0, str_pad(substr($salt, 0, 16), 16, '0', STR_PAD_LEFT));
 }
 
 function generate_uuid()

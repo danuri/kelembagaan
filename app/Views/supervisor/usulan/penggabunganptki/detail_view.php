@@ -42,14 +42,7 @@
                         <h6>Nama Lembaga</h6>
                     </div>
                     <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $detail->nama_lembaga ?></div>
-                </div>
-                <div style="display: table-row;">
-                    <div style="display: table-cell; padding-right: 0.5rem;">
-                        <h6>Alamat Lembaga</h6>
-                    </div>
-                    <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $detail->alamat_lembaga ?></div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->nama_lembaga ?></div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12">
@@ -148,6 +141,12 @@
                                         href="<?= base_url('uploads/kma/' . $usulan->file_kma) ?>" target="_blank">Lihat</a>
                                 <?php endif; ?>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row mb-6">
+                        <label class="col-sm-3 col-form-label" for="save"></label>
+                        <div class="col-sm-9">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>
                     </div>
                 </form>

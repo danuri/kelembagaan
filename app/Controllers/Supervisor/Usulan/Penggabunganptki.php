@@ -5,11 +5,10 @@ namespace App\Controllers\Supervisor\Usulan;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\UsulanModel;
-use App\Models\AlihkelolaModel;
 use App\Models\CrudModel;
 use App\Models\LogModel;
 
-class Alihkelolaptkis extends BaseController
+class Penggabunganptki extends BaseController
 {
     public function index()
     {
@@ -20,15 +19,13 @@ class Alihkelolaptkis extends BaseController
     {
         $id = decrypt($id);
         $model = new UsulanModel();
-        $detail = new AlihkelolaModel();
         $data['usulan'] = $model->where('id', $id)->first();
-        $data['detail'] = $detail->where('usulan_id', $id)->first();
 
         $crudModel = new CrudModel();
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
 
 
-        if ($data['usulan']->status == 1 || $data['usulan']->status == 4) {
+        if ($data['usulan']->status == 1) {
 
             $users = auth()->getProvider();
 
@@ -38,14 +35,14 @@ class Alihkelolaptkis extends BaseController
                 ->withIdentities()
                 ->findAll();
 
-            return view('supervisor/usulan/alihkelolaptkis/detail', $data);
+            return view('supervisor/usulan/penggabunganptki/detail', $data);
         } else {
             $model = new LogModel;
             $data['logs'] = $model->where('id_usul', $id)->findAll();
 
             $users = auth()->getProvider();
             $data['verifikator'] = $users->findById($data['usulan']->verifikator);
-            return view('supervisor/usulan/alihkelolaptkis/detail_view', $data);
+            return view('supervisor/usulan/penggabunganptki/detail_view', $data);
         }
     }
 
@@ -65,9 +62,7 @@ class Alihkelolaptkis extends BaseController
     {
         $id = decrypt($id);
         $model = new UsulanModel();
-        $detail = new AlihkelolaModel();
         $data['usulan'] = $model->where('id', $id)->first();
-        $data['detail'] = $detail->where('usulan_id', $id)->first();
 
         $crudModel = new CrudModel();
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
@@ -75,7 +70,7 @@ class Alihkelolaptkis extends BaseController
         $users = auth()->getProvider();
         $data['verifikator'] = $users->findById($data['usulan']->verifikator);
 
-        return view('supervisor/usulan/alihkelolaptkis/detail_dokumen', $data);
+        return view('supervisor/usulan/penggabunganptki/detail_dokumen', $data);
     }
 
     public function recheck($id)

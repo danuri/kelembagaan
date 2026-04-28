@@ -38,14 +38,7 @@
                         <h6>Nama Lembaga</h6>
                     </div>
                     <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $detail->nama_lembaga ?></div>
-                </div>
-                <div style="display: table-row;">
-                    <div style="display: table-cell; padding-right: 0.5rem;">
-                        <h6>Alamat Lembaga</h6>
-                    </div>
-                    <div style="display: table-cell; padding-right: 0.5rem;">:</div>
-                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $detail->alamat_lembaga ?></div>
+                    <div style="display: table-cell; padding-right: 0.5rem;"><?= $usulan->nama_lembaga ?></div>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12">
@@ -103,9 +96,11 @@
                 id="keterangan_dokumen<?= $dokumen->usul_dokumen_id ?>" data-dok="<?= $dokumen->usul_dokumen_id ?>"
                 class="form-select form-select-sm keterangancheck">
                 <option value=""></option>
-                <option value="Berkas Tidak Sesuai" <?= ($dokumen->keterangan == 'Berkas Tidak Sesuai') ? 'selected' : ''; ?>>Berkas
+                <option value="Berkas Tidak Sesuai" <?= ($dokumen->keterangan == 'Berkas Tidak Sesuai') ? 'selected' : ''; ?>>
+                    Berkas
                     Tidak Sesuai</option>
-                <option value="Berkas Tidak Asli" <?= ($dokumen->keterangan == 'Berkas Tidak Asli') ? 'selected' : ''; ?>>Berkas
+                <option value="Berkas Tidak Asli" <?= ($dokumen->keterangan == 'Berkas Tidak Asli') ? 'selected' : ''; ?>>
+                    Berkas
                     Tidak Asli</option>
             </select>
         </td>
@@ -135,18 +130,18 @@
     $(document).ready(function () {
         $('.formcheck').change(function (event) {
             if (this.checked) {
-                $.get('<?= site_url('verifikator/usulan/alihkelolaptkis/validasidokumen'); ?>/' + this.id + '/1/0', function () {
+                $.get('<?= site_url('verifikator/usulan/penggabunganptki/validasidokumen'); ?>/' + this.id + '/1/0', function () {
                     alert('Berkas divalidasi');
                 });
             } else {
-                $.get('<?= site_url('verifikator/usulan/alihkelolaptkis/validasidokumen'); ?>/' + this.id + '/0/' + $('#keterangan_dokumen' + this.id).val(), function () {
+                $.get('<?= site_url('verifikator/usulan/penggabunganptki/validasidokumen'); ?>/' + this.id + '/0/' + $('#keterangan_dokumen' + this.id).val(), function () {
                     alert('Berkas belum divalidasi');
                 });
             }
         });
         $('.keterangancheck').change(function (event) {
             if (this.value) {
-                $.get('<?= site_url('verifikator/usulan/alihkelolaptkis/validasidokumen'); ?>/' + this.dataset.dok + '/0/' + this.value, function () {
+                $.get('<?= site_url('verifikator/usulan/penggabunganptki/validasidokumen'); ?>/' + this.dataset.dok + '/0/' + this.value, function () {
                     alert('Update keterangan berhasil');
                 });
                 // uncheck checkbox
@@ -174,7 +169,7 @@
             confirmButtonText: 'Kembalikan Berkas',
             showLoaderOnConfirm: true,
             preConfirm: (data) => {
-                return fetch('<?= site_url('verifikator/usulan/alihkelolaptkis/decline/' . encrypt($usulan->id)) ?>', {
+                return fetch('<?= site_url('verifikator/usulan/penggabunganptki/decline/' . encrypt($usulan->id)) ?>', {
                     method: "POST",
                     body: JSON.stringify({ keterangan: data }),
                     headers: { "Content-type": "application/json; charset=UTF-8" }
@@ -212,7 +207,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 // redirect to verifikator/usulan/pembentukanfai/accept/id
-                window.location.href = '<?= site_url('verifikator/usulan/alihkelolaptkis/accept/' . encrypt($usulan->id)) ?>';
+                window.location.href = '<?= site_url('verifikator/usulan/penggabunganptki/accept/' . encrypt($usulan->id)) ?>';
             }
         });
     }
