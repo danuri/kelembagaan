@@ -3,6 +3,27 @@
 
 ---
 
+## [v1.5.0] - 04 Mei 2026
+
+### Ditambahkan
+- **Integrasi SIPPRO**: Implementasi library API (`SipproService.php`) untuk sinkronisasi data usulan Pendirian PTKIS ke sistem Kemenag.
+- Model dan Database: Pembuatan tabel `sipro_log` via migrasi dan `SiproLogModel.php` untuk mencatat seluruh riwayat interaksi API SIPPRO.
+- **Modul Penggabungan PTKI**: Modul usulan baru secara lengkap dari hulu ke hilir, mencakup sisi User (`User/Penggabunganptki.php`), Verifikator, dan Supervisor, beserta view dan Javascript (`form-penggabungan.js`).
+- **Profil Pengguna**: Halaman untuk mengelola informasi profil dan ubah kata sandi pengguna (`User/Profile.php`).
+- Template antarmuka pengguna (User) utama diubah ke desain yang baru (`app/Views/user/template2.php`).
+
+### Diperbarui
+- Alur kerja dan antarmuka usulan **Pendirian PTKIS** di sisi Supervisor (`detail.php` dan `detail_view.php`) telah dilengkapi antarmuka (tab) khusus integrasi, tombol aksi, dan log riwayat sinkronisasi SIPPRO.
+- Pembaruan rute aplikasi (`Routes.php`), konfigurasi auth/email, serta optimasi di `custom_helper.php`.
+- Refactoring besar-besaran antarmuka pada halaman pengguna untuk usulan Alih Bentuk, Alih Kelola, dan Pembentukan FAI agar selaras dengan template baru.
+- Controller dan view untuk **Alih Kelola PTKIS** diperbarui untuk mengakomodasi penyesuaian alur data.
+- Halaman Welcome (landing page) juga mendapat penyesuaian template.
+
+### Dihapus
+- File migrasi otentikasi usang/redundan (`2020-12-28-223112_create_auth_tables.php`) dibersihkan dari repositori.
+
+---
+
 ## [v1.4.0] - 15 Maret 2026
 
 ### Ditambahkan
