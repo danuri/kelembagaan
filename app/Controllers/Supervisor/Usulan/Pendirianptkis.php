@@ -13,6 +13,8 @@ use App\Models\CrudModel;
 use App\Models\LogModel;
 use App\Models\AsesorModel;
 use App\Models\ProdiModel;
+use App\Models\SiproLogModel;
+use App\Libraries\SipproService;
 
 class Pendirianptkis extends BaseController
 {
@@ -21,7 +23,8 @@ class Pendirianptkis extends BaseController
         //
     }
 
-    function detail($id) {
+    function detail($id)
+    {
         $id = decrypt($id);
         $model = new UsulanModel();
         $detail = new PendirianptkisModel();
@@ -32,27 +35,27 @@ class Pendirianptkis extends BaseController
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
 
         $pmodel = new ProdiModel;
-        $data['prodi'] = $pmodel->where(['usul_id'=>$id])->findAll();
+        $data['prodi'] = $pmodel->where(['usul_id' => $id])->findAll();
 
-        $data['provinsi'] = $crudModel->getRow('reg_provinces',['id'=>$data['detail']->provinsi])->name;
-        $data['kabupaten'] = $crudModel->getRow('reg_regencies',['id'=>$data['detail']->kab_kota])->name;
-        $data['kecamatan'] = $crudModel->getRow('reg_districts',['id'=>$data['detail']->kecamatan])->name;
-        $data['kelurahan'] = $crudModel->getRow('reg_villages',['id'=>$data['detail']->kelurahan])->name;
+        $data['provinsi'] = $crudModel->getRow('reg_provinces', ['id' => $data['detail']->provinsi])->name;
+        $data['kabupaten'] = $crudModel->getRow('reg_regencies', ['id' => $data['detail']->kab_kota])->name;
+        $data['kecamatan'] = $crudModel->getRow('reg_districts', ['id' => $data['detail']->kecamatan])->name;
+        $data['kelurahan'] = $crudModel->getRow('reg_villages', ['id' => $data['detail']->kelurahan])->name;
 
         if ($data['usulan']->status == 1 || $data['usulan']->status == 2) {
 
             $users = auth()->getProvider();
 
             $data['users'] = $users
-            ->join('auth_groups_users agu', 'agu.user_id = users.id')
-            ->where('agu.group','verifikator')
-            ->withIdentities()
-            ->findAll();
-            
+                ->join('auth_groups_users agu', 'agu.user_id = users.id')
+                ->where('agu.group', 'verifikator')
+                ->withIdentities()
+                ->findAll();
+
             return view('supervisor/usulan/pendirianptkis/detail', $data);
-        }else{
+        } else {
             $model = new LogModel;
-            $data['logs'] = $model->where('id_usul',$id)->findAll();
+            $data['logs'] = $model->where('id_usul', $id)->findAll();
 
             $users = auth()->getProvider();
             $data['verifikator'] = $users->findById($data['usulan']->verifikator);
@@ -60,18 +63,20 @@ class Pendirianptkis extends BaseController
         }
     }
 
-    function disposisi($id) {
+    function disposisi($id)
+    {
         $id = decrypt($id);
         $model = new UsulanModel();
 
-        $model->update($id, ['status' => 2,'verifikator'=>$this->request->getPost('verifikator'),'catatan'=>$this->request->getPost('catatan')]);
+        $model->update($id, ['status' => 2, 'verifikator' => $this->request->getPost('verifikator'), 'catatan' => $this->request->getPost('catatan')]);
 
         $logm = new LogModel();
-        $logm->insert(['id_usul' => $id, 'status_usulan' => 2, 'keterangan' => 'Usulan didisposisi ke verifikator.','disposisi'=>'sss', 'created_by' => user_id()]);
+        $logm->insert(['id_usul' => $id, 'status_usulan' => 2, 'keterangan' => 'Usulan didisposisi ke verifikator.', 'disposisi' => 'sss', 'created_by' => user_id()]);
         return redirect()->back()->with('success', 'Usulan telah didisposisi.');
     }
 
-    function verifikasi($id) {
+    function verifikasi($id)
+    {
         $id = decrypt($id);
         $model = new UsulanModel();
         $detail = new PendirianptkisModel();
@@ -87,7 +92,8 @@ class Pendirianptkis extends BaseController
         return view('supervisor/usulan/pendirianptkis/detail_dokumen', $data);
     }
 
-    function penilaian($id) {
+    function penilaian($id)
+    {
         $id = decrypt($id);
         $model = new UsulanModel();
         $detail = new PendirianptkisModel();
@@ -99,25 +105,26 @@ class Pendirianptkis extends BaseController
 
         $data['users'] = $users
             ->join('auth_groups_users agu', 'agu.user_id = users.id')
-            ->where('agu.group','verifikator')
+            ->where('agu.group', 'verifikator')
             ->withIdentities()
             ->findAll();
 
         $am = new AsesorModel;
         // join with users
         $data['asesorkecukupan'] = $am->select('tr_asesor.*,users.full_name')->join('users', 'users.id = tr_asesor.user_id')
-            ->where(['jenis'=>1,'usul_id'=>$id])
+            ->where(['jenis' => 1, 'usul_id' => $id])
             // ->withIdentities()
             ->findAll();
         $data['asesorlapangan'] = $am->select('tr_asesor.*,users.full_name')->join('users', 'users.id = tr_asesor.user_id')
-            ->where(['jenis'=>2,'usul_id'=>$id])
+            ->where(['jenis' => 2, 'usul_id' => $id])
             // ->withIdentities()
             ->findAll();
 
         return view('supervisor/usulan/pendirianptkis/detail_penilaian', $data);
     }
 
-    function visitasi($id) {
+    function visitasi($id)
+    {
         $id = decrypt($id);
         $model = new UsulanModel();
         $detail = new PendirianptkisModel();
@@ -127,7 +134,8 @@ class Pendirianptkis extends BaseController
         return view('supervisor/usulan/pendirianptkis/detail_penilaian', $data);
     }
 
-    function rkma($id) {
+    function rkma($id)
+    {
         $id = decrypt($id);
         $model = new UsulanModel();
         $detail = new PendirianptkisModel();
@@ -140,9 +148,10 @@ class Pendirianptkis extends BaseController
         return view('supervisor/usulan/pendirianptkis/detail_rkma', $data);
     }
 
-    function rkmadetail() {
+    function rkmadetail()
+    {
         $id = $this->request->getPost('detailid');
-        
+
         $detail = new PendirianptkisModel();
         $data = [
             'kategori' => $this->request->getPost('kategori'),
@@ -157,12 +166,13 @@ class Pendirianptkis extends BaseController
             'yayasan_kumham_tahun' => $this->request->getPost('yayasan_kumham_tahun'),
             'yayasan_kumham_tanggal' => $this->request->getPost('yayasan_kumham_tanggal'),
         ];
-        $detail->update($id,$data);
+        $detail->update($id, $data);
 
         return redirect()->back()->withInput()->with('success', 'Data telah direkam');
     }
 
-    function kma($id) {
+    function kma($id)
+    {
         $id = decrypt($id);
         $model = new UsulanModel();
         $detail = new PendirianptkisModel();
@@ -175,7 +185,8 @@ class Pendirianptkis extends BaseController
         return view('supervisor/usulan/pendirianptkis/detail_kma', $data);
     }
 
-    function penilaianasesor($id) {
+    function penilaianasesor($id)
+    {
         $model = new UsulanModel();
 
         $id = decrypt($id);
@@ -187,7 +198,8 @@ class Pendirianptkis extends BaseController
         return redirect()->back()->with('success', 'Data sudah dikirim ke Asesor untuk dinilai.');
     }
 
-    function addasesor() {
+    function addasesor()
+    {
         $model = new AsesorModel;
         $data = [
             'usul_id' => $this->request->getPost('usul_id'),
@@ -202,36 +214,39 @@ class Pendirianptkis extends BaseController
         return redirect()->back()->withInput()->with('success', 'Asesor telah direkam');
     }
 
-    function deleteasesor($id) {
+    function deleteasesor($id)
+    {
         $model = new AsesorModel;
         $delete = $model->delete($id);
         return redirect()->back()->withInput()->with('success', 'Asesor telah dihapus');
     }
-    
-    function penilaianreview($id) {
+
+    function penilaianreview($id)
+    {
         $model = new AsesorModel;
-        
+
         $id = decrypt($id);
-        $update = $model->update($id,['status'=>1]);
+        $update = $model->update($id, ['status' => 1]);
         return redirect()->back()->withInput()->with('success', 'Penilaian telah dikembalikan');
     }
 
     public function recheck($id)
     {
-      $model = new UsulanModel;
-      
-      $id = decrypt($id);
-      $keterangan = $this->request->getVar('keterangan');
-      $model->update($id,['status'=>31,'keterangan_supervisor'=>$keterangan]);
+        $model = new UsulanModel;
 
-      $logm = new LogModel();
-      $logm->insert(['id_usul'=>$id,'status_usulan'=>31,'keterangan'=>'Verifikasi Ulang. '.$keterangan,'created_by'=>user_id()]);
+        $id = decrypt($id);
+        $keterangan = $this->request->getVar('keterangan');
+        $model->update($id, ['status' => 31, 'keterangan_supervisor' => $keterangan]);
 
-      session()->setFlashdata('success', 'Usulan dikembalikan ke Verifikator.');
-      return $this->response->setJSON(['status'=>'success']);
+        $logm = new LogModel();
+        $logm->insert(['id_usul' => $id, 'status_usulan' => 31, 'keterangan' => 'Verifikasi Ulang. ' . $keterangan, 'created_by' => user_id()]);
+
+        session()->setFlashdata('success', 'Usulan dikembalikan ke Verifikator.');
+        return $this->response->setJSON(['status' => 'success']);
     }
 
-    function draftrkma($id) {
+    function draftrkma($id)
+    {
         $id = decrypt($id);
         $model = new UsulanModel();
         $detail = new PendirianptkisModel();
@@ -239,7 +254,7 @@ class Pendirianptkis extends BaseController
         $detail = $detail->where('usulan_id', $id)->first();
 
         $pmodel = new ProdiModel;
-        $prodi = $pmodel->where(['usul_id'=>$id])->findAll();
+        $prodi = $pmodel->where(['usul_id' => $id])->findAll();
 
         $templateProcessor = new \PhpOffice\PhpWord\TemplateProcessor('template/rkma_pendirian.docx');
         $predefinedMultilevel = array('listType' => \PhpOffice\PhpWord\Style\ListItem::TYPE_BULLET_EMPTY);
@@ -259,30 +274,71 @@ class Pendirianptkis extends BaseController
         // Prodi
         $templateProcessor->cloneBlock('blockProdi', count($prodi), true, true);
         $i = 1;
-        foreach($prodi as $pd){
-            $templateProcessor->setValue('prodiList#'.$i, $pd->nama_prodi
-        );
+        foreach ($prodi as $pd) {
+            $templateProcessor->setValue(
+                'prodiList#' . $i,
+                $pd->nama_prodi
+            );
             $i++;
         }
 
         $templateProcessor->setValue('menteriAgama', 'Nasaruddin Umar');
 
         $lembaga = preg_replace('/[^A-Za-z0-9_\-]/', '_', $detail->nama_lembaga);
-        $fileName = 'draftRKMA_'.$lembaga.'.docx'; // Desired filename for the download
-        $templateProcessor->saveAs('draft/'.$fileName);
+        $fileName = 'draftRKMA_' . $lembaga . '.docx'; // Desired filename for the download
+        $templateProcessor->saveAs('draft/' . $fileName);
 
-        return $this->response->download('draft/'.$fileName,null);
+        return $this->response->download('draft/' . $fileName, null);
     }
 
-    function done($id) {
-      $model = new UsulanModel;
-      
-      $id = decrypt($id);
-      $keterangan = $this->request->getVar('keterangan');
-      $model->update($id,['status'=>20,'keterangan_supervisor'=>$keterangan]);
+    function done($id)
+    {
+        $model = new UsulanModel;
 
-      $logm = new LogModel();
-      $logm->insert(['id_usul'=>$id,'status_usulan'=>20,'keterangan'=>'Usulan Selesai','created_by'=>user_id()]);
-      return redirect()->back()->with('success', 'Usulan telah ditandai selesai.');
+        $id = decrypt($id);
+        $keterangan = $this->request->getVar('keterangan');
+        $model->update($id, ['status' => 20, 'keterangan_supervisor' => $keterangan]);
+
+        $logm = new LogModel();
+        $logm->insert(['id_usul' => $id, 'status_usulan' => 20, 'keterangan' => 'Usulan Selesai', 'created_by' => user_id()]);
+        return redirect()->back()->with('success', 'Usulan telah ditandai selesai.');
+    }
+
+    public function kirimDataProdi($idUsul)
+    {
+        $sipproService = new SipproService();
+        $data = [
+            "external_id" => "LEMB-8574",
+            "source_system" => "SISTEM_KELEMBAGAAN",
+            "nama_prodi" => "Pendidikan Agama Islam",
+            "jenjang" => "S1",
+            "lembaga" => "STEI AR RISALAH CIAMIS",
+            "tanggal_pengajuan" => "2024-09-05T11:52:53",
+            "dokumen" => [
+                [
+                    "jenis" => "akta_pendirian",
+                    "url" => "https://lembaga.go.id/dokumen/akta_pendirian.pdf"
+                ]
+                // ...tambahkan dokumen lainnya
+            ]
+        ];
+        $response = $sipproService->kirimProdiBaru($data);
+
+        // Panggil Model Log
+        $logModel = new SiproLogModel;
+        $logModel->insert([
+            'usul_id' => $idUsul,
+            'endpoint' => 'prodi-baru',
+            'request_data' => json_encode($data),
+            'response_data' => json_encode($response->data ?? $response->message),
+            'status_code' => $response->status,
+            'is_success' => $response->success ? 1 : 0
+        ]);
+
+        if ($response->success) {
+            return $this->response->setJSON(['status' => 'Berhasil', 'data' => $response->data]);
+        } else {
+            return $this->response->setJSON(['status' => 'Gagal', 'message' => $response->message ?? 'Terjadi kesalahan'])->setStatusCode($response->status);
+        }
     }
 }
