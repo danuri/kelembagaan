@@ -1,0 +1,67 @@
+<?php
+
+// Pengaturan bahasa validasi
+return [
+    // Pesan Inti
+    'noRuleSets' => 'Tidak ada kumpulan aturan yang ditentukan dalam konfigurasi Validasi.',
+    'ruleNotFound' => '"{0}" bukan aturan valid yang dikenali.',
+    'groupNotFound' => '"{0}" bukan grup aturan validasi yang valid.',
+    'groupNotArray' => 'Grup aturan "{0}" harus berupa array.',
+    'invalidTemplate' => '"{0}" bukan template Validasi yang valid.',
+
+    // Pesan Aturan
+    'alpha' => 'Kolom {field} hanya boleh berisi huruf alfabet.',
+    'alpha_dash' => 'Kolom {field} hanya boleh berisi karakter alfanumerik, garis bawah, dan tanda hubung.',
+    'alpha_numeric' => 'Kolom {field} hanya boleh berisi karakter alfanumerik.',
+    'alpha_numeric_punct' => 'Kolom {field} hanya boleh berisi karakter alfanumerik, spasi, dan karakter ~! # $% & * - _ + = | :.',
+    'alpha_numeric_space' => 'Kolom {field} hanya boleh berisi karakter alfanumerik dan spasi.',
+    'alpha_space' => 'Kolom {field} hanya boleh berisi huruf alfabet dan spasi.',
+    'decimal' => 'Kolom {field} harus berisi angka desimal.',
+    'differs' => 'Kolom {field} harus berbeda dengan kolom {param}.',
+    'equals' => 'Kolom {field} harus sama persis dengan: {param}.',
+    'exact_length' => 'Kolom {field} harus terdiri dari tepat {param} karakter.',
+    'field_exists' => 'Kolom {field} harus tersedia.',
+    'greater_than' => 'Kolom {field} harus berisi angka yang lebih besar dari {param}.',
+    'greater_than_equal_to' => 'Kolom {field} harus berisi angka yang lebih besar atau sama dengan {param}.',
+    'hex' => 'Kolom {field} hanya boleh berisi karakter heksadesimal.',
+    'in_list' => 'Kolom {field} harus salah satu dari nilai berikut: {param}.',
+    'integer' => 'Kolom {field} harus berisi bilangan bulat.',
+    'is_natural' => 'Kolom {field} hanya boleh berisi angka positif.',
+    'is_natural_no_zero' => 'Kolom {field} hanya boleh berisi angka yang lebih besar dari nol.',
+    'is_not_unique' => 'Kolom {field} tidak ada di database.',
+    'is_unique' => 'Kolom {field} sudah ada di database.',
+    'less_than' => 'Kolom {field} harus berisi angka yang lebih kecil dari {param}.',
+    'less_than_equal_to' => 'Kolom {field} harus berisi angka yang lebih kecil atau sama dengan {param}.',
+    'matches' => 'Kolom {field} tidak cocok dengan kolom {param}.',
+    'max_length' => 'Kolom {field} tidak boleh lebih dari {param} karakter.',
+    'min_length' => 'Kolom {field} minimal harus terdiri dari {param} karakter.',
+    'not_equals' => 'Kolom {field} tidak boleh bernilai: {param}.',
+    'not_in_list' => 'Kolom {field} tidak boleh salah satu dari nilai berikut: {param}.',
+    'numeric' => 'Kolom {field} hanya boleh berisi angka.',
+    'regex_match' => 'Format kolom {field} tidak valid.',
+    'required' => 'Kolom {field} wajib diisi.',
+    'required_with' => 'Kolom {field} wajib diisi jika {param} tersedia.',
+    'required_without' => 'Kolom {field} wajib diisi jika {param} tidak tersedia.',
+    'string' => 'Kolom {field} harus berupa string yang valid.',
+    'timezone' => 'Kolom {field} harus berisi zona waktu yang valid.',
+    'valid_base64' => 'Kolom {field} harus berupa string base64 yang valid.',
+    'valid_email' => 'Kolom {field} harus berisi alamat email yang valid.',
+    'valid_emails' => 'Kolom {field} harus berisi semua alamat email yang valid.',
+    'valid_ip' => 'Kolom {field} harus berisi alamat IP yang valid.',
+    'valid_url' => 'Kolom {field} harus berisi URL yang valid.',
+    'valid_url_strict' => 'Kolom {field} harus berisi URL yang valid.',
+    'valid_date' => 'Kolom {field} harus berisi tanggal yang valid.',
+    'valid_json' => 'Kolom {field} harus berisi JSON yang valid.',
+
+    // Kartu Kredit
+    'valid_cc_num' => '{field} tidak terlihat sebagai nomor kartu kredit yang valid.',
+
+    // Berkas
+    'uploaded' => '{field} bukan file unggahan yang valid.',
+    'max_size' => 'Ukuran file {field} terlalu besar.',
+    'is_image' => '{field} bukan file gambar yang valid.',
+    'mime_in' => '{field} tidak memiliki tipe MIME yang valid.',
+    'ext_in' => '{field} tidak memiliki ekstensi file yang valid.',
+    'max_dims' => '{field} bukan gambar yang valid atau dimensinya terlalu besar.',
+    'min_dims' => '{field} bukan gambar yang valid atau dimensinya terlalu kecil.',
+];

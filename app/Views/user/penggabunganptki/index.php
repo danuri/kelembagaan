@@ -16,8 +16,10 @@
 <div class="card">
   <div class="card-header border-bottom d-flex justify-content-between align-items-center">
     <h5 class="card-title m-0 me-2">Data Usulan</h5>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat
-      Usulan</button>
+    <?php if ($layanan->is_active == 1) { ?>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat
+        Usulan</button>
+    <?php } ?>
   </div>
   <div class="justify-content-between dt-layout-table">
     <table class="table table-bordered">

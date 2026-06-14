@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/libs/sweetalert2/sweetalert2.css" />
   <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/libs/pickr/pickr-themes.css" />
   <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-  <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/libs/select2/select2.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
   <script src="<?= base_url() ?>assets/vendor/js/helpers.js"></script>
 
   <script src="<?= base_url() ?>assets/vendor/js/template-customizer.js"></script>
@@ -52,7 +52,7 @@
 
       <aside id="layout-menu" class="layout-menu menu-vertical menu">
         <div class="app-brand demo">
-          <a href="<?= site_url('supervisor') ?>" class="app-brand-link">
+          <a href="index.html" class="app-brand-link">
             <span class="app-brand-logo demo">
               <span class="text-primary">
                 <img src="<?= base_url() ?>assets/img/siptika.png" width="120px" alt="">
@@ -71,81 +71,15 @@
         <ul class="menu-inner py-1">
           <!-- Page -->
           <li class="menu-item active">
-            <a href="<?= site_url('supervisor') ?>" class="menu-link">
+            <a href="<?= site_url('asesor') ?>" class="menu-link">
               <i class="menu-icon icon-base ti tabler-smart-home"></i>
               <div data-i18n="Dashboard">Dashboard</div>
             </a>
           </li>
-          <li class="menu-header small">
-            <span class="menu-header-text" data-i18n="Master">Usulan</span>
-          </li>
           <li class="menu-item">
-            <a href="<?= site_url('supervisor/usulan') ?>" class="menu-link">
-              <i class="menu-icon icon-base ti tabler-smart-home"></i>
-              <div data-i18n="Usulan">Usulan</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="<?= site_url('supervisor/usulan/pendirianptkis/generate-nss') ?>" class="menu-link">
-              <i class="menu-icon icon-base ti tabler-certificate"></i>
-              <div data-i18n="GenerateNSS">Generate NSPT</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="<?= site_url('supervisor/arsip') ?>" class="menu-link">
-              <i class="menu-icon icon-base ti tabler-smart-home"></i>
-              <div data-i18n="Pengguna">Arsip</div>
-            </a>
-          </li>
-          <li class="menu-header small">
-            <span class="menu-header-text" data-i18n="Manajemen">Manajemen</span>
-          </li>
-          <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon icon-base ti tabler-layout-navbar"></i>
-              <div data-i18n="Layanan">Layanan</div>
-            </a>
-            <ul class="menu-sub">
-              <li class="menu-item">
-                <a href="<?= site_url('supervisor/master/layanan') ?>" class="menu-link">
-                  <div data-i18n="Apex Charts">Layanan</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="<?= site_url('supervisor/master/dokumen') ?>" class="menu-link">
-                  <div data-i18n="ChartJS">Dokumen</div>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <!-- <li class="menu-item">
-              <a href="<?= site_url('supervisor/template') ?>" class="menu-link">
-                <i class="menu-icon icon-base ti tabler-file"></i>
-                <div data-i18n="Pengguna">Template SK</div>
-              </a>
-            </li> -->
-          <li class="menu-item">
-            <a href="<?= site_url('supervisor/lembaga') ?>" class="menu-link">
-              <i class="menu-icon icon-base ti tabler-file"></i>
-              <div data-i18n="Pengguna">Lembaga</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="<?= site_url('supervisor/users') ?>" class="menu-link">
-              <i class="menu-icon icon-base ti tabler-users"></i>
-              <div data-i18n="Pengguna">Pengguna</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="<?= site_url('supervisor/settings') ?>" class="menu-link">
-              <i class="menu-icon icon-base ti tabler-settings"></i>
-              <div data-i18n="Pengguna">Pengaturan</div>
-            </a>
-          </li>
-          <li class="menu-item">
-            <a href="<?= site_url('supervisor/kpi') ?>" class="menu-link">
-              <i class="menu-icon icon-base ti tabler-chart-bar"></i>
-              <div data-i18n="KPI">Statistik KPI</div>
+            <a href="<?= site_url('asesor/penilaian') ?>" class="menu-link">
+              <i class="menu-icon icon-base ti tabler-pencil-pin"></i>
+              <div data-i18n="Pengguna">Penilaian</div>
             </a>
           </li>
         </ul>
@@ -165,7 +99,12 @@
 
         <nav
           class="layout-navbar container-xxl navbar-detached navbar navbar-expand-xl align-items-center bg-navbar-theme"
-          id="layout-navbar">
+          id="layout-navbar"
+          style="border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.04);">
+          <div class="d-none d-sm-flex align-items-center gap-2">
+            <div style="width: 8px; height: 8px; background: linear-gradient(135deg, #696cff, #8592ff); border-radius: 50%;"></div>
+            <span class="fw-bold" style="color: #566a7f; letter-spacing: -0.01em;">Panel Asesor</span>
+          </div>
           <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
             <a class="nav-item nav-link px-0 me-xl-6" href="javascript:void(0)">
               <i class="icon-base ti tabler-menu-2 icon-md"></i>
@@ -177,13 +116,16 @@
               <!-- User -->
               <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
-                  <div class="avatar avatar-online">
-                    <img src="<?= base_url() ?>assets/img/avatars/1.png" alt class="rounded-circle" />
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="d-none d-md-block fw-semibold" style="font-size: 0.875rem; color: #566a7f;"><?= auth()->user()->full_name ?? 'Asesor' ?></span>
+                    <div class="avatar avatar-online">
+                      <img src="<?= base_url() ?>assets/img/avatars/1.png" alt class="rounded-circle" />
+                    </div>
                   </div>
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end">
+                <ul class="dropdown-menu dropdown-menu-end" style="border: none; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); overflow: hidden;">
                   <li>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item py-3 px-4" href="#">
                       <div class="d-flex">
                         <div class="flex-shrink-0 me-3">
                           <div class="avatar avatar-online">
@@ -192,25 +134,19 @@
                           </div>
                         </div>
                         <div class="flex-grow-1">
-                          <h6 class="mb-0"><?= auth()->user()->full_name; ?></h6>
-                          <small class="text-body-secondary">Admin</small>
+                          <h6 class="mb-0 fw-bold"><?= auth()->user()->full_name ?? 'Asesor' ?></h6>
+                          <small class="text-body-secondary">
+                            <span class="badge bg-label-primary" style="border-radius: 6px; font-size: 0.65rem;">Asesor</span>
+                          </small>
                         </div>
                       </div>
                     </a>
                   </li>
                   <li>
-                    <div class="dropdown-divider my-1 mx-n2"></div>
+                    <div class="dropdown-divider my-0"></div>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="<?= site_url('supervisor/profile') ?>">
-                      <i class="icon-base ti tabler-user icon-md me-3"></i><span>My Profile</span>
-                    </a>
-                  </li>
-                  <li>
-                    <div class="dropdown-divider my-1 mx-n2"></div>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="<?= site_url('logout') ?>">
+                    <a class="dropdown-item py-2 px-4" href="<?= site_url('logout') ?>" style="color: #ff3e1d;">
                       <i class="icon-base ti tabler-power icon-md me-3"></i><span>Log Out</span>
                     </a>
                   </li>
@@ -254,10 +190,10 @@
             <div class="container-xxl">
               <div
                 class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
-                <div class="text-body">
-                  ©2025 SIPTIKA
+                <div class="text-muted" style="font-size: 0.8rem;">
+                  © <?= date('Y') ?> <span class="fw-semibold">SIPTIKA</span> — Sistem Informasi Perizinan Pendidikan Tinggi Keagamaan
                 </div>
-                <div class="d-none d-lg-inline-block"><?= setting('App.siteFooter') ?></div>
+                <div class="d-none d-lg-inline-block text-muted" style="font-size: 0.8rem;"><?= setting('App.siteFooter') ?></div>
               </div>
             </div>
           </footer>
@@ -297,38 +233,40 @@
   <script src="<?= base_url() ?>assets/vendor/libs/sweetalert2/sweetalert2.js"></script>
   <script src="<?= base_url() ?>assets/vendor/js/menu.js"></script>
   <script src="<?= base_url() ?>assets/vendor/libs/notyf/notyf.js"></script>
-  <script src="<?= base_url() ?>assets/vendor/libs/select2/select2.js"></script>
 
   <script src="<?= base_url() ?>assets/js/main.js"></script>
   <script type="text/javascript">
-    function alert($text, $type = 'success') {
+    function alert($text) {
       var notyf = new Notyf();
-      if ($type == 'success') {
-        notyf.success($text);
-      } else {
-        notyf.error($text);
-      }
+      notyf.success($text);
     }
 
     $(document).ready(function () {
       $('.datatable').DataTable();
+
+      $('[data-toggle="tooltip"]').tooltip();
+
+      var notyf = new Notyf();
+      <?php if (session()->getFlashdata('message')) { ?>
+        notyf.success("<?= session()->getFlashdata('message') ?>");
+      <?php } ?>
+
+      <?php
+      $errors = session()->getFlashdata('error');
+      if ($errors) {
+
+        if (is_array($errors)) {
+          foreach ($errors as $key => $value) {
+            echo 'notyf.error("' . $key . ': ' . $value . '");';
+          }
+        } else {
+          echo 'notyf.error("' . $errors . '");';
+        }
+        ?>
+
+      <?php } ?>
     });
 
-    <?php
-    if (session()->getFlashdata('success')) {
-      ?>
-      alert("<?= session()->getFlashdata('success') ?>");
-      <?php
-    }
-    ?>
-
-    <?php
-    if (session()->getFlashdata('error')) {
-      ?>
-      alert("<?= session()->getFlashdata('error') ?>", 'error');
-      <?php
-    }
-    ?>
 
     function log(id) {
       $('#bodylog').load('<?= site_url('ajax/log') ?>/' + id);

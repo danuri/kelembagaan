@@ -158,7 +158,7 @@
                         </tr>
                         <tr>
                             <td>Kepemilikan Tanah</td>
-                            <td>: <?= $detail->kepemilikan_tanah ?>M²</td>
+                            <td>: <?= $detail->kepemilikan_tanah ?></td>
                         </tr>
                     </tbody>
                 </table>

@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "c6f79f21-46e5-47c6-8ebf-212df15ca1d5",
+		"name": "INTEGRASI LEMBAGA BARU",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16336724",
+		"_collection_link": "https://davidrinaldi.postman.co/workspace/New-Team-Workspace~4f4ad843-8a0c-401c-b9c6-ca26020ed520/collection/16336724-c6f79f21-46e5-47c6-8ebf-212df15ca1d5?action=share&source=collection_link&creator=16336724"
+	},
+	"item": [
+		{
+			"name": "/prodi-baru",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "dev_test_key_12345678",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"external_id\": \"EXT-PRODI-20260518-003\",\n    \"source_system\": \"SISTEM_KELEMBAGAAN\",\n    \"lembaga\": \"UIN Contoh Integrasi3\",\n    \"nama_prodi\": \"Pendidikan Agama Islam\",\n    \"jenjang\": \"S1\",\n    \"tanggal_pengajuan\": \"2026-05-18T05:00:00Z\",\n    \"dokumen\": [\n        {\n            \"jenis\": \"akta_pendirian\",\n            \"url\": \"https://www.w3.org/WAI/WCAG20/Techniques/working-examples/PDF20/table.pdf\"\n        },\n        {\n            \"jenis\": \"kurikulum_prodi\",\n            \"url\": \"https://www.orimi.com/pdf-test.pdf\"\n        },\n        {\n            \"jenis\": \"daftar_dosen\",\n            \"url\": \"https://www.orimi.com/pdf-test.pdf\"\n        },\n        {\n            \"jenis\": \"sarana_prasarana\",\n            \"url\": \"https://www.irs.gov/pub/irs-pdf/fw9.pdf\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://prodi.halotec.my.id/api/v1/prodi-baru",
+					"protocol": "http",
+					"host": [
+						"prodi",
+						"halotec",
+						"my",
+						"id"
+					],
+					"path": [
+						"api",
+						"v1",
+						"prodi-baru"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "/prodi-baru",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-API-Key",
+								"value": "dev_test_key_12345678",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"external_id\": \"EXT-PRODI-20260518-003\",\n    \"source_system\": \"SISTEM_KELEMBAGAAN\",\n    \"lembaga\": \"UIN Contoh Integrasi3\",\n    \"nama_prodi\": \"Pendidikan Agama Islam\",\n    \"jenjang\": \"S1\",\n    \"tanggal_pengajuan\": \"2026-05-18T05:00:00Z\",\n    \"dokumen\": [\n        {\n            \"jenis\": \"akta_pendirian\",\n            \"url\": \"https://www.w3.org/WAI/WCAG20/Techniques/working-examples/PDF20/table.pdf\"\n        },\n        {\n            \"jenis\": \"kurikulum_prodi\",\n            \"url\": \"https://www.orimi.com/pdf-test.pdf\"\n        },\n        {\n            \"jenis\": \"daftar_dosen\",\n            \"url\": \"https://www.orimi.com/pdf-test.pdf\"\n        },\n        {\n            \"jenis\": \"sarana_prasarana\",\n            \"url\": \"https://www.irs.gov/pub/irs-pdf/fw9.pdf\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://prodi.halotec.my.id/api/v1/prodi-baru",
+							"protocol": "http",
+							"host": [
+								"prodi",
+								"halotec",
+								"my",
+								"id"
+							],
+							"path": [
+								"api",
+								"v1",
+								"prodi-baru"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "/prodi-baru(duplikat)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "dev_test_key_12345678",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"external_id\": \"EXT-PRODI-20260518-003\",\n    \"source_system\": \"SISTEM_KELEMBAGAAN\",\n    \"lembaga\": \"UIN Contoh Integrasi3\",\n    \"nama_prodi\": \"Pendidikan Agama Islam\",\n    \"jenjang\": \"S1\",\n    \"tanggal_pengajuan\": \"2026-05-18T05:00:00Z\",\n    \"dokumen\": [\n        {\n            \"jenis\": \"akta_pendirian\",\n            \"url\": \"https://www.w3.org/WAI/WCAG20/Techniques/working-examples/PDF20/table.pdf\"\n        },\n        {\n            \"jenis\": \"kurikulum_prodi\",\n            \"url\": \"https://www.orimi.com/pdf-test.pdf\"\n        },\n        {\n            \"jenis\": \"daftar_dosen\",\n            \"url\": \"https://www.orimi.com/pdf-test.pdf\"\n        },\n        {\n            \"jenis\": \"sarana_prasarana\",\n            \"url\": \"https://www.irs.gov/pub/irs-pdf/fw9.pdf\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://prodi.halotec.my.id/api/v1/prodi-baru",
+					"protocol": "http",
+					"host": [
+						"prodi",
+						"halotec",
+						"my",
+						"id"
+					],
+					"path": [
+						"api",
+						"v1",
+						"prodi-baru"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "/prodi-baru(duplikat)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-API-Key",
+								"value": "dev_test_key_12345678",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"external_id\": \"EXT-PRODI-20260518-003\",\n    \"source_system\": \"SISTEM_KELEMBAGAAN\",\n    \"lembaga\": \"UIN Contoh Integrasi3\",\n    \"nama_prodi\": \"Pendidikan Agama Islam\",\n    \"jenjang\": \"S1\",\n    \"tanggal_pengajuan\": \"2026-05-18T05:00:00Z\",\n    \"dokumen\": [\n        {\n            \"jenis\": \"akta_pendirian\",\n            \"url\": \"https://www.w3.org/WAI/WCAG20/Techniques/working-examples/PDF20/table.pdf\"\n        },\n        {\n            \"jenis\": \"kurikulum_prodi\",\n            \"url\": \"https://www.orimi.com/pdf-test.pdf\"\n        },\n        {\n            \"jenis\": \"daftar_dosen\",\n            \"url\": \"https://www.orimi.com/pdf-test.pdf\"\n        },\n        {\n            \"jenis\": \"sarana_prasarana\",\n            \"url\": \"https://www.irs.gov/pub/irs-pdf/fw9.pdf\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://prodi.halotec.my.id/api/v1/prodi-baru",
+							"protocol": "http",
+							"host": [
+								"prodi",
+								"halotec",
+								"my",
+								"id"
+							],
+							"path": [
+								"api",
+								"v1",
+								"prodi-baru"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "/perubahan-bentuk",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "dev_test_key_12345678",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"external_id\": \"EXT-PB-20260518-001\",\n    \"source_system\": \"SISTEM_KELEMBAGAAN\",\n    \"tanggal_pengajuan\": \"2026-05-18T05:00:00Z\",\n    \"institusi_lama\": {\n        \"nsptki\": \"NSP-LAMA-20260518-001\",\n        \"nama\": \"STAIN Contoh\",\n        \"alamat\": \"Jl. Lama No. 1\",\n        \"kopertais\": \"KOP-01\",\n        \"bentuk\": \"STAIN\"\n    },\n    \"institusi_baru\": {\n        \"nsptki\": \"NSP-BARU-20260518-001\",\n        \"nama\": \"IAIN Contoh\",\n        \"alamat\": \"Jl. Baru No. 1\",\n        \"kopertais\": \"KOP-02\",\n        \"bentuk\": \"IAIN\"\n    },\n    \"dokumen\": [\n        {\n            \"jenis\": \"proposal_perubahan_bentuk\",\n            \"url\": \"https://www.orimi.com/pdf-test.pdf\"\n        },\n        {\n            \"jenis\": \"REKOMENDASI_SENAT\",\n            \"url\": \"https://www.orimi.com/pdf-test.pdf\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://prodi.halotec.my.id/api/v1/perubahan-bentuk",
+					"protocol": "http",
+					"host": [
+						"prodi",
+						"halotec",
+						"my",
+						"id"
+					],
+					"path": [
+						"api",
+						"v1",
+						"perubahan-bentuk"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/cekstatus",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "/cekstatus",
+					"originalRequest": {
+						"method": "GET",
+						"header": []
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

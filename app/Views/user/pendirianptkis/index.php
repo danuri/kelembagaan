@@ -14,13 +14,13 @@
   Pengajuan usulan Pendirian PTKIS. Silahkan klik tombol "Buat Usulan" untuk memulai.
 </p>
 <div class="card border border-primary">
-  <?php if ($layanan->is_active == 0) { ?>
-    <div class="card-header border-bottom d-flex justify-content-between align-items-center">
-      <h5 class="card-title m-0 me-2">Data Usulan</h5>
+  <div class="card-header border-bottom d-flex justify-content-between align-items-center">
+    <h5 class="card-title m-0 me-2">Data Usulan</h5>
+    <?php if ($layanan->is_active == 1) { ?>
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat
         Usulan</button>
+        <?php } ?>
     </div>
-  <?php } ?>
   <div class="justify-content-between dt-layout-table">
     <table class="table table-bordered">
       <thead class="text-bg-warning">

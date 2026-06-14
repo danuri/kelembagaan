@@ -8,17 +8,17 @@ class SipproService
 {
     protected $client;
     protected $baseUrl;
-    protected $token;
+    protected $key;
 
     public function __construct()
     {
         $this->baseUrl = getenv('SIPPRO_API_URL') ?: 'https://sippro.kemenag.go.id/api/v1';
-        $this->token = getenv('SIPPRO_API_TOKEN');
+        $this->key = getenv('SIPPRO_API_KEY');
 
         $this->client = Services::curlrequest([
             'baseURI' => $this->baseUrl . '/',
             'headers' => [
-                'Authorization' => 'Bearer ' . $this->token,
+                'X-API-Key' => $this->key,
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json'
             ],

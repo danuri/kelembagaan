@@ -6,6 +6,14 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
+
+$routes->get('login', 'LoginController::loginView');
+$routes->post('login', 'LoginController::loginAction');
+$routes->get('logout', 'LoginController::logoutAction');
+
+// Public AJAX - validasi register (no auth needed)
+$routes->post('ajax/check-username', 'Ajax::checkUsername');
+$routes->post('ajax/check-email', 'Ajax::checkEmail');
 $routes->get('dashboard', 'Home::index', ['filter' => 'group:user']);
 
 $routes->resource('api/usulan', ['controller' => 'Api\Usulan']);
@@ -84,11 +92,24 @@ $routes->group('verifikator', ['filter' => 'group:verifikator'], static function
     });
 });
 
+$routes->group('asesor', ['filter' => 'group:asesor'], static function ($routes) {
+    $routes->get('/', 'Asesor\Dashboard::index');
+
+    $routes->group('penilaian', static function ($routes) {
+        $routes->get('/', 'Asesor\Penilaian::index');
+        $routes->get('getdata', 'Asesor\Penilaian::getdata');
+        $routes->get('detail/(:any)', 'Asesor\Penilaian::detail/$1');
+        $routes->post('save/(:any)', 'Asesor\Penilaian::savenilai/$1');
+        $routes->get('done/(:any)', 'Asesor\Penilaian::done/$1');
+    });
+});
+
 $routes->group('supervisor', ['filter' => 'group:supervisor'], static function ($routes) {
     $routes->get('/', 'Supervisor\Dashboard::index');
     $routes->get('profile', 'Supervisor\Dashboard::profile');
     $routes->post('changepassword', 'Supervisor\Dashboard::updatePassword');
     $routes->post('profile/update', 'Supervisor\Dashboard::updateProfile');
+    $routes->get('kpi', 'Supervisor\Kpi::index');
 
     $routes->group('settings', static function ($routes) {
         $routes->get('/', 'Supervisor\Settings::index');
@@ -172,6 +193,9 @@ $routes->group('supervisor', ['filter' => 'group:supervisor'], static function (
             $routes->post('rkmadetail', 'Supervisor\Usulan\Pendirianptkis::rkmadetail');
             $routes->post('recheck/(:any)', 'Supervisor\Usulan\Pendirianptkis::recheck/$1');
             $routes->get('done/(:any)', 'Supervisor\Usulan\Pendirianptkis::done/$1');
+            $routes->get('generate-nss', 'Supervisor\Usulan\Pendirianptkis::generateNssIndex');
+            $routes->post('generate-nss/proses/(:any)', 'Supervisor\Usulan\Pendirianptkis::prosesGenerateNss/$1');
+            $routes->post('kirimDataProdi/(:any)', 'Supervisor\Usulan\Pendirianptkis::kirimDataProdi/$1');
         });
 
         $routes->group('alihbentukptkis', static function ($routes) {

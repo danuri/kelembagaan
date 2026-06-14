@@ -13,8 +13,10 @@ use App\Models\CrudModel;
 use App\Models\LogModel;
 use App\Models\AsesorModel;
 use App\Models\ProdiModel;
+use App\Models\DokumenprodiModel;
 use App\Models\SiproLogModel;
 use App\Libraries\SipproService;
+use App\Libraries\NsptService;
 
 class Pendirianptkis extends BaseController
 {
@@ -105,7 +107,7 @@ class Pendirianptkis extends BaseController
 
         $data['users'] = $users
             ->join('auth_groups_users agu', 'agu.user_id = users.id')
-            ->where('agu.group', 'verifikator')
+            ->where('agu.group', 'asesor')
             ->withIdentities()
             ->findAll();
 
@@ -294,6 +296,7 @@ class Pendirianptkis extends BaseController
     function done($id)
     {
         $model = new UsulanModel;
+        $detail = new PendirianptkisModel();
 
         $id = decrypt($id);
         $keterangan = $this->request->getVar('keterangan');
@@ -301,44 +304,171 @@ class Pendirianptkis extends BaseController
 
         $logm = new LogModel();
         $logm->insert(['id_usul' => $id, 'status_usulan' => 20, 'keterangan' => 'Usulan Selesai', 'created_by' => user_id()]);
+
         return redirect()->back()->with('success', 'Usulan telah ditandai selesai.');
     }
 
-    public function kirimDataProdi($idUsul)
+    public function kirimDataProdi($prodiId)
     {
-        $sipproService = new SipproService();
+        $pm = new ProdiModel();
+        $prodi = $pm->find($prodiId);
+
+        if (!$prodi) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Prodi tidak ditemukan'])->setStatusCode(404);
+        }
+
+        $idUsul = $prodi->usul_id;
+        $model = new UsulanModel();
+        $usulan = $model->where('id', $idUsul)->first();
+
+        if (!$usulan) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Usulan tidak ditemukan'])->setStatusCode(404);
+        }
+
+        $crud = new CrudModel;
+        $dokumen = $crud->query_array("SELECT a.*,b.lampiran,b.keterangan,b.dok_status AS keterangan_status FROM tm_dokumen a
+                                    LEFT JOIN (SELECT dokumen_id,lampiran,keterangan,dok_status FROM tr_prodi_dokumen WHERE usul_id='$prodiId') b
+                                    ON b.dokumen_id=a.id
+                                    WHERE a.layanan_id='6' AND a.sippro_kode IS NOT NULL ORDER BY a.id ASC");
+
+        $list_dok = [];
+        foreach ($dokumen as $d) {
+            $list_dok[] = [
+                "jenis" => $d->id,
+                "kode" => $d->sippro_kode,
+                "url" => base_url('uploads/prodi/' . $d->lampiran),
+            ];
+        }
+
         $data = [
-            "external_id" => "LEMB-8574",
-            "source_system" => "SISTEM_KELEMBAGAAN",
-            "nama_prodi" => "Pendidikan Agama Islam",
-            "jenjang" => "S1",
-            "lembaga" => "STEI AR RISALAH CIAMIS",
-            "tanggal_pengajuan" => "2024-09-05T11:52:53",
-            "dokumen" => [
-                [
-                    "jenis" => "akta_pendirian",
-                    "url" => "https://lembaga.go.id/dokumen/akta_pendirian.pdf"
-                ]
-                // ...tambahkan dokumen lainnya
-            ]
+            "external_id" => "SIPTIKA-" . $idUsul . "-" . $prodi->id,
+            "source_system" => "SIPTIKA",
+            "nama_prodi" => $prodi->nama_prodi,
+            "jenjang" => 'S1',
+            "lembaga" => $usulan->nama_lembaga,
+            "tanggal_pengajuan" => date('Y-m-d\TH:i:s'),
+            "dokumen" => $list_dok
         ];
+
+        $sipproService = new SipproService();
         $response = $sipproService->kirimProdiBaru($data);
 
-        // Panggil Model Log
+        log_message('debug', 'Data to Sippro: ' . json_encode($data));
+        log_message('debug', 'Response from Sippro: ' . json_encode($response));
+
         $logModel = new SiproLogModel;
+
+        // SipproService puts the decoded json in $response->data
+        $responseDataLog = isset($response->data) ? $response->data : ($response->message ?? null);
+
         $logModel->insert([
             'usul_id' => $idUsul,
+            'prodi_id' => $prodi->id,
             'endpoint' => 'prodi-baru',
             'request_data' => json_encode($data),
-            'response_data' => json_encode($response->data ?? $response->message),
+            'response_data' => json_encode($responseDataLog),
             'status_code' => $response->status,
             'is_success' => $response->success ? 1 : 0
         ]);
 
         if ($response->success) {
-            return $this->response->setJSON(['status' => 'Berhasil', 'data' => $response->data]);
+            // Ambil pesan dari API jika ada
+            $apiMessage = (is_array($response->data) && isset($response->data['message']))
+                ? $response->data['message']
+                : 'Berhasil dikirim ke SIPPRO';
+
+            return $this->response->setJSON([
+                'status' => 'success',
+                'message' => 'Prodi ' . $prodi->nama_prodi . ': ' . $apiMessage,
+                'data' => (is_array($response->data) && isset($response->data['data'])) ? $response->data['data'] : null
+            ]);
         } else {
-            return $this->response->setJSON(['status' => 'Gagal', 'message' => $response->message ?? 'Terjadi kesalahan'])->setStatusCode($response->status);
+            $apiMessage = (is_array($response->data) && isset($response->data['message']))
+                ? $response->data['message']
+                : ($response->message ?? 'Gagal mengirim prodi ke SIPPRO');
+
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Prodi ' . $prodi->nama_prodi . ': ' . $apiMessage,
+                'data' => $response->data ?? null
+            ])->setStatusCode(400);
+        }
+    }
+
+    public function generateNssIndex()
+    {
+        $model = new UsulanModel();
+
+        // Get usulan pendirianptkis yang sudah selesai (status 20)
+        $data['usulan_list'] = $model->table('tr_usulan')->select('tr_usulan.status, tr_usulan_pendirianptkis.*')
+            ->join('tr_usulan_pendirianptkis', 'tr_usulan.id = tr_usulan_pendirianptkis.usulan_id', 'inner')
+            ->where('layanan_id', 1)
+            ->where('status', 20)
+            ->orderBy('created_at', 'DESC')
+            ->get()
+            ->getResult();
+
+
+
+        return view('supervisor/usulan/pendirianptkis/generate_nss', $data);
+    }
+
+    public function prosesGenerateNss($id)
+    {
+        $id = decrypt($id);
+        $detail = new PendirianptkisModel();
+        $model = new UsulanModel();
+        $siproLog = new SiproLogModel();
+
+        $pendirianptkis = $detail->where('usulan_id', $id)->first();
+
+        if (!$pendirianptkis || !$pendirianptkis->nspt_lembaga_id) {
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Data lembaga atau NSPT ID tidak ditemukan'
+            ])->setStatusCode(404);
+        }
+
+        try {
+            $nsptService = new NsptService();
+            $nsptResponse = $nsptService->generateNss($pendirianptkis->nspt_lembaga_id);
+
+            // Log NSS generation attempt
+            $siproLog->insert([
+                'usul_id' => $id,
+                'endpoint' => 'lembaga/generate-nss',
+                'request_data' => json_encode(['nspt_lembaga_id' => $pendirianptkis->nspt_lembaga_id]),
+                'response_data' => json_encode($nsptResponse->raw_response ?? null),
+                'status_code' => $nsptResponse->status,
+                'is_success' => $nsptResponse->success ? 1 : 0
+            ]);
+
+            if ($nsptResponse->success) {
+                return $this->response->setJSON([
+                    'success' => true,
+                    'message' => 'NSS berhasil di-generate',
+                    'data' => $nsptResponse->data
+                ]);
+            } else {
+                return $this->response->setJSON([
+                    'success' => false,
+                    'message' => $nsptResponse->message ?? 'Gagal generate NSS'
+                ])->setStatusCode(400);
+            }
+        } catch (\Exception $e) {
+            $siproLog->insert([
+                'usul_id' => $id,
+                'endpoint' => 'lembaga/generate-nss',
+                'request_data' => json_encode(['nspt_lembaga_id' => $pendirianptkis->nspt_lembaga_id]),
+                'response_data' => json_encode(['error' => $e->getMessage()]),
+                'status_code' => 500,
+                'is_success' => 0
+            ]);
+
+            return $this->response->setJSON([
+                'success' => false,
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage()
+            ])->setStatusCode(500);
         }
     }
 }

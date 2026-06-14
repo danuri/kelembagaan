@@ -8,6 +8,7 @@ use App\Models\CrudModel;
 use App\Models\LogModel;
 use App\Models\UsulanModel;
 use App\Models\NsptiModel;
+use CodeIgniter\Shield\Models\UserModel;
 
 class Ajax extends BaseController
 {
@@ -64,17 +65,71 @@ class Ajax extends BaseController
     }
 
     function getlembaga() {
-      // get nsm from post json
-      $nsm = $this->request->getPost('nsm');
-      if(!$nsm) {
-        return $this->response->setJSON(['status' => 'error', 'message' => 'NSM tidak boleh kosong']);
+      $nspt = $this->request->getPost('nspt');
+      if(!$nspt) {
+        return $this->response->setJSON(['status' => 'error', 'message' => 'NSPT tidak boleh kosong']);
       }
-      $kelembagaanModel = new NsptiModel();
-      $lembaga = $kelembagaanModel->getRow('lembaga',['nss_baru' => $nsm]);
-      if($lembaga) {
-        return $this->response->setJSON(['status' => 'success', 'data' => $lembaga]);
-      }else{
-        return $this->response->setJSON(['status' => 'error', 'message' => 'Data tidak ditemukan']);
+
+      $nsptService = new \App\Libraries\NsptService();
+      $result = $nsptService->getLembagaDetail($nspt);
+
+      if($result->success && $result->data) {
+        return $this->response->setJSON(['status' => 'success', 'data' => $result->data]);
+      } else {
+        return $this->response->setJSON(['status' => 'error', 'message' => $result->message ?? 'Data tidak ditemukan']);
       }
+    }
+
+    /**
+     * Cek ketersediaan username (public, dipakai di form register)
+     */
+    public function checkUsername()
+    {
+        $username = trim($this->request->getPost('username'));
+
+        if (empty($username)) {
+            return $this->response->setJSON(['available' => false, 'message' => 'Username tidak boleh kosong.']);
+        }
+
+        if (!preg_match('/^[a-zA-Z0-9\.]+$/', $username)) {
+            return $this->response->setJSON(['available' => false, 'message' => 'Username hanya boleh huruf, angka, dan titik.']);
+        }
+
+        $userModel = new UserModel();
+        $exists = $userModel->where('username', $username)->first();
+
+        if ($exists) {
+            return $this->response->setJSON(['available' => false, 'message' => 'Username sudah digunakan.']);
+        }
+
+        return $this->response->setJSON(['available' => true, 'message' => 'Username tersedia.']);
+    }
+
+    /**
+     * Cek ketersediaan email (public, dipakai di form register)
+     */
+    public function checkEmail()
+    {
+        $email = trim($this->request->getPost('email'));
+
+        if (empty($email)) {
+            return $this->response->setJSON(['available' => false, 'message' => 'Email tidak boleh kosong.']);
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return $this->response->setJSON(['available' => false, 'message' => 'Format email tidak valid.']);
+        }
+
+        $db = \Config\Database::connect();
+        $exists = $db->table('auth_identities')
+            ->where('type', 'email_password')
+            ->where('secret', $email)
+            ->get()->getRow();
+
+        if ($exists) {
+            return $this->response->setJSON(['available' => false, 'message' => 'Email sudah terdaftar.']);
+        }
+
+        return $this->response->setJSON(['available' => true, 'message' => 'Email tersedia.']);
     }
 }

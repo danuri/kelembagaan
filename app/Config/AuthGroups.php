@@ -42,31 +42,35 @@ class AuthGroups extends ShieldAuthGroups
      */
     public array $groups = [
         'superadmin' => [
-            'title'       => 'Super Admin',
+            'title' => 'Super Admin',
             'description' => 'Complete control of the site.',
         ],
         'admin' => [
-            'title'       => 'Admin',
+            'title' => 'Admin',
             'description' => 'Day to day administrators of the site.',
         ],
         'developer' => [
-            'title'       => 'Developer',
+            'title' => 'Developer',
             'description' => 'Site programmers.',
         ],
         'supervisor' => [
-            'title'       => 'Supervisor',
+            'title' => 'Supervisor',
             'description' => 'Validation verificator action.',
         ],
         'verifikator' => [
-            'title'       => 'Verifikator',
+            'title' => 'Verifikator',
             'description' => 'Verification user request.',
         ],
+        'asesor' => [
+            'title' => 'Asesor',
+            'description' => 'Expert reviewer of user request.',
+        ],
         'prodi' => [
-            'title'       => 'Program Studi',
+            'title' => 'Program Studi',
             'description' => 'Management of study programs.',
         ],
         'user' => [
-            'title'       => 'User',
+            'title' => 'User',
             'description' => 'General users of the site. Often customers.',
         ]
     ];
@@ -80,15 +84,16 @@ class AuthGroups extends ShieldAuthGroups
      * If a permission is not listed here it cannot be used.
      */
     public array $permissions = [
-        'admin.access'        => 'Can access the sites admin area',
-        'admin.settings'      => 'Can access the main site settings',
-        'supervisor.access'        => 'Can access the sites Supervisor area',
-        'verifikator.access'        => 'Can access the sites Verifikator area',
+        'admin.access' => 'Can access the sites admin area',
+        'admin.settings' => 'Can access the main site settings',
+        'supervisor.access' => 'Can access the sites Supervisor area',
+        'verifikator.access' => 'Can access the sites Verifikator area',
+        'asesor.access' => 'Can access the sites Asesor area',
         'users.manage-admins' => 'Can manage other admins',
-        'users.create'        => 'Can create new non-admin users',
-        'users.edit'          => 'Can edit existing non-admin users',
-        'users.delete'        => 'Can delete existing non-admin users',
-        'beta.access'         => 'Can access beta-level features',
+        'users.create' => 'Can create new non-admin users',
+        'users.edit' => 'Can edit existing non-admin users',
+        'users.delete' => 'Can delete existing non-admin users',
+        'beta.access' => 'Can access beta-level features',
     ];
 
     /**
@@ -117,6 +122,9 @@ class AuthGroups extends ShieldAuthGroups
         ],
         'verifikator' => [
             'verifikator.access'
+        ],
+        'asesor' => [
+            'asesor.access'
         ],
         'user' => [],
         'beta' => [

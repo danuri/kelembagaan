@@ -1,231 +1,362 @@
 <!doctype html>
 
-<html
-  lang="en"
-  class="layout-wide customizer-hide"
-  dir="ltr"
-  data-skin="default"
-  data-assets-path="<?= base_url()?>assets/"
-  data-template="vertical-menu-template"
-  data-bs-theme="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+<html lang="en" class="layout-wide customizer-hide" dir="ltr" data-skin="default"
+  data-assets-path="<?= base_url() ?>assets/" data-template="vertical-menu-template" data-bs-theme="light">
 
-    <title><?= lang('Auth.register') ?></title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <meta name="description" content="" />
+  <title><?= lang('Auth.register') ?></title>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="https://kemenag.go.id/assets/imgs/theme/favicon.png" />
+  <meta name="description" content="" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
-      rel="stylesheet" />
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="https://kemenag.go.id/assets/imgs/theme/favicon.png" />
 
-    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/fonts/iconify-icons.css" />
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&ampdisplay=swap"
+    rel="stylesheet" />
 
-    <!-- Core CSS -->
-    <!-- build:css assets/vendor/css/theme.css  -->
+  <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/fonts/iconify-icons.css" />
 
-    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/node-waves/node-waves.css" />
+  <!-- Core CSS -->
+  <!-- build:css assets/vendor/css/theme.css  -->
 
-    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/pickr/pickr-themes.css" />
+  <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/libs/node-waves/node-waves.css" />
 
-    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/css/core.css" />
-    <link rel="stylesheet" href="<?= base_url()?>assets/css/demo.css" />
+  <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/libs/pickr/pickr-themes.css" />
 
-    <!-- Vendors CSS -->
+  <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/css/core.css" />
+  <link rel="stylesheet" href="<?= base_url() ?>assets/css/demo.css" />
 
-    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+  <!-- Vendors CSS -->
 
-    <!-- endbuild -->
+  <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-    <!-- Vendor -->
-    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/libs/@form-validation/form-validation.css" />
+  <!-- endbuild -->
 
-    <!-- Page CSS -->
-    <!-- Page -->
-    <link rel="stylesheet" href="<?= base_url()?>assets/vendor/css/pages/page-auth.css" />
+  <!-- Vendor -->
+  <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/libs/@form-validation/form-validation.css" />
 
-    <!-- Helpers -->
-    <script src="<?= base_url()?>assets/vendor/js/helpers.js"></script>
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+  <!-- Page CSS -->
+  <!-- Page -->
+  <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/css/pages/page-auth.css" />
 
-    <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
-    <script src="<?= base_url()?>assets/vendor/js/template-customizer.js"></script>
+  <!-- Helpers -->
+  <script src="<?= base_url() ?>assets/vendor/js/helpers.js"></script>
+  <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
 
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+  <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
+  <script src="<?= base_url() ?>assets/vendor/js/template-customizer.js"></script>
 
-    <script src="<?= base_url()?>assets/js/config.js"></script>
-  </head>
+  <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
 
-  <body>
-    <!-- Content -->
+  <script src="<?= base_url() ?>assets/js/config.js"></script>
+</head>
 
-    <div class="container-xxl">
-      <div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner py-6">
-          <!-- Register Card -->
-          <div class="card">
-            <div class="card-body">
-              <!-- Logo -->
-              <div class="app-brand justify-content-center mb-6">
-                <a href="index.html" class="app-brand-link">
-                  <span class="app-brand-logo demo">
-                    <span class="text-primary">
-                      <img src="<?= base_url()?>assets/img/siptika.png" width="120px" alt="">
-                    </span>
+<body>
+  <!-- Content -->
+
+  <div class="container-xxl">
+    <div class="authentication-wrapper authentication-basic container-p-y">
+      <div class="authentication-inner py-6">
+        <!-- Register Card -->
+        <div class="card">
+          <div class="card-body">
+            <!-- Logo -->
+            <div class="app-brand justify-content-center mb-6">
+              <a href="index.html" class="app-brand-link">
+                <span class="app-brand-logo demo">
+                  <span class="text-primary">
+                    <img src="<?= base_url() ?>assets/img/siptika.png" width="120px" alt="">
                   </span>
-                </a>
-              </div>
-              <!-- /Logo -->
-              <h4 class="mb-1"><?= lang('Auth.register') ?></h4>
-              <p class="mb-6">Silahkan mendaftar untuk membuat akun baru</p>
-
-              <?php if (session('error') !== null) : ?>
-                    <div class="alert alert-danger" role="alert"><?= esc(session('error')) ?></div>
-                <?php elseif (session('errors') !== null) : ?>
-                    <div class="alert alert-danger" role="alert">
-                        <?php if (is_array(session('errors'))) : ?>
-                            <?php foreach (session('errors') as $error) : ?>
-                                <?= esc($error) ?>
-                                <br>
-                            <?php endforeach ?>
-                        <?php else : ?>
-                            <?= esc(session('errors')) ?>
-                        <?php endif ?>
-                    </div>
-                <?php endif ?>
-
-              <form id="formAuthentication" class="mb-6" action="<?= url_to('register') ?>" method="POST">
-                <?= csrf_field() ?>
-                <div class="mb-6 form-control-validation">
-                  <label for="full_name" class="form-label">Nama</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="full_name"
-                    name="full_name"
-                    placeholder="Nama Lengkap"
-                    autofocus />
-                </div>
-                <div class="mb-6 form-control-validation">
-                  <label for="username" class="form-label"><?= lang('Auth.username') ?></label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="username"
-                    name="username"
-                    placeholder="Enter your username"
-                    autofocus />
-                </div>
-                <div class="mb-6 form-control-validation">
-                  <label for="phone" class="form-label">Nomor HP (WA Aktif)</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="phone"
-                    name="phone"
-                    placeholder="Phone Number"
-                    autofocus />
-                </div>
-                <div class="mb-6 form-control-validation">
-                  <label for="email" class="form-label"><?= lang('Auth.email') ?></label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" />
-                </div>
-                <div class="mb-6 form-password-toggle form-control-validation">
-                  <label class="form-label" for="password"><?= lang('Auth.password') ?></label>
-                  <div class="input-group input-group-merge">
-                    <input
-                      type="password"
-                      id="password"
-                      class="form-control"
-                      name="password"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                      aria-describedby="password" />
-                    <span class="input-group-text cursor-pointer"><i class="icon-base ti tabler-eye-off"></i></span>
-                  </div>
-                </div>
-                <div class="mb-6 form-password-toggle form-control-validation">
-                  <label class="form-label" for="password"><?= lang('Auth.passwordConfirm') ?></label>
-                  <div class="input-group input-group-merge">
-                    <input
-                      type="password"
-                      id="password"
-                      class="form-control"
-                      name="password_confirm"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                      aria-describedby="password" />
-                    <span class="input-group-text cursor-pointer"><i class="icon-base ti tabler-eye-off"></i></span>
-                  </div>
-                </div>
-                <div class="my-8 form-control-validation">
-                  <div class="form-check mb-0 ms-2">
-                    <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
-                    <label class="form-check-label" for="terms-conditions">
-                      I agree to
-                      <a href="javascript:void(0);">privacy policy & terms</a>
-                    </label>
-                  </div>
-                </div>
-                <button class="btn btn-primary d-grid w-100">Sign up</button>
-              </form>
-
-              <p class="text-center">
-                <span><?= lang('Auth.haveAccount') ?></span>
-                <a href="<?= url_to('login') ?>">
-                  <span><?= lang('Auth.login') ?></span>
-                </a>
-              </p>
-
+                </span>
+              </a>
             </div>
+            <!-- /Logo -->
+            <h4 class="mb-1"><?= lang('Auth.register') ?></h4>
+            <p class="mb-6">Silahkan mendaftar untuk membuat akun baru</p>
+
+            <?php if (session('error') !== null): ?>
+              <div class="alert alert-danger" role="alert"><?= esc(session('error')) ?></div>
+            <?php elseif (session('errors') !== null): ?>
+              <div class="alert alert-danger" role="alert">
+                <?php if (is_array(session('errors'))): ?>
+                  <?php foreach (session('errors') as $error): ?>
+                    <?= esc($error) ?>
+                    <br>
+                  <?php endforeach ?>
+                <?php else: ?>
+                  <?= esc(session('errors')) ?>
+                <?php endif ?>
+              </div>
+            <?php endif ?>
+
+            <form id="formAuthentication" class="mb-6" action="<?= url_to('register') ?>" method="POST">
+              <?= csrf_field() ?>
+              <div class="mb-6 form-control-validation">
+                <label for="full_name" class="form-label">Nama</label>
+                <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Nama Lengkap"
+                  autofocus />
+              </div>
+              <div class="mb-6 form-control-validation">
+                <label for="username" class="form-label"><?= lang('Auth.username') ?> <small class="text-muted">(huruf, angka, dan titik)</small></label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="username" name="username"
+                    placeholder="contoh: budi.santoso" autocomplete="username" />
+                  <span class="input-group-text" id="username-spinner" style="display:none;">
+                    <span class="spinner-border spinner-border-sm text-primary" role="status"></span>
+                  </span>
+                </div>
+                <div id="username-feedback" class="form-text"></div>
+              </div>
+              <div class="mb-6 form-control-validation">
+                <label for="phone" class="form-label">Nomor HP (WA Aktif)</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number" autofocus />
+              </div>
+              <div class="mb-6 form-control-validation">
+                <label for="email" class="form-label"><?= lang('Auth.email') ?></label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Masukkan email aktif" />
+                <div id="email-feedback" class="form-text"></div>
+              </div>
+              <div class="mb-6 form-password-toggle form-control-validation">
+                <label class="form-label" for="password"><?= lang('Auth.password') ?> <small class="text-muted">(min. 6 karakter)</small></label>
+                <div class="input-group input-group-merge">
+                  <input type="password" id="password" class="form-control" name="password"
+                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                    aria-describedby="password" />
+                  <span class="input-group-text cursor-pointer"><i class="icon-base ti tabler-eye-off"></i></span>
+                </div>
+                <div id="password-feedback" class="form-text"></div>
+              </div>
+              <div class="mb-6 form-password-toggle form-control-validation">
+                <label class="form-label" for="password"><?= lang('Auth.passwordConfirm') ?></label>
+                <div class="input-group input-group-merge">
+                  <input type="password" id="password" class="form-control" name="password_confirm"
+                    placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                    aria-describedby="password" />
+                  <span class="input-group-text cursor-pointer"><i class="icon-base ti tabler-eye-off"></i></span>
+                </div>
+              </div>
+              <div class="my-8 form-control-validation">
+                <div class="form-check mb-0 ms-2">
+                  <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
+                  <label class="form-check-label" for="terms-conditions">
+                    I agree to
+                    <a href="javascript:void(0);">privacy policy & terms</a>
+                  </label>
+                </div>
+              </div>
+              <button class="btn btn-primary d-grid w-100">Sign up</button>
+            </form>
+
+            <p class="text-center">
+              <span><?= lang('Auth.haveAccount') ?></span>
+              <a href="<?= url_to('login') ?>">
+                <span><?= lang('Auth.login') ?></span>
+              </a>
+            </p>
+
           </div>
-          <!-- Register Card -->
         </div>
+        <!-- Register Card -->
       </div>
     </div>
+  </div>
 
-    <!-- / Content -->
+  <!-- / Content -->
 
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/theme.js -->
+  <!-- Core JS -->
+  <!-- build:js assets/vendor/js/theme.js -->
 
-    <script src="<?= base_url()?>assets/vendor/libs/jquery/jquery.js"></script>
+  <script src="<?= base_url() ?>assets/vendor/libs/jquery/jquery.js"></script>
 
-    <script src="<?= base_url()?>assets/vendor/libs/popper/popper.js"></script>
-    <script src="<?= base_url()?>assets/vendor/js/bootstrap.js"></script>
-    <script src="<?= base_url()?>assets/vendor/libs/node-waves/node-waves.js"></script>
+  <script src="<?= base_url() ?>assets/vendor/libs/popper/popper.js"></script>
+  <script src="<?= base_url() ?>assets/vendor/js/bootstrap.js"></script>
+  <script src="<?= base_url() ?>assets/vendor/libs/node-waves/node-waves.js"></script>
 
-    <script src="<?= base_url()?>assets/vendor/libs/@algolia/autocomplete-js.js"></script>
+  <script src="<?= base_url() ?>assets/vendor/libs/@algolia/autocomplete-js.js"></script>
 
-    <script src="<?= base_url()?>assets/vendor/libs/pickr/pickr.js"></script>
+  <script src="<?= base_url() ?>assets/vendor/libs/pickr/pickr.js"></script>
 
-    <script src="<?= base_url()?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  <script src="<?= base_url() ?>assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="<?= base_url()?>assets/vendor/libs/hammer/hammer.js"></script>
+  <script src="<?= base_url() ?>assets/vendor/libs/hammer/hammer.js"></script>
 
-    <script src="<?= base_url()?>assets/vendor/libs/i18n/i18n.js"></script>
+  <script src="<?= base_url() ?>assets/vendor/libs/i18n/i18n.js"></script>
 
-    <script src="<?= base_url()?>assets/vendor/js/menu.js"></script>
+  <script src="<?= base_url() ?>assets/vendor/js/menu.js"></script>
 
-    <!-- endbuild -->
+  <!-- endbuild -->
 
-    <!-- Vendors JS -->
-    <script src="<?= base_url()?>assets/vendor/libs/@form-validation/popular.js"></script>
-    <script src="<?= base_url()?>assets/vendor/libs/@form-validation/bootstrap5.js"></script>
-    <script src="<?= base_url()?>assets/vendor/libs/@form-validation/auto-focus.js"></script>
+  <!-- Vendors JS -->
+  <script src="<?= base_url() ?>assets/vendor/libs/@form-validation/popular.js"></script>
+  <script src="<?= base_url() ?>assets/vendor/libs/@form-validation/bootstrap5.js"></script>
+  <script src="<?= base_url() ?>assets/vendor/libs/@form-validation/auto-focus.js"></script>
 
-    <!-- Main JS -->
+  <!-- Main JS -->
 
-    <script src="<?= base_url()?>assets/js/main.js"></script>
+  <script src="<?= base_url() ?>assets/js/main.js"></script>
 
-    <!-- Page JS -->
-    <script src="<?= base_url()?>assets/js/pages-auth.js"></script>
-  </body>
+  <!-- Page JS -->
+  <script src="<?= base_url() ?>assets/js/pages-auth.js"></script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    const BASE_URL = '<?= base_url() ?>';
+    const CSRF_NAME  = '<?= csrf_token() ?>';
+    const CSRF_HASH  = '<?= csrf_hash() ?>';
+
+    const usernameInput  = document.getElementById('username');
+    const usernameFb     = document.getElementById('username-feedback');
+    const usernameSpinner = document.getElementById('username-spinner');
+
+    const emailInput     = document.getElementById('email');
+    const emailFb        = document.getElementById('email-feedback');
+
+    const passwordInput  = document.getElementById('password');
+    const passwordFb     = document.getElementById('password-feedback');
+
+    const form           = document.getElementById('formAuthentication');
+
+    let usernameValid    = false;
+    let emailValid       = false;
+
+    // ── Regex pattern ─────────────────────────────────────────────────
+    const usernameRegex = /^[a-zA-Z0-9\.]+$/;
+
+    // ── Helper: set feedback ───────────────────────────────────────────
+    function setFeedback(input, feedbackEl, isOk, message) {
+      input.classList.remove('is-valid', 'is-invalid');
+      feedbackEl.className = 'form-text';
+      if (message === '') { feedbackEl.textContent = ''; return; }
+      if (isOk) {
+        input.classList.add('is-valid');
+        feedbackEl.classList.add('text-success');
+      } else {
+        input.classList.add('is-invalid');
+        feedbackEl.classList.add('text-danger');
+      }
+      feedbackEl.textContent = message;
+    }
+
+    // ── AJAX helper ────────────────────────────────────────────────────
+    function ajaxPost(url, data, callback) {
+      data[CSRF_NAME] = CSRF_HASH;
+      fetch(BASE_URL + url, {
+        method : 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'X-Requested-With': 'XMLHttpRequest' },
+        body   : new URLSearchParams(data)
+      })
+      .then(r => r.json())
+      .then(callback)
+      .catch(() => callback({ available: false, message: 'Terjadi kesalahan jaringan.' }));
+    }
+
+    // ── Debounce ───────────────────────────────────────────────────────
+    function debounce(fn, delay) {
+      let timer;
+      return function (...args) { clearTimeout(timer); timer = setTimeout(() => fn.apply(this, args), delay); };
+    }
+
+    // ── Username validation ────────────────────────────────────────────
+    const validateUsername = debounce(function () {
+      const val = usernameInput.value.trim();
+      usernameValid = false;
+
+      if (val === '') {
+        setFeedback(usernameInput, usernameFb, false, 'Username tidak boleh kosong.');
+        return;
+      }
+
+      if (!usernameRegex.test(val)) {
+        setFeedback(usernameInput, usernameFb, false, 'Username hanya boleh berisi huruf, angka, dan titik.');
+        return;
+      }
+
+      // Show spinner
+      usernameSpinner.style.display = '';
+      setFeedback(usernameInput, usernameFb, true, '');
+
+      ajaxPost('ajax/check-username', { username: val }, function (res) {
+        usernameSpinner.style.display = 'none';
+        usernameValid = res.available;
+        setFeedback(usernameInput, usernameFb, res.available, res.message);
+      });
+    }, 600);
+
+    usernameInput.addEventListener('input', validateUsername);
+    usernameInput.addEventListener('blur',  validateUsername);
+
+    // ── Email validation ───────────────────────────────────────────────
+    const validateEmail = debounce(function () {
+      const val = emailInput.value.trim();
+      emailValid = false;
+
+      if (val === '') {
+        setFeedback(emailInput, emailFb, false, 'Email tidak boleh kosong.');
+        return;
+      }
+
+      ajaxPost('ajax/check-email', { email: val }, function (res) {
+        emailValid = res.available;
+        setFeedback(emailInput, emailFb, res.available, res.message);
+      });
+    }, 600);
+
+    emailInput.addEventListener('input', validateEmail);
+    emailInput.addEventListener('blur',  validateEmail);
+
+    // ── Password validation ────────────────────────────────────────────
+    passwordInput.addEventListener('input', function () {
+      const len = passwordInput.value.length;
+      if (len === 0) {
+        setFeedback(passwordInput, passwordFb, false, 'Password tidak boleh kosong.');
+      } else if (len < 6) {
+        setFeedback(passwordInput, passwordFb, false, `Password minimal 6 karakter (saat ini ${len} karakter).`);
+      } else {
+        setFeedback(passwordInput, passwordFb, true, 'Password valid.');
+      }
+    });
+
+    // ── Form submit guard ──────────────────────────────────────────────
+    form.addEventListener('submit', function (e) {
+      let blocked = false;
+
+      // Re-check username
+      const uVal = usernameInput.value.trim();
+      if (!uVal || !usernameRegex.test(uVal) || !usernameValid) {
+        setFeedback(usernameInput, usernameFb, false,
+          !uVal ? 'Username tidak boleh kosong.' :
+          !usernameRegex.test(uVal) ? 'Username hanya boleh berisi huruf, angka, dan titik.' :
+          'Periksa kembali username Anda.');
+        blocked = true;
+      }
+
+      // Re-check email
+      if (!emailInput.value.trim() || !emailValid) {
+        setFeedback(emailInput, emailFb, false,
+          !emailInput.value.trim() ? 'Email tidak boleh kosong.' : 'Periksa kembali email Anda.');
+        blocked = true;
+      }
+
+      // Re-check password
+      if (passwordInput.value.length < 6) {
+        setFeedback(passwordInput, passwordFb, false, 'Password minimal 6 karakter.');
+        blocked = true;
+      }
+
+      if (blocked) { e.preventDefault(); }
+    });
+  })();
+  </script>
+</body>
+
 </html>

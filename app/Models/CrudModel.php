@@ -262,4 +262,72 @@ class CrudModel extends Model
     $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_usulan WHERE status='20' AND verifikator='$vid'")->getRow();
     return $query;
   }
+
+  /**
+   * KPI Verifikator: statistik penanganan usulan per verifikator
+   */
+  public function kpiVerifikator()
+  {
+    $query = $this->db->query("
+      SELECT
+        u.id AS user_id,
+        u.full_name,
+        COUNT(t.id)                                               AS total,
+        SUM(t.status IN (2,3,31))                                 AS proses_verifikasi,
+        SUM(t.status IN (4,41,5,6))                               AS lolos_verifikasi,
+        SUM(t.status IN (7,8,9,20))                               AS selesai,
+        SUM(t.status = 21)                                        AS dikembalikan,
+        ROUND(
+          IF(COUNT(t.id)=0, 0, SUM(t.status IN (4,41,5,6,7,8,9,20)) / COUNT(t.id) * 100)
+        , 1)                                                      AS pct_lolos
+      FROM users u
+      INNER JOIN auth_groups_users agu ON agu.user_id = u.id AND agu.group = 'verifikator'
+      LEFT JOIN tr_usulan t ON t.verifikator = u.id AND t.status > 1
+      GROUP BY u.id, u.full_name
+      ORDER BY total DESC
+    ")->getResult();
+    return $query;
+  }
+
+  /**
+   * KPI Asesor: statistik penugasan penilaian per asesor
+   */
+  public function kpiAsesor()
+  {
+    $query = $this->db->query("
+      SELECT
+        u.id AS user_id,
+        u.full_name,
+        COUNT(a.id)                        AS total_penugasan,
+        COUNT(DISTINCT a.usul_id)          AS total_usulan,
+        SUM(a.jenis = 1)                   AS asesor_kecukupan,
+        SUM(a.jenis = 2)                   AS asesor_lapangan,
+        SUM(a.status = 1)                  AS sudah_dinilai,
+        SUM(a.status IS NULL OR a.status = 0) AS belum_dinilai
+      FROM users u
+      INNER JOIN auth_groups_users agu ON agu.user_id = u.id AND agu.group = 'asesor'
+      LEFT JOIN tr_asesor a ON a.user_id = u.id
+      GROUP BY u.id, u.full_name
+      ORDER BY total_penugasan DESC
+    ")->getResult();
+    return $query;
+  }
+
+  public function jumlahUsulAsesor($uid)
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_asesor WHERE user_id='$uid'")->getRow();
+    return $query;
+  }
+
+  public function jumlahUsulBelumDinilaiAsesor($uid)
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_asesor WHERE user_id='$uid' AND (status IS NULL OR status = 0)")->getRow();
+    return $query;
+  }
+
+  public function jumlahUsulSudahDinilaiAsesor($uid)
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_asesor WHERE user_id='$uid' AND status = 1")->getRow();
+    return $query;
+  }
 }

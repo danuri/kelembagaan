@@ -16,8 +16,10 @@
 <div class="card">
   <div class="card-header border-bottom d-flex justify-content-between align-items-center">
     <h5 class="card-title m-0 me-2">Data Usulan</h5>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat
-      Usulan</button>
+    <?php if ($layanan->is_active == 1) { ?>
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#onboardImageModal">Buat
+        Usulan</button>
+    <?php } ?>
   </div>
   <div class="justify-content-between dt-layout-table">
     <table class="table table-bordered">
@@ -142,21 +144,26 @@
       alert('NSPT tidak boleh kosong');
       return;
     }
+    var btn = $(this);
+    btn.prop('disabled', true).text('Mencari...');
     $.ajax({
       url: '<?= site_url('ajax/getlembaga') ?>',
       method: 'POST',
-      data: { nsm: nspt },
+      data: { nspt: nspt },
       dataType: 'json',
       success: function (response) {
         if (response.status == 'success') {
           $('#nama_lembaga').val(response.data.nama_ptai);
           $('#alamat_lembaga').val(response.data.alamat);
         } else {
-          alert('Data tidak ditemukan');
+          alert(response.message || 'Data tidak ditemukan');
         }
       },
       error: function () {
         alert('Terjadi kesalahan saat menghubungi server');
+      },
+      complete: function () {
+        btn.prop('disabled', false).text('Cari');
       }
     });
   });

@@ -115,7 +115,12 @@
                 <form id="tambahProdiForm" method="post" action="<?= site_url('layanan/pendirianptkis/saveprodi') ?>">
                     <div class="mb-3">
                         <label for="namaProdi" class="form-label">Nama Program Studi</label>
-                        <input type="text" class="form-control" id="namaProdi" name="nama_prodi" required>
+                        <select class="form-select" id="namaProdi" name="nama_prodi" required></select>
+                            <option value="">Pilih Program Studi</option>
+                            <?php foreach ($prodis as $pr): ?>
+                                <option value="<?= $pr->nama_prodi ?>"><?= $pr->nama_prodi ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="jenjangProdi" class="form-label">Jenjang</label>

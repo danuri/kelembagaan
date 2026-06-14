@@ -7,7 +7,7 @@ use CodeIgniter\Config\BaseConfig;
 class Email extends BaseConfig
 {
     public string $fromEmail = 'diktis.lembaga@gmail.com';
-    public string $fromName = 'Diktis Kelembagaan Kemenag';
+    public string $fromName = 'Kelembagaan PTKI Kemenag';
     public string $recipients = '';
 
     /** The "user agent" */
@@ -20,7 +20,7 @@ class Email extends BaseConfig
     public string $mailPath = '/usr/sbin/sendmail';
 
     /** SMTP Server Hostname */
-    public string $SMTPHost = 'smtp.googlemail.com';
+    public string $SMTPHost = 'smtp.gmail.com';
 
     /** SMTP Auth Method: login = Sandi Biasa */
     public string $SMTPAuthMethod = 'login';
@@ -34,8 +34,8 @@ class Email extends BaseConfig
      */
     public string $SMTPPass = '';
 
-    /** SMTP Port */
-    public int $SMTPPort = 465;
+    /** SMTP Port - 587 untuk TLS/STARTTLS (Gmail App Password) */
+    public int $SMTPPort = 587;
 
     /** SMTP Timeout (in seconds) */
     public int $SMTPTimeout = 30;
@@ -45,9 +45,10 @@ class Email extends BaseConfig
 
     /**
      * SMTP Encryption.
-     * 'tls' = STARTTLS (sesuai konfigurasi server Kemenag port 587)
+     * 'tls' = STARTTLS port 587 (wajib untuk Gmail App Password)
+     * 'ssl' = SSL port 465 (deprecated)
      */
-    public string $SMTPCrypto = 'ssl';
+    public string $SMTPCrypto = 'tls';
 
     /** Enable word-wrap */
     public bool $wordWrap = true;

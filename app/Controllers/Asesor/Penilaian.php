@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Verifikator;
+namespace App\Controllers\Asesor;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -19,7 +19,7 @@ class Penilaian extends BaseController
         $layananModel = new LayananModel();
         $data['layanan'] = $layananModel->findAll();
 
-        return view('verifikator/penilaian/index', $data);
+        return view('asesor/penilaian/index', $data);
     }
 
     function getdata()
@@ -32,7 +32,7 @@ class Penilaian extends BaseController
 
         return DataTable::of($builder)
             ->add('action', function ($row) {
-                return '<a href="' . site_url('verifikator/penilaian/detail/' . encrypt($row->id)) . '" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Lembaga"><span class="icon-base ti tabler-zoom-scan"></span></a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\'' . encrypt($row->id) . '\')" data-toggle="tooltip" data-placement="top" title="Logs"><span class="icon-base ti tabler-bell-search"></span></a>';
+                return '<a href="' . site_url('asesor/penilaian/detail/' . encrypt($row->id)) . '" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Lembaga"><span class="icon-base ti tabler-zoom-scan"></span></a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\'' . encrypt($row->id) . '\')" data-toggle="tooltip" data-placement="top" title="Logs"><span class="icon-base ti tabler-bell-search"></span></a>';
             })->format('status', function ($value, $meta) {
                 return usul_status($value);
             })->format('jenis', function ($value, $meta) {
@@ -68,15 +68,15 @@ class Penilaian extends BaseController
         $asesm = new AsesorModel;
         $data['usulan'] = $model->where('id', $id)->first();
         $data['detail'] = $detail->where('usulan_id', $id)->first();
-        $data['asesmen'] = $asesm->where('usul_id', $id)->first();
+        $data['asesmen'] = $asesm->where(['user_id' => user_id(), 'usul_id' => $id])->first();
 
         $crudModel = new CrudModel();
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
 
         if ($data['asesmen']->status == 2) {
-            return view('verifikator/penilaian/detail_view', $data);
+            return view('asesor/penilaian/detail_view', $data);
         } else {
-            return view('verifikator/penilaian/detail_nilai', $data);
+            return view('asesor/penilaian/detail_nilai', $data);
         }
     }
 
@@ -91,16 +91,19 @@ class Penilaian extends BaseController
         if (!$validation->withRequest($this->request)->run()) {
             return redirect()->back()->withInput()->with('error', $validation->getErrors());
         }
+        $model = new AsesorModel;
+        $asesor = $model->find($id);
+
         // handle file upload
         $file = $this->request->getFile('lampiran');
         if ($file->isValid() && !$file->hasMoved()) {
-            $newName = $file->getRandomName();
-            $file->move('uploads/nilai', $newName);
+            $jenisCode = ($asesor->jenis == 1) ? 'AK' : (($asesor->jenis == 2) ? 'AL' : 'NA');
+            $newName = 'penilaian_' . $jenisCode . '_' . $id . '.' . $file->getClientExtension();
+            $file->move('uploads/nilai', $newName, true); // true to overwrite existing file
         } else {
             return redirect()->back()->withInput()->with('error', 'File upload failed');
         }
 
-        $model = new AsesorModel;
         $update = $model->update($id, ['skor' => $this->request->getPost(), 'file_hasil' => $newName]);
         return redirect()->back()->withInput()->with('message', 'Nilai telah diupdate');
     }

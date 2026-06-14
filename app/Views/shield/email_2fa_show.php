@@ -10,14 +10,14 @@ use CodeIgniter\Shield\Entities\User;
 
 <?= $this->section('main') ?>
 
-<div class="container d-flex justify-content-center p-5">
-    <div class="card col-12 col-md-5 shadow-sm">
+<div class="authentication-inner">
+    <div class="card">
         <div class="card-body">
             <h5 class="card-title mb-5"><?= lang('Auth.email2FATitle') ?></h5>
 
             <p><?= lang('Auth.confirmEmailAddress') ?></p>
 
-            <?php if (session('error')) : ?>
+            <?php if (session('error')): ?>
                 <div class="alert alert-danger"><?= esc(session('error')) ?></div>
             <?php endif ?>
 
@@ -26,13 +26,12 @@ use CodeIgniter\Shield\Entities\User;
 
                 <!-- Email -->
                 <div class="mb-2">
-                    <input type="email" class="form-control" name="email"
-                        inputmode="email" autocomplete="email" placeholder="<?= lang('Auth.email') ?>"
-                        <?php /** @var User $user */ ?>
+                    <input type="email" class="form-control" name="email" inputmode="email" autocomplete="email"
+                        placeholder="<?= lang('Auth.email') ?>" <?php /** @var User $user */ ?>
                         value="<?= old('email', $user->email) ?>" required>
                 </div>
 
-                <div class="d-grid col-8 mx-auto m-3">
+                <div class="d-grid col-12 mx-auto m-3">
                     <button type="submit" class="btn btn-primary btn-block"><?= lang('Auth.send') ?></button>
                 </div>
 

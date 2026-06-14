@@ -148,6 +148,9 @@ class Pendirianptkis extends BaseController
         $pmodel = new ProdiModel;
         $data['prodi'] = $pmodel->where(['usul_id' => $id])->findAll();
 
+        $crudModel = new CrudModel();
+        $data['prodis'] = $crudModel->getArray('tm_prodi');
+
         return view('user/pendirianptkis/prodi', $data);
     }
 
@@ -170,17 +173,35 @@ class Pendirianptkis extends BaseController
 
     function submitusul()
     {
+        $json_data = file_get_contents('php://input');
+        $request_data = json_decode($json_data, true);
 
         $layanan = new LayananModel;
         $layanan = $layanan->find(1);
 
-        if ($layanan->is_active == 0) {
+        $usulanModel = new UsulanModel();
+        $usulan = $usulanModel->find($request_data['usul_id']);
+        // Jika usulan status perbaikan, maka boleh submit walaupun layanan tidak aktif
+        // Jika usulan status draft, maka tidak boleh submit jika layanan tidak aktif
+        if ($layanan->is_active == 0 && $usulan->status == 0) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Layanan sedang tidak aktif']);
         }
 
-        $json_data = file_get_contents('php://input');
-        $request_data = json_decode($json_data, true);
-        $usulanModel = new UsulanModel();
+        // cek apakah usulan lengkap
+        $ptkisModel = new PendirianptkisModel();
+        $ptkis = $ptkisModel->where('usulan_id', $request_data['usul_id'])->first();
+
+        if (!$ptkis) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Usulan tidak ditemukan']);
+        }
+
+        $prodiModel = new ProdiModel();
+        $prodi = $prodiModel->where('usul_id', $request_data['usul_id'])->findAll();
+
+        if (count($prodi) == 0) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Usulan tidak lengkap, harus ada minimal 1 Program Studi']);
+        }
+
         $usulanModel->update($request_data['usul_id'], ['status' => 1, 'submit_at' => date('Y-m-d H:i:s')]);
 
         $logm = new LogModel();

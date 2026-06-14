@@ -103,9 +103,9 @@ class Auth extends ShieldAuth
      * @var array<string, class-string<ActionInterface>|null>
      */
     public array $actions = [
-        // 'register' => \CodeIgniter\Shield\Authentication\Actions\EmailActivator::class,
+        'register' => \CodeIgniter\Shield\Authentication\Actions\EmailActivator::class,
         // 'register' => \App\Authentication\Actions\WhatsappActivator::class,
-        'register' => null,
+        // 'register' => null,
         'login' => null,
     ];
 
@@ -183,7 +183,7 @@ class Auth extends ShieldAuth
      * could be modified as the only method of login once an account
      * has been set up.
      */
-    public bool $allowMagicLinkLogins = false;
+    public bool $allowMagicLinkLogins = true;
 
     /**
      * --------------------------------------------------------------------
@@ -259,7 +259,7 @@ class Auth extends ShieldAuth
      * The minimum length that a password must be to be accepted.
      * Recommended minimum value by NIST = 8 characters.
      */
-    public int $minimumPasswordLength = 8;
+    public int $minimumPasswordLength = 6;
 
     /**
      * --------------------------------------------------------------------
@@ -273,9 +273,9 @@ class Auth extends ShieldAuth
      * @var list<class-string<ValidatorInterface>>
      */
     public array $passwordValidators = [
-        CompositionValidator::class,
-        NothingPersonalValidator::class,
-        DictionaryValidator::class,
+        // CompositionValidator::class,
+        // NothingPersonalValidator::class,
+        // DictionaryValidator::class,
         // PwnedValidator::class,
     ];
 
@@ -458,6 +458,10 @@ class Auth extends ShieldAuth
             return '/verifikator';
         }
 
+        if (auth()->user()->can('asesor.access')) {
+            return '/asesor';
+        }
+
         $url = setting('Auth.redirects')['login'];
         return $this->getUrl($url);
     }
@@ -522,6 +526,10 @@ class Auth extends ShieldAuth
 
         if (auth()->user()->can('verifikator.access')) {
             return '/verifikator';
+        }
+
+        if (auth()->user()->can('asesor.access')) {
+            return '/asesor';
         }
 
         $url = setting('Auth.redirects')['group_denied'];

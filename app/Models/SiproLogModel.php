@@ -14,6 +14,7 @@ class SiproLogModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = [
         'usul_id',
+        'prodi_id',
         'endpoint',
         'request_data',
         'response_data',
