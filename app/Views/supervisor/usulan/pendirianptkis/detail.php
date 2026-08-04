@@ -234,10 +234,21 @@
                                         </a>
                                     </td>
                                     <td style="padding: 12px 20px; border-bottom: 1px solid #f0f2f5; vertical-align: middle;">
+                                        <?php
+                                        $isSuccess = false;
+                                        if (isset($sippro_logs)) {
+                                            foreach ($sippro_logs as $log) {
+                                                if ($log->prodi_id == $p->id && $log->is_success == 1) {
+                                                    $isSuccess = true;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        ?>
                                         <div class="d-flex gap-2">
-                                            <button type="button" class="btn btn-sm btn-primary" style="border-radius: 8px;"
-                                                onclick="kirimProdiSippro(<?= $p->id ?>, this)">
-                                                <i class="ti tabler-send me-1"></i>Kirim
+                                            <button type="button" class="btn btn-sm <?= $isSuccess ? 'btn-secondary' : 'btn-primary' ?>" style="border-radius: 8px;"
+                                                onclick="kirimProdiSippro(<?= $p->id ?>, this)" <?= $isSuccess ? 'disabled' : '' ?>>
+                                                <i class="ti tabler-send me-1"></i><?= $isSuccess ? 'Terkirim' : 'Kirim' ?>
                                             </button>
                                             <button type="button" class="btn btn-sm btn-outline-info" style="border-radius: 8px;"
                                                 onclick="logProdiSippro(<?= $p->id ?>)">

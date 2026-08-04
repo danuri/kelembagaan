@@ -14,7 +14,7 @@ class CrudModel extends Model
 
   }
 
-  public function getRow($table,$where)
+  public function getRow($table, $where)
   {
     $builder = $this->db->table($table);
     $query = $builder->getWhere($where);
@@ -22,26 +22,26 @@ class CrudModel extends Model
     return $query->getRow();
   }
 
-  public function getArray($table,$where=false)
+  public function getArray($table, $where = false)
   {
     $builder = $this->db->table($table);
 
-    if($where){
+    if ($where) {
       $query = $builder->getWhere($where);
-    }else{
+    } else {
       $query = $builder->get();
     }
 
     return $query->getResult();
   }
 
-  public function getCount($table,$where=false)
+  public function getCount($table, $where = false)
   {
     $builder = $this->db->table($table);
 
-    if($where){
+    if ($where) {
       $query = $builder->getWhere($where);
-    }else{
+    } else {
       $query = $builder->get();
     }
 
@@ -68,7 +68,7 @@ class CrudModel extends Model
 
   public function getActivities($id)
   {
-    $query = $this->db->query("exec sp_get_aktifitas @usul='".$id."'")->getResult();
+    $query = $this->db->query("exec sp_get_aktifitas @usul='" . $id . "'")->getResult();
     return $query;
   }
 
@@ -151,7 +151,7 @@ class CrudModel extends Model
     return $query;
   }
 
-  public function getDokumen($layananid,$usulid)
+  public function getDokumen($layananid, $usulid)
   {
     $query = $this->db->query("SELECT
                                 tm_dokumen.*,b.lampiran,b.dok_status,b.keterangan,b.id as usul_dokumen_id
@@ -327,7 +327,19 @@ class CrudModel extends Model
 
   public function jumlahUsulSudahDinilaiAsesor($uid)
   {
-    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_asesor WHERE user_id='$uid' AND status = 1")->getRow();
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_asesor WHERE user_id='$uid' AND status = 2")->getRow();
+    return $query;
+  }
+
+  public function jumlahKecukupan($uid)
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_asesor WHERE user_id='$uid' AND jenis = 1")->getRow();
+    return $query;
+  }
+
+  public function jumlahLapangan($uid)
+  {
+    $query = $this->db->query("SELECT COUNT(id) AS jumlah FROM tr_asesor WHERE user_id='$uid' AND jenis = 2")->getRow();
     return $query;
   }
 }

@@ -223,9 +223,9 @@
                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </div>
-            <h5 class="mb-2">Pembentukan Fakultas Agama Islam</h5>
+            <h5 class="mb-2">Perubahan Nama dan Domisili</h5>
             <p class="features-icon-description">
-              Layanan ini disediakan untuk pengajuan izin pendirian Fakultas Agama Islam (FAI) pada Perguruan Tinggi
+              Layanan ini disediakan untuk pengajuan izin perubahan nama dan/atau domisili Perguruan Tinggi
               Keagamaan Islam Swasta (PTKIS).
             </p>
           </div>

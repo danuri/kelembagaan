@@ -118,9 +118,11 @@
 
           <nav
             class="layout-navbar container-xxl navbar-detached navbar navbar-expand-xl align-items-center bg-navbar-theme"
-            id="layout-navbar">
-            <div class="d-none d-sm-block">
-              <strong>Verifikator</strong>
+            id="layout-navbar"
+            style="border-radius: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.04);">
+            <div class="d-none d-sm-flex align-items-center gap-2">
+              <div style="width: 8px; height: 8px; background: linear-gradient(135deg, #696cff, #8592ff); border-radius: 50%;"></div>
+              <span class="fw-bold" style="color: #566a7f; letter-spacing: -0.01em;">Panel Verifikator</span>
             </div>
             <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
               <a class="nav-item nav-link px-0 me-xl-6" href="javascript:void(0)">
@@ -132,35 +134,38 @@
               <ul class="navbar-nav flex-row align-items-center ms-md-auto">
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a
-                    class="nav-link dropdown-toggle hide-arrow p-0"
-                    href="javascript:void(0);"
-                    data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                      <img src="<?= base_url()?>assets/img/avatars/1.png" alt class="rounded-circle" />
+                  <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    <div class="d-flex align-items-center gap-2">
+                      <span class="d-none d-md-block fw-semibold" style="font-size: 0.875rem; color: #566a7f;"><?= auth()->user()->full_name ?? 'Verifikator' ?></span>
+                      <div class="avatar avatar-online">
+                        <img src="<?= base_url() ?>assets/img/avatars/1.png" alt class="rounded-circle" />
+                      </div>
                     </div>
                   </a>
-                  <ul class="dropdown-menu dropdown-menu-end">
+                  <ul class="dropdown-menu dropdown-menu-end" style="border: none; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); overflow: hidden;">
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item py-3 px-4" href="#">
                         <div class="d-flex">
                           <div class="flex-shrink-0 me-3">
                             <div class="avatar avatar-online">
-                              <img src="<?= base_url()?>assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                              <img src="<?= base_url() ?>assets/img/avatars/1.png" alt
+                                class="w-px-40 h-auto rounded-circle" />
                             </div>
                           </div>
                           <div class="flex-grow-1">
-                            <h6 class="mb-0">John Doe</h6>
-                            <small class="text-body-secondary">Admin</small>
+                            <h6 class="mb-0 fw-bold"><?= auth()->user()->full_name ?? 'Verifikator' ?></h6>
+                            <small class="text-body-secondary">
+                              <span class="badge bg-label-primary" style="border-radius: 6px; font-size: 0.65rem;">Verifikator</span>
+                            </small>
                           </div>
                         </div>
                       </a>
                     </li>
                     <li>
-                      <div class="dropdown-divider my-1 mx-n2"></div>
+                      <div class="dropdown-divider my-0"></div>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="<?= site_url('logout')?>">
+                      <a class="dropdown-item py-2 px-4" href="<?= site_url('logout') ?>" style="color: #ff3e1d;">
                         <i class="icon-base ti tabler-power icon-md me-3"></i><span>Log Out</span>
                       </a>
                     </li>
@@ -203,10 +208,10 @@
               <div class="container-xxl">
                 <div
                   class="footer-container d-flex align-items-center justify-content-between py-4 flex-md-row flex-column">
-                  <div class="text-body">
-                    ©2025 SIPTIKA
+                  <div class="text-muted" style="font-size: 0.8rem;">
+                    © <?= date('Y') ?> <span class="fw-semibold">SIPTIKA</span> — Sistem Informasi Perizinan Pendidikan Tinggi Keagamaan
                   </div>
-                  <div class="d-none d-lg-inline-block"><?= setting('App.siteFooter')?></div>
+                  <div class="d-none d-lg-inline-block text-muted" style="font-size: 0.8rem;"><?= setting('App.siteFooter') ?></div>
                 </div>
               </div>
             </footer>

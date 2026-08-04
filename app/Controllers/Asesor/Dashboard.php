@@ -12,6 +12,8 @@ class Dashboard extends BaseController
     {
         $crud = new CrudModel;
         $data['jumlahUsul'] = $crud->jumlahUsulAsesor(user_id());
+        $data['jumlahKecukupan'] = $crud->jumlahKecukupan(user_id());
+        $data['jumlahLapangan'] = $crud->jumlahLapangan(user_id());
         $data['jumlahBelumDinilai'] = $crud->jumlahUsulBelumDinilaiAsesor(user_id());
         $data['jumlahSudahDinilai'] = $crud->jumlahUsulSudahDinilaiAsesor(user_id());
         return view('asesor/dashboard', $data);

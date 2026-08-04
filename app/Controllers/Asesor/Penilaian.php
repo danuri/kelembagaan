@@ -27,12 +27,12 @@ class Penilaian extends BaseController
         $db = \Config\Database::connect('default', false);
         $builder = $db->table('tr_usulan a')->select('a.id,a.nama_lembaga,a.nama_lembaga,a.status,b.id as ases_id, b.jenis,b.mulai_tanggal,b.sampai_tanggal,b.keterangan,b.file_hasil,b.skor,b.status as status_nilai')
             ->join('tr_asesor b', 'b.usul_id = a.id')
-            ->where(['b.user_id' => user_id(), 'a.status' => 5]);
+            ->where(['b.user_id' => user_id()]);
 
 
         return DataTable::of($builder)
             ->add('action', function ($row) {
-                return '<a href="' . site_url('asesor/penilaian/detail/' . encrypt($row->id)) . '" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Lembaga"><span class="icon-base ti tabler-zoom-scan"></span></a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\'' . encrypt($row->id) . '\')" data-toggle="tooltip" data-placement="top" title="Logs"><span class="icon-base ti tabler-bell-search"></span></a>';
+                return '<a href="' . site_url('asesor/penilaian/detail/' . encrypt($row->ases_id)) . '" type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Detail Lembaga"><span class="icon-base ti tabler-zoom-scan"></span></a> <a href="javascript:;" type="button" class="btn btn-warning btn-sm" onClick="log(\'' . encrypt($row->ases_id) . '\')" data-toggle="tooltip" data-placement="top" title="Logs"><span class="icon-base ti tabler-bell-search"></span></a>';
             })->format('status', function ($value, $meta) {
                 return usul_status($value);
             })->format('jenis', function ($value, $meta) {
@@ -66,9 +66,9 @@ class Penilaian extends BaseController
         $model = new UsulanModel();
         $detail = new PendirianptkisModel();
         $asesm = new AsesorModel;
-        $data['usulan'] = $model->where('id', $id)->first();
-        $data['detail'] = $detail->where('usulan_id', $id)->first();
-        $data['asesmen'] = $asesm->where(['user_id' => user_id(), 'usul_id' => $id])->first();
+        $data['asesmen'] = $asesm->find($id);
+        $data['usulan'] = $model->find($data['asesmen']->usul_id);
+        $data['detail'] = $detail->where('usulan_id', $data['asesmen']->usul_id)->first();
 
         $crudModel = new CrudModel();
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
@@ -110,13 +110,17 @@ class Penilaian extends BaseController
 
     function done($id)
     {
-        $model = new AsesorModel();
-
         $id = decrypt($id);
-        $model->update($id, ['status' => 6]);
+        $model = new AsesorModel();
+        $asesor = $model->find($id);
+
+        $model->update($id, ['status' => 2]);
+
+        $model2 = new UsulanModel();
+        $model2->update($asesor->usul_id, ['status' => 6]);
 
         $logm = new LogModel();
-        $logm->insert(['id_usul' => $id, 'status_usulan' => 6, 'keterangan' => 'Penilaian oleh Asesor ' . auth()->user()->full_name . ' telah selesai.', 'created_by' => user_id()]);
+        $logm->insert(['id_usul' => $asesor->usul_id, 'status_usulan' => 6, 'keterangan' => 'Penilaian oleh Asesor ' . auth()->user()->full_name . ' telah selesai.', 'created_by' => user_id()]);
 
         return redirect()->back()->with('message', 'Nilai telah dikirimkan ke supervisor.');
     }

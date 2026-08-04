@@ -39,6 +39,9 @@ class Pendirianptkis extends BaseController
         $pmodel = new ProdiModel;
         $data['prodi'] = $pmodel->where(['usul_id' => $id])->findAll();
 
+        $siproLogModel = new SiproLogModel();
+        $data['sippro_logs'] = $siproLogModel->where('usul_id', $id)->findAll();
+
         $data['provinsi'] = $crudModel->getRow('reg_provinces', ['id' => $data['detail']->provinsi])->name;
         $data['kabupaten'] = $crudModel->getRow('reg_regencies', ['id' => $data['detail']->kab_kota])->name;
         $data['kecamatan'] = $crudModel->getRow('reg_districts', ['id' => $data['detail']->kecamatan])->name;

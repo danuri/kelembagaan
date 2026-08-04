@@ -60,7 +60,8 @@
               style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Total
               Penugasan</p>
             <h2 class="mb-2 fw-bold" style="font-size: 2.25rem; color: #566a7f; letter-spacing: -0.02em;">
-              <?= $jumlahUsul->jumlah ?></h2>
+              <?= $jumlahUsul->jumlah ?>
+            </h2>
             <span class="badge bg-label-primary" style="border-radius: 8px; padding: 5px 12px; font-size: 0.75rem;">
               <i class="ti tabler-briefcase me-1"></i>Keseluruhan
             </span>
@@ -75,8 +76,58 @@
     </div>
   </div>
 
+  <!-- Kecukupan -->
+  <div class="col-lg-2 col-md-6 col-12">
+    <div class="card stat-card h-100" style="border: none; border-radius: 14px; overflow: hidden;">
+      <div class="card-body p-4">
+        <div class="d-flex align-items-start justify-content-between">
+          <div>
+            <p class="mb-1 text-muted"
+              style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">
+              Asesmen Kecukupan</p>
+            <h2 class="mb-2 fw-bold" style="font-size: 2.25rem; color: #566a7f; letter-spacing: -0.02em;">
+              <?= $jumlahKecukupan->jumlah ?>
+            </h2>
+            <span class="badge bg-label-warning" style="border-radius: 8px; padding: 5px 12px; font-size: 0.75rem;">
+              <i class="ti tabler-clock-hour-4 me-1"></i>Lembaga
+            </span>
+          </div>
+          <div class="stat-icon"
+            style="background: linear-gradient(135deg, #696cff, #8592ff); width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(105, 108, 255, 0.35);">
+            <i class="ti tabler-file-description text-white" style="font-size: 1.5rem;"></i>
+          </div>
+        </div>
+      </div>
+      <div style="height: 4px; background: linear-gradient(90deg, #566a7f, #a3acff);"></div>
+    </div>
+  </div>
+  <!-- Lapangan -->
+  <div class="col-lg-2 col-md-6 col-12">
+    <div class="card stat-card h-100" style="border: none; border-radius: 14px; overflow: hidden;">
+      <div class="card-body p-4">
+        <div class="d-flex align-items-start justify-content-between">
+          <div>
+            <p class="mb-1 text-muted"
+              style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Asesmen
+              Lapangan</p>
+            <h2 class="mb-2 fw-bold" style="font-size: 2.25rem; color: #566a7f; letter-spacing: -0.02em;">
+              <?= $jumlahLapangan->jumlah ?>
+            </h2>
+            <span class="badge bg-label-warning" style="border-radius: 8px; padding: 5px 12px; font-size: 0.75rem;">
+              <i class="ti tabler-clock-hour-4 me-1"></i>Lembaga
+            </span>
+          </div>
+          <div class="stat-icon"
+            style="background: linear-gradient(135deg, #696cff, #8592ff); width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(105, 108, 255, 0.35);">
+            <i class="ti tabler-file-description text-white" style="font-size: 1.5rem;"></i>
+          </div>
+        </div>
+      </div>
+      <div style="height: 4px; background: linear-gradient(90deg, #566a7f, #a3acff);"></div>
+    </div>
+  </div>
   <!-- Belum Dinilai -->
-  <div class="col-lg-4 col-md-6 col-12">
+  <div class="col-lg-2 col-md-6 col-12">
     <div class="card stat-card h-100" style="border: none; border-radius: 14px; overflow: hidden;">
       <div class="card-body p-4">
         <div class="d-flex align-items-start justify-content-between">
@@ -85,7 +136,8 @@
               style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Belum
               Dinilai</p>
             <h2 class="mb-2 fw-bold" style="font-size: 2.25rem; color: #ffab00; letter-spacing: -0.02em;">
-              <?= $jumlahBelumDinilai->jumlah ?></h2>
+              <?= $jumlahBelumDinilai->jumlah ?>
+            </h2>
             <span class="badge bg-label-warning" style="border-radius: 8px; padding: 5px 12px; font-size: 0.75rem;">
               <i class="ti tabler-clock-hour-4 me-1"></i>Menunggu
             </span>
@@ -101,7 +153,7 @@
   </div>
 
   <!-- Sudah Dinilai -->
-  <div class="col-lg-4 col-md-6 col-12">
+  <div class="col-lg-2 col-md-6 col-12">
     <div class="card stat-card h-100" style="border: none; border-radius: 14px; overflow: hidden;">
       <div class="card-body p-4">
         <div class="d-flex align-items-start justify-content-between">
@@ -110,7 +162,8 @@
               style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Sudah
               Dinilai</p>
             <h2 class="mb-2 fw-bold" style="font-size: 2.25rem; color: #71dd37; letter-spacing: -0.02em;">
-              <?= $jumlahSudahDinilai->jumlah ?></h2>
+              <?= $jumlahSudahDinilai->jumlah ?>
+            </h2>
             <span class="badge bg-label-success" style="border-radius: 8px; padding: 5px 12px; font-size: 0.75rem;">
               <i class="ti tabler-circle-check me-1"></i>Selesai
             </span>

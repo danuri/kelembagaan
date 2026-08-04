@@ -116,10 +116,10 @@
                     <div class="mb-3">
                         <label for="namaProdi" class="form-label">Nama Program Studi</label>
                         <select class="form-select" id="namaProdi" name="nama_prodi" required></select>
-                            <option value="">Pilih Program Studi</option>
-                            <?php foreach ($prodis as $pr): ?>
-                                <option value="<?= $pr->nama_prodi ?>"><?= $pr->nama_prodi ?></option>
-                            <?php endforeach; ?>
+                        <option value="">Pilih Program Studi</option>
+                        <?php foreach ($prodis as $pr): ?>
+                            <option value="<?= $pr->nama_prodi ?>"><?= $pr->nama_prodi ?></option>
+                        <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -177,7 +177,7 @@
 <?= $this->endSection() ?>
 <?= $this->section('scripts'); ?>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://malsup.github.io/jquery.form.js" charset="utf-8"></script>
+<script src="<?= base_url('assets/js/jquery.form.js') ?>" charset="utf-8"></script>
 <script>
 
     function preview(berkas) {

@@ -12,7 +12,7 @@ class SipproService
 
     public function __construct()
     {
-        $this->baseUrl = getenv('SIPPRO_API_URL') ?: 'https://sippro.kemenag.go.id/api/v1';
+        $this->baseUrl = getenv('SIPPRO_API_URL') ?: 'https://prodi.kemenag.go.id/api/v1';
         $this->key = getenv('SIPPRO_API_KEY');
 
         $this->client = Services::curlrequest([
