@@ -462,6 +462,10 @@ class Auth extends ShieldAuth
             return '/asesor';
         }
 
+        if (auth()->user()->can('hukum.access')) {
+            return '/hukum';
+        }
+
         $url = setting('Auth.redirects')['login'];
         return $this->getUrl($url);
     }

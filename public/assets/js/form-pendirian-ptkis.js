@@ -459,52 +459,122 @@ $('#kecamatan').on('change', function () {
 });
 
 function confirmSubmit() {
+  // 1. Validasi Langkah 1 (Data Yayasan)
+  const yayasanNama = $('#yayasan_nama').val() ? $('#yayasan_nama').val().trim() : '';
+  const yayasanAlamat = $('#yayasan_alamat').val() ? $('#yayasan_alamat').val().trim() : '';
+  const yayasanNosk = $('#yayasan_nosk').val() ? $('#yayasan_nosk').val().trim() : '';
+  const yayasanTglsk = $('#yayasan_tglsk').val() ? $('#yayasan_tglsk').val().trim() : '';
+
+  if (!yayasanNama || !yayasanAlamat || !yayasanNosk || !yayasanTglsk) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Data Pemohon Belum Lengkap',
+      text: 'Mohon lengkapi seluruh kolom pada Langkah 1 (Data Pemohon Yayasan).'
+    });
+    return;
+  }
+
+  // 2. Validasi Langkah 2 (Data Lembaga)
+  const namaLembaga = $('#nama_lembaga').val() ? $('#nama_lembaga').val().trim() : '';
+  const kategori = $('#kategori').val() ? $('#kategori').val().trim() : '';
+  const jenjang = $('#jenjang').val() ? $('#jenjang').val().trim() : '';
+  const kopertais = $('#kopertais').val() ? $('#kopertais').val().trim() : '';
+  const telepon = $('#telepon').val() ? $('#telepon').val().trim() : '';
+  const noHp = $('#no_hp').val() ? $('#no_hp').val().trim() : '';
+  const provinsi = $('#provinsi').val() ? $('#provinsi').val().trim() : '';
+  const kabupaten = $('#kabupaten').val() ? $('#kabupaten').val().trim() : '';
+  const kecamatan = $('#kecamatan').val() ? $('#kecamatan').val().trim() : '';
+  const kelurahan = $('#kelurahan').val() ? $('#kelurahan').val().trim() : '';
+  const kodePos = $('#kode_pos').val() ? $('#kode_pos').val().trim() : '';
+  const jalan = $('#jalan').val() ? $('#jalan').val().trim() : '';
+
+  if (!namaLembaga || !kategori || !jenjang || !kopertais || !telepon || !noHp || !provinsi || !kabupaten || !kecamatan || !kelurahan || !kodePos || !jalan) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Informasi Lembaga Belum Lengkap',
+      text: 'Mohon lengkapi seluruh kolom Informasi Lembaga & Alamat pada Langkah 2.'
+    });
+    return;
+  }
+
+  // 3. Validasi Program Studi (Minimal 1 Prodi)
+  if (typeof totalProdiAdded !== 'undefined' && totalProdiAdded < 1) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Program Studi Belum Ditambahkan',
+      text: 'Usulan wajib memiliki minimal 1 (satu) Program Studi. Silahkan klik tombol "Kelola Prodi" pada Langkah 2.'
+    });
+    return;
+  }
+
+  // 4. Validasi Dokumen Persyaratan (Semua Dokumen Harus Diunggah)
+  let unuploadedDocs = 0;
+  $('.badge-doc-status').each(function () {
+    if ($(this).text().trim() !== 'Sudah Diunggah') {
+      unuploadedDocs++;
+    }
+  });
+
+  if (unuploadedDocs > 0) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Dokumen Persyaratan Belum Lengkap',
+      text: 'Terdapat ' + unuploadedDocs + ' dokumen yang belum diunggah. Mohon pastikan seluruh dokumen berstatus "Sudah Diunggah" sebelum submit.'
+    });
+    return;
+  }
+
+  // 5. Konfirmasi Kirim Usulan jika semua syarat terpenuhi
   Swal.fire({
-        title: 'Usulan akan dikirim ke Kemenag?',
-        text: "Pastikan semua data sudah sesuai.Anda tidak dapat mengubah kembali!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Ya, kirim!',
-        customClass: {
-          confirmButton: 'btn btn-primary',
-          cancelButton: 'btn btn-label-secondary'
-        },
-        buttonsStyling: false
-      }).then(function (result) {
-        if (result.value) {
-          // Submit the form
-          // document.getElementById("wizard-validation-form").submit();
-          axios.post(siteurl+'/layanan/pendirianptkis/submitusul', {
-              usul_id: $('#usul_id').val()
-            })
-            .then(response => {
-              console.log(response.data);
-              // Redirect or show success message
-              // window.location.href = '/some-success-page';
-              Swal.fire({
-                icon: 'success',
-                title: 'Berhasil!',
-                text: 'Usulan Anda telah dikirim.',
-                customClass: {
-                  confirmButton: 'btn btn-success waves-effect waves-light'
-                }
-              })
-              .then(() => { window.location.href = siteurl+'/layanan/pendirianptkis'; });
-            })
-            .catch(error => {
-              console.error(error);
-            });
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
+    title: 'Kirim Usulan Pendirian PTKIS?',
+    text: "Pastikan semua data dan dokumen sudah sesuai. Setelah dikirim, Anda tidak dapat mengubah data usulan kembali!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Ya, Kirim Usulan!',
+    cancelButtonText: 'Batal',
+    customClass: {
+      confirmButton: 'btn btn-primary me-2',
+      cancelButton: 'btn btn-label-secondary'
+    },
+    buttonsStyling: false
+  }).then(function (result) {
+    if (result.value) {
+      axios.post(siteurl + '/layanan/pendirianptkis/submitusul', {
+        usul_id: $('#usul_id').val()
+      })
+      .then(response => {
+        if (response.data.status === 'success') {
           Swal.fire({
-            title: 'Cancelled',
-            text: 'Your imaginary file is safe :)',
-            icon: 'error',
+            icon: 'success',
+            title: 'Berhasil Dikirim!',
+            text: response.data.message || 'Usulan Anda telah berhasil dikirim ke Kemenag RI.',
             customClass: {
               confirmButton: 'btn btn-success waves-effect waves-light'
             }
+          }).then(() => { 
+            window.location.href = siteurl + '/layanan/pendirianptkis'; 
+          });
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Gagal Submit',
+            text: response.data.message || 'Terjadi kesalahan saat memproses usulan.',
+            customClass: {
+              confirmButton: 'btn btn-primary waves-effect waves-light'
+            }
           });
         }
+      })
+      .catch(error => {
+        console.error(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Kesalahan Server',
+          text: 'Gagal menghubungi server. Silahkan coba beberapa saat lagi.'
+        });
       });
+    }
+  });
 }
 
 /**

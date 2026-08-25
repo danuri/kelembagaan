@@ -314,7 +314,49 @@ $routes->group('layanan', ['filter' => 'group:user'], static function ($routes) 
     // $routes->get('bantuanptkis', 'Layanan\BantuanPTKIS::index');
 });
 
-$routes->group('dokumen', ['filter' => 'group:user,verifikator,supervisor'], static function ($routes) {
+$routes->group('hukum', ['filter' => 'group:hukum'], static function ($routes) {
+    $routes->get('/', 'Hukum\Dashboard::index');
+    $routes->get('dashboard', 'Hukum\Dashboard::index');
+    $routes->get('profile', 'Hukum\Dashboard::profile');
+    $routes->post('changepassword', 'Hukum\Dashboard::updatePassword');
+    $routes->post('profile/update', 'Hukum\Dashboard::updateProfile');
+
+    $routes->group('usulan', static function ($routes) {
+        $routes->get('/', 'Hukum\Usulan::index');
+        $routes->get('getdata', 'Hukum\Usulan::getdata');
+        $routes->get('download', 'Hukum\Usulan::download');
+        $routes->get('detail/(:any)', 'Hukum\Usulan::detail/$1');
+
+        $routes->group('pendirianptkis', static function ($routes) {
+            $routes->get('detail/(:any)', 'Hukum\Usulan\Pendirianptkis::detail/$1');
+            $routes->get('detail/verifikasi/(:any)', 'Hukum\Usulan\Pendirianptkis::verifikasi/$1');
+            $routes->get('detail/penilaian/(:any)', 'Hukum\Usulan\Pendirianptkis::penilaian/$1');
+            $routes->get('detail/rkma/(:any)', 'Hukum\Usulan\Pendirianptkis::rkma/$1');
+            $routes->get('detail/kma/(:any)', 'Hukum\Usulan\Pendirianptkis::kma/$1');
+        });
+
+        $routes->group('alihbentukptkis', static function ($routes) {
+            $routes->get('detail/(:any)', 'Hukum\Usulan\AlihBentukPtkis::detail/$1');
+        });
+
+        $routes->group('pembentukanfai', static function ($routes) {
+            $routes->get('detail/(:any)', 'Hukum\Usulan\Pembentukanfai::detail/$1');
+            $routes->get('detail/verifikasi/(:any)', 'Hukum\Usulan\Pembentukanfai::verifikasi/$1');
+        });
+
+        $routes->group('alihkelolaptkis', static function ($routes) {
+            $routes->get('detail/(:any)', 'Hukum\Usulan\Alihkelolaptkis::detail/$1');
+            $routes->get('detail/verifikasi/(:any)', 'Hukum\Usulan\Alihkelolaptkis::verifikasi/$1');
+        });
+
+        $routes->group('penggabunganptki', static function ($routes) {
+            $routes->get('detail/(:any)', 'Hukum\Usulan\Penggabunganptki::detail/$1');
+            $routes->get('detail/verifikasi/(:any)', 'Hukum\Usulan\Penggabunganptki::verifikasi/$1');
+        });
+    });
+});
+
+$routes->group('dokumen', ['filter' => 'group:user,verifikator,supervisor,hukum'], static function ($routes) {
     $routes->get('upload', 'User\Dokumen::index');
     $routes->post('upload', 'User\Dokumen::upload');
     $routes->post('uploadprodi', 'User\Dokumen::uploadprodi');
@@ -322,7 +364,7 @@ $routes->group('dokumen', ['filter' => 'group:user,verifikator,supervisor'], sta
     $routes->get('verifikasi/(:num)/(:any)', 'User\Dokumen::verifikasi/$1/$2');
 });
 
-$routes->group('ajax', ['filter' => 'group:admin,user,superadmin,verifikator,supervisor'], static function ($routes) {
+$routes->group('ajax', ['filter' => 'group:admin,user,superadmin,verifikator,supervisor,hukum'], static function ($routes) {
     $routes->get('regencies/(:num)', 'Ajax::getkab/$1');
     $routes->get('districts/(:num)', 'Ajax::getKec/$1');
     $routes->get('villages/(:num)', 'Ajax::getKel/$1');

@@ -72,6 +72,10 @@ class AuthGroups extends ShieldAuthGroups
         'user' => [
             'title' => 'User',
             'description' => 'General users of the site. Often customers.',
+        ],
+        'hukum' => [
+            'title' => 'Biro Hukum',
+            'description' => 'Biro Hukum - View Usulan Selesai.',
         ]
     ];
 
@@ -89,6 +93,7 @@ class AuthGroups extends ShieldAuthGroups
         'supervisor.access' => 'Can access the sites Supervisor area',
         'verifikator.access' => 'Can access the sites Verifikator area',
         'asesor.access' => 'Can access the sites Asesor area',
+        'hukum.access' => 'Can access the sites Biro Hukum area',
         'users.manage-admins' => 'Can manage other admins',
         'users.create' => 'Can create new non-admin users',
         'users.edit' => 'Can edit existing non-admin users',
@@ -125,6 +130,9 @@ class AuthGroups extends ShieldAuthGroups
         ],
         'asesor' => [
             'asesor.access'
+        ],
+        'hukum' => [
+            'hukum.access'
         ],
         'user' => [],
         'beta' => [

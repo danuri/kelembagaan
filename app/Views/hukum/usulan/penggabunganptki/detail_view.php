@@ -1,0 +1,232 @@
+<?= $this->extend('hukum/template') ?>
+<?= $this->section('content') ?>
+
+<!-- Page Header -->
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-6 row-gap-4">
+    <div class="d-flex flex-column justify-content-center">
+        <div class="d-flex align-items-center gap-2 mb-1">
+            <div style="width: 4px; height: 28px; background: linear-gradient(180deg, #696cff, #a3acff); border-radius: 4px;"></div>
+            <h4 class="mb-0 fw-bold" style="letter-spacing: -0.02em;">Detail Usulan Selesai</h4>
+        </div>
+        <p class="text-muted mb-0 ms-3" style="font-size: 0.875rem;">Penggabungan PTKI — <?= esc($usulan->nama_lembaga) ?></p>
+    </div>
+    <div class="d-flex align-content-center flex-wrap gap-3">
+        <a href="<?= site_url('hukum/usulan') ?>" class="btn btn-label-secondary waves-effect" style="border-radius: 10px; padding: 8px 20px;">
+            <i class="ti tabler-arrow-left me-1"></i>Kembali ke Daftar
+        </a>
+    </div>
+</div>
+
+<!-- Info Usulan Card -->
+<div class="card mb-5 border-0 shadow-sm" style="border-radius: 14px; overflow: hidden;">
+    <div class="card-header py-3 px-4" style="background: linear-gradient(135deg, #696cff 0%, #8592ff 100%); border: none;">
+        <h6 class="mb-0 text-white fw-semibold">
+            <i class="ti tabler-file-info me-2"></i>Informasi Usulan & Status
+        </h6>
+    </div>
+    <div class="card-body p-4">
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="info-row d-flex mb-3 pb-3" style="border-bottom: 1px dashed #e9ecef;">
+                    <div class="flex-shrink-0" style="width: 150px;">
+                        <small class="text-muted fw-semibold text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.06em;">No. Surat Pengantar</small>
+                    </div>
+                    <div class="flex-grow-1 fw-semibold text-dark"><?= esc($usulan->nomor_surat) ?></div>
+                </div>
+                <div class="info-row d-flex mb-3 pb-3" style="border-bottom: 1px dashed #e9ecef;">
+                    <div class="flex-shrink-0" style="width: 150px;">
+                        <small class="text-muted fw-semibold text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.06em;">Perihal</small>
+                    </div>
+                    <div class="flex-grow-1 fw-semibold text-dark"><?= esc($usulan->perihal) ?></div>
+                </div>
+                <div class="info-row d-flex">
+                    <div class="flex-shrink-0" style="width: 150px;">
+                        <small class="text-muted fw-semibold text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.06em;">Nama Lembaga</small>
+                    </div>
+                    <div class="flex-grow-1 fw-semibold text-dark"><?= esc($usulan->nama_lembaga) ?></div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="info-row d-flex mb-3 pb-3" style="border-bottom: 1px dashed #e9ecef;">
+                    <div class="flex-shrink-0" style="width: 140px;">
+                        <small class="text-muted fw-semibold text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.06em;">Jenis Layanan</small>
+                    </div>
+                    <div class="flex-grow-1">
+                        <span class="badge bg-label-primary" style="border-radius: 8px; padding: 5px 14px;"><?= esc($usulan->layanan_nama) ?></span>
+                    </div>
+                </div>
+                <div class="info-row d-flex mb-3 pb-3" style="border-bottom: 1px dashed #e9ecef;">
+                    <div class="flex-shrink-0" style="width: 140px;">
+                        <small class="text-muted fw-semibold text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.06em;">Verifikator</small>
+                    </div>
+                    <div class="flex-grow-1 fw-bold text-dark"><?= esc($verifikator->full_name ?? '-') ?></div>
+                </div>
+                <div class="info-row d-flex mb-3 pb-3" style="border-bottom: 1px dashed #e9ecef;">
+                    <div class="flex-shrink-0" style="width: 140px;">
+                        <small class="text-muted fw-semibold text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.06em;">Status Usulan</small>
+                    </div>
+                    <div class="flex-grow-1 fw-semibold text-dark"><?= usul_status($usulan->status) ?></div>
+                </div>
+                <div class="info-row d-flex">
+                    <div class="flex-shrink-0" style="width: 140px;">
+                        <small class="text-muted fw-semibold text-uppercase" style="font-size: 0.72rem; letter-spacing: 0.06em;">Keterangan</small>
+                    </div>
+                    <div class="flex-grow-1 fw-semibold text-dark"><?= esc($usulan->keterangan ?: '-') ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tabs Navigation -->
+<div class="nav-align-top mb-5">
+    <ul class="nav nav-pills flex-column flex-md-row row-gap-2 shadow-sm" style="background: white; border-radius: 12px; padding: 6px;" role="tablist">
+        <li class="nav-item">
+            <button type="button" class="nav-link active waves-effect waves-light" style="border-radius: 8px;" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-data" aria-controls="navs-pills-top-data" aria-selected="true">
+                <i class="icon-base ti tabler-files me-1_5 icon-sm"></i>Dokumen Pendukung
+            </button>
+        </li>
+        <li class="nav-item">
+            <button type="button" class="nav-link waves-effect waves-light" style="border-radius: 8px;" role="tab" data-bs-toggle="tab" data-bs-target="#navs-pills-top-kma" aria-controls="navs-pills-top-kma" aria-selected="false">
+                <i class="icon-base ti tabler-certificate me-1_5 icon-sm"></i>Data KMA
+            </button>
+        </li>
+    </ul>
+    
+    <div class="tab-content px-0 pb-0 bg-transparent shadow-none" style="border:none;">
+        <div class="tab-pane fade show active" id="navs-pills-top-data" role="tabpanel">
+            <div class="card border-0 shadow-sm" style="border-radius: 14px; overflow: hidden;">
+                <div class="card-header py-3 px-4 d-flex align-items-center" style="border-bottom: 1px solid #f0f2f5;">
+                    <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #03c3ec, #71d8f7); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 12px;">
+                        <i class="ti tabler-files text-white" style="font-size: 1.1rem;"></i>
+                    </div>
+                    <h6 class="mb-0 fw-bold" style="color: #566a7f;">Dokumen Pendukung</h6>
+                </div>
+                <div class="table-responsive">
+                    <table class="table mb-0">
+                        <thead style="background: #f8f9fb;">
+                            <tr>
+                                <th style="padding: 12px 20px; font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: #8c97a7; border: none;" width="60%">Dokumen</th>
+                                <th style="padding: 12px 20px; font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: #8c97a7; border: none;">Status</th>
+                                <th style="padding: 12px 20px; font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: #8c97a7; border: none;">Keterangan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php if (!empty($dokumens)): ?>
+                                <?php foreach ($dokumens as $dokumen): ?>
+                                    <tr class="doc-row">
+                                        <td style="padding: 12px 20px; border-bottom: 1px solid #f0f2f5; vertical-align: middle;">
+                                            <?php if ($dokumen->lampiran): ?>
+                                                <a href="javascript:;" onclick="preview('<?= base_url('uploads/' . $dokumen->lampiran) ?>')" class="d-flex align-items-center gap-2 text-primary fw-medium text-decoration-none">
+                                                    <div style="width: 32px; height: 32px; background: #eff1ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                                        <i class="ti tabler-file-text" style="color: #696cff; font-size: 1rem;"></i>
+                                                    </div>
+                                                    <span style="font-size: 0.85rem;"><?= esc($dokumen->dokumen) ?></span>
+                                                </a>
+                                            <?php else: ?>
+                                                <div class="d-flex align-items-center gap-2 text-muted">
+                                                    <div style="width: 32px; height: 32px; background: #f5f5f9; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                                        <i class="ti tabler-file-x" style="color: #a8aaae; font-size: 1rem;"></i>
+                                                    </div>
+                                                    <span style="font-size: 0.85rem;"><?= esc($dokumen->dokumen) ?></span>
+                                                </div>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td style="padding: 12px 20px; border-bottom: 1px solid #f0f2f5; vertical-align: middle;">
+                                            <?php if ($dokumen->dok_status == 1): ?>
+                                                <span class="badge bg-label-success rounded-pill px-3"><i class="ti tabler-check me-1"></i>Valid</span>
+                                            <?php else: ?>
+                                                <span class="badge bg-label-secondary rounded-pill px-3">-</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td style="padding: 12px 20px; border-bottom: 1px solid #f0f2f5; vertical-align: middle; color: #8c97a7; font-size: 0.85rem;"><?= esc($dokumen->keterangan ?? '-') ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="3" class="text-center py-4 text-muted">Tidak ada dokumen.</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="navs-pills-top-kma" role="tabpanel">
+            <div class="card col-lg-8 mx-auto border-0 shadow-sm" style="border-radius: 14px;">
+                <div class="card-header py-3 px-4 d-flex justify-content-between align-items-center" style="background: linear-gradient(135deg, #696cff 0%, #8592ff 100%); border-radius: 14px 14px 0 0;">
+                    <h6 class="card-title m-0 text-white fw-bold"><i class="ti tabler-certificate me-2"></i>Data KMA</h6>
+                </div>
+                <div class="card-body p-4">
+                    <div class="mb-4 pb-3" style="border-bottom: 1px dashed #e9ecef;">
+                        <label class="form-label fw-semibold" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: #566a7f;">
+                            <i class="ti tabler-hash me-1" style="color: #696cff;"></i>No Keputusan
+                        </label>
+                        <div class="fw-bold text-dark fs-6"><?= esc($usulan->no_kma ?: '-') ?></div>
+                    </div>
+                    
+                    <div class="mb-4 pb-3" style="border-bottom: 1px dashed #e9ecef;">
+                        <label class="form-label fw-semibold" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: #566a7f;">
+                            <i class="ti tabler-calendar me-1" style="color: #696cff;"></i>Tanggal Keputusan
+                        </label>
+                        <div class="fw-semibold text-dark"><?= esc($usulan->tgl_kma ? date('d F Y', strtotime($usulan->tgl_kma)) : '-') ?></div>
+                    </div>
+
+                    <div class="mb-2">
+                        <label class="form-label fw-semibold" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: #566a7f;">
+                            <i class="ti tabler-file-download me-1" style="color: #696cff;"></i>File Keputusan
+                        </label>
+                        
+                        <?php if ($usulan->file_kma): ?>
+                            <div class="d-flex align-items-center p-3" style="background-color: #f8f9fb; border-radius: 10px; border-left: 4px solid #696cff;">
+                                <div style="width: 40px; height: 40px; background: #eff1ff; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 12px; flex-shrink: 0;">
+                                    <i class="ti tabler-file-check text-primary" style="font-size: 1.25rem;"></i>
+                                </div>
+                                <div class="flex-grow-1 overflow-hidden">
+                                    <h6 class="mb-0 text-truncate" style="font-size: 0.85rem; font-weight: 600;"><?= esc($usulan->file_kma) ?></h6>
+                                    <small class="text-muted">Dokumen KMA</small>
+                                </div>
+                                <a href="<?= base_url('uploads/kma/' . $usulan->file_kma) ?>" target="_blank" class="btn btn-sm btn-primary" style="border-radius: 8px;">
+                                    <i class="ti tabler-eye me-1"></i>Lihat
+                                </a>
+                            </div>
+                        <?php else: ?>
+                            <div class="text-muted p-3 text-center" style="background: #f8f9fb; border-radius: 10px;">Belum ada dokumen KMA</div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Preview Modal -->
+<div id="preview" class="modal fade" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content" style="border: none; border-radius: 16px; overflow: hidden;">
+            <div class="modal-header py-3 px-4" style="background: linear-gradient(135deg, #696cff 0%, #8592ff 100%); border: none;">
+                <h6 class="modal-title text-white fw-semibold"><i class="ti tabler-eye me-2"></i>Preview Dokumen</h6>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body p-0" id="object"></div>
+            <div class="modal-footer" style="border-top: 1px solid #f0f2f5;">
+                <a href="" target="_blank" class="btn btn-primary waves-effect" id="previewfile" style="border-radius: 8px;"><i class="ti tabler-external-link me-1"></i>Buka Tab Baru</a>
+                <button type="button" class="btn btn-label-secondary waves-effect" data-bs-dismiss="modal" style="border-radius: 8px;">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?= $this->endSection() ?>
+<?= $this->section('scripts'); ?>
+<script>
+function preview(berkas) {
+  $('#object').html('<object data="'+berkas+'" type="application/pdf" width="100%" style="height: 80vh;" id="object">'+
+                      '<p>Browser tidak mendukung!</p>'+
+                    '</object>');
+  $('#previewfile').attr('href', berkas);
+  $('#preview').modal('show');
+}
+</script>
+<?= $this->endSection() ?>

@@ -175,38 +175,86 @@ class Pendirianptkis extends BaseController
     {
         $json_data = file_get_contents('php://input');
         $request_data = json_decode($json_data, true);
+        $usulId = $request_data['usul_id'] ?? null;
 
-        $layanan = new LayananModel;
-        $layanan = $layanan->find(1);
+        if (!$usulId) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'ID Usulan tidak valid']);
+        }
+
+        $layananModel = new LayananModel();
+        $layanan = $layananModel->find(1);
 
         $usulanModel = new UsulanModel();
-        $usulan = $usulanModel->find($request_data['usul_id']);
-        // Jika usulan status perbaikan, maka boleh submit walaupun layanan tidak aktif
-        // Jika usulan status draft, maka tidak boleh submit jika layanan tidak aktif
-        if ($layanan->is_active == 0 && $usulan->status == 0) {
+        $usulan = $usulanModel->find($usulId);
+
+        if (!$usulan) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Data usulan tidak ditemukan']);
+        }
+
+        // Jika usulan status perbaikan (21), maka boleh submit walaupun layanan tidak aktif
+        // Jika usulan status draft (0), maka tidak boleh submit jika layanan tidak aktif
+        if ($layanan && $layanan->is_active == 0 && $usulan->status == 0) {
             return $this->response->setJSON(['status' => 'error', 'message' => 'Layanan sedang tidak aktif']);
         }
 
-        // cek apakah usulan lengkap
+        // Cek data detail PTKIS
         $ptkisModel = new PendirianptkisModel();
-        $ptkis = $ptkisModel->where('usulan_id', $request_data['usul_id'])->first();
+        $ptkis = $ptkisModel->where('usulan_id', $usulId)->first();
 
         if (!$ptkis) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Usulan tidak ditemukan']);
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Detail usulan PTKIS tidak ditemukan']);
         }
 
+        // Cek Kelengkapan Data Pemohon (Yayasan)
+        if (empty($ptkis->yayasan_nama) || empty($ptkis->yayasan_alamat) || empty($ptkis->yayasan_nosk) || empty($ptkis->yayasan_tglsk)) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Data Pemohon (Yayasan) belum lengkap. Mohon lengkapi pada Langkah 1.']);
+        }
+
+        // Cek Kelengkapan Data Lembaga
+        if (empty($ptkis->nama_lembaga) || empty($ptkis->kategori) || empty($ptkis->jenjang) || empty($ptkis->kopertais) || empty($ptkis->provinsi) || empty($ptkis->kab_kota) || empty($ptkis->kecamatan) || empty($ptkis->kelurahan) || empty($ptkis->alamat)) {
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Data Informasi Lembaga belum lengkap. Mohon lengkapi pada Langkah 2.']);
+        }
+
+        // Cek Program Studi (Minimal 1 Prodi)
         $prodiModel = new ProdiModel();
-        $prodi = $prodiModel->where('usul_id', $request_data['usul_id'])->findAll();
+        $prodi = $prodiModel->where('usul_id', $usulId)->findAll();
 
         if (count($prodi) == 0) {
-            return $this->response->setJSON(['status' => 'error', 'message' => 'Usulan tidak lengkap, harus ada minimal 1 Program Studi']);
+            return $this->response->setJSON(['status' => 'error', 'message' => 'Usulan tidak lengkap, Anda harus menambahkan minimal 1 Program Studi.']);
         }
 
-        $usulanModel->update($request_data['usul_id'], ['status' => 1, 'submit_at' => date('Y-m-d H:i:s')]);
+        // Cek Kelengkapan Dokumen Persyaratan
+        $crudModel = new CrudModel();
+        $dokumens = $crudModel->getDokumen($usulan->layanan_id, $usulId);
+
+        $missingDocs = [];
+        foreach ($dokumens as $dok) {
+            if (empty($dok->lampiran)) {
+                $missingDocs[] = $dok->dokumen;
+            }
+        }
+
+        if (!empty($missingDocs)) {
+            $firstDoc = $missingDocs[0];
+            $countMissing = count($missingDocs);
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => "Terdapat {$countMissing} dokumen persyaratan yang belum diunggah! (Contoh: {$firstDoc})"
+            ]);
+        }
+
+        // Simpan submit usulan
+        $usulanModel->update($usulId, ['status' => 1, 'submit_at' => date('Y-m-d H:i:s')]);
 
         $logm = new LogModel();
-        $logm->insert(['id_usul' => $request_data['usul_id'], 'status_usulan' => 1, 'keterangan' => 'Submit Usulan', 'created_by' => session('nip'), 'created_by_name' => session('nama')]);
+        $logm->insert([
+            'id_usul' => $usulId,
+            'status_usulan' => 1,
+            'keterangan' => 'Submit Usulan Pendirian PTKIS',
+            'created_by' => session('nip'),
+            'created_by_name' => session('nama')
+        ]);
 
-        return $this->response->setJSON(['status' => 'success', 'message' => 'Data berhasil disimpan']);
+        return $this->response->setJSON(['status' => 'success', 'message' => 'Usulan berhasil dikirim ke Kemenag RI!']);
     }
 }
