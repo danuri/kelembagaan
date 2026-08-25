@@ -52,7 +52,7 @@ class Pendirianptkis extends BaseController
         $data['logs'] = $logModel->where('id_usul', $id)->findAll();
 
         $users = auth()->getProvider();
-        $data['verifikator'] = $data['usulan']->verifikator ? $users->findById($data['usulan']->verifikator) : null;
+        $data['verifikator'] = $data['usulan']->verifikator ? ($users->findById($data['usulan']->verifikator) ?? (object)['full_name' => '-']) : (object)['full_name' => '-'];
         $data['encrypted_id'] = $encryptedId;
 
         return view('hukum/usulan/pendirianptkis/detail_view', $data);
@@ -76,7 +76,7 @@ class Pendirianptkis extends BaseController
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
 
         $users = auth()->getProvider();
-        $data['verifikator'] = $data['usulan']->verifikator ? $users->findById($data['usulan']->verifikator) : null;
+        $data['verifikator'] = $data['usulan']->verifikator ? ($users->findById($data['usulan']->verifikator) ?? (object)['full_name' => '-']) : (object)['full_name' => '-'];
         $data['encrypted_id'] = $encryptedId;
 
         return view('hukum/usulan/pendirianptkis/detail_dokumen', $data);
@@ -97,7 +97,7 @@ class Pendirianptkis extends BaseController
         $data['detail'] = $detail->where('usulan_id', $id)->first();
 
         $users = auth()->getProvider();
-        $data['verifikator'] = $data['usulan']->verifikator ? $users->findById($data['usulan']->verifikator) : null;
+        $data['verifikator'] = $data['usulan']->verifikator ? ($users->findById($data['usulan']->verifikator) ?? (object)['full_name' => '-']) : (object)['full_name' => '-'];
 
         $am = new AsesorModel();
         $data['asesorkecukupan'] = $am->select('tr_asesor.*,users.full_name')
@@ -130,7 +130,7 @@ class Pendirianptkis extends BaseController
         $data['detail'] = $detail->where('usulan_id', $id)->first();
 
         $users = auth()->getProvider();
-        $data['verifikator'] = $data['usulan']->verifikator ? $users->findById($data['usulan']->verifikator) : null;
+        $data['verifikator'] = $data['usulan']->verifikator ? ($users->findById($data['usulan']->verifikator) ?? (object)['full_name' => '-']) : (object)['full_name' => '-'];
         $data['encrypted_id'] = $encryptedId;
 
         return view('hukum/usulan/pendirianptkis/detail_rkma', $data);
@@ -151,7 +151,7 @@ class Pendirianptkis extends BaseController
         $data['detail'] = $detail->where('usulan_id', $id)->first();
 
         $users = auth()->getProvider();
-        $data['verifikator'] = $data['usulan']->verifikator ? $users->findById($data['usulan']->verifikator) : null;
+        $data['verifikator'] = $data['usulan']->verifikator ? ($users->findById($data['usulan']->verifikator) ?? (object)['full_name' => '-']) : (object)['full_name' => '-'];
         $data['encrypted_id'] = $encryptedId;
 
         return view('hukum/usulan/pendirianptkis/detail_kma', $data);

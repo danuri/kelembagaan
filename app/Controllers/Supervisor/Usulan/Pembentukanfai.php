@@ -42,7 +42,7 @@ class Pembentukanfai extends BaseController
             $data['logs'] = $model->where('id_usul',$id)->findAll();
 
             $users = auth()->getProvider();
-            $data['verifikator'] = $users->findById($data['usulan']->verifikator);
+            $data['verifikator'] = $data['usulan']->verifikator ? ($users->findById($data['usulan']->verifikator) ?? (object)['full_name' => '-']) : (object)['full_name' => '-'];
             return view('supervisor/usulan/pembentukanfai/detail_view', $data);
         }
     }
@@ -69,7 +69,7 @@ class Pembentukanfai extends BaseController
         $data['dokumens'] = $crudModel->getDokumen($data['usulan']->layanan_id, $data['usulan']->id);
 
         $users = auth()->getProvider();
-        $data['verifikator'] = $users->findById($data['usulan']->verifikator);
+        $data['verifikator'] = $data['usulan']->verifikator ? ($users->findById($data['usulan']->verifikator) ?? (object)['full_name' => '-']) : (object)['full_name' => '-'];
 
         return view('supervisor/usulan/pembentukanfai/detail_dokumen', $data);
     }
