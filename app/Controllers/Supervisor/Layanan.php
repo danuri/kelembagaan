@@ -46,39 +46,59 @@ class Layanan extends BaseController
     }
 
     function dokumen($id) {
-
       $lm = new LayananModel;
       $dok = new DokumenModel;
 
+      $layanan = $lm->find($id);
+      if (!$layanan) {
+        return redirect()->to(site_url('supervisor/master/layanan'))->with('error', 'Layanan tidak ditemukan.');
+      }
+
       $data['dokumens'] = $dok->where('layanan_id', $id)->findAll();
-      $data['layanan'] = $lm->find($id);
+      $data['layanan'] = $layanan;
       $data['id'] = $id;
       return view('supervisor/master/dokumen', $data);
     }
 
-    function adddokumen() {
-      $model = new DokLayananModel;
+    public function dokumensave() {
+      $model = new DokumenModel;
 
-      $layanan = $this->request->getVar('layanan');
+      $id = $this->request->getVar('id');
+      $layanan_id = $this->request->getVar('layanan_id') ?? $this->request->getVar('layanan');
       $dokumen = $this->request->getVar('dokumen');
-      $wajib = $this->request->getVar('is_wajib');
+      $keterangan = $this->request->getVar('keterangan');
+      $is_wajib = $this->request->getVar('is_wajib') ?? $this->request->getVar('wajib') ?? 1;
 
       $data = [
-        'layanan' => $layanan,
-        'dokumen' => $dokumen,
-        'wajib' => $wajib,
+        'layanan_id' => $layanan_id,
+        'dokumen'    => $dokumen,
+        'keterangan' => $keterangan,
+        'is_wajib'   => $is_wajib,
       ];
 
-      $model->insert($data);
+      if (!empty($id)) {
+        $data['id'] = $id;
+        $model->save($data);
+        return redirect()->back()->with('success', 'Dokumen berhasil diupdate.');
+      }
 
-      return redirect()->back()->with('message', 'Dokumen telah ditambahkan.');
+      $model->insert($data);
+      return redirect()->back()->with('success', 'Dokumen telah ditambahkan.');
+    }
+
+    public function adddokumen() {
+      return $this->dokumensave();
     }
     
-    function deletedokumen($id) {
-      $model = new DokLayananModel;
+    public function dokumendelete($id) {
+      $model = new DokumenModel;
       
-      $delete = $model->delete($id);
-      return redirect()->back()->with('message', 'Dokumen telah dihapus.');
+      $model->delete($id);
+      return redirect()->back()->with('success', 'Dokumen telah dihapus.');
+    }
+
+    public function deletedokumen($id) {
+      return $this->dokumendelete($id);
     }
 
     function view($id) {

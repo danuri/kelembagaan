@@ -323,6 +323,14 @@
     ?>
 
     <?php
+    if (session()->getFlashdata('message')) {
+      ?>
+      alert("<?= session()->getFlashdata('message') ?>");
+      <?php
+    }
+    ?>
+
+    <?php
     if (session()->getFlashdata('error')) {
       ?>
       alert("<?= session()->getFlashdata('error') ?>", 'error');
