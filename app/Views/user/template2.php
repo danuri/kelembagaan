@@ -121,12 +121,12 @@
               <div data-i18n="Penggabungan PTKI">Penggabungan PTKI</div>
             </a>
           </li>
-          <li class="menu-item">
+          <!-- <li class="menu-item">
             <a href="<?= site_url('layanan/pembentukanfai') ?>" class="menu-link">
               <i class="menu-icon icon-base ti tabler-school"></i>
               <div data-i18n="Pembentukan FAI">Pembentukan FAI</div>
             </a>
-          </li>
+          </li> -->
 
         </ul>
 

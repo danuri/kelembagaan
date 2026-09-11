@@ -34,9 +34,15 @@
           </div>
         </div>
         <!-- Decorative circles -->
-        <div style="position: absolute; top: -40px; right: -40px; width: 150px; height: 150px; background: rgba(255,255,255,0.08); border-radius: 50%;"></div>
-        <div style="position: absolute; bottom: -60px; right: 100px; width: 200px; height: 200px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
-        <div style="position: absolute; top: 20px; right: 200px; width: 60px; height: 60px; background: rgba(255,255,255,0.06); border-radius: 50%;"></div>
+        <div
+          style="position: absolute; top: -40px; right: -40px; width: 150px; height: 150px; background: rgba(255,255,255,0.08); border-radius: 50%;">
+        </div>
+        <div
+          style="position: absolute; bottom: -60px; right: 100px; width: 200px; height: 200px; background: rgba(255,255,255,0.05); border-radius: 50%;">
+        </div>
+        <div
+          style="position: absolute; top: 20px; right: 200px; width: 60px; height: 60px; background: rgba(255,255,255,0.06); border-radius: 50%;">
+        </div>
       </div>
     </div>
   </div>
@@ -51,9 +57,11 @@
         <div class="d-flex align-items-start justify-content-between">
           <div>
             <p class="mb-1 text-muted"
-              style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Verifikasi</p>
+              style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Verifikasi
+            </p>
             <h2 class="mb-2 fw-bold" style="font-size: 2.25rem; color: #00bcd4; letter-spacing: -0.02em;">
-              <?= $jumlahUsulVerif->jumlah ?></h2>
+              <?= $jumlahUsulVerif->jumlah ?>
+            </h2>
             <span class="badge bg-label-info" style="border-radius: 8px; padding: 5px 12px; font-size: 0.75rem;">
               <i class="ti tabler-users me-1"></i>Proses
             </span>
@@ -75,9 +83,11 @@
         <div class="d-flex align-items-start justify-content-between">
           <div>
             <p class="mb-1 text-muted"
-              style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Penilaian</p>
+              style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Penilaian
+              Pendirian</p>
             <h2 class="mb-2 fw-bold" style="font-size: 2.25rem; color: #696cff; letter-spacing: -0.02em;">
-              <?= $jumlahUsulPenilaian->jumlah ?></h2>
+              <?= $jumlahUsulPenilaian->jumlah ?>
+            </h2>
             <span class="badge bg-label-primary" style="border-radius: 8px; padding: 5px 12px; font-size: 0.75rem;">
               <i class="ti tabler-pencil-check me-1"></i>Dinilai
             </span>
@@ -99,9 +109,11 @@
         <div class="d-flex align-items-start justify-content-between">
           <div>
             <p class="mb-1 text-muted"
-              style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Dikembalikan</p>
+              style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">
+              Dikembalikan</p>
             <h2 class="mb-2 fw-bold" style="font-size: 2.25rem; color: #ffab00; letter-spacing: -0.02em;">
-              <?= $jumlahUsulDikembalikan->jumlah ?></h2>
+              <?= $jumlahUsulDikembalikan->jumlah ?>
+            </h2>
             <span class="badge bg-label-warning" style="border-radius: 8px; padding: 5px 12px; font-size: 0.75rem;">
               <i class="ti tabler-pencil me-1"></i>Revisi
             </span>
@@ -123,9 +135,11 @@
         <div class="d-flex align-items-start justify-content-between">
           <div>
             <p class="mb-1 text-muted"
-              style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Selesai</p>
+              style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Selesai
+            </p>
             <h2 class="mb-2 fw-bold" style="font-size: 2.25rem; color: #71dd37; letter-spacing: -0.02em;">
-              <?= $jumlahUsulSelesai->jumlah ?></h2>
+              <?= $jumlahUsulSelesai->jumlah ?>
+            </h2>
             <span class="badge bg-label-success" style="border-radius: 8px; padding: 5px 12px; font-size: 0.75rem;">
               <i class="ti tabler-circle-check me-1"></i>Tuntas
             </span>
@@ -143,21 +157,32 @@
 
 <style>
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-12px); }
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-12px);
+    }
   }
+
   .stat-card {
     transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   }
+
   .stat-card:hover {
     transform: translateY(-6px);
     box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
   }
+
   .stat-card:hover .stat-icon {
     transform: scale(1.1) rotate(5deg);
     transition: transform 0.3s ease;
   }
+
   .stat-icon {
     transition: transform 0.3s ease;
   }
